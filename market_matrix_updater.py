@@ -1,6 +1,6 @@
 """
-市场数据矩阵自动更新脚本 v2
-Market Matrix Auto Updater for Notion
+市场数据矩阵自动更新脚本 v4
+新增: 垃圾债券利差 (FRED API) 和 PUT/CALL Ratio (CBOE)
 """
 
 import yfinance as yf
@@ -10,19 +10,19 @@ import requests
 import os
 import time
 import math
+import json
 
 # ============== 配置区域 ==============
 NOTION_API_KEY = os.environ.get("NOTION_API_KEY")
+FRED_API_KEY = os.environ.get("FRED_API_KEY")  # 可选，没有也能用
 DATABASE_ID = "1131248983354d15aec2933c5210bbdc"
 
-# 资产代码映射
+# 资产代码映射 - Yahoo Finance
 TICKER_MAP = {
     "美元": "DX-Y.NYB",
     "2年美债": "^IRX",
     "10年美债": "^TNX",
     "TLT": "TLT",
-    "PUT/CALL": None,
-    "垃圾债券利差": None,
     "标普500": "SPY",
     "纳指": "QQQ",
     "道指": "DIA",
@@ -59,17 +59,73 @@ def safe_float(value):
         return round(float(value), 6)
     return None
 
-def calculate_returns(df, ticker):
+def get_fred_data(series_id, api_key=None):
+    """从FRED获取数据（垃圾债券利差等）"""
+    try:
+        # 方法1: 使用FRED API（如果有API Key）
+        if api_key:
+            url = f"https://api.stlouisfed.org/fred/series/observations"
+            params = {
+                "series_id": series_id,
+                "api_key": api_key,
+                "file_type": "json",
+                "sort_order": "desc",
+                "limit": 365
+            }
+            response = requests.get(url, params=params)
+            if response.status_code == 200:
+                data = response.json()
+                observations = data.get("observations", [])
+                if observations:
+                    # 转换为DataFrame
+                    df = pd.DataFrame(observations)
+                    df['date'] = pd.to_datetime(df['date'])
+                    df['value'] = pd.to_numeric(df['value'], errors='coerce')
+                    df = df.set_index('date').sort_index()
+                    return df['value']
+        
+        # 方法2: 直接从FRED网站下载CSV（无需API Key）
+        url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}"
+        df = pd.read_csv(url, parse_dates=['DATE'], index_col='DATE')
+        df.columns = ['value']
+        df['value'] = pd.to_numeric(df['value'], errors='coerce')
+        return df['value'].dropna()
+        
+    except Exception as e:
+        print(f"  FRED数据获取失败 ({series_id}): {e}")
+        return None
+
+def get_cboe_put_call_ratio():
+    """从CBOE获取Put/Call Ratio"""
+    try:
+        url = "https://www.cboe.com/publish/ScheduledTask/MktData/datahouse/totalpc.csv"
+        df = pd.read_csv(url, skiprows=2, parse_dates=['DATE'], index_col='DATE')
+        # 返回总Put/Call比率
+        if 'P/C Ratio' in df.columns:
+            return df['P/C Ratio']
+        elif 'TOTAL P/C RATIO' in df.columns:
+            return df['TOTAL P/C RATIO']
+        else:
+            # 尝试第一个数值列
+            return df.iloc[:, 0]
+    except Exception as e:
+        print(f"  CBOE Put/Call数据获取失败: {e}")
+        return None
+
+def calculate_returns(df, ticker=None):
     """计算各时间周期的收益率"""
-    if df is None or df.empty:
+    if df is None or (hasattr(df, 'empty') and df.empty):
         return None
     
     try:
-        # 处理多级列索引
-        if isinstance(df.columns, pd.MultiIndex):
-            close = df[('Close', ticker)] if ('Close', ticker) in df.columns else df['Close']
+        # 处理Series或DataFrame
+        if isinstance(df, pd.DataFrame):
+            if isinstance(df.columns, pd.MultiIndex):
+                close = df[('Close', ticker)] if ticker and ('Close', ticker) in df.columns else df['Close']
+            else:
+                close = df['Close'] if 'Close' in df.columns else df.iloc[:, 0]
         else:
-            close = df['Close']
+            close = df  # 已经是Series
         
         close = close.dropna()
         if len(close) < 2:
@@ -120,13 +176,46 @@ def calculate_returns(df, ticker):
         print(f"  计算收益率错误: {e}")
         return None
 
+def calculate_spread_changes(series):
+    """计算利差的变化（绝对值变化，不是百分比）"""
+    if series is None or len(series) < 2:
+        return None
+    
+    try:
+        series = series.dropna()
+        current = float(series.iloc[-1])
+        
+        result = {"收盘价": safe_float(current)}
+        
+        # 1天变化
+        if len(series) >= 2:
+            result["1天"] = safe_float(series.iloc[-1] - series.iloc[-2])
+        
+        # 1星期变化
+        if len(series) >= 6:
+            result["1星期"] = safe_float(series.iloc[-1] - series.iloc[-6])
+        
+        # 1个月变化
+        if len(series) >= 22:
+            result["1个月"] = safe_float(series.iloc[-1] - series.iloc[-22])
+        
+        # 1年变化
+        if len(series) >= 253:
+            result["1年"] = safe_float(series.iloc[-1] - series.iloc[-253])
+        
+        return result
+    except Exception as e:
+        print(f"  计算利差变化错误: {e}")
+        return None
+
 def fetch_all_data():
     """获取所有资产数据"""
     all_data = {}
     
+    # 1. 获取Yahoo Finance数据
+    print("\n--- Yahoo Finance 数据 ---")
     for name, ticker in TICKER_MAP.items():
         if ticker is None:
-            print(f"⊘ {name} (无数据源)")
             continue
         try:
             df = yf.download(ticker, period="2y", progress=False, auto_adjust=True)
@@ -134,7 +223,7 @@ def fetch_all_data():
                 returns = calculate_returns(df, ticker)
                 if returns and returns.get("收盘价"):
                     all_data[name] = returns
-                    print(f"✓ {name} ({ticker})")
+                    print(f"✓ {name} ({ticker}): {returns.get('收盘价'):.2f}")
                 else:
                     print(f"✗ {name} ({ticker}): 无有效数据")
             else:
@@ -142,6 +231,34 @@ def fetch_all_data():
         except Exception as e:
             print(f"✗ {name} ({ticker}): {e}")
         time.sleep(0.1)
+    
+    # 2. 获取垃圾债券利差 (FRED)
+    print("\n--- FRED 数据 ---")
+    try:
+        hy_spread = get_fred_data("BAMLH0A0HYM2", FRED_API_KEY)
+        if hy_spread is not None and len(hy_spread) > 0:
+            spread_data = calculate_spread_changes(hy_spread)
+            if spread_data:
+                all_data["垃圾债券利差"] = spread_data
+                print(f"✓ 垃圾债券利差: {spread_data.get('收盘价'):.2f}%")
+        else:
+            print("✗ 垃圾债券利差: 无数据")
+    except Exception as e:
+        print(f"✗ 垃圾债券利差: {e}")
+    
+    # 3. 获取Put/Call Ratio (CBOE)
+    print("\n--- CBOE 数据 ---")
+    try:
+        pc_ratio = get_cboe_put_call_ratio()
+        if pc_ratio is not None and len(pc_ratio) > 0:
+            pc_data = calculate_spread_changes(pc_ratio)
+            if pc_data:
+                all_data["PUT/CALL"] = pc_data
+                print(f"✓ PUT/CALL Ratio: {pc_data.get('收盘价'):.2f}")
+        else:
+            print("✗ PUT/CALL Ratio: 无数据")
+    except Exception as e:
+        print(f"✗ PUT/CALL Ratio: {e}")
     
     return all_data
 
@@ -198,12 +315,17 @@ def update_notion_page(page_id, data):
 
 def update_notion_database(market_data):
     """更新整个Notion数据库"""
+    if not NOTION_API_KEY:
+        print("跳过Notion更新 (无API Key)")
+        return
+        
     pages = get_notion_pages()
     
     if not pages:
-        print("警告: 未获取到Notion页面，请检查API Key和数据库权限")
+        print("警告: 未获取到Notion页面")
         return
     
+    print("\n--- 更新Notion ---")
     for page in pages:
         title_prop = page["properties"].get("资产名称", {})
         if title_prop.get("title") and len(title_prop["title"]) > 0:
@@ -215,21 +337,33 @@ def update_notion_database(market_data):
                 print(f"{status} 更新 {name}")
                 time.sleep(0.35)
 
+def save_json_data(market_data):
+    """保存数据为JSON文件供HTML仪表板使用"""
+    output = {
+        "updateTime": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "assets": market_data
+    }
+    
+    with open("data.json", "w", encoding="utf-8") as f:
+        json.dump(output, f, ensure_ascii=False, indent=2)
+    
+    print("✓ 已保存 data.json")
+
 def main():
     print("=" * 50)
-    print("市场数据矩阵更新器 v2")
+    print("市场数据矩阵更新器 v4")
     print(f"运行时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print("新增: 垃圾债券利差 + PUT/CALL Ratio")
     print("=" * 50)
     
-    if not NOTION_API_KEY:
-        print("错误: NOTION_API_KEY 环境变量未设置")
-        return
-    
-    print("\n[1/2] 获取市场数据...")
+    print("\n[1/3] 获取市场数据...")
     market_data = fetch_all_data()
     print(f"\n成功获取 {len(market_data)} 个资产数据")
     
-    print("\n[2/2] 更新Notion数据库...")
+    print("\n[2/3] 保存JSON数据文件...")
+    save_json_data(market_data)
+    
+    print("\n[3/3] 更新Notion数据库...")
     update_notion_database(market_data)
     
     print("\n" + "=" * 50)
