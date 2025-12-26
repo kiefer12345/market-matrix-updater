@@ -1,6 +1,6 @@
 """
-市场数据矩阵自动更新脚本 v4
-新增: 垃圾债券利差 (FRED API) 和 PUT/CALL Ratio (CBOE)
+市场数据矩阵自动更新脚本 v5
+修复: FRED CSV列名问题 + CBOE 403问题（添加User-Agent）
 """
 
 import yfinance as yf
@@ -11,10 +11,11 @@ import os
 import time
 import math
 import json
+import urllib.request
 
 # ============== 配置区域 ==============
 NOTION_API_KEY = os.environ.get("NOTION_API_KEY")
-FRED_API_KEY = os.environ.get("FRED_API_KEY")  # 可选，没有也能用
+FRED_API_KEY = os.environ.get("FRED_API_KEY")  # 可选
 DATABASE_ID = "1131248983354d15aec2933c5210bbdc"
 
 # 资产代码映射 - Yahoo Finance
@@ -62,7 +63,7 @@ def safe_float(value):
 def get_fred_data(series_id, api_key=None):
     """从FRED获取数据（垃圾债券利差等）"""
     try:
-        # 方法1: 使用FRED API（如果有API Key）
+        # 方法1: 使用FRED API（推荐，更稳定）
         if api_key:
             url = f"https://api.stlouisfed.org/fred/series/observations"
             params = {
@@ -72,24 +73,42 @@ def get_fred_data(series_id, api_key=None):
                 "sort_order": "desc",
                 "limit": 365
             }
-            response = requests.get(url, params=params)
+            response = requests.get(url, params=params, timeout=30)
             if response.status_code == 200:
                 data = response.json()
                 observations = data.get("observations", [])
                 if observations:
-                    # 转换为DataFrame
                     df = pd.DataFrame(observations)
                     df['date'] = pd.to_datetime(df['date'])
                     df['value'] = pd.to_numeric(df['value'], errors='coerce')
                     df = df.set_index('date').sort_index()
-                    return df['value']
+                    return df['value'].dropna()
         
         # 方法2: 直接从FRED网站下载CSV（无需API Key）
         url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}"
-        df = pd.read_csv(url, parse_dates=['DATE'], index_col='DATE')
-        df.columns = ['value']
-        df['value'] = pd.to_numeric(df['value'], errors='coerce')
-        return df['value'].dropna()
+        
+        # 添加User-Agent避免被拒绝
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        }
+        
+        response = requests.get(url, headers=headers, timeout=30)
+        if response.status_code == 200:
+            from io import StringIO
+            df = pd.read_csv(StringIO(response.text))
+            
+            # 自动检测列名（可能是DATE或其他）
+            date_col = df.columns[0]  # 第一列是日期
+            value_col = df.columns[1]  # 第二列是值
+            
+            df[date_col] = pd.to_datetime(df[date_col])
+            df[value_col] = pd.to_numeric(df[value_col], errors='coerce')
+            df = df.set_index(date_col).sort_index()
+            
+            return df[value_col].dropna()
+        else:
+            print(f"  FRED HTTP错误: {response.status_code}")
+            return None
         
     except Exception as e:
         print(f"  FRED数据获取失败 ({series_id}): {e}")
@@ -99,15 +118,48 @@ def get_cboe_put_call_ratio():
     """从CBOE获取Put/Call Ratio"""
     try:
         url = "https://www.cboe.com/publish/ScheduledTask/MktData/datahouse/totalpc.csv"
-        df = pd.read_csv(url, skiprows=2, parse_dates=['DATE'], index_col='DATE')
-        # 返回总Put/Call比率
-        if 'P/C Ratio' in df.columns:
-            return df['P/C Ratio']
-        elif 'TOTAL P/C RATIO' in df.columns:
-            return df['TOTAL P/C RATIO']
+        
+        # 添加完整的浏览器Headers避免403
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Connection': 'keep-alive',
+        }
+        
+        response = requests.get(url, headers=headers, timeout=30)
+        
+        if response.status_code == 200:
+            from io import StringIO
+            # 跳过前2行注释
+            df = pd.read_csv(StringIO(response.text), skiprows=2)
+            
+            # 自动检测日期列
+            date_col = df.columns[0]
+            df[date_col] = pd.to_datetime(df[date_col])
+            df = df.set_index(date_col).sort_index()
+            
+            # 查找Put/Call列
+            for col in df.columns:
+                if 'P/C' in col.upper() or 'RATIO' in col.upper():
+                    return pd.to_numeric(df[col], errors='coerce').dropna()
+            
+            # 如果没找到，用最后一列（通常是总比率）
+            return pd.to_numeric(df.iloc[:, -1], errors='coerce').dropna()
         else:
-            # 尝试第一个数值列
-            return df.iloc[:, 0]
+            print(f"  CBOE HTTP错误: {response.status_code}")
+            
+            # 备用方案：使用urllib
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                content = resp.read().decode('utf-8')
+                from io import StringIO
+                df = pd.read_csv(StringIO(content), skiprows=2)
+                date_col = df.columns[0]
+                df[date_col] = pd.to_datetime(df[date_col])
+                df = df.set_index(date_col).sort_index()
+                return pd.to_numeric(df.iloc[:, -1], errors='coerce').dropna()
+                
     except Exception as e:
         print(f"  CBOE Put/Call数据获取失败: {e}")
         return None
@@ -177,7 +229,7 @@ def calculate_returns(df, ticker=None):
         return None
 
 def calculate_spread_changes(series):
-    """计算利差的变化（绝对值变化，不是百分比）"""
+    """计算利差/比率的变化（绝对值变化，不是百分比）"""
     if series is None or len(series) < 2:
         return None
     
@@ -205,7 +257,7 @@ def calculate_spread_changes(series):
         
         return result
     except Exception as e:
-        print(f"  计算利差变化错误: {e}")
+        print(f"  计算变化错误: {e}")
         return None
 
 def fetch_all_data():
@@ -241,6 +293,8 @@ def fetch_all_data():
             if spread_data:
                 all_data["垃圾债券利差"] = spread_data
                 print(f"✓ 垃圾债券利差: {spread_data.get('收盘价'):.2f}%")
+            else:
+                print("✗ 垃圾债券利差: 计算失败")
         else:
             print("✗ 垃圾债券利差: 无数据")
     except Exception as e:
@@ -255,6 +309,8 @@ def fetch_all_data():
             if pc_data:
                 all_data["PUT/CALL"] = pc_data
                 print(f"✓ PUT/CALL Ratio: {pc_data.get('收盘价'):.2f}")
+            else:
+                print("✗ PUT/CALL Ratio: 计算失败")
         else:
             print("✗ PUT/CALL Ratio: 无数据")
     except Exception as e:
@@ -338,7 +394,7 @@ def update_notion_database(market_data):
                 time.sleep(0.35)
 
 def save_json_data(market_data):
-    """保存数据为JSON文件供HTML仪表板使用"""
+    """保存数据为JSON文件"""
     output = {
         "updateTime": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "assets": market_data
@@ -351,9 +407,9 @@ def save_json_data(market_data):
 
 def main():
     print("=" * 50)
-    print("市场数据矩阵更新器 v4")
+    print("市场数据矩阵更新器 v5")
     print(f"运行时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print("新增: 垃圾债券利差 + PUT/CALL Ratio")
+    print("修复: FRED列名 + CBOE User-Agent")
     print("=" * 50)
     
     print("\n[1/3] 获取市场数据...")
