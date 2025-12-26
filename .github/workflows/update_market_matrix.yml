@@ -2,13 +2,16 @@ name: Update Market Matrix
 
 on:
   schedule:
-    # 美股收盘后运行 (UTC 22:00 = 美东 17:00 = 北京时间 06:00)
+    # 每天 UTC 22:00 运行 (悉尼时间早上9点)
     - cron: '0 22 * * 1-5'
-  workflow_dispatch:
+  workflow_dispatch:  # 允许手动触发
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write  # 允许写入仓库
     
     steps:
     - name: Checkout repository
@@ -21,7 +24,7 @@ jobs:
     
     - name: Install dependencies
       run: |
-        pip install yfinance pandas requests python-dotenv
+        pip install yfinance pandas requests
     
     - name: Run update script
       env:
@@ -29,6 +32,16 @@ jobs:
       run: |
         python market_matrix_updater.py
     
+    - name: Commit and push data.json
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add data.json
+        git diff --staged --quiet || git commit -m "Update market data $(date +'%Y-%m-%d %H:%M UTC')"
+        git push
+    
     - name: Log completion
       run: |
-        echo "Market matrix updated at $(date)"
+        echo "✅ Market matrix update completed at $(date)"
+        echo "📊 Data saved to data.json"
+        echo "📝 Notion database updated"
