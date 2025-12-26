@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>市场数据矩阵</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'SF Mono', 'Consolas', 'Monaco', monospace;
+            background: #0d1117;
+            color: #e6edf3;
+            padding: 12px;
+            font-size: 13px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #30363d;
+        }
+        
+        .title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #58a6ff;
+        }
+        
+        .update-time {
+            font-size: 11px;
+            color: #8b949e;
+        }
+        
+        .matrix-container {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        
+        th {
+            background: #161b22;
+            color: #8b949e;
+            font-weight: 500;
+            text-align: right;
+            padding: 8px 10px;
+            border-bottom: 1px solid #30363d;
+            position: sticky;
+            top: 0;
+            white-space: nowrap;
+        }
+        
+        th:first-child {
+            text-align: left;
+            min-width: 120px;
+        }
+        
+        td {
+            padding: 6px 10px;
+            text-align: right;
+            border-bottom: 1px solid #21262d;
+            white-space: nowrap;
+        }
+        
+        td:first-child {
+            text-align: left;
+            color: #e6edf3;
+            font-weight: 500;
+        }
+        
+        tr:hover {
+            background: #161b22;
+        }
+        
+        .positive {
+            color: #3fb950;
+        }
+        
+        .negative {
+            color: #f85149;
+        }
+        
+        .neutral {
+            color: #8b949e;
+        }
+        
+        .price {
+            color: #e6edf3;
+            font-weight: 500;
+        }
+        
+        /* 分类标题行 */
+        .category-row {
+            background: #1c2128 !important;
+        }
+        
+        .category-row td {
+            color: #58a6ff;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px;
+            border-bottom: 1px solid #30363d;
+        }
+        
+        /* 特殊指标样式 */
+        .indicator-row {
+            background: #1a1f24;
+        }
+        
+        /* 迷你图标 */
+        .trend-up::before {
+            content: "▲ ";
+            font-size: 8px;
+        }
+        
+        .trend-down::before {
+            content: "▼ ";
+            font-size: 8px;
+        }
+        
+        /* 加载状态 */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #8b949e;
+        }
+        
+        .loading::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            body {
+                font-size: 11px;
+                padding: 8px;
+            }
+            
+            th, td {
+                padding: 5px 6px;
+            }
+            
+            .title {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">📊 市场数据矩阵</div>
+        <div class="update-time" id="updateTime">加载中...</div>
+    </div>
+    
+    <div class="matrix-container">
+        <table id="matrixTable">
+            <thead>
+                <tr>
+                    <th>资产</th>
+                    <th>收盘价</th>
+                    <th>1天</th>
+                    <th>1星期</th>
+                    <th>1个月</th>
+                    <th>QTD</th>
+                    <th>YTD</th>
+                    <th>1年</th>
+                </tr>
+            </thead>
+            <tbody id="matrixBody">
+                <tr><td colspan="8" class="loading">正在加载数据</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // 资产分类
+        const categories = {
+            "货币与利率": ["美元", "2年美债", "10年美债", "TLT"],
+            "主要指数": ["标普500", "纳指", "道指", "罗素2000", "标普等权指数"],
+            "风格因子": ["罗素1000价值", "罗素1000成长", "前7大科技", "趋势板块"],
+            "商品": ["黄金", "WTI原油", "比特币"],
+            "行业板块": ["科技", "芯片", "能源", "银行", "保险板块", "医疗", "通讯服务", "非必需品消费", "必需品消费", "公共事业", "REITS"],
+            "市场情绪": ["VIX", "PUT/CALL", "垃圾债券利差"]
+        };
+        
+        // 特殊指标（显示绝对值变化而非百分比）
+        const absoluteChangeIndicators = ["PUT/CALL", "垃圾债券利差", "VIX", "2年美债", "10年美债"];
+        
+        // 格式化数值
+        function formatValue(value, isPrice = false, isAbsolute = false) {
+            if (value === null || value === undefined) return '-';
+            
+            if (isPrice) {
+                // 价格格式
+                if (Math.abs(value) >= 1000) {
+                    return value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                } else if (Math.abs(value) >= 100) {
+                    return value.toFixed(2);
+                } else if (Math.abs(value) >= 1) {
+                    return value.toFixed(2);
+                } else {
+                    return value.toFixed(4);
+                }
+            }
+            
+            if (isAbsolute) {
+                // 绝对值变化（如利差、比率）
+                const sign = value > 0 ? '+' : '';
+                return sign + value.toFixed(2);
+            }
+            
+            // 百分比格式
+            const percent = value * 100;
+            const sign = percent > 0 ? '+' : '';
+            return sign + percent.toFixed(2) + '%';
+        }
+        
+        // 获取颜色类
+        function getColorClass(value, invert = false) {
+            if (value === null || value === undefined || value === 0) return 'neutral';
+            
+            // VIX和PUT/CALL上涨实际是负面信号，所以颜色反转
+            if (invert) {
+                return value > 0 ? 'negative' : 'positive';
+            }
+            return value > 0 ? 'positive' : 'negative';
+        }
+        
+        // 判断是否需要反转颜色
+        function shouldInvertColor(assetName) {
+            const invertAssets = ['VIX', 'PUT/CALL', '垃圾债券利差'];
+            return invertAssets.includes(assetName);
+        }
+        
+        // 渲染表格
+        function renderTable(data) {
+            const tbody = document.getElementById('matrixBody');
+            tbody.innerHTML = '';
+            
+            const assets = data.assets || {};
+            
+            for (const [category, assetList] of Object.entries(categories)) {
+                // 分类标题行
+                const categoryRow = document.createElement('tr');
+                categoryRow.className = 'category-row';
+                categoryRow.innerHTML = `<td colspan="8">${category}</td>`;
+                tbody.appendChild(categoryRow);
+                
+                // 该分类下的资产
+                for (const assetName of assetList) {
+                    const assetData = assets[assetName];
+                    if (!assetData) continue;
+                    
+                    const row = document.createElement('tr');
+                    const isAbsolute = absoluteChangeIndicators.includes(assetName);
+                    const invert = shouldInvertColor(assetName);
+                    
+                    // 特殊指标行样式
+                    if (["VIX", "PUT/CALL", "垃圾债券利差"].includes(assetName)) {
+                        row.className = 'indicator-row';
+                    }
+                    
+                    const fields = ['1天', '1星期', '1个月', 'QTD', 'YTD', '1年'];
+                    
+                    let html = `<td>${assetName}</td>`;
+                    html += `<td class="price">${formatValue(assetData['收盘价'], true)}</td>`;
+                    
+                    for (const field of fields) {
+                        const value = assetData[field];
+                        const colorClass = getColorClass(value, invert);
+                        const trendClass = value > 0 ? 'trend-up' : (value < 0 ? 'trend-down' : '');
+                        html += `<td class="${colorClass} ${trendClass}">${formatValue(value, false, isAbsolute)}</td>`;
+                    }
+                    
+                    row.innerHTML = html;
+                    tbody.appendChild(row);
+                }
+            }
+            
+            // 更新时间
+            document.getElementById('updateTime').textContent = 
+                `更新时间: ${data.updateTime || '未知'}`;
+        }
+        
+        // 加载数据
+        async function loadData() {
+            try {
+                // 尝试从同目录加载 data.json
+                const response = await fetch('data.json?' + Date.now());
+                if (!response.ok) throw new Error('Failed to fetch');
+                const data = await response.json();
+                renderTable(data);
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('matrixBody').innerHTML = 
+                    '<tr><td colspan="8" style="text-align:center;color:#f85149;">加载失败，请刷新重试</td></tr>';
+            }
+        }
+        
+        // 初始化
+        loadData();
+        
+        // 每5分钟自动刷新
+        setInterval(loadData, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
