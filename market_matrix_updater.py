@@ -1,6 +1,6 @@
 """
-市场数据矩阵自动更新脚本 v5
-修复: FRED CSV列名问题 + CBOE 403问题（添加User-Agent）
+市场数据矩阵自动更新脚本 v6
+修复: 尝试多个CBOE备用端点获取Put/Call Ratio
 """
 
 import yfinance as yf
@@ -11,7 +11,7 @@ import os
 import time
 import math
 import json
-import urllib.request
+from io import StringIO
 
 # ============== 配置区域 ==============
 NOTION_API_KEY = os.environ.get("NOTION_API_KEY")
@@ -50,6 +50,14 @@ TICKER_MAP = {
     "标普等权指数": "RSP",
 }
 
+# 浏览器Headers
+HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+    'Accept-Language': 'en-US,en;q=0.5',
+    'Connection': 'keep-alive',
+}
+
 def safe_float(value):
     """确保浮点数是JSON兼容的"""
     if value is None:
@@ -63,7 +71,7 @@ def safe_float(value):
 def get_fred_data(series_id, api_key=None):
     """从FRED获取数据（垃圾债券利差等）"""
     try:
-        # 方法1: 使用FRED API（推荐，更稳定）
+        # 方法1: 使用FRED API
         if api_key:
             url = f"https://api.stlouisfed.org/fred/series/observations"
             params = {
@@ -84,27 +92,17 @@ def get_fred_data(series_id, api_key=None):
                     df = df.set_index('date').sort_index()
                     return df['value'].dropna()
         
-        # 方法2: 直接从FRED网站下载CSV（无需API Key）
+        # 方法2: 直接从FRED网站下载CSV
         url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}"
+        response = requests.get(url, headers=HEADERS, timeout=30)
         
-        # 添加User-Agent避免被拒绝
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        }
-        
-        response = requests.get(url, headers=headers, timeout=30)
         if response.status_code == 200:
-            from io import StringIO
             df = pd.read_csv(StringIO(response.text))
-            
-            # 自动检测列名（可能是DATE或其他）
-            date_col = df.columns[0]  # 第一列是日期
-            value_col = df.columns[1]  # 第二列是值
-            
+            date_col = df.columns[0]
+            value_col = df.columns[1]
             df[date_col] = pd.to_datetime(df[date_col])
             df[value_col] = pd.to_numeric(df[value_col], errors='coerce')
             df = df.set_index(date_col).sort_index()
-            
             return df[value_col].dropna()
         else:
             print(f"  FRED HTTP错误: {response.status_code}")
@@ -115,54 +113,79 @@ def get_fred_data(series_id, api_key=None):
         return None
 
 def get_cboe_put_call_ratio():
-    """从CBOE获取Put/Call Ratio"""
-    try:
-        url = "https://www.cboe.com/publish/ScheduledTask/MktData/datahouse/totalpc.csv"
-        
-        # 添加完整的浏览器Headers避免403
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Accept-Language': 'en-US,en;q=0.5',
-            'Connection': 'keep-alive',
-        }
-        
-        response = requests.get(url, headers=headers, timeout=30)
-        
-        if response.status_code == 200:
-            from io import StringIO
-            # 跳过前2行注释
-            df = pd.read_csv(StringIO(response.text), skiprows=2)
+    """从多个备用源获取Put/Call Ratio"""
+    
+    # 备用URL列表 - 按优先级排序
+    urls_to_try = [
+        # 新的CDN路径
+        ("https://cdn.cboe.com/resources/options/volume_and_call_put_ratios/totalpc.csv", "totalpc"),
+        ("https://cdn.cboe.com/resources/options/volume_and_call_put_ratios/equitypc.csv", "equitypc"),
+        # 旧路径（可能还有效）
+        ("https://www.cboe.com/publish/ScheduledTask/MktData/datahouse/totalpc.csv", "totalpc_old"),
+        ("https://www.cboe.com/publish/scheduledtask/mktdata/datahouse/equitypc.csv", "equitypc_old"),
+    ]
+    
+    for url, name in urls_to_try:
+        try:
+            print(f"  尝试: {name}...")
+            response = requests.get(url, headers=HEADERS, timeout=30)
             
-            # 自动检测日期列
-            date_col = df.columns[0]
-            df[date_col] = pd.to_datetime(df[date_col])
-            df = df.set_index(date_col).sort_index()
-            
-            # 查找Put/Call列
-            for col in df.columns:
-                if 'P/C' in col.upper() or 'RATIO' in col.upper():
-                    return pd.to_numeric(df[col], errors='coerce').dropna()
-            
-            # 如果没找到，用最后一列（通常是总比率）
-            return pd.to_numeric(df.iloc[:, -1], errors='coerce').dropna()
-        else:
-            print(f"  CBOE HTTP错误: {response.status_code}")
-            
-            # 备用方案：使用urllib
-            req = urllib.request.Request(url, headers=headers)
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                content = resp.read().decode('utf-8')
-                from io import StringIO
-                df = pd.read_csv(StringIO(content), skiprows=2)
-                date_col = df.columns[0]
-                df[date_col] = pd.to_datetime(df[date_col])
-                df = df.set_index(date_col).sort_index()
-                return pd.to_numeric(df.iloc[:, -1], errors='coerce').dropna()
+            if response.status_code == 200:
+                print(f"  ✓ {name} 成功! (HTTP 200)")
                 
-    except Exception as e:
-        print(f"  CBOE Put/Call数据获取失败: {e}")
-        return None
+                # 尝试解析CSV
+                content = response.text
+                
+                # 跳过注释行
+                lines = content.strip().split('\n')
+                data_start = 0
+                for i, line in enumerate(lines):
+                    if line.strip() and not line.startswith('Your use') and ',' in line:
+                        # 检查是否是数据行（第一列像日期）
+                        first_col = line.split(',')[0].strip()
+                        if '/' in first_col or '-' in first_col:
+                            data_start = i
+                            break
+                        elif first_col.lower() in ['date', 'trade_date']:
+                            data_start = i
+                            break
+                
+                # 从数据开始处解析
+                clean_content = '\n'.join(lines[data_start:])
+                df = pd.read_csv(StringIO(clean_content))
+                
+                # 自动检测日期列和比率列
+                date_col = df.columns[0]
+                df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
+                df = df.dropna(subset=[date_col])
+                df = df.set_index(date_col).sort_index()
+                
+                # 查找Put/Call Ratio列
+                ratio_col = None
+                for col in df.columns:
+                    col_upper = col.upper()
+                    if 'P/C' in col_upper or 'RATIO' in col_upper or 'TOTAL' in col_upper:
+                        ratio_col = col
+                        break
+                
+                if ratio_col is None:
+                    ratio_col = df.columns[-1]  # 最后一列
+                
+                series = pd.to_numeric(df[ratio_col], errors='coerce').dropna()
+                
+                if len(series) > 0:
+                    print(f"  ✓ 解析成功，最新值: {series.iloc[-1]:.2f}")
+                    return series
+                    
+            else:
+                print(f"  ✗ {name} 失败: HTTP {response.status_code}")
+                
+        except Exception as e:
+            print(f"  ✗ {name} 错误: {e}")
+    
+    # 所有URL都失败，返回None
+    print("  所有CBOE数据源都无法访问")
+    return None
 
 def calculate_returns(df, ticker=None):
     """计算各时间周期的收益率"""
@@ -170,14 +193,13 @@ def calculate_returns(df, ticker=None):
         return None
     
     try:
-        # 处理Series或DataFrame
         if isinstance(df, pd.DataFrame):
             if isinstance(df.columns, pd.MultiIndex):
                 close = df[('Close', ticker)] if ticker and ('Close', ticker) in df.columns else df['Close']
             else:
                 close = df['Close'] if 'Close' in df.columns else df.iloc[:, 0]
         else:
-            close = df  # 已经是Series
+            close = df
         
         close = close.dropna()
         if len(close) < 2:
@@ -188,27 +210,22 @@ def calculate_returns(df, ticker=None):
         
         returns = {"收盘价": safe_float(close_price)}
         
-        # 1天
         if len(close) >= 2:
             ret = (close.iloc[-1] / close.iloc[-2] - 1)
             returns["1天"] = safe_float(ret)
         
-        # 1星期
         if len(close) >= 6:
             ret = (close.iloc[-1] / close.iloc[-6] - 1)
             returns["1星期"] = safe_float(ret)
         
-        # 1个月
         if len(close) >= 22:
             ret = (close.iloc[-1] / close.iloc[-22] - 1)
             returns["1个月"] = safe_float(ret)
         
-        # 1年
         if len(close) >= 253:
             ret = (close.iloc[-1] / close.iloc[-253] - 1)
             returns["1年"] = safe_float(ret)
         
-        # QTD
         quarter_month = ((today.month - 1) // 3) * 3 + 1
         quarter_start = pd.Timestamp(datetime(today.year, quarter_month, 1))
         qtd_data = close[close.index >= quarter_start]
@@ -216,7 +233,6 @@ def calculate_returns(df, ticker=None):
             ret = (qtd_data.iloc[-1] / qtd_data.iloc[0] - 1)
             returns["QTD"] = safe_float(ret)
         
-        # YTD
         year_start = pd.Timestamp(datetime(today.year, 1, 1))
         ytd_data = close[close.index >= year_start]
         if len(ytd_data) >= 2:
@@ -239,19 +255,15 @@ def calculate_spread_changes(series):
         
         result = {"收盘价": safe_float(current)}
         
-        # 1天变化
         if len(series) >= 2:
             result["1天"] = safe_float(series.iloc[-1] - series.iloc[-2])
         
-        # 1星期变化
         if len(series) >= 6:
             result["1星期"] = safe_float(series.iloc[-1] - series.iloc[-6])
         
-        # 1个月变化
         if len(series) >= 22:
             result["1个月"] = safe_float(series.iloc[-1] - series.iloc[-22])
         
-        # 1年变化
         if len(series) >= 253:
             result["1年"] = safe_float(series.iloc[-1] - series.iloc[-253])
         
@@ -300,7 +312,7 @@ def fetch_all_data():
     except Exception as e:
         print(f"✗ 垃圾债券利差: {e}")
     
-    # 3. 获取Put/Call Ratio (CBOE)
+    # 3. 获取Put/Call Ratio (CBOE - 尝试多个备用源)
     print("\n--- CBOE 数据 ---")
     try:
         pc_ratio = get_cboe_put_call_ratio()
@@ -312,7 +324,7 @@ def fetch_all_data():
             else:
                 print("✗ PUT/CALL Ratio: 计算失败")
         else:
-            print("✗ PUT/CALL Ratio: 无数据")
+            print("✗ PUT/CALL Ratio: 所有数据源都无法获取")
     except Exception as e:
         print(f"✗ PUT/CALL Ratio: {e}")
     
@@ -407,9 +419,9 @@ def save_json_data(market_data):
 
 def main():
     print("=" * 50)
-    print("市场数据矩阵更新器 v5")
+    print("市场数据矩阵更新器 v6")
     print(f"运行时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print("修复: FRED列名 + CBOE User-Agent")
+    print("新增: 多备用源CBOE Put/Call获取")
     print("=" * 50)
     
     print("\n[1/3] 获取市场数据...")
