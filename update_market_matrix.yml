@@ -1,0 +1,34 @@
+name: Update Market Matrix
+
+on:
+  schedule:
+    # 美股收盘后运行 (UTC 22:00 = 美东 17:00 = 北京时间 06:00)
+    - cron: '0 22 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        pip install yfinance pandas requests python-dotenv
+    
+    - name: Run update script
+      env:
+        NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+      run: |
+        python market_matrix_updater.py
+    
+    - name: Log completion
+      run: |
+        echo "Market matrix updated at $(date)"
