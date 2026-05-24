@@ -305,8 +305,8 @@
         // 加载数据
         async function loadData() {
             try {
-                // 尝试从同目录加载 data.json
-                const response = await fetch('data.json?' + Date.now());
+                // 从 GitHub 主分支加载最新数据
+                const response = await fetch('https://raw.githubusercontent.com/kiefer12345/market-matrix-updater/main/data.json?' + Date.now());
                 if (!response.ok) throw new Error('Failed to fetch');
                 const data = await response.json();
                 renderTable(data);
