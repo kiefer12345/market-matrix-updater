@@ -32,13 +32,22 @@ jobs:
       run: |
         python market_matrix_updater.py
     
-    - name: Commit and push data.json
+    - name: Commit and push data.json to main
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add data.json
         git diff --staged --quiet || git commit -m "Update market data $(date +'%Y-%m-%d %H:%M UTC')"
         git push
+
+    - name: Deploy to gh-pages
+      run: |
+        git fetch origin gh-pages
+        git checkout gh-pages
+        git checkout main -- data.json index.html
+        git add data.json index.html
+        git diff --staged --quiet || git commit -m "Deploy $(date -u +'%Y-%m-%d %H:%M UTC')"
+        git push origin gh-pages
     
     - name: Log completion
       run: |
