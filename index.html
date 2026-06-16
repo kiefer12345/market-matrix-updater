@@ -149,17 +149,45 @@
             60%, 100% { content: '...'; }
         }
         
+        /* Sticky 资产名列 */
+        td:first-child, th:first-child {
+            position: sticky;
+            left: 0;
+            z-index: 2;
+        }
+        th:first-child {
+            background: #161b22;
+        }
+        td:first-child {
+            background: #0d1117;
+        }
+        tr:hover td:first-child {
+            background: #161b22;
+        }
+        .category-row td:first-child {
+            background: #1c2128 !important;
+        }
+        .indicator-row td:first-child {
+            background: #1a1f24;
+        }
+
+        /* 列组分隔线：QTD 和 1年 左侧加边框 */
+        th:nth-child(6), td:nth-child(6),
+        th:nth-child(8), td:nth-child(8) {
+            border-left: 1px solid #30363d;
+        }
+
         /* 响应式 */
         @media (max-width: 768px) {
             body {
                 font-size: 11px;
                 padding: 8px;
             }
-            
+
             th, td {
                 padding: 5px 6px;
             }
-            
+
             .title {
                 font-size: 14px;
             }
@@ -184,10 +212,12 @@
                     <th>QTD</th>
                     <th>YTD</th>
                     <th>1年</th>
+                    <th>3年</th>
+                    <th>5年</th>
                 </tr>
             </thead>
             <tbody id="matrixBody">
-                <tr><td colspan="8" class="loading">正在加载数据</td></tr>
+                <tr><td colspan="10" class="loading">正在加载数据</td></tr>
             </tbody>
         </table>
     </div>
@@ -263,7 +293,7 @@
                 // 分类标题行
                 const categoryRow = document.createElement('tr');
                 categoryRow.className = 'category-row';
-                categoryRow.innerHTML = `<td colspan="8">${category}</td>`;
+                categoryRow.innerHTML = `<td colspan="10">${category}</td>`;
                 tbody.appendChild(categoryRow);
                 
                 // 该分类下的资产
@@ -280,7 +310,7 @@
                         row.className = 'indicator-row';
                     }
                     
-                    const fields = ['1天', '1星期', '1个月', 'QTD', 'YTD', '1年'];
+                    const fields = ['1天', '1星期', '1个月', 'QTD', 'YTD', '1年', '3年', '5年'];
                     
                     let html = `<td>${assetName}</td>`;
                     html += `<td class="price">${formatValue(assetData['收盘价'], true)}</td>`;
@@ -297,9 +327,20 @@
                 }
             }
             
-            // 更新时间
-            document.getElementById('updateTime').textContent = 
-                `更新时间: ${data.updateTime || '未知'}`;
+            // 更新时间（相对时间）
+            const updateStr = data.updateTime || '';
+            let timeLabel = updateStr;
+            if (updateStr) {
+                const updateDate = new Date(updateStr.replace(' ', 'T'));
+                const diffMs = Date.now() - updateDate;
+                const diffMins = Math.floor(diffMs / 60000);
+                const diffHours = Math.floor(diffMins / 60);
+                const diffDays = Math.floor(diffHours / 24);
+                if (diffMins < 60) timeLabel = `${diffMins} 分钟前更新`;
+                else if (diffHours < 24) timeLabel = `${diffHours} 小时前更新`;
+                else timeLabel = `${diffDays} 天前更新 (${updateStr})`;
+            }
+            document.getElementById('updateTime').textContent = timeLabel;
         }
         
         // 加载数据
@@ -313,7 +354,7 @@
             } catch (error) {
                 console.error('Error loading data:', error);
                 document.getElementById('matrixBody').innerHTML = 
-                    '<tr><td colspan="8" style="text-align:center;color:#f85149;">加载失败，请刷新重试</td></tr>';
+                    '<tr><td colspan="10" style="text-align:center;color:#f85149;">加载失败，请刷新重试</td></tr>';
             }
         }
         

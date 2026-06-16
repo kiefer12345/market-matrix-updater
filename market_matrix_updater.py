@@ -225,7 +225,15 @@ def calculate_returns(df, ticker=None):
         if len(close) >= 253:
             ret = (close.iloc[-1] / close.iloc[-253] - 1)
             returns["1年"] = safe_float(ret)
-        
+
+        if len(close) >= 756:
+            ret = (close.iloc[-1] / close.iloc[-756] - 1)
+            returns["3年"] = safe_float(ret)
+
+        if len(close) >= 1260:
+            ret = (close.iloc[-1] / close.iloc[-1260] - 1)
+            returns["5年"] = safe_float(ret)
+
         quarter_month = ((today.month - 1) // 3) * 3 + 1
         quarter_start = pd.Timestamp(datetime(today.year, quarter_month, 1))
         qtd_data = close[close.index >= quarter_start]
@@ -266,7 +274,13 @@ def calculate_spread_changes(series):
         
         if len(series) >= 253:
             result["1年"] = safe_float(series.iloc[-1] - series.iloc[-253])
-        
+
+        if len(series) >= 756:
+            result["3年"] = safe_float(series.iloc[-1] - series.iloc[-756])
+
+        if len(series) >= 1260:
+            result["5年"] = safe_float(series.iloc[-1] - series.iloc[-1260])
+
         return result
     except Exception as e:
         print(f"  计算变化错误: {e}")
@@ -282,7 +296,7 @@ def fetch_all_data():
         if ticker is None:
             continue
         try:
-            df = yf.download(ticker, period="2y", progress=False, auto_adjust=True)
+            df = yf.download(ticker, period="5y", progress=False, auto_adjust=True)
             if df is not None and not df.empty:
                 returns = calculate_returns(df, ticker)
                 if returns and returns.get("收盘价"):
