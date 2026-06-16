@@ -91,11 +91,11 @@ def get_fred_data(series_id, api_key=None):
                     df['value'] = pd.to_numeric(df['value'], errors='coerce')
                     df = df.set_index('date').sort_index()
                     return df['value'].dropna()
-        
+
         # 方法2: 直接从FRED网站下载CSV
         url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}"
         response = requests.get(url, headers=HEADERS, timeout=30)
-        
+
         if response.status_code == 200:
             df = pd.read_csv(StringIO(response.text))
             date_col = df.columns[0]
@@ -107,41 +107,33 @@ def get_fred_data(series_id, api_key=None):
         else:
             print(f"  FRED HTTP错误: {response.status_code}")
             return None
-        
+
     except Exception as e:
         print(f"  FRED数据获取失败 ({series_id}): {e}")
         return None
 
 def get_cboe_put_call_ratio():
     """从多个备用源获取Put/Call Ratio"""
-    
-    # 备用URL列表 - 按优先级排序
+
     urls_to_try = [
-        # 新的CDN路径
         ("https://cdn.cboe.com/resources/options/volume_and_call_put_ratios/totalpc.csv", "totalpc"),
         ("https://cdn.cboe.com/resources/options/volume_and_call_put_ratios/equitypc.csv", "equitypc"),
-        # 旧路径（可能还有效）
         ("https://www.cboe.com/publish/ScheduledTask/MktData/datahouse/totalpc.csv", "totalpc_old"),
         ("https://www.cboe.com/publish/scheduledtask/mktdata/datahouse/equitypc.csv", "equitypc_old"),
     ]
-    
+
     for url, name in urls_to_try:
         try:
             print(f"  尝试: {name}...")
             response = requests.get(url, headers=HEADERS, timeout=30)
-            
+
             if response.status_code == 200:
                 print(f"  ✓ {name} 成功! (HTTP 200)")
-                
-                # 尝试解析CSV
                 content = response.text
-                
-                # 跳过注释行
                 lines = content.strip().split('\n')
                 data_start = 0
                 for i, line in enumerate(lines):
                     if line.strip() and not line.startswith('Your use') and ',' in line:
-                        # 检查是否是数据行（第一列像日期）
                         first_col = line.split(',')[0].strip()
                         if '/' in first_col or '-' in first_col:
                             data_start = i
@@ -149,41 +141,33 @@ def get_cboe_put_call_ratio():
                         elif first_col.lower() in ['date', 'trade_date']:
                             data_start = i
                             break
-                
-                # 从数据开始处解析
+
                 clean_content = '\n'.join(lines[data_start:])
                 df = pd.read_csv(StringIO(clean_content))
-                
-                # 自动检测日期列和比率列
                 date_col = df.columns[0]
                 df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
                 df = df.dropna(subset=[date_col])
                 df = df.set_index(date_col).sort_index()
-                
-                # 查找Put/Call Ratio列
+
                 ratio_col = None
                 for col in df.columns:
                     col_upper = col.upper()
                     if 'P/C' in col_upper or 'RATIO' in col_upper or 'TOTAL' in col_upper:
                         ratio_col = col
                         break
-                
                 if ratio_col is None:
-                    ratio_col = df.columns[-1]  # 最后一列
-                
+                    ratio_col = df.columns[-1]
+
                 series = pd.to_numeric(df[ratio_col], errors='coerce').dropna()
-                
                 if len(series) > 0:
                     print(f"  ✓ 解析成功，最新值: {series.iloc[-1]:.2f}")
                     return series
-                    
             else:
                 print(f"  ✗ {name} 失败: HTTP {response.status_code}")
-                
+
         except Exception as e:
             print(f"  ✗ {name} 错误: {e}")
-    
-    # 所有URL都失败，返回None
+
     print("  所有CBOE数据源都无法访问")
     return None
 
@@ -191,7 +175,7 @@ def calculate_returns(df, ticker=None):
     """计算各时间周期的收益率"""
     if df is None or (hasattr(df, 'empty') and df.empty):
         return None
-    
+
     try:
         if isinstance(df, pd.DataFrame):
             if isinstance(df.columns, pd.MultiIndex):
@@ -200,53 +184,45 @@ def calculate_returns(df, ticker=None):
                 close = df['Close'] if 'Close' in df.columns else df.iloc[:, 0]
         else:
             close = df
-        
+
         close = close.dropna()
         if len(close) < 2:
             return None
-            
+
         today = close.index[-1]
         close_price = float(close.iloc[-1])
-        
+
         returns = {"收盘价": safe_float(close_price)}
-        
+
         if len(close) >= 2:
-            ret = (close.iloc[-1] / close.iloc[-2] - 1)
-            returns["1天"] = safe_float(ret)
-        
+            returns["1天"] = safe_float(close.iloc[-1] / close.iloc[-2] - 1)
+
         if len(close) >= 6:
-            ret = (close.iloc[-1] / close.iloc[-6] - 1)
-            returns["1星期"] = safe_float(ret)
-        
+            returns["1星期"] = safe_float(close.iloc[-1] / close.iloc[-6] - 1)
+
         if len(close) >= 22:
-            ret = (close.iloc[-1] / close.iloc[-22] - 1)
-            returns["1个月"] = safe_float(ret)
-        
+            returns["1个月"] = safe_float(close.iloc[-1] / close.iloc[-22] - 1)
+
         if len(close) >= 253:
-            ret = (close.iloc[-1] / close.iloc[-253] - 1)
-            returns["1年"] = safe_float(ret)
+            returns["1年"] = safe_float(close.iloc[-1] / close.iloc[-253] - 1)
 
         if len(close) >= 756:
-            ret = (close.iloc[-1] / close.iloc[-756] - 1)
-            returns["3年"] = safe_float(ret)
+            returns["3年"] = safe_float(close.iloc[-1] / close.iloc[-756] - 1)
 
         if len(close) >= 1260:
-            ret = (close.iloc[-1] / close.iloc[-1260] - 1)
-            returns["5年"] = safe_float(ret)
+            returns["5年"] = safe_float(close.iloc[-1] / close.iloc[-1260] - 1)
 
         quarter_month = ((today.month - 1) // 3) * 3 + 1
         quarter_start = pd.Timestamp(datetime(today.year, quarter_month, 1))
         qtd_data = close[close.index >= quarter_start]
         if len(qtd_data) >= 2:
-            ret = (qtd_data.iloc[-1] / qtd_data.iloc[0] - 1)
-            returns["QTD"] = safe_float(ret)
-        
+            returns["QTD"] = safe_float(qtd_data.iloc[-1] / qtd_data.iloc[0] - 1)
+
         year_start = pd.Timestamp(datetime(today.year, 1, 1))
         ytd_data = close[close.index >= year_start]
         if len(ytd_data) >= 2:
-            ret = (ytd_data.iloc[-1] / ytd_data.iloc[0] - 1)
-            returns["YTD"] = safe_float(ret)
-        
+            returns["YTD"] = safe_float(ytd_data.iloc[-1] / ytd_data.iloc[0] - 1)
+
         return returns
     except Exception as e:
         print(f"  计算收益率错误: {e}")
@@ -256,22 +232,22 @@ def calculate_spread_changes(series):
     """计算利差/比率的变化（绝对值变化，不是百分比）"""
     if series is None or len(series) < 2:
         return None
-    
+
     try:
         series = series.dropna()
         current = float(series.iloc[-1])
-        
+
         result = {"收盘价": safe_float(current)}
-        
+
         if len(series) >= 2:
             result["1天"] = safe_float(series.iloc[-1] - series.iloc[-2])
-        
+
         if len(series) >= 6:
             result["1星期"] = safe_float(series.iloc[-1] - series.iloc[-6])
-        
+
         if len(series) >= 22:
             result["1个月"] = safe_float(series.iloc[-1] - series.iloc[-22])
-        
+
         if len(series) >= 253:
             result["1年"] = safe_float(series.iloc[-1] - series.iloc[-253])
 
@@ -283,14 +259,13 @@ def calculate_spread_changes(series):
 
         return result
     except Exception as e:
-tml        print(f"  计算变化错误: {e}")
+        print(f"  计算变化错误: {e}")
         return None
 
 def fetch_all_data():
     """获取所有资产数据"""
     all_data = {}
-    
-    # 1. 获取Yahoo Finance数据
+
     print("\n--- Yahoo Finance 数据 ---")
     for name, ticker in TICKER_MAP.items():
         if ticker is None:
@@ -309,8 +284,7 @@ def fetch_all_data():
         except Exception as e:
             print(f"✗ {name} ({ticker}): {e}")
         time.sleep(0.1)
-    
-    # 2. 获取垃圾债券利差 (FRED)
+
     print("\n--- FRED 数据 ---")
     try:
         hy_spread = get_fred_data("BAMLH0A0HYM2", FRED_API_KEY)
@@ -325,8 +299,7 @@ def fetch_all_data():
             print("✗ 垃圾债券利差: 无数据")
     except Exception as e:
         print(f"✗ 垃圾债券利差: {e}")
-    
-    # 3. 获取Put/Call Ratio (CBOE - 尝试多个备用源)
+
     print("\n--- CBOE 数据 ---")
     try:
         pc_ratio = get_cboe_put_call_ratio()
@@ -341,7 +314,7 @@ def fetch_all_data():
             print("✗ PUT/CALL Ratio: 所有数据源都无法获取")
     except Exception as e:
         print(f"✗ PUT/CALL Ratio: {e}")
-    
+
     return all_data
 
 def get_notion_pages():
@@ -352,7 +325,6 @@ def get_notion_pages():
         "Notion-Version": "2022-06-28",
         "Content-Type": "application/json"
     }
-    
     response = requests.post(url, headers=headers, json={})
     if response.status_code == 200:
         return response.json()["results"]
@@ -368,31 +340,15 @@ def update_notion_page(page_id, data):
         "Notion-Version": "2022-06-28",
         "Content-Type": "application/json"
     }
-    
+
     properties = {}
-    
-    if data.get("收盘价") is not None:
-        properties["收盘价"] = {"number": data["收盘价"]}
-    if data.get("1天") is not None:
-        properties["1天"] = {"number": data["1天"]}
-    if data.get("1星期") is not None:
-        properties["1星期"] = {"number": data["1星期"]}
-    if data.get("1个月") is not None:
-        properties["1个月"] = {"number": data["1个月"]}
-    if data.get("1年") is not None:
-        properties["1年"] = {"number": data["1年"]}
-    if data.get("QTD") is not None:
-        properties["QTD"] = {"number": data["QTD"]}
-    if data.get("YTD") is not None:
-        properties["YTD"] = {"number": data["YTD"]}
-    
-    properties["更新时间"] = {
-        "date": {"start": datetime.now().strftime("%Y-%m-%d")}
-    }
-    
-    payload = {"properties": properties}
-    
-    response = requests.patch(url, headers=headers, json=payload)
+    for field in ["收盘价", "1天", "1星期", "1个月", "1年", "QTD", "YTD"]:
+        if data.get(field) is not None:
+            properties[field] = {"number": data[field]}
+
+    properties["更新时间"] = {"date": {"start": datetime.now().strftime("%Y-%m-%d")}}
+
+    response = requests.patch(url, headers=headers, json={"properties": properties})
     return response.status_code == 200
 
 def update_notion_database(market_data):
@@ -400,23 +356,20 @@ def update_notion_database(market_data):
     if not NOTION_API_KEY:
         print("跳过Notion更新 (无API Key)")
         return
-        
+
     pages = get_notion_pages()
-    
     if not pages:
         print("警告: 未获取到Notion页面")
         return
-    
+
     print("\n--- 更新Notion ---")
     for page in pages:
         title_prop = page["properties"].get("资产名称", {})
         if title_prop.get("title") and len(title_prop["title"]) > 0:
             name = title_prop["title"][0]["plain_text"]
-            
             if name in market_data:
                 success = update_notion_page(page["id"], market_data[name])
-                status = "✓" if success else "✗"
-                print(f"{status} 更新 {name}")
+                print(f"{'✓' if success else '✗'} 更新 {name}")
                 time.sleep(0.35)
 
 def save_json_data(market_data):
@@ -425,29 +378,26 @@ def save_json_data(market_data):
         "updateTime": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "assets": market_data
     }
-    
     with open("data.json", "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
-    
     print("✓ 已保存 data.json")
 
 def main():
     print("=" * 50)
     print("市场数据矩阵更新器 v6")
     print(f"运行时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print("新增: 多备用源CBOE Put/Call获取")
     print("=" * 50)
-    
+
     print("\n[1/3] 获取市场数据...")
     market_data = fetch_all_data()
     print(f"\n成功获取 {len(market_data)} 个资产数据")
-    
+
     print("\n[2/3] 保存JSON数据文件...")
     save_json_data(market_data)
-    
+
     print("\n[3/3] 更新Notion数据库...")
     update_notion_database(market_data)
-    
+
     print("\n" + "=" * 50)
     print("更新完成!")
     print("=" * 50)
