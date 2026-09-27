@@ -15,11 +15,11 @@ import requests
 
 # ============== 配置区域 ==============
 BASE_URL = "https://clubspark.lta.org.uk"
-TZ = ZoneInfo("Europe/London")
+TZ = ZoneInfo("Europe/London")  # Windows 上需要 pip install tzdata
 DAYS_AHEAD = int(os.environ.get("TENNIS_DAYS_AHEAD", "14"))  # Tennis in the Park 可提前14天预订
 CHUNK_DAYS = 7  # 每次请求的天数
 MIN_MINUTES = 60
-OUTPUT_DIR = os.environ.get("TENNIS_OUTPUT_DIR", ".")
+OUTPUT_DIR = os.environ.get("TENNIS_OUTPUT_DIR", os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_FILE = os.path.join(OUTPUT_DIR, "tennis_data.json")
 # 同样的数据再写一份 .js, 这样直接双击打开本地 tennis.html (file://) 也能读到数据
 OUTPUT_JS = os.path.join(OUTPUT_DIR, "tennis_data.js")
@@ -197,5 +197,23 @@ def main():
         sys.exit("所有场馆都获取失败")
 
 
+def log_to_file(path, keep_lines=2000):
+    """把输出写进日志文件 (只保留最近 keep_lines 行); Windows 后台用 pythonw 运行时没有控制台"""
+    try:
+        with open(path, encoding="utf-8", errors="replace") as f:
+            lines = f.readlines()[-keep_lines:]
+        with open(path, "w", encoding="utf-8") as f:
+            f.writelines(lines)
+    except FileNotFoundError:
+        pass
+    sys.stdout = sys.stderr = open(path, "a", encoding="utf-8", buffering=1)
+    print(f"=== {datetime.now():%Y-%m-%d %H:%M:%S} ===")
+
+
 if __name__ == "__main__":
+    if "--log" in sys.argv[1:-1]:
+        log_to_file(sys.argv[sys.argv.index("--log") + 1])
+    elif sys.stdout is not None and hasattr(sys.stdout, "reconfigure"):
+        # Windows 默认编码 (cp936 / cp1252) 输出不了 emoji, 统一用 UTF-8
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     main()
