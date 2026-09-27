@@ -1,15 +1,9 @@
 name: Update Tennis Courts
 
 on:
-  schedule:
-    # 每 30 分钟抓取一次 Cheltenham 网球场空位
-    - cron: '*/30 * * * *'
-  workflow_dispatch:  # 允许手动触发
-  push:
-    paths:
-      - 'tennis_court_finder.py'
-      - 'tennis.html'
-      - '.github/workflows/update_tennis_courts.yml'
+  # ClubSpark 会拦截 GitHub Actions 的机房 IP (403), 所以不开定时任务,
+  # 日常请用 local/install_cron.sh 在自己电脑上运行; 这里只保留手动触发
+  workflow_dispatch:
 
 concurrency:
   group: tennis-courts
