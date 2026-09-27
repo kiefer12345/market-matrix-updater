@@ -53,7 +53,9 @@ def fetch_sessions(slug, start, end):
         "_": str(int(time.time() * 1000)),
     }
     resp = requests.get(url, params=params, headers=HEADERS, timeout=30)
-    resp.raise_for_status()
+    if resp.status_code != 200:
+        snippet = " ".join(resp.text[:300].split())
+        raise RuntimeError(f"HTTP {resp.status_code}: {snippet}")
     return resp.json()
 
 
