@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheltenham 网球场空位</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0d1117;
+            --panel: #161b22;
+            --panel-2: #1c2128;
+            --border: #30363d;
+            --text: #e6edf3;
+            --muted: #8b949e;
+            --accent: #58a6ff;
+            --green: #3fb950;
+            --green-bg: rgba(63, 185, 80, 0.12);
+            --red: #f85149;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 16px;
+            font-size: 14px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        .title { font-size: 18px; font-weight: 600; color: var(--accent); }
+        .update-time { font-size: 12px; color: var(--muted); }
+        .update-time.stale { color: var(--red); }
+
+        .filters {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 14px;
+            display: grid;
+            gap: 10px;
+        }
+        .filter-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+        .filter-label { color: var(--muted); font-size: 12px; min-width: 44px; }
+
+        .chip {
+            background: var(--panel-2);
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: 999px;
+            padding: 4px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            font-family: inherit;
+            white-space: nowrap;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .chip:hover { border-color: var(--accent); }
+        .chip.active { background: var(--accent); border-color: var(--accent); color: #0d1117; font-weight: 600; }
+        .chip .count { opacity: 0.7; margin-left: 3px; font-variant-numeric: tabular-nums; }
+        .chip.empty { opacity: 0.45; }
+
+        .summary { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+        .summary b { color: var(--green); font-size: 15px; }
+
+        .day {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        .day-head {
+            padding: 8px 12px;
+            background: var(--panel-2);
+            border-bottom: 1px solid var(--border);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+        .day-head .weekend { color: #d29922; }
+        .day-head .n { color: var(--muted); font-weight: 400; font-size: 12px; }
+
+        .venue { padding: 10px 12px; border-bottom: 1px solid #21262d; }
+        .venue:last-child { border-bottom: none; }
+        .venue-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .venue-name { font-weight: 600; }
+        .venue-area { color: var(--muted); font-size: 12px; margin-left: 6px; font-weight: 400; }
+        .book {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .book:hover { text-decoration: underline; }
+
+        .slots { display: flex; flex-wrap: wrap; gap: 6px; }
+        .slot {
+            background: var(--green-bg);
+            border: 1px solid rgba(63, 185, 80, 0.4);
+            border-radius: 6px;
+            padding: 5px 9px;
+            font-size: 13px;
+            text-decoration: none;
+            color: var(--text);
+            display: inline-flex;
+            gap: 6px;
+            align-items: baseline;
+        }
+        .slot:hover { border-color: var(--green); }
+        .slot .time { font-weight: 600; color: var(--green); font-variant-numeric: tabular-nums; }
+        .slot .court { color: var(--muted); font-size: 12px; }
+        .slot .dur { color: var(--muted); font-size: 11px; }
+
+        .empty-state, .error-state {
+            text-align: center;
+            color: var(--muted);
+            padding: 40px 12px;
+            background: var(--panel);
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+        }
+        .error-state { color: var(--red); }
+
+        .footer {
+            margin-top: 16px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+        .footer .bad { color: var(--red); }
+        .footer a { color: var(--accent); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">🎾 Cheltenham 网球场空位</div>
+        <div class="update-time" id="updateTime">加载中…</div>
+    </div>
+
+    <div class="filters">
+        <div class="filter-row" id="dateFilter"><span class="filter-label">日期</span></div>
+        <div class="filter-row" id="timeFilter"><span class="filter-label">时段</span></div>
+        <div class="filter-row" id="durFilter"><span class="filter-label">时长 ≥</span></div>
+        <div class="filter-row" id="venueFilter"><span class="filter-label">场馆</span></div>
+    </div>
+
+    <div class="summary" id="summary"></div>
+    <div id="results"></div>
+    <div class="footer" id="footer"></div>
+
+    <script src="tennis_data.js"></script>
+    <script>
+        const WEEKDAYS = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+        const TIME_BANDS = [
+            { key: 'all', label: '全部' },
+            { key: 'morning', label: '上午 <12点', test: s => s.start < 720 },
+            { key: 'afternoon', label: '下午 12–17点', test: s => s.end > 720 && s.start < 1020 },
+            { key: 'evening', label: '晚上 17点后', test: s => s.end > 1020 },
+        ];
+        const DURATIONS = [60, 90, 120];
+
+        const state = { date: 'all', band: 'all', minDur: 60, venues: null };
+        let DATA = null;
+
+        const fmt = m => `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
+        const fmtDur = m => (m % 60 ? `${(m / 60).toFixed(1)}h` : `${m / 60}h`);
+        const parseDate = d => new Date(d + 'T12:00:00');
+        const isWeekend = d => [0, 6].includes(parseDate(d).getDay());
+        const dateLabel = d => {
+            const dt = parseDate(d);
+            return `${dt.getMonth() + 1}/${dt.getDate()} ${WEEKDAYS[dt.getDay()]}`;
+        };
+        const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+        function loadPrefs() {
+            try {
+                const p = JSON.parse(localStorage.getItem('tennisPrefs') || '{}');
+                if (p.band) state.band = p.band;
+                if (p.minDur) state.minDur = p.minDur;
+                if (Array.isArray(p.venues)) state.venues = new Set(p.venues);
+            } catch (e) { /* 无痕模式等情况下忽略 */ }
+        }
+        function savePrefs() {
+            try {
+                localStorage.setItem('tennisPrefs', JSON.stringify({
+                    band: state.band, minDur: state.minDur, venues: [...state.venues],
+                }));
+            } catch (e) { /* ignore */ }
+        }
+
+        function bookingUrl(venue, date) {
+            return `${venue.bookingUrl}#?date=${date}&role=guest`;
+        }
+
+        // 除了 exclude 这一项筛选, 其它筛选都满足的时段 (用来算各选项旁边的数量)
+        function filtered(exclude) {
+            const band = TIME_BANDS.find(b => b.key === state.band);
+            return DATA.slots.filter(s =>
+                (exclude === 'date' || state.date === 'all' || s.date === state.date) &&
+                (exclude === 'band' || !band.test || band.test(s)) &&
+                (exclude === 'dur' || s.minutes >= state.minDur) &&
+                (exclude === 'venue' || state.venues.has(s.venue))
+            );
+        }
+
+        function chip(label, active, onClick, count) {
+            const b = document.createElement('button');
+            b.className = 'chip' + (active ? ' active' : '') + (count === 0 ? ' empty' : '');
+            b.innerHTML = esc(label) + (count !== undefined ? `<span class="count">${count}</span>` : '');
+            b.onclick = onClick;
+            return b;
+        }
+
+        function resetRow(id) {
+            const row = document.getElementById(id);
+            row.querySelectorAll('.chip').forEach(c => c.remove());
+            return row;
+        }
+
+        function renderFilters() {
+            const byDate = filtered('date');
+            const dateRow = resetRow('dateFilter');
+            dateRow.append(chip('全部', state.date === 'all', () => { state.date = 'all'; render(); }, byDate.length));
+            const dates = [];
+            const start = parseDate(DATA.updateTime.slice(0, 10));
+            for (let i = 0; i < DATA.daysAhead; i++) {
+                const d = new Date(start); d.setDate(d.getDate() + i);
+                dates.push(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`);
+            }
+            dates.forEach((d, i) => {
+                const label = i === 0 ? '今天' : i === 1 ? '明天' : dateLabel(d);
+                const n = byDate.filter(s => s.date === d).length;
+                dateRow.append(chip(label, state.date === d, () => { state.date = d; render(); }, n));
+            });
+
+            const bandRow = resetRow('timeFilter');
+            const byBand = filtered('band');
+            TIME_BANDS.forEach(b => {
+                const n = byBand.filter(s => !b.test || b.test(s)).length;
+                bandRow.append(chip(b.label, state.band === b.key, () => { state.band = b.key; savePrefs(); render(); }, n));
+            });
+
+            const durRow = resetRow('durFilter');
+            DURATIONS.forEach(m => {
+                durRow.append(chip(fmtDur(m).replace('h', ' 小时'), state.minDur === m, () => { state.minDur = m; savePrefs(); render(); }));
+            });
+
+            const venueRow = resetRow('venueFilter');
+            const byVenue = filtered('venue');
+            DATA.venues.filter(v => v.ok).forEach(v => {
+                const n = byVenue.filter(s => s.venue === v.slug).length;
+                venueRow.append(chip(v.name, state.venues.has(v.slug), () => {
+                    state.venues.has(v.slug) ? state.venues.delete(v.slug) : state.venues.add(v.slug);
+                    savePrefs(); render();
+                }, n));
+            });
+        }
+
+        function renderResults() {
+            const slots = filtered();
+            const venues = Object.fromEntries(DATA.venues.map(v => [v.slug, v]));
+            const results = document.getElementById('results');
+            const dayCount = new Set(slots.map(s => s.date)).size;
+
+            document.getElementById('summary').innerHTML = slots.length
+                ? `<b>${slots.length}</b> 个可订时段 (连续 ≥ ${fmtDur(state.minDur)}), 分布在 ${dayCount} 天`
+                : '';
+
+            if (!slots.length) {
+                results.innerHTML = '<div class="empty-state">当前筛选条件下没有连续 ≥ ' + fmtDur(state.minDur) + ' 的空场 😢<br>试试放宽日期 / 时段 / 场馆</div>';
+                return;
+            }
+
+            const byDay = {};
+            slots.forEach(s => ((byDay[s.date] ||= {})[s.venue] ||= []).push(s));
+
+            results.innerHTML = Object.keys(byDay).sort().map(date => {
+                const venueBlocks = Object.entries(byDay[date]).map(([slug, list]) => {
+                    const v = venues[slug];
+                    const chips = list
+                        .sort((a, b) => a.start - b.start || a.court.localeCompare(b.court, undefined, { numeric: true }))
+                        .map(s => `
+                            <a class="slot" href="${esc(bookingUrl(v, date))}" target="_blank" rel="noopener">
+                                <span class="time">${fmt(s.start)}–${fmt(s.end)}</span>
+                                <span class="court">${esc(s.court)}</span>
+                                <span class="dur">${fmtDur(s.minutes)}${s.cost != null ? ' · £' + s.cost : ''}</span>
+                            </a>`).join('');
+                    return `
+                        <div class="venue">
+                            <div class="venue-head">
+                                <div class="venue-name">${esc(v.name)}<span class="venue-area">${esc(v.area)}</span></div>
+                                <a class="book" href="${esc(bookingUrl(v, date))}" target="_blank" rel="noopener">去预订 →</a>
+                            </div>
+                            <div class="slots">${chips}</div>
+                        </div>`;
+                }).join('');
+                const n = Object.values(byDay[date]).reduce((a, l) => a + l.length, 0);
+                return `
+                    <div class="day">
+                        <div class="day-head">
+                            <span class="${isWeekend(date) ? 'weekend' : ''}">${dateLabel(date)}</span>
+                            <span class="n">${n} 个时段</span>
+                        </div>
+                        ${venueBlocks}
+                    </div>`;
+            }).join('');
+        }
+
+        function renderFooter() {
+            const bad = DATA.venues.filter(v => !v.ok);
+            const ok = DATA.venues.filter(v => v.ok);
+            document.getElementById('footer').innerHTML = `
+                数据来源: LTA ClubSpark 公开预订数据, 每 30 分钟更新 · 只显示连续空闲 ≥ ${DATA.minMinutes} 分钟的时段 (相邻空闲时段已合并)<br>
+                已查询: ${ok.map(v => `<a href="${esc(v.bookingUrl)}" target="_blank" rel="noopener">${esc(v.name)}</a> (${v.courts.length} 块场)`).join(' · ')}
+                ${bad.length ? `<br><span class="bad">获取失败: ${bad.map(v => esc(v.name)).join(' · ')}</span>` : ''}
+                <br>提示: Tennis in the Park 最多提前 14 天预订, 每人每天最多 2 小时; 公园球场没有灯光, 注意天黑时间。`;
+        }
+
+        function render() {
+            renderFilters();
+            renderResults();
+        }
+
+        async function init() {
+            loadPrefs();
+            try {
+                if (window.TENNIS_DATA) {
+                    DATA = window.TENNIS_DATA;  // 本地运行: 直接打开 tennis.html 时从 tennis_data.js 读取
+                } else {
+                    const resp = await fetch('tennis_data.json?t=' + Date.now());
+                    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+                    DATA = await resp.json();
+                }
+            } catch (e) {
+                document.getElementById('updateTime').textContent = '';
+                document.getElementById('results').innerHTML = '<div class="error-state">数据加载失败: ' + esc(e.message) + '</div>';
+                return;
+            }
+
+            const okSlugs = DATA.venues.filter(v => v.ok).map(v => v.slug);
+            if (!state.venues) state.venues = new Set(okSlugs);
+            else if (![...state.venues].some(s => okSlugs.includes(s))) state.venues = new Set(okSlugs);
+
+            const el = document.getElementById('updateTime');
+            el.textContent = `更新于 ${DATA.updateTime} (英国时间)`;
+            // updateTime 是英国当地时间, 粗略按 UTC+1 判断数据是否过旧
+            const ageH = (Date.now() - new Date(DATA.updateTime.replace(' ', 'T') + ':00+01:00')) / 3.6e6;
+            if (ageH > 3) { el.classList.add('stale'); el.textContent += ' · 数据可能已过时'; }
+
+            render();
+            renderFooter();
+        }
+
+        init();
+        // 页面开着时每 10 分钟自动刷新一次, 拿到最新数据
+        setTimeout(() => location.reload(), 10 * 60 * 1000);
+    </script>
+</body>
+</html>

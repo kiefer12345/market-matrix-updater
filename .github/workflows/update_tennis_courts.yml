@@ -1,0 +1,56 @@
+name: Update Tennis Courts
+
+on:
+  # ClubSpark 会拦截 GitHub Actions 的机房 IP (403), 所以不开定时任务,
+  # 日常请用 local/install_cron.sh 在自己电脑上运行; 这里只保留手动触发
+  workflow_dispatch:
+
+concurrency:
+  group: tennis-courts
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: pip install requests
+
+    - name: Fetch court availability
+      run: python tennis_court_finder.py
+
+    - name: Upload data (for inspection)
+      uses: actions/upload-artifact@v4
+      with:
+        name: tennis_data
+        path: tennis_data.json
+        retention-days: 3
+
+    # 数据只提交到 gh-pages, 不污染 main 的提交历史
+    - name: Deploy to gh-pages
+      if: github.ref == 'refs/heads/main'
+      run: |
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git config user.name "github-actions[bot]"
+        cp tennis_data.json tennis_data.js tennis.html "$RUNNER_TEMP/"
+        rm -f tennis_data.json tennis_data.js  # 未跟踪的文件会挡住切换到 gh-pages
+        git fetch origin gh-pages
+        git checkout gh-pages
+        cp "$RUNNER_TEMP/tennis_data.json" "$RUNNER_TEMP/tennis_data.js" "$RUNNER_TEMP/tennis.html" .
+        git add tennis_data.json tennis_data.js tennis.html
+        git diff --staged --quiet || git commit -m "Update tennis courts $(date -u +'%Y-%m-%d %H:%M UTC')"
+        git push origin gh-pages || (git pull --rebase origin gh-pages && git push origin gh-pages)
