@@ -52,10 +52,11 @@ jobs:
       run: |
         git config user.email "github-actions[bot]@users.noreply.github.com"
         git config user.name "github-actions[bot]"
-        cp tennis_data.json tennis.html "$RUNNER_TEMP/"
+        cp tennis_data.json tennis_data.js tennis.html "$RUNNER_TEMP/"
+        rm -f tennis_data.json tennis_data.js  # 未跟踪的文件会挡住切换到 gh-pages
         git fetch origin gh-pages
         git checkout gh-pages
-        cp "$RUNNER_TEMP/tennis_data.json" "$RUNNER_TEMP/tennis.html" .
-        git add tennis_data.json tennis.html
+        cp "$RUNNER_TEMP/tennis_data.json" "$RUNNER_TEMP/tennis_data.js" "$RUNNER_TEMP/tennis.html" .
+        git add tennis_data.json tennis_data.js tennis.html
         git diff --staged --quiet || git commit -m "Update tennis courts $(date -u +'%Y-%m-%d %H:%M UTC')"
         git push origin gh-pages || (git pull --rebase origin gh-pages && git push origin gh-pages)

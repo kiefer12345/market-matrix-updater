@@ -1,0 +1,6 @@
+# 本地运行生成的文件
+.venv/
+__pycache__/
+tennis_data.json
+tennis_data.js
+local/tennis.log

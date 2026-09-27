@@ -170,6 +170,7 @@
     <div id="results"></div>
     <div class="footer" id="footer"></div>
 
+    <script src="tennis_data.js"></script>
     <script>
         const WEEKDAYS = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
         const TIME_BANDS = [
@@ -345,9 +346,13 @@
         async function init() {
             loadPrefs();
             try {
-                const resp = await fetch('tennis_data.json?t=' + Date.now());
-                if (!resp.ok) throw new Error('HTTP ' + resp.status);
-                DATA = await resp.json();
+                if (window.TENNIS_DATA) {
+                    DATA = window.TENNIS_DATA;  // 本地运行: 直接打开 tennis.html 时从 tennis_data.js 读取
+                } else {
+                    const resp = await fetch('tennis_data.json?t=' + Date.now());
+                    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+                    DATA = await resp.json();
+                }
             } catch (e) {
                 document.getElementById('updateTime').textContent = '';
                 document.getElementById('results').innerHTML = '<div class="error-state">数据加载失败: ' + esc(e.message) + '</div>';
@@ -369,6 +374,8 @@
         }
 
         init();
+        // 页面开着时每 10 分钟自动刷新一次, 拿到最新数据
+        setTimeout(() => location.reload(), 10 * 60 * 1000);
     </script>
 </body>
 </html>

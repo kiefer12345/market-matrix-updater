@@ -19,7 +19,10 @@ TZ = ZoneInfo("Europe/London")
 DAYS_AHEAD = int(os.environ.get("TENNIS_DAYS_AHEAD", "14"))  # Tennis in the Park 可提前14天预订
 CHUNK_DAYS = 7  # 每次请求的天数
 MIN_MINUTES = 60
-OUTPUT_FILE = "tennis_data.json"
+OUTPUT_DIR = os.environ.get("TENNIS_OUTPUT_DIR", ".")
+OUTPUT_FILE = os.path.join(OUTPUT_DIR, "tennis_data.json")
+# 同样的数据再写一份 .js, 这样直接双击打开本地 tennis.html (file://) 也能读到数据
+OUTPUT_JS = os.path.join(OUTPUT_DIR, "tennis_data.js")
 
 # ClubSpark 场馆 (slug 即 clubspark.lta.org.uk/<slug>)
 VENUES = [
@@ -182,6 +185,8 @@ def main():
     }
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
+    with open(OUTPUT_JS, "w", encoding="utf-8") as f:
+        f.write("window.TENNIS_DATA = " + json.dumps(out, ensure_ascii=False) + ";\n")
 
     print(f"🎾 共 {len(all_slots)} 个 >= {MIN_MINUTES} 分钟的空闲时段, 已写入 {OUTPUT_FILE}")
     for s in all_slots[:15]:
