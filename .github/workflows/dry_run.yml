@@ -31,10 +31,34 @@ jobs:
       - name: Run updater (dry run)
         env:
           DRY_RUN: "1"
+          # 可选: 没配置时为空, FRED 数据走 CSV 并标记备用源
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: |
           set -o pipefail
           python market_matrix_updater.py 2>&1 | tee dry_run_report.txt
+
+      # 直接从生成的 data.json 汇总写成 Annotations, 在 PR 检查页即可看到, 与附件内容同源
+      - name: Summarize data.json
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os
+          if not os.path.exists("data.json"):
+              print("::warning title=data.json::本次运行没有生成 data.json")
+              raise SystemExit(0)
+          d = json.load(open("data.json", encoding="utf-8"))
+          A, M = d["assets"], d.get("missing", {})
+          fb = [k for k, a in A.items() if a.get("source_fallback")]
+          head = f"updateTime={d['updateTime']} 成功={len(A)} 缺失={len(M)} 备用源={len(fb)}"
+          rows = [f"{a.get('label', k)} | {a['收盘价']} | {a['as_of']} | {a['source']}{' [备用]' if a.get('source_fallback') else ''}"
+                  for k, a in A.items()]
+          miss = [f"{m['label']}: {m['reason']}" for m in M.values()]
+          enc = lambda t: t.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+          print(f"::notice title=Dry run 概况::{enc(head)}")
+          print(f"::notice title=资产明细 (来自 data.json)::{enc(chr(10).join(rows))}")
+          if miss:
+              print(f"::warning title=缺失资产::{enc(chr(10).join(miss))}")
+          PY
 
       - name: Upload fresh output for review
         if: always()

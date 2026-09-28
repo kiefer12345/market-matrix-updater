@@ -8,7 +8,7 @@
 |---|---|
 | ETF、指数、比特币、VIX | Yahoo Finance |
 | 2 年美债 | FRED `DGS2` |
-| 10 年美债 | FRED `DGS10`（失败时用 Yahoo `^TNX`，页面标「备用源」） |
+| 10 年美债 | FRED `DGS10`（FRED 失败时用 Yahoo `^TNX`，页面标「备用源」） |
 | 高收益债利差 | FRED `BAMLH0A0HYM2` |
 | WTI 原油现货 | FRED `DCOILWTICO`（EIA 数据有滞后，过期阈值 12 天） |
 | Total Put/Call Ratio | Cboe Daily Market Statistics（按日期取） |
@@ -26,14 +26,14 @@
 回看周期按日历日期取基准（该日或之前最近一个有数据的日子）；QTD、YTD 以上季末、上年末为基准。
 最新数据超过阈值（默认 6 天）的资产不显示数字，在 `missing` 里写明原因。
 
-## 必须配置的 Secrets
+## Secrets
 
-- `FRED_API_KEY`：必需，没有时任务直接失败。在 https://fred.stlouisfed.org/docs/api/api_key.html 免费申请。
+- `FRED_API_KEY`：可选。配置后 FRED 数据走官方 API（失败再退到 CSV）；不配置时直接下载 FRED CSV。凡是用了 CSV 的资产都会在 `data.json` 标 `source_fallback`，页面显示「备用源」；CSV 也失败则该资产记为缺失并写明原因。可在 https://fred.stlouisfed.org/docs/api/api_key.html 免费申请。
 - `NOTION_API_KEY`：写 Notion 用。
 
 ## 运行
 
 - 每个工作日 UTC 22:00 自动运行（`update_market_matrix.yml`）。
 - 成功资产不足 60% 时保留旧 `data.json`、不写 Notion，任务失败。
-- PR 会自动触发试跑（`dry_run.yml`）：先删掉仓库里旧的 `data.json`，再用真实数据跑一遍，上传本次生成的 `data.json` 和完整日志 `dry_run_report.txt`（末尾是核对表），不提交、不写 Notion。运行失败时附件里不会有 `data.json`，只有日志。
-- 本地试跑：`DRY_RUN=1 FRED_API_KEY=xxx python market_matrix_updater.py`
+- PR 会自动触发试跑（`dry_run.yml`）：先删掉仓库里旧的 `data.json`，再用真实数据跑一遍，上传本次生成的 `data.json` 和完整日志 `dry_run_report.txt`（末尾是核对表），不提交、不写 Notion。运行失败时附件里不会有 `data.json`，只有日志。试跑还会直接从生成的 `data.json` 汇总出概况、资产明细和缺失原因，显示在 PR 检查页的 Annotations 里。
+- 本地试跑：`DRY_RUN=1 python market_matrix_updater.py`（可选加 `FRED_API_KEY=...`）

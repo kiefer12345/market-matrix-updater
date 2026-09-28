@@ -15,8 +15,8 @@
   Cboe   Total Put/Call Ratio(Daily Market Statistics, 按日期取)
 
 运行规则:
-  - 必须配置 FRED_API_KEY, 否则直接失败(FRED 是核心数据源)
-  - FRED API 失败才退到 CSV, 并标记 source_fallback
+  - FRED_API_KEY 可选: 有 key 走 FRED API(失败再退到 CSV); 没有 key 直接用 FRED CSV。
+    凡是用了 CSV 的都标记 source_fallback, 页面显示「备用源」; CSV 也失败则记为缺失并写明原因
   - 最新数据超过阈值天数视为过期, 丢弃并在 missing 里写明原因
   - 成功资产不足 60% 时不覆盖 data.json、不写 Notion, 非零退出
   - DRY_RUN=1: 照常抓数和生成 data.json, 但不写 Notion(给 PR 试跑用)
@@ -261,18 +261,24 @@ def fred_csv(series_id):
 
 
 def fetch_fred(series_id):
-    """返回 (series, source, fallback)"""
-    for attempt in range(2):
-        try:
-            return fred_api(series_id), f"FRED {series_id}", False
-        except Exception as e:
-            print(f"  FRED API {series_id} 第{attempt + 1}次失败: {e}")
-            time.sleep(2)
+    """返回 (series, source, fallback, 失败原因)"""
+    reasons = []
+    if FRED_API_KEY:
+        for attempt in range(2):
+            try:
+                return fred_api(series_id), f"FRED {series_id}", False, None
+            except Exception as e:
+                print(f"  FRED API {series_id} 第{attempt + 1}次失败: {e}")
+                time.sleep(2)
+        reasons.append("FRED API 失败")
+    else:
+        reasons.append("未配置 FRED_API_KEY")
     try:
-        return fred_csv(series_id), f"FRED {series_id} (CSV)", True
+        return fred_csv(series_id), f"FRED {series_id} (CSV)", True, None
     except Exception as e:
         print(f"  FRED CSV {series_id} 失败: {e}")
-    return None, f"FRED {series_id}", False
+        reasons.append(f"FRED CSV 失败({e})")
+    return None, f"FRED {series_id}", False, "; ".join(reasons)
 
 
 # ---------------- Cboe ----------------
@@ -343,8 +349,10 @@ def fetch_all_data():
     for key, cfg in ASSETS.items():
         if "fred" not in cfg:
             continue
-        s, source, fallback = fetch_fred(cfg["fred"])
-        if add_asset(all_data, key, s, source, fallback):
+        s, source, fallback, err = fetch_fred(cfg["fred"])
+        if s is None:
+            mark_missing(key, err)
+        elif add_asset(all_data, key, s, source, fallback):
             continue
         if "yahoo_fallback" in cfg:
             t = cfg["yahoo_fallback"]
@@ -471,8 +479,7 @@ def main():
     print("=" * 50)
 
     if not FRED_API_KEY:
-        print("✗ 未配置 FRED_API_KEY。2Y、10Y、高收益债利差、WTI 都依赖 FRED, 请在仓库 Secrets 里添加。")
-        sys.exit(2)
+        print("⚠ 未配置 FRED_API_KEY, FRED 数据改用 CSV 下载, 页面会标「备用源」")
 
     market_data = fetch_all_data()
     print_report(market_data)
