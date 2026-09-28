@@ -1,0 +1,39 @@
+name: Dry Run (PR)
+
+# PR 上用真实数据试跑: 打印核对表并上传 data.json, 不提交、不部署、不写 Notion
+on:
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "market_matrix_updater.py"
+      - ".github/workflows/**"
+  workflow_dispatch:
+
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install --upgrade yfinance pandas requests
+
+      - name: Run updater (dry run)
+        env:
+          DRY_RUN: "1"
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: python market_matrix_updater.py
+
+      - name: Upload data.json for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dry-run-data
+          path: data.json
+          if-no-files-found: warn
