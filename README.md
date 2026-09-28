@@ -35,5 +35,5 @@
 
 - 每个工作日 UTC 22:00 自动运行（`update_market_matrix.yml`）。
 - 成功资产不足 60% 时保留旧 `data.json`、不写 Notion，任务失败。
-- PR 会自动触发试跑（`dry_run.yml`）：用真实数据跑一遍、在日志末尾打印核对表、上传 `data.json`，不提交、不写 Notion。
+- PR 会自动触发试跑（`dry_run.yml`）：先删掉仓库里旧的 `data.json`，再用真实数据跑一遍，上传本次生成的 `data.json` 和完整日志 `dry_run_report.txt`（末尾是核对表），不提交、不写 Notion。运行失败时附件里不会有 `data.json`，只有日志。
 - 本地试跑：`DRY_RUN=1 FRED_API_KEY=xxx python market_matrix_updater.py`

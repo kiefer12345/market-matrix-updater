@@ -24,16 +24,24 @@ jobs:
       - name: Install dependencies
         run: pip install --upgrade yfinance pandas requests
 
+      # 删掉仓库里旧的 data.json, 保证上传的只可能是本次运行生成的文件
+      - name: Remove checked-in data.json
+        run: rm -f data.json
+
       - name: Run updater (dry run)
         env:
           DRY_RUN: "1"
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
-        run: python market_matrix_updater.py
+        run: |
+          set -o pipefail
+          python market_matrix_updater.py 2>&1 | tee dry_run_report.txt
 
-      - name: Upload data.json for review
+      - name: Upload fresh output for review
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: dry-run-data
-          path: data.json
+          name: dry-run-output
+          path: |
+            data.json
+            dry_run_report.txt
           if-no-files-found: warn
