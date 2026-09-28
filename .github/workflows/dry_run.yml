@@ -50,7 +50,7 @@ jobs:
           A, M = d["assets"], d.get("missing", {})
           fb = [k for k, a in A.items() if a.get("source_fallback")]
           head = f"updateTime={d['updateTime']} 成功={len(A)} 缺失={len(M)} 备用源={len(fb)}"
-          rows = [f"{a.get('label', k)} | {a['收盘价']} | {a['as_of']} | {a['source']}{' [备用]' if a.get('source_fallback') else ''}"
+          rows = [f"{a.get('label', k)} | {a['收盘价']} | {a['as_of']} | {a['source']}{' [备用]' if a.get('source_fallback') else ''}{' ' + a['unit_check'] if a.get('unit_check') else ''}"
                   for k, a in A.items()]
           miss = [f"{m['label']}: {m['reason']}" for m in M.values()]
           enc = lambda t: t.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")

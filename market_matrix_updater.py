@@ -203,6 +203,29 @@ def add_asset(all_data, key, series, source, fallback=False):
 
 # ---------------- Yahoo ----------------
 
+YIELD_RANGE = (-1.0, 20.0)  # 百分比收益率的合理区间
+
+
+def normalize_yield(series, ticker):
+    """
+    Yahoo 收益率指数(如 ^TNX)的报价单位不固定: 有的数据源按收益率 x10 报价(42.18 = 4.218%)。
+    按近 60 个值的中位数判断: > 20 视为 x10 报价, 除以 10。
+    换算后最新值仍不在合理区间, 返回 None(由调用方记为缺失)。
+    """
+    if series is None or len(series.dropna()) < 2:
+        return None, "无数据"
+    series = series.dropna()
+    med = float(series.iloc[-60:].median())
+    note = ""
+    if med > YIELD_RANGE[1]:
+        series = series / 10
+        note = f"(原始中位数 {med:.2f}, 按 x10 报价换算)"
+        print(f"  {ticker}: 按 x10 报价换算为百分比 {note}")
+    last = float(series.iloc[-1])
+    if not (YIELD_RANGE[0] <= last <= YIELD_RANGE[1]):
+        return None, f"单位异常: 换算后最新值 {last:.3f} 不在 {YIELD_RANGE} 区间"
+    return series, note
+
 def fetch_yahoo(tickers):
     out = {}
     try:
@@ -248,12 +271,22 @@ def fred_api(series_id):
     return s.dropna().sort_index()
 
 
-def fred_csv(series_id):
-    r = requests.get("https://fred.stlouisfed.org/graph/fredgraph.csv",
-                     params={"id": series_id, "cosd": "2019-01-01"},
-                     headers=HEADERS, timeout=30)
-    if r.status_code != 200:
-        raise RuntimeError(f"HTTP {r.status_code}")
+def fred_csv(series_id, attempts=2, timeout=60):
+    last_err = None
+    for i in range(attempts):
+        try:
+            r = requests.get("https://fred.stlouisfed.org/graph/fredgraph.csv",
+                             params={"id": series_id, "cosd": "2019-01-01"},
+                             headers=HEADERS, timeout=timeout)
+            if r.status_code == 200:
+                break
+            last_err = RuntimeError(f"HTTP {r.status_code}")
+        except requests.RequestException as e:
+            last_err = RuntimeError(f"{type(e).__name__}, 超时 {timeout}s")
+        print(f"  FRED CSV {series_id} 第{i + 1}次失败: {last_err}")
+        time.sleep(3)
+    else:
+        raise last_err
     df = pd.read_csv(StringIO(r.text))
     s = pd.to_numeric(df.iloc[:, 1], errors="coerce")
     s.index = pd.to_datetime(df.iloc[:, 0])
@@ -356,7 +389,14 @@ def fetch_all_data():
             continue
         if "yahoo_fallback" in cfg:
             t = cfg["yahoo_fallback"]
-            add_asset(all_data, key, prices.get(t), f"Yahoo {t}", fallback=True)
+            s2 = prices.get(t)
+            if cfg["value_type"] == "yield":
+                s2, note = normalize_yield(s2, t)
+                if s2 is None:
+                    mark_missing(key, f"{err or 'FRED 失败'}; Yahoo {t} {note}")
+                    continue
+            if add_asset(all_data, key, s2, f"Yahoo {t}", fallback=True) and cfg["value_type"] == "yield":
+                all_data[key]["unit_check"] = f"百分比{note or '(原始报价即为百分比)'}"
 
     print("\n--- Cboe ---")
     for key, cfg in ASSETS.items():
