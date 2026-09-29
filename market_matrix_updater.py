@@ -9,10 +9,14 @@
   as_of       该序列最新数据日期
 前端只负责渲染, 不再根据资产名字猜单位。
 
-数据源:
-  Yahoo  ETF / 指数 / BTC / VIX
-  FRED   2Y(DGS2) 10Y(DGS10, Yahoo ^TNX 备用) 高收益债利差 WTI 现货(DCOILWTICO)
-  Cboe   Total Put/Call Ratio(Daily Market Statistics, 按日期取)
+数据源(按顺序尝试, 第一个之后的都标 source_fallback):
+  Yahoo          ETF / 指数 / BTC / VIX
+  2Y             美国财政部收益率曲线 -> FRED DGS2
+  10Y            美国财政部收益率曲线 -> FRED DGS10 -> Yahoo ^TNX(带单位检查)
+  高收益债利差   FRED BAMLH0A0HYM2(只有 FRED 公开这份 ICE BofA 数据)
+  WTI 现货       EIA RWTC -> FRED DCOILWTICO
+  Put/Call       Cboe Daily Market Statistics(按日期取)
+财政部和 EIA 都是官方原始来源, 不需要 key。
 
 运行规则:
   - FRED_API_KEY 可选: 有 key 走 FRED API(失败再退到 CSV); 没有 key 直接用 FRED CSV。
@@ -28,7 +32,7 @@ import os
 import sys
 import time
 from datetime import datetime, timezone
-from io import StringIO
+from io import BytesIO, StringIO
 
 import pandas as pd
 import requests
@@ -79,13 +83,18 @@ ASSETS = {
     "公共事业":     dict(PRICE, label="公用事业 (XLU)", yahoo="XLU"),
     "REITS":        dict(PRICE, label="REITs (IYR)", yahoo="IYR"),
     "VIX":          dict(VOL, label="VIX", yahoo="^VIX"),
-    # ---- FRED ----
-    "2年美债":      dict(YIELD, label="2年美债", fred="DGS2"),
-    "10年美债":     dict(YIELD, label="10年美债", fred="DGS10", yahoo_fallback="^TNX"),
-    "垃圾债券利差": dict(SPREAD, label="高收益债利差 (OAS)", fred="BAMLH0A0HYM2"),
-    # EIA 现货价发布有滞后, 放宽过期阈值
-    "WTI原油":      dict(PRICE, label="WTI 原油现货", unit="USD/bbl",
-                         fred="DCOILWTICO", max_stale_days=12),
+    # ---- 宏观序列: sources 按顺序尝试, 第一个是主源, 之后的都标记 source_fallback ----
+    # 美国财政部官方收益率曲线(FRED DGS2/DGS10 即来源于此), 不需要 key
+    "2年美债":      dict(YIELD, label="2年美债",
+                         sources=[("treasury", "2 Yr"), ("fred", "DGS2")]),
+    "10年美债":     dict(YIELD, label="10年美债",
+                         sources=[("treasury", "10 Yr"), ("fred", "DGS10"), ("yahoo_yield", "^TNX")]),
+    # ICE BofA 数据只在 FRED 公开; 没有免 key 的官方替代
+    "垃圾债券利差": dict(SPREAD, label="高收益债利差 (OAS)",
+                         sources=[("fred", "BAMLH0A0HYM2")]),
+    # EIA 官方现货价(FRED DCOILWTICO 即来源于此); 发布有滞后, 放宽过期阈值
+    "WTI原油":      dict(PRICE, label="WTI 原油现货", unit="USD/bbl", max_stale_days=12,
+                         sources=[("eia", "RWTC"), ("fred", "DCOILWTICO")]),
     # ---- Cboe ----
     "PUT/CALL":     dict(RATIO, label="Total Put/Call Ratio", cboe="TOTAL PUT/CALL RATIO"),
 }
@@ -314,6 +323,111 @@ def fetch_fred(series_id):
     return None, f"FRED {series_id}", False, "; ".join(reasons)
 
 
+# ---------------- 美国财政部收益率曲线 ----------------
+
+TREASURY_URL = ("https://home.treasury.gov/resource-center/data-chart-center/interest-rates/"
+                "daily-treasury-rates.csv/{y}/all?type=daily_treasury_yield_curve"
+                "&field_tdr_date_value={y}&page&_format=csv")
+_treasury_cache = {}
+
+
+def treasury_year(year):
+    if year not in _treasury_cache:
+        last_err = None
+        for i in range(2):
+            try:
+                r = requests.get(TREASURY_URL.format(y=year), headers=HEADERS, timeout=60)
+                if r.status_code == 200 and r.text.lstrip().startswith("Date"):
+                    df = pd.read_csv(StringIO(r.text))
+                    df["Date"] = pd.to_datetime(df["Date"], format="%m/%d/%Y")
+                    _treasury_cache[year] = df.set_index("Date").sort_index()
+                    break
+                last_err = RuntimeError(f"HTTP {r.status_code}")
+            except Exception as e:
+                last_err = RuntimeError(f"{type(e).__name__}")
+            time.sleep(2)
+        else:
+            _treasury_cache[year] = last_err
+    v = _treasury_cache[year]
+    if isinstance(v, Exception):
+        raise v
+    return v
+
+
+def fetch_treasury(column):
+    """从今年往前逐年取, 遇到失败就停, 只保留连续的年份(保证回看基准不跨缺口)"""
+    this_year = today_utc().year
+    frames = []
+    for y in range(this_year, this_year - 7, -1):
+        try:
+            frames.append(treasury_year(y))
+        except Exception as e:
+            if y == this_year:
+                raise RuntimeError(f"美国财政部 {y} 年数据失败({e})")
+            print(f"  Treasury {y} 年失败({e}), 更早的年份不再使用")
+            break
+    df = pd.concat(frames).sort_index()
+    if column not in df.columns:
+        raise RuntimeError(f"美国财政部数据缺少列 {column}: {list(df.columns)}")
+    return pd.to_numeric(df[column], errors="coerce").dropna()
+
+
+# ---------------- EIA ----------------
+
+EIA_URL = "https://www.eia.gov/dnav/pet/hist_xls/{sid}d.xls"
+
+
+def fetch_eia(series_id):
+    """EIA 历史日度 Excel: 'Data 1' 表, 第一列日期, 第二列数值"""
+    last_err = None
+    for i in range(2):
+        try:
+            r = requests.get(EIA_URL.format(sid=series_id), headers=HEADERS, timeout=60)
+            if r.status_code == 200:
+                break
+            last_err = RuntimeError(f"HTTP {r.status_code}")
+        except Exception as e:
+            last_err = RuntimeError(f"{type(e).__name__}")
+        time.sleep(2)
+    else:
+        raise RuntimeError(f"EIA 下载失败({last_err})")
+    raw = pd.read_excel(BytesIO(r.content), sheet_name="Data 1", header=None)
+    dates = pd.to_datetime(raw.iloc[:, 0], errors="coerce")
+    vals = pd.to_numeric(raw.iloc[:, 1], errors="coerce")
+    s = pd.Series(vals.values, index=dates).dropna()
+    s = s[s.index.notna()]
+    if len(s) < 2:
+        raise RuntimeError("EIA 文件里没有解析出数据")
+    return s.sort_index()
+
+
+# ---------------- 按顺序尝试多个来源 ----------------
+
+def fetch_from_sources(key, cfg, prices):
+    """返回 (series, source, fallback, unit_note); 全部失败返回 (None, 原因汇总)"""
+    reasons = []
+    for i, (kind, sid) in enumerate(cfg["sources"]):
+        try:
+            if kind == "treasury":
+                return fetch_treasury(sid), f"US Treasury {sid}", i > 0, None
+            if kind == "eia":
+                return fetch_eia(sid), f"EIA {sid}", i > 0, None
+            if kind == "fred":
+                s, source, csv_used, err = fetch_fred(sid)
+                if s is None:
+                    raise RuntimeError(err)
+                return s, source, (i > 0 or csv_used), None
+            if kind == "yahoo_yield":
+                s, note = normalize_yield(prices.get(sid), sid)
+                if s is None:
+                    raise RuntimeError(f"Yahoo {sid} {note}")
+                return s, f"Yahoo {sid}", True, f"百分比{note or '(原始报价即为百分比)'}"
+        except Exception as e:
+            print(f"  {cfg['label']}: {kind} {sid} 失败: {e}")
+            reasons.append(f"{kind} {sid}: {e}")
+    return None, "; ".join(reasons)
+
+
 # ---------------- Cboe ----------------
 
 CBOE_URL = "https://cdn.cboe.com/data/us/options/market_statistics/daily/{d}_daily_options"
@@ -372,31 +486,24 @@ def fetch_all_data():
     all_data = {}
 
     print("\n--- Yahoo Finance ---")
-    tickers = {c[k] for c in ASSETS.values() for k in ("yahoo", "yahoo_fallback") if k in c}
+    tickers = {c["yahoo"] for c in ASSETS.values() if "yahoo" in c}
+    tickers |= {sid for c in ASSETS.values() for kind, sid in c.get("sources", []) if kind == "yahoo_yield"}
     prices = fetch_yahoo(sorted(tickers))
     for key, cfg in ASSETS.items():
         if "yahoo" in cfg:
             add_asset(all_data, key, prices.get(cfg["yahoo"]), f"Yahoo {cfg['yahoo']}")
 
-    print("\n--- FRED ---")
+    print("\n--- 宏观序列 (Treasury / EIA / FRED) ---")
     for key, cfg in ASSETS.items():
-        if "fred" not in cfg:
+        if "sources" not in cfg:
             continue
-        s, source, fallback, err = fetch_fred(cfg["fred"])
-        if s is None:
-            mark_missing(key, err)
-        elif add_asset(all_data, key, s, source, fallback):
+        res = fetch_from_sources(key, cfg, prices)
+        if res[0] is None:
+            mark_missing(key, res[1])
             continue
-        if "yahoo_fallback" in cfg:
-            t = cfg["yahoo_fallback"]
-            s2 = prices.get(t)
-            if cfg["value_type"] == "yield":
-                s2, note = normalize_yield(s2, t)
-                if s2 is None:
-                    mark_missing(key, f"{err or 'FRED 失败'}; Yahoo {t} {note}")
-                    continue
-            if add_asset(all_data, key, s2, f"Yahoo {t}", fallback=True) and cfg["value_type"] == "yield":
-                all_data[key]["unit_check"] = f"百分比{note or '(原始报价即为百分比)'}"
+        s, source, fallback, unit_note = res
+        if add_asset(all_data, key, s, source, fallback) and unit_note:
+            all_data[key]["unit_check"] = unit_note
 
     print("\n--- Cboe ---")
     for key, cfg in ASSETS.items():

@@ -22,7 +22,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install --upgrade yfinance pandas requests
+        run: pip install --upgrade yfinance pandas requests xlrd
 
       # 删掉仓库里旧的 data.json, 保证上传的只可能是本次运行生成的文件
       - name: Remove checked-in data.json

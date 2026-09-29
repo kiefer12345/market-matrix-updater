@@ -4,14 +4,16 @@
 
 ## 数据源
 
-| 类别 | 来源 |
+| 类别 | 来源（按顺序尝试，第一个之后都标「备用源」） |
 |---|---|
 | ETF、指数、比特币、VIX | Yahoo Finance |
-| 2 年美债 | FRED `DGS2` |
-| 10 年美债 | FRED `DGS10`（FRED 失败时用 Yahoo `^TNX`，页面标「备用源」） |
-| 高收益债利差 | FRED `BAMLH0A0HYM2` |
-| WTI 原油现货 | FRED `DCOILWTICO`（EIA 数据有滞后，过期阈值 12 天） |
+| 2 年美债 | 美国财政部收益率曲线 → FRED `DGS2` |
+| 10 年美债 | 美国财政部收益率曲线 → FRED `DGS10` → Yahoo `^TNX`（带单位检查） |
+| 高收益债利差 | FRED `BAMLH0A0HYM2`（ICE BofA 数据只在 FRED 公开，没有免 key 的替代） |
+| WTI 原油现货 | EIA `RWTC` → FRED `DCOILWTICO`（数据有滞后，过期阈值 12 天） |
 | Total Put/Call Ratio | Cboe Daily Market Statistics（按日期取） |
+
+美国财政部和 EIA 都是官方原始来源（FRED 的 DGS2/DGS10、DCOILWTICO 就是从这里转载），不需要 key。
 
 ## data.json 口径
 
@@ -28,7 +30,7 @@
 
 ## Secrets
 
-- `FRED_API_KEY`：可选。配置后 FRED 数据走官方 API（失败再退到 CSV）；不配置时直接下载 FRED CSV。凡是用了 CSV 的资产都会在 `data.json` 标 `source_fallback`，页面显示「备用源」；CSV 也失败则该资产记为缺失并写明原因。可在 https://fred.stlouisfed.org/docs/api/api_key.html 免费申请。
+- `FRED_API_KEY`：可选。目前只有高收益债利差必须依赖 FRED；配置后走 FRED API（失败再退到 CSV），不配置时直接下载 FRED CSV（在 GitHub Actions 上常超时）。凡是用了 CSV 的资产都会在 `data.json` 标 `source_fallback`，页面显示「备用源」；CSV 也失败则该资产记为缺失并写明原因。可在 https://fred.stlouisfed.org/docs/api/api_key.html 免费申请。
 - `NOTION_API_KEY`：写 Notion 用。
 
 ## 运行
