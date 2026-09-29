@@ -171,6 +171,11 @@
             background: #1a1f24;
         }
 
+        .missing-row td { color: #8b949e; font-style: italic; }
+        .missing-row td:first-child { font-style: normal; color: #8b949e; }
+        .asof { font-size: 10px; color: #d29922; margin-left: 6px; font-weight: 400; }
+        .footnote { margin-top: 10px; font-size: 11px; color: #8b949e; line-height: 1.6; }
+
         /* 列组分隔线：QTD 和 1年 左侧加边框 */
         th:nth-child(6), td:nth-child(6),
         th:nth-child(8), td:nth-child(8) {
@@ -221,9 +226,10 @@
             </tbody>
         </table>
     </div>
+    <div class="footnote">利率与利差的变化为百分点（pp），VIX 为点数（pts），Put/Call 为比率差，其余为涨跌幅。资产名旁黄色日期表示该项数据比其他项旧，「备用源」表示主数据源失败。鼠标悬停资产名可看数据来源。</div>
 
     <script>
-        // 资产分类
+        // 分类只管分组和顺序; 单位、颜色方向、显示名全部来自 data.json 里每个资产自带的字段
         const categories = {
             "货币与利率": ["美元", "2年美债", "10年美债", "TLT"],
             "主要指数": ["标普500", "纳指", "道指", "罗素2000", "标普等权指数"],
@@ -232,122 +238,110 @@
             "行业板块": ["科技", "芯片", "能源", "银行", "保险板块", "医疗", "通讯服务", "非必需品消费", "必需品消费", "公共事业", "REITS"],
             "市场情绪": ["VIX", "PUT/CALL", "垃圾债券利差"]
         };
-        
-        // 特殊指标（显示绝对值变化而非百分比）
-        const absoluteChangeIndicators = ["PUT/CALL", "垃圾债券利差", "VIX", "2年美债", "10年美债"];
-        
-        // 格式化数值
-        function formatValue(value, isPrice = false, isAbsolute = false) {
+        const PERIODS = ['1天', '1星期', '1个月', 'QTD', 'YTD', '1年', '3年', '5年'];
+        const CHANGE_SUFFIX = { pp: ' pp', points: ' pts', ratio: '', '%': ' pp' };
+
+        const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+        function formatLevel(value, a) {
             if (value === null || value === undefined) return '-';
-            
-            if (isPrice) {
-                if (Math.abs(value) >= 1000) {
-                    return value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-                } else if (Math.abs(value) >= 1) {
-                    return value.toFixed(2);
-                } else {
-                    return value.toFixed(4);
-                }
-            }
-            
-            if (isAbsolute) {
-                const sign = value > 0 ? '+' : '';
-                return sign + value.toFixed(2);
-            }
-            
-            // 百分比格式
-            const percent = value * 100;
-            const sign = percent > 0 ? '+' : '';
-            return sign + percent.toFixed(2) + '%';
+            const abs = Math.abs(value);
+            const num = abs >= 1000
+                ? value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                : value.toFixed(abs >= 1 ? 2 : 4);
+            if (a.value_type === 'yield' || a.value_type === 'spread') return num + '%';
+            if (a.unit === 'USD/bbl') return '$' + num;
+            return num;
         }
-        
-        // 获取颜色类
-        function getColorClass(value, invert = false) {
+
+        function formatChange(value, a) {
+            if (value === null || value === undefined) return '-';
+            const sign = value > 0 ? '+' : '';
+            if (a.change_type === 'absolute') return sign + value.toFixed(2) + (CHANGE_SUFFIX[a.unit] || '');
+            return sign + (value * 100).toFixed(2) + '%';
+        }
+
+        function colorClass(value, invert) {
             if (value === null || value === undefined || value === 0) return 'neutral';
-            if (invert) {
-                return value > 0 ? 'negative' : 'positive';
-            }
-            return value > 0 ? 'positive' : 'negative';
+            return (value > 0) !== !!invert ? 'positive' : 'negative';
         }
-        
-        // 判断是否需要反转颜色
-        function shouldInvertColor(assetName) {
-            const invertAssets = ['VIX', 'PUT/CALL', '垃圾债券利差'];
-            return invertAssets.includes(assetName);
-        }
-        
-        // 渲染表格
+
         function renderTable(data) {
             const tbody = document.getElementById('matrixBody');
             tbody.innerHTML = '';
-            
             const assets = data.assets || {};
-            
-            for (const [category, assetList] of Object.entries(categories)) {
+            const missing = data.missing || {};
+            const asOf = a => a.as_of || a.asOf;
+            const latestAsOf = Object.values(assets).map(asOf).filter(Boolean).sort().pop();
+
+            for (const [category, keys] of Object.entries(categories)) {
                 const categoryRow = document.createElement('tr');
                 categoryRow.className = 'category-row';
                 categoryRow.innerHTML = `<td colspan="10">${category}</td>`;
                 tbody.appendChild(categoryRow);
-                
-                for (const assetName of assetList) {
-                    const assetData = assets[assetName];
-                    if (!assetData) continue;
-                    
+
+                for (const key of keys) {
+                    const a = assets[key];
                     const row = document.createElement('tr');
-                    const isAbsolute = absoluteChangeIndicators.includes(assetName);
-                    const invert = shouldInvertColor(assetName);
-                    
-                    if (["VIX", "PUT/CALL", "垃圾债券利差"].includes(assetName)) {
-                        row.className = 'indicator-row';
+                    if (!a) {
+                        const m = missing[key];
+                        const label = (m && m.label) || key;
+                        const reason = (m && (m.reason || m)) || '本次未获取到数据';
+                        row.className = 'missing-row';
+                        row.innerHTML = `<td>${esc(label)}</td><td colspan="9" style="text-align:left">缺失：${esc(reason)}</td>`;
+                        tbody.appendChild(row);
+                        continue;
                     }
-                    
-                    const fields = ['1天', '1星期', '1个月', 'QTD', 'YTD', '1年', '3年', '5年'];
-                    
-                    let html = `<td>${assetName}</td>`;
-                    html += `<td class="price">${formatValue(assetData['收盘价'], true)}</td>`;
-                    
-                    for (const field of fields) {
-                        const value = assetData[field];
-                        const colorClass = getColorClass(value, invert);
-                        const trendClass = value > 0 ? 'trend-up' : (value < 0 ? 'trend-down' : '');
-                        html += `<td class="${colorClass} ${trendClass}">${formatValue(value, false, isAbsolute)}</td>`;
+                    // 旧格式 data.json 没有口径字段: 旧后端全部按百分比计算, 照实按百分比显示
+                    const meta = { change_type: a.change_type || 'percent', unit: a.unit, value_type: a.value_type };
+                    if (a.invert_color) row.className = 'indicator-row';
+                    const d = asOf(a);
+                    const stale = d && latestAsOf && d < latestAsOf;
+                    const tags = (stale ? `<span class="asof">${d.slice(5)}</span>` : '')
+                        + (a.source_fallback ? '<span class="asof">备用源</span>' : '');
+                    const tip = [a.source || a['来源'], d].filter(Boolean).join(' · ');
+                    let html = `<td title="${esc(tip)}">${esc(a.label || key)}${tags}</td>`;
+                    html += `<td class="price">${formatLevel(a['收盘价'], meta)}</td>`;
+                    for (const p of PERIODS) {
+                        const v = a[p];
+                        const trend = v > 0 ? 'trend-up' : (v < 0 ? 'trend-down' : '');
+                        html += `<td class="${colorClass(v, a.invert_color)} ${trend}">${formatChange(v, meta)}</td>`;
                     }
-                    
                     row.innerHTML = html;
                     tbody.appendChild(row);
                 }
             }
-            
-            // 相对时间显示
+
             const updateStr = data.updateTime || '';
             let timeLabel = updateStr;
             if (updateStr) {
-                const updateDate = new Date(updateStr.replace(' ', 'T'));
-                const diffMs = Date.now() - updateDate;
-                const diffMins = Math.floor(diffMs / 60000);
+                // 旧格式 "YYYY-MM-DD HH:MM:SS" 也是 UTC
+                const updateDate = new Date(updateStr.endsWith('Z') ? updateStr : updateStr.replace(' ', 'T') + 'Z');
+                const diffMins = Math.floor((Date.now() - updateDate) / 60000);
                 const diffHours = Math.floor(diffMins / 60);
                 const diffDays = Math.floor(diffHours / 24);
                 if (diffMins < 60) timeLabel = `${diffMins} 分钟前更新`;
                 else if (diffHours < 24) timeLabel = `${diffHours} 小时前更新`;
-                else timeLabel = `${diffDays} 天前更新 (${updateStr})`;
+                else timeLabel = `${diffDays} 天前更新 (${updateDate.toLocaleString('zh-CN', { hour12: false })})`;
             }
             document.getElementById('updateTime').textContent = timeLabel;
         }
-        
-        // 加载数据
+
         async function loadData() {
             try {
-                const response = await fetch('https://raw.githubusercontent.com/kiefer12345/market-matrix-updater/main/data.json?' + Date.now());
+                let response = await fetch('data.json?' + Date.now()).catch(() => null);
+                if (!response || !response.ok) {
+                    response = await fetch('https://raw.githubusercontent.com/kiefer12345/market-matrix-updater/main/data.json?' + Date.now());
+                }
                 if (!response.ok) throw new Error('Failed to fetch');
-                const data = await response.json();
-                renderTable(data);
+                renderTable(await response.json());
             } catch (error) {
                 console.error('Error loading data:', error);
-                document.getElementById('matrixBody').innerHTML = 
-                    '<tr><td colspan="10" style="text-align:center;color:#f85149;">加载失败，请刷新重试</td></tr>';
+                document.getElementById('matrixBody').innerHTML =
+                    '<tr><td colspan="10" style="text-align:center;color:#f85149;">数据加载失败，请刷新重试</td></tr>';
             }
         }
-        
+
         loadData();
         setInterval(loadData, 5 * 60 * 1000);
     </script>
