@@ -174,6 +174,9 @@
         .missing-row td { color: #8b949e; font-style: italic; }
         .missing-row td:first-child { font-style: normal; color: #8b949e; }
         .asof { font-size: 10px; color: #d29922; margin-left: 6px; font-weight: 400; }
+        .asof.newer { color: #8b949e; }
+        .header-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+        .as-of-date { font-size: 12px; color: #e6edf3; font-variant-numeric: tabular-nums; }
         .footnote { margin-top: 10px; font-size: 11px; color: #8b949e; line-height: 1.6; }
 
         /* 列组分隔线：QTD 和 1年 左侧加边框 */
@@ -202,7 +205,10 @@
 <body>
     <div class="header">
         <div class="title">📊 市场数据矩阵</div>
-        <div class="update-time" id="updateTime">加载中...</div>
+        <div class="header-meta">
+            <div class="as-of-date" id="asOfDate"></div>
+            <div class="update-time" id="updateTime">加载中...</div>
+        </div>
     </div>
     
     <div class="matrix-container">
@@ -226,7 +232,7 @@
             </tbody>
         </table>
     </div>
-    <div class="footnote">利率与利差的变化为百分点（pp），VIX 为点数（pts），Put/Call 为比率差，其余为涨跌幅。资产名旁黄色日期表示该项数据比其他项旧，「备用源」表示主数据源失败。鼠标悬停资产名可看数据来源。</div>
+    <div class="footnote">利率与利差的变化为百分点（pp），VIX 为点数（pts），Put/Call 为比率差，其余为涨跌幅。右上角为多数资产的数据日期；日期不同的资产会在名称旁单独标出：黄色为较旧（如 EIA、FRED 发布滞后），灰色为较新（24 小时交易的资产或盘中价）。「备用源」表示主数据源失败。鼠标悬停资产名可看数据来源。</div>
 
     <script>
         // 分类只管分组和顺序; 单位、颜色方向、显示名全部来自 data.json 里每个资产自带的字段
@@ -272,7 +278,14 @@
             const assets = data.assets || {};
             const missing = data.missing || {};
             const asOf = a => a.as_of || a.asOf;
-            const latestAsOf = Object.values(assets).map(asOf).filter(Boolean).sort().pop();
+            // 基准日期 = 出现次数最多的数据日期(通常是美股最近收盘日); 只有日期不同的资产才单独标注
+            const counts = {};
+            Object.values(assets).map(asOf).filter(Boolean).forEach(d => { counts[d] = (counts[d] || 0) + 1; });
+            const baseDate = Object.keys(counts).sort((x, y) => counts[y] - counts[x] || (y > x ? 1 : -1))[0];
+            const WEEKDAYS = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+            document.getElementById('asOfDate').textContent = baseDate
+                ? `数据日期 ${baseDate}（${WEEKDAYS[new Date(baseDate + 'T00:00:00Z').getUTCDay()]}）`
+                : '';
 
             for (const [category, keys] of Object.entries(categories)) {
                 const categoryRow = document.createElement('tr');
@@ -296,8 +309,8 @@
                     const meta = { change_type: a.change_type || 'percent', unit: a.unit, value_type: a.value_type };
                     if (a.invert_color) row.className = 'indicator-row';
                     const d = asOf(a);
-                    const stale = d && latestAsOf && d < latestAsOf;
-                    const tags = (stale ? `<span class="asof">${d.slice(5)}</span>` : '')
+                    const differs = d && baseDate && d !== baseDate;
+                    const tags = (differs ? `<span class="asof${d > baseDate ? ' newer' : ''}">${d.slice(5)}</span>` : '')
                         + (a.source_fallback ? '<span class="asof">备用源</span>' : '');
                     const tip = [a.source || a['来源'], d].filter(Boolean).join(' · ');
                     let html = `<td title="${esc(tip)}">${esc(a.label || key)}${tags}</td>`;
