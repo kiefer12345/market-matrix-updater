@@ -37,5 +37,7 @@
 
 - 每个工作日 UTC 22:00 自动运行（`update_market_matrix.yml`）。
 - 成功资产不足 60% 时保留旧 `data.json`、不写 Notion，任务失败。
+- 写 Notion 时：成功的资产写入全部数值（本次算不出的周期写空），「更新时间」为数据日期；**缺失的资产清空全部数值，「更新时间」保持在最后一次有效数据的日期**，避免旧数字被当成新数据。
+- 如果 Notion 数据库里有名为「状态」的文本列，会写入「正常」「正常(备用源 …)」或「缺失 日期: 原因」；没有这一列就只写数值，不会报错。
 - PR 会自动触发试跑（`dry_run.yml`）：先删掉仓库里旧的 `data.json`，再用真实数据跑一遍，上传本次生成的 `data.json` 和完整日志 `dry_run_report.txt`（末尾是核对表），不提交、不写 Notion。运行失败时附件里不会有 `data.json`，只有日志。试跑还会直接从生成的 `data.json` 汇总出概况、资产明细和缺失原因，显示在 PR 检查页的 Annotations 里。
 - 本地试跑：`DRY_RUN=1 python market_matrix_updater.py`（可选加 `FRED_API_KEY=...`）

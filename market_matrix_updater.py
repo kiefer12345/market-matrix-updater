@@ -572,11 +572,30 @@ def get_notion_pages():
         cursor = data["next_cursor"]
 
 
-def update_notion_page(page_id, data):
-    props = {f: {"number": data[f]}
-             for f in ["收盘价", "1天", "1星期", "1个月", "1年", "QTD", "YTD"]
-             if data.get(f) is not None}
-    props["更新时间"] = {"date": {"start": data["as_of"]}}
+NOTION_NUMBER_FIELDS = ["收盘价", "1天", "1星期", "1个月", "1年", "QTD", "YTD"]
+NOTION_STATUS_FIELD = "状态"  # 可选: 数据库里有这个文本列才写
+
+
+def get_notion_schema():
+    """数据库现有列 {列名: 类型}; 只写存在的列, 避免 PATCH 因未知列整体失败"""
+    r = notion_request("GET", f"https://api.notion.com/v1/databases/{DATABASE_ID}")
+    if r.status_code != 200:
+        print(f"读取 Notion 数据库结构失败: {r.status_code}")
+        return None
+    return {k: v.get("type") for k, v in r.json().get("properties", {}).items()}
+
+
+def notion_props(schema, numbers, date=None, status=None):
+    props = {f: {"number": v} for f, v in numbers.items()
+             if schema is None or schema.get(f) == "number"}
+    if date and (schema is None or schema.get("更新时间") == "date"):
+        props["更新时间"] = {"date": {"start": date}}
+    if status is not None and schema and schema.get(NOTION_STATUS_FIELD) == "rich_text":
+        props[NOTION_STATUS_FIELD] = {"rich_text": [{"text": {"content": status[:1900]}}]}
+    return props
+
+
+def patch_notion_page(page_id, props):
     r = notion_request("PATCH", f"https://api.notion.com/v1/pages/{page_id}",
                        json={"properties": props})
     if r.status_code != 200:
@@ -585,6 +604,11 @@ def update_notion_page(page_id, data):
 
 
 def update_notion_database(market_data):
+    """
+    成功的资产: 写入全部数值(本次算不出的周期写空, 不留旧值), 更新时间 = 数据日期。
+    缺失的资产: 数值全部清空, 更新时间保持不动(即最后一次有效数据的日期),
+                有「状态」列时写入缺失原因。避免旧数字被当成新数据。
+    """
     if DRY_RUN:
         print("DRY_RUN: 跳过 Notion")
         return
@@ -595,13 +619,29 @@ def update_notion_database(market_data):
     if not pages:
         print("警告: 未获取到 Notion 页面")
         return
+    schema = get_notion_schema()
+    if schema is not None and NOTION_STATUS_FIELD not in schema:
+        print(f"提示: Notion 数据库没有「{NOTION_STATUS_FIELD}」文本列, 缺失原因只写进 data.json")
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     for page in pages:
         title = page["properties"].get("资产名称", {}).get("title") or []
         name = title[0]["plain_text"] if title else None
         if name in market_data:
-            ok = update_notion_page(page["id"], market_data[name])
+            a = market_data[name]
+            status = "正常" + (f"(备用源 {a['source']})" if a.get("source_fallback") else "")
+            props = notion_props(schema, {f: a.get(f) for f in NOTION_NUMBER_FIELDS},
+                                 date=a["as_of"], status=status)
+            ok = patch_notion_page(page["id"], props)
             print(f"{'✓' if ok else '✗'} 更新 {name}")
-            time.sleep(0.35)
+        elif name in missing:
+            reason = missing[name]["reason"]
+            props = notion_props(schema, {f: None for f in NOTION_NUMBER_FIELDS},
+                                 status=f"缺失 {today}: {reason}")
+            ok = patch_notion_page(page["id"], props)
+            print(f"{'⚠' if ok else '✗'} 清空 {name}(缺失: {reason[:80]})")
+        else:
+            continue
+        time.sleep(0.35)
 
 
 # ---------------- 输出 ----------------
