@@ -178,6 +178,28 @@
         .header-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
         .as-of-date { font-size: 12px; color: #e6edf3; font-variant-numeric: tabular-nums; }
         .footnote { margin-top: 10px; font-size: 11px; color: #8b949e; line-height: 1.6; }
+        .footnote a { color: #58a6ff; }
+        .header-right { display: flex; align-items: center; gap: 12px; }
+        .controls { display: flex; gap: 6px; }
+        .btn {
+            font: inherit; font-size: 12px; color: #e6edf3; background: #21262d;
+            border: 1px solid #30363d; border-radius: 6px; padding: 5px 10px;
+            cursor: pointer; white-space: nowrap; min-height: 30px;
+        }
+        .btn:hover { background: #30363d; border-color: #8b949e; }
+        .btn:focus-visible { outline: 2px solid #58a6ff; outline-offset: 2px; }
+        .btn:disabled { opacity: 0.6; cursor: progress; }
+        .btn .spin { display: inline-block; }
+        .btn.loading .spin { animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @media (prefers-reduced-motion: reduce) { .btn.loading .spin { animation: none; } }
+        .toast { font-size: 11px; color: #3fb950; min-height: 14px; text-align: right; }
+        .toast.err { color: #f85149; }
+        @media (max-width: 520px) {
+            .header { flex-wrap: wrap; gap: 8px; }
+            .header-right { width: 100%; justify-content: space-between; }
+            .header-meta { align-items: flex-start; }
+        }
 
         /* 列组分隔线：QTD 和 1年 左侧加边框 */
         th:nth-child(6), td:nth-child(6),
@@ -204,50 +226,95 @@
 </head>
 <body>
     <div class="header">
-        <div class="title">📊 市场数据矩阵</div>
-        <div class="header-meta">
-            <div class="as-of-date" id="asOfDate"></div>
-            <div class="update-time" id="updateTime">加载中...</div>
+        <div class="title" id="title">📊 市场数据矩阵</div>
+        <div class="header-right">
+            <div class="header-meta">
+                <div class="as-of-date" id="asOfDate"></div>
+                <div class="update-time" id="updateTime">加载中...</div>
+                <div class="toast" id="toast" aria-live="polite"></div>
+            </div>
+            <div class="controls">
+                <button class="btn" id="refreshBtn" type="button"><span class="spin">↻</span> <span id="refreshLabel">刷新</span></button>
+                <button class="btn" id="langBtn" type="button" aria-label="Switch language">EN</button>
+            </div>
         </div>
     </div>
-    
+
     <div class="matrix-container">
         <table id="matrixTable">
-            <thead>
-                <tr>
-                    <th>资产</th>
-                    <th>收盘价</th>
-                    <th>1天</th>
-                    <th>1星期</th>
-                    <th>1个月</th>
-                    <th>QTD</th>
-                    <th>YTD</th>
-                    <th>1年</th>
-                    <th>3年</th>
-                    <th>5年</th>
-                </tr>
-            </thead>
+            <thead><tr id="headRow"></tr></thead>
             <tbody id="matrixBody">
                 <tr><td colspan="10" class="loading">正在加载数据</td></tr>
             </tbody>
         </table>
     </div>
-    <div class="footnote">利率与利差的变化为百分点（pp），VIX 为点数（pts），Put/Call 为比率差，其余为涨跌幅。右上角为多数资产的数据日期；日期不同的资产会在名称旁单独标出：黄色为较旧（如 EIA、FRED 发布滞后），灰色为较新（24 小时交易的资产或盘中价）。「备用源」表示主数据源失败。鼠标悬停资产名可看数据来源。</div>
+    <div class="footnote" id="footnote"></div>
 
     <script>
-        // 分类只管分组和顺序; 单位、颜色方向、显示名全部来自 data.json 里每个资产自带的字段
-        const categories = {
-            "货币与利率": ["美元", "2年美债", "10年美债", "TLT"],
-            "主要指数": ["标普500", "纳指", "道指", "罗素2000", "标普等权指数"],
-            "风格因子": ["罗素1000价值", "罗素1000成长", "前7大科技", "趋势板块"],
-            "商品": ["黄金", "WTI原油", "比特币"],
-            "行业板块": ["科技", "芯片", "能源", "银行", "保险板块", "医疗", "通讯服务", "非必需品消费", "必需品消费", "公共事业", "REITS"],
-            "市场情绪": ["VIX", "PUT/CALL", "垃圾债券利差"]
+        // 分类只管分组和顺序; 单位、颜色方向全部来自 data.json 里每个资产自带的字段
+        const CATEGORIES = [
+            { zh: "货币与利率", en: "Rates & FX", keys: ["美元", "2年美债", "10年美债", "TLT"] },
+            { zh: "主要指数", en: "Major Indices", keys: ["标普500", "纳指", "道指", "罗素2000", "标普等权指数"] },
+            { zh: "风格因子", en: "Style Factors", keys: ["罗素1000价值", "罗素1000成长", "前7大科技", "趋势板块"] },
+            { zh: "商品", en: "Commodities", keys: ["黄金", "WTI原油", "比特币"] },
+            { zh: "行业板块", en: "Sectors", keys: ["科技", "芯片", "能源", "银行", "保险板块", "医疗", "通讯服务", "非必需品消费", "必需品消费", "公共事业", "REITS"] },
+            { zh: "市场情绪", en: "Sentiment", keys: ["VIX", "PUT/CALL", "垃圾债券利差"] }
+        ];
+        // 英文显示名; 中文显示名用 data.json 里的 label
+        const EN_LABELS = {
+            "美元": "US Dollar Index", "2年美债": "2Y Treasury", "10年美债": "10Y Treasury", "TLT": "TLT",
+            "标普500": "S&P 500 (SPY)", "纳指": "Nasdaq 100 (QQQ)", "道指": "Dow Jones (DIA)",
+            "罗素2000": "Russell 2000 (IWM)", "标普等权指数": "S&P 500 Equal Wt (RSP)",
+            "罗素1000价值": "Russell 1000 Value (IWD)", "罗素1000成长": "Russell 1000 Growth (IWF)",
+            "前7大科技": "Magnificent 7 (MAGS)", "趋势板块": "Momentum (MTUM)",
+            "黄金": "Gold (GLD)", "WTI原油": "WTI Crude Spot", "比特币": "Bitcoin",
+            "科技": "Technology (XLK)", "芯片": "Semiconductors (SOXX)", "能源": "Energy (XLE)",
+            "银行": "Banks (KBWB)", "保险板块": "Insurance (IAK)", "医疗": "Health Care (XLV)",
+            "通讯服务": "Comm. Services (XLC)", "非必需品消费": "Cons. Discretionary (XLY)",
+            "必需品消费": "Cons. Staples (XLP)", "公共事业": "Utilities (XLU)", "REITS": "REITs (IYR)",
+            "VIX": "VIX", "PUT/CALL": "Total Put/Call Ratio", "垃圾债券利差": "High Yield OAS"
         };
         const PERIODS = ['1天', '1星期', '1个月', 'QTD', 'YTD', '1年', '3年', '5年'];
-        const CHANGE_SUFFIX = { pp: ' pp', points: ' pts', ratio: '', '%': ' pp' };
+        const WORKFLOW_URL = 'https://github.com/kiefer12345/market-matrix-updater/actions/workflows/update_market_matrix.yml';
+        const T = {
+            zh: {
+                pageTitle: '市场数据矩阵', title: '📊 市场数据矩阵',
+                cols: ['资产', '收盘价', '1天', '1星期', '1个月', 'QTD', 'YTD', '1年', '3年', '5年'],
+                weekdays: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+                asOf: (d, w) => `数据日期 ${d}（${w}）`,
+                mins: n => `${n} 分钟前更新`, hours: n => `${n} 小时前更新`,
+                days: (n, t) => `${n} 天前更新 (${t})`, locale: 'zh-CN',
+                loading: '正在加载数据', loadingShort: '加载中...',
+                refresh: '刷新', refreshing: '刷新中…',
+                fresh: '已是最新数据', updated: '已更新到最新数据',
+                failed: '数据加载失败，请稍后再试',
+                missing: '缺失：', missingDefault: '本次未获取到数据', fallback: '备用源',
+                lang: 'EN',
+                foot: `利率与利差的变化为百分点（pp），VIX 为点数（pts），Put/Call 为比率差，其余为涨跌幅。右上角为多数资产的数据日期；日期不同的资产会在名称旁单独标出：黄色为较旧（如 EIA、FRED 发布滞后），灰色为较新（24 小时交易的资产或盘中价）。「备用源」表示主数据源失败。鼠标悬停资产名可看数据来源。<br>「刷新」读取最新一次自动更新的结果（每个工作日早上自动更新）。如需立即重新抓取行情，请到 <a href="${WORKFLOW_URL}" target="_blank" rel="noopener">GitHub Actions</a> 点 Run workflow。`
+            },
+            en: {
+                pageTitle: 'Market Data Matrix', title: '📊 Market Data Matrix',
+                cols: ['Asset', 'Last', '1D', '1W', '1M', 'QTD', 'YTD', '1Y', '3Y', '5Y'],
+                weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                asOf: (d, w) => `As of ${d} (${w})`,
+                mins: n => `Updated ${n} min ago`, hours: n => `Updated ${n} h ago`,
+                days: (n, t) => `Updated ${n} days ago (${t})`, locale: 'en-AU',
+                loading: 'Loading data', loadingShort: 'Loading...',
+                refresh: 'Refresh', refreshing: 'Refreshing…',
+                fresh: 'Already up to date', updated: 'Updated to latest data',
+                failed: 'Failed to load data. Please try again later.',
+                missing: 'Missing: ', missingDefault: 'No data in this run', fallback: 'Fallback',
+                lang: '中',
+                foot: `Rate and spread changes are in percentage points (pp), VIX in points (pts), Put/Call as ratio difference; everything else is % change. Top right shows the data date shared by most assets; assets with a different date are tagged next to their name: amber = older (e.g. EIA/FRED publishing lag), grey = newer (24-hour markets or intraday). "Fallback" means the primary source failed. Hover an asset name to see its source.<br>"Refresh" loads the latest scheduled update (runs every weekday morning). To re-fetch market data right now, open <a href="${WORKFLOW_URL}" target="_blank" rel="noopener">GitHub Actions</a> and click Run workflow.`
+            }
+        };
 
+        let lang = 'zh';
+        try { if (localStorage.getItem('mm-lang') === 'en') lang = 'en'; } catch (e) {}
+        let lastData = null;
+        const t = () => T[lang];
         const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+        const CHANGE_SUFFIX = { pp: ' pp', points: ' pts', ratio: '', '%': ' pp' };
 
         function formatLevel(value, a) {
             if (value === null || value === undefined) return '-';
@@ -272,6 +339,25 @@
             return (value > 0) !== !!invert ? 'positive' : 'negative';
         }
 
+        function labelFor(key, a, m) {
+            if (lang === 'en') return EN_LABELS[key] || key;
+            return (a && a.label) || (m && m.label) || key;
+        }
+
+        function applyStaticText() {
+            document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+            document.title = t().pageTitle;
+            document.getElementById('title').textContent = t().title;
+            document.getElementById('headRow').innerHTML = t().cols.map(c => `<th>${c}</th>`).join('');
+            document.getElementById('refreshLabel').textContent = t().refresh;
+            document.getElementById('langBtn').textContent = t().lang;
+            document.getElementById('footnote').innerHTML = t().foot;
+            if (!lastData) {
+                document.getElementById('updateTime').textContent = t().loadingShort;
+                document.getElementById('matrixBody').innerHTML = `<tr><td colspan="10" class="loading">${t().loading}</td></tr>`;
+            }
+        }
+
         function renderTable(data) {
             const tbody = document.getElementById('matrixBody');
             tbody.innerHTML = '';
@@ -282,26 +368,24 @@
             const counts = {};
             Object.values(assets).map(asOf).filter(Boolean).forEach(d => { counts[d] = (counts[d] || 0) + 1; });
             const baseDate = Object.keys(counts).sort((x, y) => counts[y] - counts[x] || (y > x ? 1 : -1))[0];
-            const WEEKDAYS = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
             document.getElementById('asOfDate').textContent = baseDate
-                ? `数据日期 ${baseDate}（${WEEKDAYS[new Date(baseDate + 'T00:00:00Z').getUTCDay()]}）`
+                ? t().asOf(baseDate, t().weekdays[new Date(baseDate + 'T00:00:00Z').getUTCDay()])
                 : '';
 
-            for (const [category, keys] of Object.entries(categories)) {
+            for (const cat of CATEGORIES) {
                 const categoryRow = document.createElement('tr');
                 categoryRow.className = 'category-row';
-                categoryRow.innerHTML = `<td colspan="10">${category}</td>`;
+                categoryRow.innerHTML = `<td colspan="10">${lang === 'en' ? cat.en : cat.zh}</td>`;
                 tbody.appendChild(categoryRow);
 
-                for (const key of keys) {
+                for (const key of cat.keys) {
                     const a = assets[key];
                     const row = document.createElement('tr');
                     if (!a) {
                         const m = missing[key];
-                        const label = (m && m.label) || key;
-                        const reason = (m && (m.reason || m)) || '本次未获取到数据';
+                        const reason = (m && (m.reason || m)) || t().missingDefault;
                         row.className = 'missing-row';
-                        row.innerHTML = `<td>${esc(label)}</td><td colspan="9" style="text-align:left">缺失：${esc(reason)}</td>`;
+                        row.innerHTML = `<td>${esc(labelFor(key, null, m))}</td><td colspan="9" style="text-align:left">${t().missing}${esc(reason)}</td>`;
                         tbody.appendChild(row);
                         continue;
                     }
@@ -311,9 +395,9 @@
                     const d = asOf(a);
                     const differs = d && baseDate && d !== baseDate;
                     const tags = (differs ? `<span class="asof${d > baseDate ? ' newer' : ''}">${d.slice(5)}</span>` : '')
-                        + (a.source_fallback ? '<span class="asof">备用源</span>' : '');
+                        + (a.source_fallback ? `<span class="asof">${t().fallback}</span>` : '');
                     const tip = [a.source || a['来源'], d].filter(Boolean).join(' · ');
-                    let html = `<td title="${esc(tip)}">${esc(a.label || key)}${tags}</td>`;
+                    let html = `<td title="${esc(tip)}">${esc(labelFor(key, a))}${tags}</td>`;
                     html += `<td class="price">${formatLevel(a['收盘价'], meta)}</td>`;
                     for (const p of PERIODS) {
                         const v = a[p];
@@ -324,39 +408,79 @@
                     tbody.appendChild(row);
                 }
             }
+            renderUpdateTime(data);
+        }
 
+        function renderUpdateTime(data) {
             const updateStr = data.updateTime || '';
             let timeLabel = updateStr;
             if (updateStr) {
                 // 旧格式 "YYYY-MM-DD HH:MM:SS" 也是 UTC
                 const updateDate = new Date(updateStr.endsWith('Z') ? updateStr : updateStr.replace(' ', 'T') + 'Z');
-                const diffMins = Math.floor((Date.now() - updateDate) / 60000);
+                const diffMins = Math.max(0, Math.floor((Date.now() - updateDate) / 60000));
                 const diffHours = Math.floor(diffMins / 60);
                 const diffDays = Math.floor(diffHours / 24);
-                if (diffMins < 60) timeLabel = `${diffMins} 分钟前更新`;
-                else if (diffHours < 24) timeLabel = `${diffHours} 小时前更新`;
-                else timeLabel = `${diffDays} 天前更新 (${updateDate.toLocaleString('zh-CN', { hour12: false })})`;
+                if (diffMins < 60) timeLabel = t().mins(diffMins);
+                else if (diffHours < 24) timeLabel = t().hours(diffHours);
+                else timeLabel = t().days(diffDays, updateDate.toLocaleString(t().locale, { hour12: false }));
             }
             document.getElementById('updateTime').textContent = timeLabel;
         }
 
-        async function loadData() {
+        async function fetchData() {
+            const bust = '?t=' + Date.now();
+            let response = await fetch('data.json' + bust, { cache: 'no-store' }).catch(() => null);
+            if (!response || !response.ok) {
+                response = await fetch('https://raw.githubusercontent.com/kiefer12345/market-matrix-updater/main/data.json' + bust, { cache: 'no-store' });
+            }
+            if (!response.ok) throw new Error('HTTP ' + response.status);
+            return response.json();
+        }
+
+        let toastTimer = null;
+        function showToast(msg, isErr) {
+            const el = document.getElementById('toast');
+            el.textContent = msg;
+            el.className = 'toast' + (isErr ? ' err' : '');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => { el.textContent = ''; }, 4000);
+        }
+
+        async function loadData(manual) {
+            const btn = document.getElementById('refreshBtn');
+            const prevTime = lastData && lastData.updateTime;
+            if (manual) {
+                btn.disabled = true; btn.classList.add('loading');
+                document.getElementById('refreshLabel').textContent = t().refreshing;
+            }
             try {
-                let response = await fetch('data.json?' + Date.now()).catch(() => null);
-                if (!response || !response.ok) {
-                    response = await fetch('https://raw.githubusercontent.com/kiefer12345/market-matrix-updater/main/data.json?' + Date.now());
-                }
-                if (!response.ok) throw new Error('Failed to fetch');
-                renderTable(await response.json());
+                lastData = await fetchData();
+                renderTable(lastData);
+                if (manual) showToast(prevTime && prevTime === lastData.updateTime ? t().fresh : t().updated);
             } catch (error) {
                 console.error('Error loading data:', error);
-                document.getElementById('matrixBody').innerHTML =
-                    '<tr><td colspan="10" style="text-align:center;color:#f85149;">数据加载失败，请刷新重试</td></tr>';
+                if (lastData) showToast(t().failed, true);
+                else document.getElementById('matrixBody').innerHTML =
+                    `<tr><td colspan="10" style="text-align:center;color:#f85149;">${t().failed}</td></tr>`;
+            } finally {
+                btn.disabled = false; btn.classList.remove('loading');
+                document.getElementById('refreshLabel').textContent = t().refresh;
             }
         }
 
-        loadData();
-        setInterval(loadData, 5 * 60 * 1000);
+        document.getElementById('refreshBtn').addEventListener('click', () => loadData(true));
+        document.getElementById('langBtn').addEventListener('click', () => {
+            lang = lang === 'zh' ? 'en' : 'zh';
+            try { localStorage.setItem('mm-lang', lang); } catch (e) {}
+            applyStaticText();
+            if (lastData) renderTable(lastData);
+        });
+
+        applyStaticText();
+        loadData(false);
+        setInterval(() => loadData(false), 5 * 60 * 1000);
+        // 标签页切回前台时更新相对时间
+        document.addEventListener('visibilitychange', () => { if (!document.hidden && lastData) renderUpdateTime(lastData); });
     </script>
 </body>
 </html>
