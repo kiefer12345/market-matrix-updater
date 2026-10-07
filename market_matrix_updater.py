@@ -24,6 +24,8 @@
   - 最新数据超过阈值天数视为过期, 丢弃并在 missing 里写明原因
   - 成功资产不足 60% 时不覆盖 data.json、不写 Notion, 非零退出
   - DRY_RUN=1: 照常抓数和生成 data.json, 但不写 Notion(给 PR 试跑用)
+  - MODE=intraday: 美股盘中定时运行, 价格为盘中价; 照常生成 data.json(标记 mode=intraday), 不写 Notion。
+    默认 MODE=close: 每天收盘后的正式运行, 写 Notion
 """
 
 import json
@@ -42,6 +44,7 @@ import yfinance as yf
 NOTION_API_KEY = os.environ.get("NOTION_API_KEY")
 FRED_API_KEY = os.environ.get("FRED_API_KEY")
 DRY_RUN = os.environ.get("DRY_RUN") == "1"
+MODE = "intraday" if os.environ.get("MODE") == "intraday" else "close"
 DATABASE_ID = "1131248983354d15aec2933c5210bbdc"
 
 DEFAULT_MAX_STALE_DAYS = 6
@@ -612,6 +615,9 @@ def update_notion_database(market_data):
     if DRY_RUN:
         print("DRY_RUN: 跳过 Notion")
         return
+    if MODE == "intraday":
+        print("盘中运行: 跳过 Notion(Notion 只保留每天收盘后的正式数据)")
+        return
     if not NOTION_API_KEY:
         print("跳过 Notion 更新(无 API Key)")
         return
@@ -650,6 +656,7 @@ def save_json_data(market_data):
     output = {
         "schema_version": 2,
         "updateTime": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "mode": MODE,
         "periods": PERIOD_KEYS,
         "assets": market_data,
         "missing": missing,
@@ -662,7 +669,7 @@ def save_json_data(market_data):
 def main():
     print("=" * 50)
     print(f"市场数据矩阵更新器 v8  {datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC}"
-          + ("  [DRY_RUN]" if DRY_RUN else ""))
+          + ("  [DRY_RUN]" if DRY_RUN else "") + f"  [{MODE}]")
     print("=" * 50)
 
     if not FRED_API_KEY:

@@ -2,46 +2,75 @@ name: Update Market Matrix
 
 on:
   schedule:
-    # 每天 UTC 22:00 运行 (悉尼时间早上9点)
+    # 收盘后正式运行: 每个工作日 UTC 22:00 (悉尼早上 8-9 点), 写 Notion
     - cron: '0 22 * * 1-5'
-  workflow_dispatch:  # 允许手动触发
+    # 美股盘中每 30 分钟: UTC 13:00-21:30 覆盖夏令时和冬令时, 实际是否开盘由下面的步骤按美东时间判断; 不写 Notion
+    - cron: '*/30 13-21 * * 1-5'
+  workflow_dispatch:  # 手动触发 = 正式运行
+
+# 同一时间只跑一个, 避免两次运行同时 push 冲突
+concurrency:
+  group: update-market-matrix
+  cancel-in-progress: false
 
 jobs:
   update:
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: write  # 允许写入仓库
-    
+
+    env:
+      MODE: ${{ github.event.schedule == '*/30 13-21 * * 1-5' && 'intraday' || 'close' }}
+
     steps:
+    - name: Check US market hours (intraday only)
+      id: gate
+      run: |
+        if [ "$MODE" != "intraday" ]; then echo "run=true" >> "$GITHUB_OUTPUT"; exit 0; fi
+        NOW=$(TZ=America/New_York date +%H%M); DOW=$(TZ=America/New_York date +%u)
+        echo "美东时间 $NOW (星期 $DOW)"
+        if [ "$DOW" -le 5 ] && [ "$NOW" -ge 0930 ] && [ "$NOW" -le 1615 ]; then
+          echo "run=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "美股未开盘, 跳过本次盘中更新"; echo "run=false" >> "$GITHUB_OUTPUT"
+        fi
+
     - name: Checkout repository
+      if: steps.gate.outputs.run == 'true'
       uses: actions/checkout@v4
-    
+
     - name: Set up Python
+      if: steps.gate.outputs.run == 'true'
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
-    
+
     - name: Install dependencies
+      if: steps.gate.outputs.run == 'true'
       run: |
         pip install --upgrade yfinance pandas requests xlrd
-    
+
     - name: Run update script
+      if: steps.gate.outputs.run == 'true'
       env:
         NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
         FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
       run: |
         python market_matrix_updater.py
-    
+
     - name: Commit and push data.json to main
+      if: steps.gate.outputs.run == 'true'
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add data.json
-        git diff --staged --quiet || git commit -m "Update market data $(date -u +'%Y-%m-%d %H:%M UTC')"
+        git diff --staged --quiet || git commit -m "Update market data ($MODE) $(date -u +'%Y-%m-%d %H:%M UTC')"
+        git pull --rebase -q origin main
         git push
 
     - name: Deploy to gh-pages
+      if: steps.gate.outputs.run == 'true'
       run: |
         git fetch origin gh-pages
         git checkout gh-pages
@@ -49,9 +78,3 @@ jobs:
         git add data.json index.html
         git diff --staged --quiet || git commit -m "Deploy $(date -u +'%Y-%m-%d %H:%M UTC')"
         git push origin gh-pages
-    
-    - name: Log completion
-      run: |
-        echo "✅ Market matrix update completed at $(date)"
-        echo "📊 Data saved to data.json"
-        echo "📝 Notion database updated"
