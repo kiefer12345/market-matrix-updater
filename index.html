@@ -282,6 +282,7 @@
                 cols: ['资产', '收盘价', '1天', '1星期', '1个月', 'QTD', 'YTD', '1年', '3年', '5年'],
                 weekdays: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
                 asOf: (d, w) => `数据日期 ${d}（${w}）`,
+                intraday: tm => `盘中数据 · 美东 ${tm} 抓取`, lastCol: '最新价',
                 mins: n => `${n} 分钟前更新`, hours: n => `${n} 小时前更新`,
                 days: (n, t) => `${n} 天前更新 (${t})`, locale: 'zh-CN',
                 loading: '正在加载数据', loadingShort: '加载中...',
@@ -290,13 +291,14 @@
                 failed: '数据加载失败，请稍后再试',
                 missing: '缺失：', missingDefault: '本次未获取到数据', fallback: '备用源',
                 lang: 'EN',
-                foot: `利率与利差的变化为百分点（pp），VIX 为点数（pts），Put/Call 为比率差，其余为涨跌幅。右上角为多数资产的数据日期；日期不同的资产会在名称旁单独标出：黄色为较旧（如 EIA、FRED 发布滞后），灰色为较新（24 小时交易的资产或盘中价）。「备用源」表示主数据源失败。鼠标悬停资产名可看数据来源。<br>「刷新」读取最新一次自动更新的结果（每个工作日早上自动更新）。如需立即重新抓取行情，请到 <a href="${WORKFLOW_URL}" target="_blank" rel="noopener">GitHub Actions</a> 点 Run workflow。`
+                foot: `利率与利差的变化为百分点（pp），VIX 为点数（pts），Put/Call 为比率差，其余为涨跌幅。右上角为多数资产的数据日期；日期不同的资产会在名称旁单独标出：黄色为较旧（如 EIA、FRED 发布滞后），灰色为较新（24 小时交易的资产或盘中价）。「备用源」表示主数据源失败。鼠标悬停资产名可看数据来源。<br>「刷新」读取最新一次自动更新的结果：美股交易时段（悉尼时间约凌晨到早上）每 30 分钟更新一次盘中价，收盘后每个工作日早上再更新一次收盘价。如需立即重新抓取行情，请到 <a href="${WORKFLOW_URL}" target="_blank" rel="noopener">GitHub Actions</a> 点 Run workflow。`
             },
             en: {
                 pageTitle: 'Market Data Matrix', title: '📊 Market Data Matrix',
                 cols: ['Asset', 'Last', '1D', '1W', '1M', 'QTD', 'YTD', '1Y', '3Y', '5Y'],
                 weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
                 asOf: (d, w) => `As of ${d} (${w})`,
+                intraday: tm => `Intraday · fetched ${tm} ET`, lastCol: 'Last',
                 mins: n => `Updated ${n} min ago`, hours: n => `Updated ${n} h ago`,
                 days: (n, t) => `Updated ${n} days ago (${t})`, locale: 'en-AU',
                 loading: 'Loading data', loadingShort: 'Loading...',
@@ -305,7 +307,7 @@
                 failed: 'Failed to load data. Please try again later.',
                 missing: 'Missing: ', missingDefault: 'No data in this run', fallback: 'Fallback',
                 lang: '中',
-                foot: `Rate and spread changes are in percentage points (pp), VIX in points (pts), Put/Call as ratio difference; everything else is % change. Top right shows the data date shared by most assets; assets with a different date are tagged next to their name: amber = older (e.g. EIA/FRED publishing lag), grey = newer (24-hour markets or intraday). "Fallback" means the primary source failed. Hover an asset name to see its source.<br>"Refresh" loads the latest scheduled update (runs every weekday morning). To re-fetch market data right now, open <a href="${WORKFLOW_URL}" target="_blank" rel="noopener">GitHub Actions</a> and click Run workflow.`
+                foot: `Rate and spread changes are in percentage points (pp), VIX in points (pts), Put/Call as ratio difference; everything else is % change. Top right shows the data date shared by most assets; assets with a different date are tagged next to their name: amber = older (e.g. EIA/FRED publishing lag), grey = newer (24-hour markets or intraday). "Fallback" means the primary source failed. Hover an asset name to see its source.<br>"Refresh" loads the latest scheduled update: every 30 minutes during US market hours (intraday prices), plus a closing update every weekday morning Sydney time. To re-fetch market data right now, open <a href="${WORKFLOW_URL}" target="_blank" rel="noopener">GitHub Actions</a> and click Run workflow.`
             }
         };
 
@@ -348,7 +350,9 @@
             document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
             document.title = t().pageTitle;
             document.getElementById('title').textContent = t().title;
-            document.getElementById('headRow').innerHTML = t().cols.map(c => `<th>${c}</th>`).join('');
+            const cols = t().cols.slice();
+            if (lastData && lastData.mode === 'intraday') cols[1] = t().lastCol;  // 盘中: 收盘价 -> 最新价
+            document.getElementById('headRow').innerHTML = cols.map(c => `<th>${c}</th>`).join('');
             document.getElementById('refreshLabel').textContent = t().refresh;
             document.getElementById('langBtn').textContent = t().lang;
             document.getElementById('footnote').innerHTML = t().foot;
@@ -368,9 +372,12 @@
             const counts = {};
             Object.values(assets).map(asOf).filter(Boolean).forEach(d => { counts[d] = (counts[d] || 0) + 1; });
             const baseDate = Object.keys(counts).sort((x, y) => counts[y] - counts[x] || (y > x ? 1 : -1))[0];
-            document.getElementById('asOfDate').textContent = baseDate
-                ? t().asOf(baseDate, t().weekdays[new Date(baseDate + 'T00:00:00Z').getUTCDay()])
-                : '';
+            let asOfText = baseDate ? t().asOf(baseDate, t().weekdays[new Date(baseDate + 'T00:00:00Z').getUTCDay()]) : '';
+            if (data.mode === 'intraday' && data.updateTime) {
+                const et = new Date(data.updateTime).toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', hour12: false });
+                asOfText = t().intraday(et);
+            }
+            document.getElementById('asOfDate').textContent = asOfText;
 
             for (const cat of CATEGORIES) {
                 const categoryRow = document.createElement('tr');
@@ -455,6 +462,7 @@
             }
             try {
                 lastData = await fetchData();
+                applyStaticText();
                 renderTable(lastData);
                 if (manual) showToast(prevTime && prevTime === lastData.updateTime ? t().fresh : t().updated);
             } catch (error) {
