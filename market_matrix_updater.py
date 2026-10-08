@@ -262,7 +262,64 @@ def fetch_yahoo(tickers):
         except Exception as e:
             print(f"  {t} 重试失败: {e}")
         time.sleep(0.2)
+    return patch_recent(out, tickers)
+
+
+def _close_frame(df, tickers):
+    if df is None or df.empty:
+        return {}
+    if isinstance(df.columns, pd.MultiIndex):
+        c = df["Close"]
+        return {t: c[t].dropna() for t in tickers if t in c.columns}
+    return {tickers[0]: df["Close"].dropna()} if len(tickers) == 1 else {}
+
+
+def patch_recent(out, tickers):
+    """
+    长周期批量下载有时缺最新一个交易日(收盘后不久尤其常见)。
+    再单独取最近 5 天, 用它覆盖/补上长序列的尾部。
+    """
+    try:
+        recent = _close_frame(yf.download(list(tickers), period="5d", progress=False,
+                                          auto_adjust=True, group_by="column", threads=True),
+                              list(tickers))
+    except Exception as e:
+        print(f"  Yahoo 最近 5 天补齐失败: {e}")
+        return out
+    for t, r in recent.items():
+        if t not in out or r.empty:
+            continue
+        r = r.copy()
+        if r.index.tz is not None:
+            r.index = r.index.tz_localize(None)
+        base = out[t]
+        if base.index.tz is not None:
+            base = base.copy(); base.index = base.index.tz_localize(None)
+        before = base.index[-1]
+        merged = pd.concat([base[base.index < r.index.min()], r]).sort_index()
+        out[t] = merged[~merged.index.duplicated(keep="last")]
+        if out[t].index[-1] > before:
+            print(f"  {t}: 补上最新交易日 {out[t].index[-1]:%Y-%m-%d}(长序列只到 {before:%Y-%m-%d})")
     return out
+
+
+def check_no_regression(market_data, path="data.json"):
+    """
+    数据日期不能比上一次发布的更旧: 防止数据源临时缺最新一天时, 用旧数据覆盖新数据。
+    只检查 Yahoo 资产(官方源本来就按各自节奏发布)。有倒退时返回说明列表。
+    """
+    try:
+        prev = json.load(open(path, encoding="utf-8")).get("assets", {})
+    except Exception:
+        return []
+    problems = []
+    for k, a in market_data.items():
+        p = prev.get(k) or {}
+        if not str(a.get("source", "")).startswith("Yahoo") or not str(p.get("source", "")).startswith("Yahoo"):
+            continue
+        if a.get("as_of") and p.get("as_of") and a["as_of"] < p["as_of"]:
+            problems.append(f"{a.get('label', k)}: 本次 {a['as_of']} < 上次 {p['as_of']}")
+    return problems
 
 
 # ---------------- FRED ----------------
@@ -681,6 +738,13 @@ def main():
 
     if len(market_data) < len(ASSETS) * MIN_SUCCESS_RATIO:
         print("✗ 成功资产过少, 保留旧 data.json, 不更新 Notion")
+        sys.exit(1)
+
+    regress = check_no_regression(market_data)
+    if regress:
+        print("✗ 数据日期倒退(数据源暂时缺最新交易日), 保留旧 data.json, 不更新 Notion:")
+        for r in regress:
+            print("   ", r)
         sys.exit(1)
 
     save_json_data(market_data)
