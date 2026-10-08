@@ -39,8 +39,16 @@
             color: #8b949e;
         }
         
+        /* 整页固定为一屏: 标题栏不动, 只有表格区域滚动, 表头和资产名列在滚动区里吸附 */
+        html, body { height: 100%; }
+        body { display: flex; flex-direction: column; overflow: hidden; }
+        .header { flex: 0 0 auto; }
         .matrix-container {
-            overflow-x: auto;
+            flex: 1 1 auto;
+            min-height: 0;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
         }
         
         table {
@@ -58,6 +66,7 @@
             border-bottom: 1px solid #30363d;
             position: sticky;
             top: 0;
+            z-index: 3;
             white-space: nowrap;
         }
         
@@ -157,6 +166,7 @@
         }
         th:first-child {
             background: #161b22;
+            z-index: 4;  /* 左上角: 同时吸附在顶部和左侧, 压在其他单元格上面 */
         }
         td:first-child {
             background: #0d1117;
@@ -177,7 +187,10 @@
         .asof.newer { color: #8b949e; }
         .header-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
         .as-of-date { font-size: 12px; color: #e6edf3; font-variant-numeric: tabular-nums; }
-        .footnote { margin-top: 10px; font-size: 11px; color: #8b949e; line-height: 1.6; }
+        .footnote {
+            margin-top: 10px; padding-bottom: 12px; font-size: 11px; color: #8b949e; line-height: 1.6;
+            position: sticky; left: 0; max-width: min(100%, calc(100vw - 32px));
+        }
         .footnote a { color: #58a6ff; }
         .header-right { display: flex; align-items: center; gap: 12px; }
         .controls { display: flex; gap: 6px; }
@@ -247,8 +260,8 @@
                 <tr><td colspan="10" class="loading">正在加载数据</td></tr>
             </tbody>
         </table>
+        <div class="footnote" id="footnote"></div>
     </div>
-    <div class="footnote" id="footnote"></div>
 
     <script>
         // 分类只管分组和顺序; 单位、颜色方向全部来自 data.json 里每个资产自带的字段
