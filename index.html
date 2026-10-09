@@ -4,7 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>市场数据矩阵</title>
+    <script>try { if (localStorage.getItem('mm-theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) {}</script>
     <style>
+        /* 配色: 浅色=冷灰(默认), 深色=深海军蓝; 切换按钮改 html 上的 data-theme */
+        :root {
+            --bg: #ffffff;
+            --text: #1b2430;
+            --border: #d6dde7;
+            --accent: #1f5fbf;
+            --sub: #5d6b7e;
+            --head: #f6f8fb;
+            --line: #e6ebf2;
+            --up: #13853e;
+            --dn: #cf2b2b;
+            --cat: #d9e3f0;
+            --alt: #edf2f8;
+            --hover: #d7e4f5;
+            --amber: #9a6700;
+            color-scheme: light;
+        }
+        :root[data-theme="dark"] {
+            --bg: #0b1426;
+            --text: #e8eef8;
+            --border: #22355a;
+            --accent: #6ea8ff;
+            --sub: #8fa3c4;
+            --head: #0f1c35;
+            --line: #1a2b4a;
+            --up: #3ddc84;
+            --dn: #ff6b6b;
+            --cat: #13213d;
+            --alt: #162544;
+            --hover: #24406e;
+            --amber: #e3b341;
+            color-scheme: dark;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -13,8 +47,8 @@
         
         body {
             font-family: 'SF Mono', 'Consolas', 'Monaco', monospace;
-            background: #ffffff;
-            color: #1b2430;
+            background: var(--bg);
+            color: var(--text);
             padding: 12px;
             font-size: 13px;
         }
@@ -25,18 +59,18 @@
             align-items: center;
             margin-bottom: 12px;
             padding-bottom: 8px;
-            border-bottom: 1px solid #d6dde7;
+            border-bottom: 1px solid var(--border);
         }
         
         .title {
             font-size: 16px;
             font-weight: 600;
-            color: #1f5fbf;
+            color: var(--accent);
         }
         
         .update-time {
             font-size: 11px;
-            color: #5d6b7e;
+            color: var(--sub);
         }
         
         /* 整页固定为一屏: 标题栏不动, 只有表格区域滚动, 表头和资产名列在滚动区里吸附 */
@@ -58,12 +92,12 @@
         }
         
         th {
-            background: #f6f8fb;
-            color: #5d6b7e;
+            background: var(--head);
+            color: var(--sub);
             font-weight: 500;
             text-align: right;
             padding: 8px 10px;
-            border-bottom: 1px solid #d6dde7;
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 3;
@@ -78,55 +112,55 @@
         td {
             padding: 6px 10px;
             text-align: right;
-            border-bottom: 1px solid #e6ebf2;
+            border-bottom: 1px solid var(--line);
             white-space: nowrap;
         }
         
         td:first-child {
             text-align: left;
-            color: #1b2430;
+            color: var(--text);
             font-weight: 500;
         }
         
         tr:hover {
-            background: #f6f8fb;
+            background: var(--head);
         }
         
         .positive {
-            color: #13853e;
+            color: var(--up);
         }
         
         .negative {
-            color: #cf2b2b;
+            color: var(--dn);
         }
         
         .neutral {
-            color: #5d6b7e;
+            color: var(--sub);
         }
         
         .price {
-            color: #1b2430;
+            color: var(--text);
             font-weight: 500;
         }
         
         /* 分类标题行 */
         .category-row {
-            background: #d9e3f0 !important;
+            background: var(--cat) !important;
         }
         
         .category-row td {
-            color: #1f5fbf;
+            color: var(--accent);
             font-weight: 600;
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             padding: 10px;
-            border-bottom: 1px solid #d6dde7;
+            border-bottom: 1px solid var(--border);
         }
         
         /* 特殊指标样式 */
         .indicator-row {
-            background: #ffffff;
+            background: var(--bg);
         }
         
         /* 迷你图标 */
@@ -144,7 +178,7 @@
         .loading {
             text-align: center;
             padding: 40px;
-            color: #5d6b7e;
+            color: var(--sub);
         }
         
         .loading::after {
@@ -165,56 +199,56 @@
             z-index: 2;
         }
         th:first-child {
-            background: #f6f8fb;
+            background: var(--head);
             z-index: 4;  /* 左上角: 同时吸附在顶部和左侧, 压在其他单元格上面 */
         }
         td:first-child {
-            background: #ffffff;
+            background: var(--bg);
         }
         tr:hover td:first-child {
-            background: #f6f8fb;
+            background: var(--head);
         }
         .category-row td:first-child {
-            background: #d9e3f0 !important;
+            background: var(--cat) !important;
         }
         .indicator-row td:first-child {
-            background: #ffffff;
+            background: var(--bg);
         }
 
         /* 冷灰间隔: 每个分类内隔行变浅蓝灰, 分类标题后重新开始; 资产名列(吸附列)同步换色 */
         tbody tr.alt td,
-        tbody tr.alt td:first-child { background: #edf2f8; }
+        tbody tr.alt td:first-child { background: var(--alt); }
         /* 悬停高亮压过斑马纹, 方便横向对照一整行 */
         tbody tr:not(.category-row):hover td,
-        tbody tr:not(.category-row):hover td:first-child { background: #d7e4f5; }
+        tbody tr:not(.category-row):hover td:first-child { background: var(--hover); }
 
-        .missing-row td { color: #5d6b7e; font-style: italic; }
-        .missing-row td:first-child { font-style: normal; color: #5d6b7e; }
-        .asof { font-size: 10px; color: #9a6700; margin-left: 6px; font-weight: 400; }
-        .asof.newer { color: #5d6b7e; }
+        .missing-row td { color: var(--sub); font-style: italic; }
+        .missing-row td:first-child { font-style: normal; color: var(--sub); }
+        .asof { font-size: 10px; color: var(--amber); margin-left: 6px; font-weight: 400; }
+        .asof.newer { color: var(--sub); }
         .header-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
-        .as-of-date { font-size: 12px; color: #1b2430; font-variant-numeric: tabular-nums; }
+        .as-of-date { font-size: 12px; color: var(--text); font-variant-numeric: tabular-nums; }
         .footnote {
-            margin-top: 10px; padding-bottom: 12px; font-size: 11px; color: #5d6b7e; line-height: 1.6;
+            margin-top: 10px; padding-bottom: 12px; font-size: 11px; color: var(--sub); line-height: 1.6;
             position: sticky; left: 0; max-width: min(100%, calc(100vw - 32px));
         }
-        .footnote a { color: #1f5fbf; }
+        .footnote a { color: var(--accent); }
         .header-right { display: flex; align-items: center; gap: 12px; }
         .controls { display: flex; gap: 6px; }
         .btn {
-            font: inherit; font-size: 12px; color: #1b2430; background: #f6f8fb;
-            border: 1px solid #d6dde7; border-radius: 6px; padding: 5px 10px;
+            font: inherit; font-size: 12px; color: var(--text); background: var(--head);
+            border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px;
             cursor: pointer; white-space: nowrap; min-height: 30px;
         }
-        .btn:hover { background: #e6ebf2; border-color: #5d6b7e; }
-        .btn:focus-visible { outline: 2px solid #1f5fbf; outline-offset: 2px; }
+        .btn:hover { background: var(--line); border-color: var(--sub); }
+        .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
         .btn:disabled { opacity: 0.6; cursor: progress; }
         .btn .spin { display: inline-block; }
         .btn.loading .spin { animation: spin 0.8s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
         @media (prefers-reduced-motion: reduce) { .btn.loading .spin { animation: none; } }
-        .toast { font-size: 11px; color: #13853e; min-height: 14px; text-align: right; }
-        .toast.err { color: #cf2b2b; }
+        .toast { font-size: 11px; color: var(--up); min-height: 14px; text-align: right; }
+        .toast.err { color: var(--dn); }
         @media (max-width: 520px) {
             .header { flex-wrap: wrap; gap: 8px; }
             .header-right { width: 100%; justify-content: space-between; }
@@ -224,7 +258,7 @@
         /* 列组分隔线：QTD 和 1年 左侧加边框 */
         th:nth-child(6), td:nth-child(6),
         th:nth-child(8), td:nth-child(8) {
-            border-left: 1px solid #d6dde7;
+            border-left: 1px solid var(--border);
         }
 
         /* 响应式 */
@@ -255,6 +289,7 @@
             </div>
             <div class="controls">
                 <button class="btn" id="refreshBtn" type="button"><span class="spin">↻</span> <span id="refreshLabel">刷新</span></button>
+                <button class="btn" id="themeBtn" type="button"></button>
                 <button class="btn" id="langBtn" type="button" aria-label="Switch language">EN</button>
             </div>
         </div>
@@ -310,7 +345,7 @@
                 fresh: '已是最新数据', updated: '已更新到最新数据',
                 failed: '数据加载失败，请稍后再试',
                 missing: '缺失：', missingDefault: '本次未获取到数据', fallback: '备用源',
-                lang: 'EN',
+                lang: 'EN', toDark: '☾ 深色', toLight: '☀ 浅色',
                 foot: `利率与利差的变化为百分点（pp），VIX 为点数（pts），Put/Call 为比率差，其余为涨跌幅。右上角为多数资产的数据日期；日期不同的资产会在名称旁单独标出：黄色为较旧（如 EIA、FRED 发布滞后），灰色为较新（24 小时交易的资产或盘中价）。「备用源」表示主数据源失败。鼠标悬停资产名可看数据来源。<br>「刷新」读取最新一次自动更新的结果：美股交易时段（悉尼时间约凌晨到早上）每 30 分钟更新一次盘中价，收盘后每个工作日早上再更新一次收盘价。如需立即重新抓取行情，请到 <a href="${WORKFLOW_URL}" target="_blank" rel="noopener">GitHub Actions</a> 点 Run workflow。`
             },
             en: {
@@ -326,7 +361,7 @@
                 fresh: 'Already up to date', updated: 'Updated to latest data',
                 failed: 'Failed to load data. Please try again later.',
                 missing: 'Missing: ', missingDefault: 'No data in this run', fallback: 'Fallback',
-                lang: '中',
+                lang: '中', toDark: '☾ Dark', toLight: '☀ Light',
                 foot: `Rate and spread changes are in percentage points (pp), VIX in points (pts), Put/Call as ratio difference; everything else is % change. Top right shows the data date shared by most assets; assets with a different date are tagged next to their name: amber = older (e.g. EIA/FRED publishing lag), grey = newer (24-hour markets or intraday). "Fallback" means the primary source failed. Hover an asset name to see its source.<br>"Refresh" loads the latest scheduled update: every 30 minutes during US market hours (intraday prices), plus a closing update every weekday morning Sydney time. To re-fetch market data right now, open <a href="${WORKFLOW_URL}" target="_blank" rel="noopener">GitHub Actions</a> and click Run workflow.`
             }
         };
@@ -375,6 +410,10 @@
             document.getElementById('headRow').innerHTML = cols.map(c => `<th>${c}</th>`).join('');
             document.getElementById('refreshLabel').textContent = t().refresh;
             document.getElementById('langBtn').textContent = t().lang;
+            const isDark = document.documentElement.dataset.theme === 'dark';
+            const tb = document.getElementById('themeBtn');
+            tb.textContent = isDark ? t().toLight : t().toDark;
+            tb.setAttribute('aria-pressed', String(isDark));
             document.getElementById('footnote').innerHTML = t().foot;
             if (!lastData) {
                 document.getElementById('updateTime').textContent = t().loadingShort;
@@ -492,7 +531,7 @@
                 console.error('Error loading data:', error);
                 if (lastData) showToast(t().failed, true);
                 else document.getElementById('matrixBody').innerHTML =
-                    `<tr><td colspan="10" style="text-align:center;color:#cf2b2b;">${t().failed}</td></tr>`;
+                    `<tr><td colspan="10" style="text-align:center;color:var(--dn);">${t().failed}</td></tr>`;
             } finally {
                 btn.disabled = false; btn.classList.remove('loading');
                 document.getElementById('refreshLabel').textContent = t().refresh;
@@ -500,6 +539,13 @@
         }
 
         document.getElementById('refreshBtn').addEventListener('click', () => loadData(true));
+        document.getElementById('themeBtn').addEventListener('click', () => {
+            const dark = document.documentElement.dataset.theme !== 'dark';
+            if (dark) document.documentElement.dataset.theme = 'dark';
+            else delete document.documentElement.dataset.theme;
+            try { localStorage.setItem('mm-theme', dark ? 'dark' : 'light'); } catch (e) {}
+            applyStaticText();
+        });
         document.getElementById('langBtn').addEventListener('click', () => {
             lang = lang === 'zh' ? 'en' : 'zh';
             try { localStorage.setItem('mm-lang', lang); } catch (e) {}
