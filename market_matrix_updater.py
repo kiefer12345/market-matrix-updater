@@ -723,6 +723,16 @@ def save_json_data(market_data):
     print("✓ 已保存 data.json")
 
 
+EXIT_RETRY = 3  # 数据源暂时没跟上: 工作流会等一会儿再跑
+
+
+def gh_annotation(level, title, msg):
+    """在 GitHub Actions 页面和 API 里显示的提示(日志不用下载也能看到原因)"""
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        enc = lambda t: str(t).replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+        print(f"::{level} title={enc(title)}::{enc(msg)}")
+
+
 def main():
     print("=" * 50)
     print(f"市场数据矩阵更新器 v8  {datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC}"
@@ -738,6 +748,8 @@ def main():
 
     if len(market_data) < len(ASSETS) * MIN_SUCCESS_RATIO:
         print("✗ 成功资产过少, 保留旧 data.json, 不更新 Notion")
+        gh_annotation("error", "成功资产过少",
+                      f"成功 {len(market_data)}/{len(ASSETS)}; " + "; ".join(f"{v['label']}: {v['reason']}" for v in missing.values()))
         sys.exit(1)
 
     regress = check_no_regression(market_data)
@@ -745,7 +757,8 @@ def main():
         print("✗ 数据日期倒退(数据源暂时缺最新交易日), 保留旧 data.json, 不更新 Notion:")
         for r in regress:
             print("   ", r)
-        sys.exit(1)
+        gh_annotation("warning", "数据日期倒退, 稍后重试", "; ".join(regress))
+        sys.exit(EXIT_RETRY)
 
     save_json_data(market_data)
     update_notion_database(market_data)

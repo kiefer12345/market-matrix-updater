@@ -16,6 +16,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
 
     permissions:
       contents: write  # 允许写入仓库
@@ -56,8 +57,14 @@ jobs:
       env:
         NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
         FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+      # 数据源暂时缺最新交易日(退出码 3)时, 等 10 分钟重试, 最多 4 次
       run: |
-        python market_matrix_updater.py
+        for i in 1 2 3 4; do
+          set +e; python market_matrix_updater.py; rc=$?; set -e
+          if [ "$rc" -ne 3 ] || [ "$i" -eq 4 ]; then break; fi
+          echo "第 $i 次: 数据日期倒退, 10 分钟后重试"; sleep 600
+        done
+        exit $rc
 
     - name: Commit and push data.json to main
       if: steps.gate.outputs.run == 'true'
