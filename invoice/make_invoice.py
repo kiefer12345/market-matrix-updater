@@ -29,7 +29,7 @@ MONEY = '"$"#,##0.00'
 DATE_FMT = "dd mmm yyyy"
 COLS = ["学生姓名", "申请院校", "课程名称", "开学日期", "计佣学费", "佣金比例", "应付金额", "币种"]
 TCOLS = "BCDEFGHI"  # table columns; F tuition, G rate, H amount, I currency
-WIDTHS = {"A": 3, "B": 20, "C": 15.5, "D": 26, "E": 14, "F": 19, "G": 14, "H": 14, "I": 8, "J": 18}
+WIDTHS = {"A": 3, "B": 24, "C": 15.5, "D": 26, "E": 14, "F": 19, "G": 14, "H": 14, "I": 8, "J": 18}
 GST_RATE = 0.10
 
 thin = Side(style="thin")
@@ -172,6 +172,12 @@ def build(details_path, profile_path, out_dir):
     agent_line = agent["name"] + (f" (ABN {agent['abn']})" if agent.get("abn") else "")
     put("F4", "Name of the Agent:"); put("G4", agent_line)
     put("F5", "Address:"); put("G5", agent.get("address", ""))
+    if len(agent.get("address", "")) > 50:  # long (e.g. overseas) address: wrap inside G5:J5
+        ws.merge_cells("G5:J5")
+        ws["G5"].alignment = Alignment(wrap_text=True, vertical="top")
+        for ref in ("B5", "C5", "F5"):  # keep the rest of the row lined up with the wrapped text
+            ws[ref].alignment = Alignment(horizontal=ws[ref].alignment.horizontal, vertical="top")
+        ws.row_dimensions[5].height = 15 * -(-len(agent["address"]) // 58)  # ~58 characters per line
     put("F6", "Invoice date:"); put("G6", inv_date, fmt=DATE_FMT, align="left")
     put("F7", "Invoice No:"); put("G7", inv_no, align="left")
 
