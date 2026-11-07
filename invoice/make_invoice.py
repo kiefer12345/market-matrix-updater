@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Generate an agent-commission Excel invoice from a profile + per-invoice details.
 
-Profile (fixed info: agent, bill-to company, bank)  -> invoice/profile.json (gitignored)
+Company (bill-to: Ausway, standard details)          -> invoice/company.json
+Profile (fixed info: agent, bank)                    -> invoice/profile.json (gitignored)
 Invoice details (students / professional services) -> any JSON file
 
 Usage:
@@ -58,10 +59,53 @@ def num(v):
     return float(re.sub(r"[^\d.\-]", "", str(v)))
 
 
+# BSB prefix (first 2 digits) -> bank, used to catch BSB / account number written in swapped fields
+BANK_PREFIX = {"commonwealth": ("06",), "cba": ("06",), "westpac": ("03", "73"), "st george": ("11",),
+               "st.george": ("11",), "anz": ("01",), "australia and new zealand": ("01",), "nab": ("08",),
+               "national australia": ("08",)}
+
+
+def digits(v):
+    return re.sub(r"\D", "", str(v or ""))
+
+
+def normalize_bank(bank):
+    """Return a copy of bank with BSB formatted 'XXX-XXX' and BSB/account swapped back if needed."""
+    bank = dict(bank)
+    bsb, acct = digits(bank.get("bsb")), digits(bank.get("account_no"))
+    name = str(bank.get("bank", "")).lower()
+    prefixes = next((v for k, v in BANK_PREFIX.items() if k in name), ())
+    swap = False
+    if len(bsb) != 6 and len(acct) == 6:
+        swap = True
+    elif len(bsb) == 6 and len(acct) == 6 and prefixes and acct[:2] in prefixes and bsb[:2] not in prefixes:
+        swap = True
+    if swap:
+        print(f"note: BSB and account number were in swapped fields - corrected "
+              f"(BSB {acct}, A/C {bank.get('bsb')})", file=sys.stderr)
+        bank["bsb"], bank["account_no"] = bank.get("account_no"), bank.get("bsb")
+        bsb = digits(bank["bsb"])
+    if len(bsb) == 6:
+        bank["bsb"] = f"{bsb[:3]}-{bsb[3:]}"
+        if prefixes and bsb[:2] not in prefixes:
+            print(f"WARNING: BSB {bank['bsb']} does not match bank '{bank.get('bank')}' - check before sending",
+                  file=sys.stderr)
+    else:
+        print(f"WARNING: BSB '{bank.get('bsb')}' is not 6 digits - check before sending", file=sys.stderr)
+    return bank
+
+
+def load_company():
+    """Standard bill-to details (Ausway). Public company-register info, kept in invoice/company.json."""
+    return json.loads((HERE / "company.json").read_text(encoding="utf-8"))
+
+
 def build(details_path, profile_path, out_dir):
     profile = json.loads(Path(profile_path).read_text(encoding="utf-8"))
     d = json.loads(Path(details_path).read_text(encoding="utf-8"))
-    agent, bill, bank = profile["agent"], profile["bill_to"], profile["bank"]
+    agent = profile["agent"]
+    bill = load_company()  # always the standard company details, never what an old invoice said
+    bank = normalize_bank(profile["bank"])
     inv_date = parse_date(d.get("invoice_date"))
     if not d.get("invoice_no"):
         raise SystemExit("invoice_no is required: invoice numbers are sequential (e.g. 20261109 -> 20261110), "
@@ -98,8 +142,9 @@ def build(details_path, profile_path, out_dir):
     put("B3", "Invoice to", bold=True)
     put("F3", "Invoice details", bold=True)
     put("B4", bill["name"])
-    put("B5", bill.get("id_label", "Company ACN:")); put("C5", bill.get("id", ""), align="left")
-    put("B6", "Address:"); put("C6", bill.get("address", ""))
+    put("B5", "Company ABN:"); put("C5", bill.get("abn", ""), align="left")
+    put("B6", "Company ACN:"); put("C6", bill.get("acn", ""), align="left")
+    put("B7", "Address:"); put("C7", bill.get("address", ""))
 
     agent_line = agent["name"] + (f" (ABN {agent['abn']})" if agent.get("abn") else "")
     put("F4", "Name of the Agent:"); put("G4", agent_line)
@@ -202,7 +247,7 @@ def build(details_path, profile_path, out_dir):
 
 
 def extract_profile(xlsx, out):
-    """Pull agent / bill-to / bank details out of an invoice in the original layout."""
+    """Pull agent / bank details out of an invoice in the original layout (bill-to comes from company.json)."""
     ws = load_workbook(xlsx, data_only=True).active
     cells = {}
     for row in ws.iter_rows():
@@ -222,9 +267,13 @@ def extract_profile(xlsx, out):
         return ""
 
     agent_raw = right_of(r"name of the agent:", cols="FGHI")
-    m = re.match(r"(.*?)\s*\(ABN\s*([\d ]+)\)", agent_raw)
-    agent_name, abn = (m.group(1).strip(), m.group(2).strip()) if m else (agent_raw, "")
-    bill_name = str(cells.get("B4", "")).strip()
+    m = re.match(r"(.*?)\s*[(（]\s*ABN\s*[:：]?\s*([\d ]+)[)）]", agent_raw)
+    agent_name, abn = (m.group(1).strip(), m.group(2).strip()) if m else (agent_raw.strip(), "")
+    if not abn:
+        abn = right_of(r"abn:", cols="FGH")  # some invoices put the agent ABN on its own row
+    abn_d = digits(abn)
+    if len(abn_d) == 11:
+        abn = f"{abn_d[:2]} {abn_d[2:5]} {abn_d[5:8]} {abn_d[8:]}"
     profile = {
         "title": str(cells.get("B1", "Tax Invoice")).strip(),
         "heading": "Agent Commission Invoice",
@@ -233,12 +282,11 @@ def extract_profile(xlsx, out):
         "payment_method": "Bank Transfer",
         "agent": {"name": agent_name or right_of(r"name of the agent$", cols="BC"), "abn": abn,
                   "address": right_of(r"address:", cols="FGH")},
-        "bill_to": {"name": bill_name, "id_label": "Company ACN:", "id": right_of(r"company acn:", cols="BC"),
-                    "address": right_of(r"address:", cols="BCD")},
         "bank": {"bank": right_of(r"bank:", cols="BC"), "swift": right_of(r"bank swift code:", cols="BC"),
                  "account_name": right_of(r"a/c name:?", cols="BC"), "account_no": right_of(r"a/c no:?", cols="BC"),
                  "bsb": right_of(r"bsb no:?", cols="BC"), "account_address": right_of(r"a/c address:?", cols="BC")},
     }
+    profile["bank"] = normalize_bank(profile["bank"])
     Path(out).write_text(json.dumps(profile, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(out)
 

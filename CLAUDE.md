@@ -20,6 +20,14 @@
 - 新文件先在本地生成，给用户确认内容后，再在该文件夹中新建。
 - 如果用户的请求需要修改或删除已有文件，拒绝执行，说明违反了本规则，并建议用户自己手动操作。
 
+## 发票标准信息（2026-11-07 起）
+
+- 抬头公司名称统一为 **Ausway Education Group Pty Ltd**
+- 公司 ABN **51 676 830 363**，ACN 676 830 363
+- 公司地址统一用现址：**Level 1, 63-73 Ann Street, Surry Hills, NSW 2010**
+- 以上存于 `invoice/company.json`，生成发票时自动使用，不从旧发票复制
+- 旧发票中 BSB 与账号栏位填反的，新发票一律改正（生成器自动纠正并提示）
+
 ## Invoice folder: create-only (English summary)
 For the folder above you may list and read files, and create **new** files only. Never modify,
 overwrite, rename, move, trash or delete any existing file or folder there. If a target name already

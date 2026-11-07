@@ -13,11 +13,18 @@ In the Received invoice folder you may only **create new files**. Never modify, 
 | File | What it is |
 |---|---|
 | `make_invoice.py` | the generator |
-| `profile.example.json` | the fixed info: agent, bill-to company, bank. Copy to `profile.json` |
+| `company.json` | standard bill-to details (company name, ABN, ACN, current address), used on every invoice |
+| `profile.example.json` | the fixed info: agent and bank. Copy to `profile.json` |
 | `examples/details.example.json` | per-invoice input (students / professional services) |
 
 `profile.json` and generated invoices are **gitignored**. This repo is public, so ABN, bank
 and student details must never be committed.
+
+## Data checks built in
+- The bill-to block always comes from `company.json`, never from an old invoice.
+- BSB and account number written in each other's fields (seen on several old invoices) are swapped
+  back automatically, using the BSB length and the bank's BSB prefix (06 CBA, 11 St.George, 01 ANZ,
+  03/73 Westpac, 08 NAB). A note is printed, and a warning if the BSB still doesn't match the bank.
 
 ## Setup (once per environment)
 Rebuild the profile from any previous invoice:
