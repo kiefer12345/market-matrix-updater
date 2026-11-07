@@ -1,0 +1,26 @@
+{
+  "title": "Tax Invoice",
+  "heading": "Agent Commission Invoice",
+  "currency": "AUD",
+  "gst_note": "GST: N/A",
+  "payment_method": "Bank Transfer",
+  "agent": {
+    "name": "Your Name",
+    "abn": "00 000 000 000",
+    "address": "1 Example Street, Suburb, VIC 3000"
+  },
+  "bill_to": {
+    "name": "Client Company Pty Ltd",
+    "id_label": "Company ACN:",
+    "id": "000000000",
+    "address": "Level 1, 1 Example Street, Sydney, NSW 2000"
+  },
+  "bank": {
+    "bank": "Bank name",
+    "swift": "",
+    "account_name": "Account name",
+    "account_no": "0000 0000",
+    "bsb": "000 000",
+    "account_address": ""
+  }
+}

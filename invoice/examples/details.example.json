@@ -1,0 +1,9 @@
+{
+  "invoice_no": "20261110",
+  "invoice_date": "2026-11-07",
+  "students": [
+    {"name": "STUDENT One", "institution": "UNSW", "course": "Master of Commerce", "intake": "T1 2027", "tuition": 52000, "rate": 15},
+    {"name": "STUDENT Two", "institution": "UniMelb", "course": "Master of IT", "intake": "S1 2027", "tuition": 48000, "rate": 0.12},
+    {"name": "STUDENT Three", "institution": "USYD", "course": "B Economics", "intake": "S1 2027", "tuition": "n/a", "amount": 4504}
+  ]
+}

@@ -1,0 +1,4 @@
+# Real agent / bank details and generated invoices contain personal data — never commit them.
+profile.json
+*.xlsx
+*.pdf
