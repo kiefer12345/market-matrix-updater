@@ -29,7 +29,7 @@ MONEY = '"$"#,##0.00'
 DATE_FMT = "dd mmm yyyy"
 COLS = ["学生姓名", "申请院校", "课程名称", "开学日期", "计佣学费", "佣金比例", "应付金额", "币种"]
 TCOLS = "BCDEFGHI"  # table columns; F tuition, G rate, H amount, I currency
-WIDTHS = {"A": 3, "B": 20, "C": 15.5, "D": 26, "E": 14, "F": 19, "G": 14, "H": 14, "I": 8, "J": 12}
+WIDTHS = {"A": 3, "B": 20, "C": 15.5, "D": 26, "E": 14, "F": 19, "G": 14, "H": 14, "I": 8, "J": 18}
 GST_RATE = 0.10
 
 thin = Side(style="thin")
@@ -297,7 +297,8 @@ def build(details_path, profile_path, out_dir):
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     safe_agent = re.sub(r"\W+", "_", agent["name"]).strip("_")
-    out = out_dir / f"Inv_{inv_no}_{safe_agent}_{inv_date.strftime('%d_%b_%Y')}.xlsx"
+    # file_name lets the output follow the Received folder's naming, e.g. "Inv 20261110 Edu_Haoer Yu 8 Nov 2026.xlsx"
+    out = out_dir / (d.get("file_name") or f"Inv_{inv_no}_{safe_agent}_{inv_date.strftime('%d_%b_%Y')}.xlsx")
     if out.exists():
         # Create-only rule: never overwrite an existing invoice (see CLAUDE.md)
         raise SystemExit(f"Refusing to overwrite existing file: {out}")

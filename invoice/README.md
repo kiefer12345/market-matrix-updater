@@ -56,3 +56,4 @@ Output name: `Inv_<invoice_no>_<Agent_Name>_<DD_Mon_YYYY>.xlsx`.
   - `amount`: amount payable. If omitted, it is calculated as `tuition × rate` (formula kept in the cell).
     If both are given and they disagree, the build prints a warning
 - `notes`: optional free text printed under the signature
+- `file_name`: optional output file name, to match the folder's naming (e.g. `Inv 20261110 Edu_Haoer Yu 8 Nov 2026.xlsx`)
