@@ -63,7 +63,10 @@ def build(details_path, profile_path, out_dir):
     d = json.loads(Path(details_path).read_text(encoding="utf-8"))
     agent, bill, bank = profile["agent"], profile["bill_to"], profile["bank"]
     inv_date = parse_date(d.get("invoice_date"))
-    inv_no = str(d.get("invoice_no") or inv_date.strftime("%Y%m%d"))
+    if not d.get("invoice_no"):
+        raise SystemExit("invoice_no is required: invoice numbers are sequential (e.g. 20261109 -> 20261110), "
+                         "take the largest existing number in the Received folder + 1")
+    inv_no = str(d["invoice_no"])
     students = d["students"]
     if not students:
         raise SystemExit("No students / line items given")
@@ -190,6 +193,9 @@ def build(details_path, profile_path, out_dir):
     out_dir.mkdir(parents=True, exist_ok=True)
     safe_agent = re.sub(r"\W+", "_", agent["name"]).strip("_")
     out = out_dir / f"Inv_{inv_no}_{safe_agent}_{inv_date.strftime('%d_%b_%Y')}.xlsx"
+    if out.exists():
+        # Create-only rule: never overwrite an existing invoice (see CLAUDE.md)
+        raise SystemExit(f"Refusing to overwrite existing file: {out}")
     wb.save(out)
     print(out)
     return out
