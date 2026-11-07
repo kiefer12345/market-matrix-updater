@@ -32,6 +32,9 @@
 - **佣金比例：** 按用户给的 professional service 信息决定写法。给出了各段比例的，写成过程比例（如 `10%*60%`）；
   只有最终比例的，写最终比例（如 `8.24%`）。不要自行换算或合并。
 - 发票底部保留 "Name of the Agent" 和 "Signatory" 签字行。
+- **金额以用户表格为准：** 应付金额与「计佣学费 × 比例」相差 **1 元以内**属于 rounding，直接用表上金额，不必再问用户。
+  相差 1 元或以上才需要确认。（表上比例明显错位时，例如 87.20% 实为 8.72%，仍需确认。）
+- **重复检查：** 开票前对照该代理以往的发票。同一学生已开过的，先问用户是否为后续一期佣金。
 
 ## Invoice folder: create-only (English summary)
 For the folder above you may list and read files, and create **new** files only. Never modify,

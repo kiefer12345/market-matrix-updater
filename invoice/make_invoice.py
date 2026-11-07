@@ -31,6 +31,7 @@ COLS = ["学生姓名", "申请院校", "课程名称", "开学日期", "计佣�
 TCOLS = "BCDEFGHI"  # table columns; F tuition, G rate, H amount, I currency
 WIDTHS = {"A": 3, "B": 24, "C": 15.5, "D": 26, "E": 14, "F": 19, "G": 14, "H": 14, "I": 8, "J": 18}
 GST_RATE = 0.10
+ROUNDING_TOLERANCE = 1.00  # amount vs tuition x rate: gaps below this are rounding, use the given amount
 
 thin = Side(style="thin")
 BOX = Border(top=thin, bottom=thin, left=thin, right=thin)
@@ -243,7 +244,8 @@ def build(details_path, profile_path, out_dir):
             amount_val = f"=ROUND(F{r}*" + "*".join(f"{x:g}" for x in factors) + ",2)"
         elif amount is not None:
             amount_val = amount
-            if tuition is not None and rate is not None and abs(round(tuition * rate, 2) - amount) > 0.01:
+            # user rule (2026-11-08): rounding gaps under $1 follow the user's sheet without asking
+            if tuition is not None and rate is not None and abs(round(tuition * rate, 2) - amount) >= ROUNDING_TOLERANCE:
                 print(f"WARNING: {s.get('name')}: amount {amount} != tuition {tuition} x rate {s.get('rate')} "
                       f"= {round(tuition * rate, 2)} - check before sending", file=sys.stderr)
         else:
