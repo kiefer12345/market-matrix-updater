@@ -2,3 +2,4 @@
 profile.json
 *.xlsx
 *.pdf
+__pycache__/
