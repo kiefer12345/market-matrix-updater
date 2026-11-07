@@ -27,6 +27,11 @@
 - 公司地址统一用现址：**Level 1, 63-73 Ann Street, Surry Hills, NSW 2010**
 - 以上存于 `invoice/company.json`，生成发票时自动使用，不从旧发票复制
 - 旧发票中 BSB 与账号栏位填反的，新发票一律改正（生成器自动纠正并提示）
+- **GST：** 代理没有注册 GST（旧发票写 GST: N/A）时，标题用 **Invoice**；注册了的，用 **Tax Invoice** 并列出 GST。
+  **每次遇到新代理，必须先问用户该代理是否注册 GST，确认后才能开票。**
+- **佣金比例：** 按用户给的 professional service 信息决定写法。给出了各段比例的，写成过程比例（如 `10%*60%`）；
+  只有最终比例的，写最终比例（如 `8.24%`）。不要自行换算或合并。
+- 发票底部保留 "Name of the Agent" 和 "Signatory" 签字行。
 
 ## Invoice folder: create-only (English summary)
 For the folder above you may list and read files, and create **new** files only. Never modify,

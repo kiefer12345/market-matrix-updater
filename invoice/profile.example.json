@@ -1,8 +1,8 @@
 {
-  "title": "Tax Invoice",
+  "gst_registered": false,
+  "gst_source": "confirmed by user / past invoice says 'GST: N/A'",
   "heading": "Agent Commission Invoice",
   "currency": "AUD",
-  "gst_note": "GST: N/A",
   "payment_method": "Bank Transfer",
   "agent": {
     "name": "Your Name",

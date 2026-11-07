@@ -39,6 +39,11 @@ python3 invoice/make_invoice.py build details.json -o out/
 ```
 Output name: `Inv_<invoice_no>_<Agent_Name>_<DD_Mon_YYYY>.xlsx`.
 
+### GST (per agent, in profile.json)
+- `"gst_registered": false`: title **Invoice**, remittance shows `GST: N/A`. Every agent whose past invoices say `GST: N/A` is set to this automatically by `extract-profile`.
+- `"gst_registered": true`: title **Tax Invoice**, with Subtotal, GST 10% and Total (incl. GST) rows. Line amounts are treated as GST-exclusive, unless the details file sets `"amounts_include_gst": true`.
+- Missing / `null`: the build is refused. A **new agent** must have their GST status confirmed with the user first.
+
 ### details.json fields
 - `invoice_no`: **required**. Numbers are sequential (`20261109` → `20261110`), so use the largest existing number in the Received folder + 1
 - `invoice_date`: `YYYY-MM-DD`, defaults to today
@@ -46,5 +51,8 @@ Output name: `Inv_<invoice_no>_<Agent_Name>_<DD_Mon_YYYY>.xlsx`.
 - `students[]`: one object per line
   - `name`, `institution`, `course`, `intake` (e.g. `S1 2027`)
   - `tuition`: commissionable tuition, or `"n/a"`
-  - `amount`: amount payable, **or** `rate` (`15` or `0.15`), which is applied to `tuition`
+  - `rate`: shown in the 佣金比例 column exactly as given. Use a staged rate such as `"10%*60%"` when the
+    details give the stages, or a final rate such as `"8.24%"` when they don't. Numbers (`15`, `0.15`) also work
+  - `amount`: amount payable. If omitted, it is calculated as `tuition × rate` (formula kept in the cell).
+    If both are given and they disagree, the build prints a warning
 - `notes`: optional free text printed under the signature

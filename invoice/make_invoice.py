@@ -27,8 +27,10 @@ HERE = Path(__file__).resolve().parent
 FONT = "Aptos Narrow"  # same font as the original invoice
 MONEY = '"$"#,##0.00'
 DATE_FMT = "dd mmm yyyy"
-COLS = ["学生姓名", "申请院校", "课程名称", "开学日期", "计佣学费", "应付金额", "币种"]
-WIDTHS = {"A": 3, "B": 18.8, "C": 15.5, "D": 26, "E": 14, "F": 19, "G": 13, "H": 10, "I": 12, "J": 12}
+COLS = ["学生姓名", "申请院校", "课程名称", "开学日期", "计佣学费", "佣金比例", "应付金额", "币种"]
+TCOLS = "BCDEFGHI"  # table columns; F tuition, G rate, H amount, I currency
+WIDTHS = {"A": 3, "B": 20, "C": 15.5, "D": 26, "E": 14, "F": 19, "G": 14, "H": 14, "I": 8, "J": 12}
+GST_RATE = 0.10
 
 thin = Side(style="thin")
 BOX = Border(top=thin, bottom=thin, left=thin, right=thin)
@@ -100,10 +102,30 @@ def load_company():
     return json.loads((HERE / "company.json").read_text(encoding="utf-8"))
 
 
+def parse_rate(v):
+    """'10%*60%' -> (0.06, [0.1, 0.6]); '8.24%' -> (0.0824, [0.0824]); 15 -> 0.15; 0.12 -> 0.12."""
+    if v in (None, "", "n/a", "N/A", "NA"):
+        return None, []
+    parts = re.split(r"\s*[*×xX]\s*", str(v).strip()) if isinstance(v, str) else [v]
+    factors = []
+    for p in parts:
+        has_pct = isinstance(p, str) and "%" in p
+        x = float(re.sub(r"[^\d.\-]", "", str(p)))
+        factors.append(x / 100 if has_pct or x > 1 else x)
+    prod = 1.0
+    for x in factors:
+        prod *= x
+    return prod, factors
+
+
 def build(details_path, profile_path, out_dir):
     profile = json.loads(Path(profile_path).read_text(encoding="utf-8"))
     d = json.loads(Path(details_path).read_text(encoding="utf-8"))
     agent = profile["agent"]
+    gst = profile.get("gst_registered")
+    if gst is None:
+        raise SystemExit(f"GST status of agent {agent.get('name')!r} is unknown. New agent: ask the user whether "
+                         "the agent is registered for GST, then set \"gst_registered\": true/false in the profile.")
     bill = load_company()  # always the standard company details, never what an old invoice said
     bank = normalize_bank(profile["bank"])
     inv_date = parse_date(d.get("invoice_date"))
@@ -138,7 +160,8 @@ def build(details_path, profile_path, out_dir):
         return c
 
     # ---- header -------------------------------------------------------------
-    put("B1", profile.get("title", "Tax Invoice"), bold=True, size=14)
+    # Not registered for GST ("GST: N/A") -> plain "Invoice"; registered -> "Tax Invoice" with GST shown
+    put("B1", "Tax Invoice" if gst else "Invoice", bold=True, size=14)
     put("B3", "Invoice to", bold=True)
     put("F3", "Invoice details", bold=True)
     put("B4", bill["name"])
@@ -161,13 +184,23 @@ def build(details_path, profile_path, out_dir):
     hdr = 25
     first = hdr + 1
     last = hdr + len(students)
-    total_row = last + 1
+    incl = bool(d.get("amounts_include_gst"))
+    if gst:
+        # Subtotal / GST / Total rows; the payable total is the last one
+        sub_row, gst_row, total_row = last + 1, last + 2, last + 3
+    else:
+        sub_row = gst_row = None
+        total_row = last + 1
 
     # ---- remittance / bank --------------------------------------------------
     put("B10", "REMITTANCE ADVICE", bold=True)
-    put("B11", "Total Payment"); put("C11", f"=G{total_row}", fmt=MONEY, align="left")
+    put("B11", "Total Payment"); put("C11", f"=H{total_row}", fmt=MONEY, align="left")
     put("D11", ccy)
-    put("B12", profile.get("gst_note", "GST: N/A"))
+    if gst:
+        put("B12", "GST:"); put("C12", f"=H{gst_row}", fmt=MONEY, align="left")
+        put("D12", "(included in Total Payment)")
+    else:
+        put("B12", "GST: N/A")
     rows = [
         ("Bank:", bank.get("bank", "")),
         ("Bank Swift Code:", bank.get("swift", "")),
@@ -187,44 +220,71 @@ def build(details_path, profile_path, out_dir):
     put("B23", d.get("services_heading", "For Professional Services For Below Recommended Students"), bold=True)
 
     for i, name in enumerate(COLS):
-        c = put(f"{'BCDEFGH'[i]}{hdr}", name, bold=True, align="center")
+        c = put(f"{TCOLS[i]}{hdr}", name, bold=True, align="center")
         c.border = BOX
 
     for r, s in enumerate(students, start=first):
         tuition = num(s.get("tuition"))
-        rate = num(s.get("rate"))
+        rate, factors = parse_rate(s.get("rate"))
         amount = num(s.get("amount"))
         if amount is None and tuition is not None and rate is not None:
-            rate = rate / 100 if rate > 1 else rate
-            amount_val = f"=ROUND(F{r}*{rate},2)"
+            # keep the stages visible in the formula, e.g. =ROUND(F26*0.1*0.6,2)
+            amount_val = f"=ROUND(F{r}*" + "*".join(f"{x:g}" for x in factors) + ",2)"
         elif amount is not None:
             amount_val = amount
+            if tuition is not None and rate is not None and abs(round(tuition * rate, 2) - amount) > 0.01:
+                print(f"WARNING: {s.get('name')}: amount {amount} != tuition {tuition} x rate {s.get('rate')} "
+                      f"= {round(tuition * rate, 2)} - check before sending", file=sys.stderr)
         else:
             raise SystemExit(f"Student {s.get('name')!r}: give 'amount', or 'tuition' + 'rate'")
-        intake = s.get("intake", "")
-        vals = [s.get("name", ""), s.get("institution", ""), s.get("course", ""), intake,
-                tuition if tuition is not None else "n/a", amount_val, ccy]
-        for i, v in enumerate(vals):
-            col = "BCDEFGH"[i]
+        raw_rate = s.get("rate")
+        # rate shown exactly as given ("10%*60%" stays a staged rate, "8.24%" a final rate)
+        rate_val = raw_rate if isinstance(raw_rate, str) and raw_rate.strip() else (rate if rate is not None else "n/a")
+        vals = [s.get("name", ""), s.get("institution", ""), s.get("course", ""), s.get("intake", ""),
+                tuition if tuition is not None else "n/a", rate_val, amount_val, ccy]
+        for col, v in zip(TCOLS, vals):
             c = put(f"{col}{r}", v, align="center")
             c.border = BOX
             c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
             if col == "F":
                 c.number_format = '"$"#,##0'
-            if col == "G":
+            if col == "G" and isinstance(v, float):
+                c.number_format = "0.00%"
+            if col == "H":
                 c.number_format = MONEY
 
-    put(f"F{total_row}", "Total", bold=True, align="center").border = BOX
-    c = put(f"G{total_row}", f"=SUM(G{first}:G{last})", bold=True, fmt=MONEY, align="center")
-    c.border = BOX
-    put(f"H{total_row}", ccy, align="center").border = BOX
+    def total_line(row, label, formula, bold=False):
+        ws.merge_cells(f"F{row}:G{row}")  # room for "Subtotal (excl. GST)"
+        put(f"F{row}", label, bold=bold, align="right")
+        ws[f"F{row}"].border = BOX
+        ws[f"G{row}"].border = BOX
+        put(f"H{row}", formula, bold=bold, fmt=MONEY, align="center").border = BOX
+        put(f"I{row}", ccy, align="center").border = BOX
+
+    line_sum = f"SUM(H{first}:H{last})"
+    if gst and incl:
+        total_line(sub_row, "Subtotal (excl. GST)", f"=H{total_row}-H{gst_row}")
+        total_line(gst_row, "GST", f"=ROUND({line_sum}/11,2)")
+        total_line(total_row, "Total (incl. GST)", f"={line_sum}", bold=True)
+    elif gst:
+        total_line(sub_row, "Subtotal (excl. GST)", f"={line_sum}")
+        total_line(gst_row, f"GST {GST_RATE:.0%}", f"=ROUND(H{sub_row}*{GST_RATE},2)")
+        total_line(total_row, "Total (incl. GST)", f"=H{sub_row}+H{gst_row}", bold=True)
+    else:
+        total_line(total_row, "Total", f"={line_sum}", bold=True)
 
     sig = total_row + 3
-    put(f"B{sig}", "Name of the Agent", bold=True)
+    put(f"B{sig}", "Name of the Agent:", bold=True)
     put(f"C{sig}", agent["name"])
+    put(f"B{sig + 2}", "Signatory:", bold=True)
+    ws[f"C{sig + 2}"].border = Border(bottom=thin)
+    ws[f"D{sig + 2}"].border = Border(bottom=thin)
+    put(f"F{sig + 2}", "Date:", bold=True)
+    ws[f"G{sig + 2}"].border = Border(bottom=thin)
     if d.get("notes"):
-        put(f"B{sig + 2}", "Notes:", bold=True)
-        put(f"C{sig + 2}", d["notes"])
+        put(f"B{sig + 4}", "Notes:", bold=True)
+        put(f"C{sig + 4}", d["notes"])
+        sig += 2
 
     # ---- print setup: A4 portrait, fit to one page wide ---------------------
     ws.page_setup.paperSize = 9
@@ -232,7 +292,7 @@ def build(details_path, profile_path, out_dir):
     ws.sheet_properties.pageSetUpPr = PageSetupProperties(fitToPage=True)
     ws.page_setup.fitToWidth = 1
     ws.page_setup.fitToHeight = 0
-    ws.print_area = f"A1:J{sig + 3}"
+    ws.print_area = f"A1:J{sig + 4}"
 
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -274,11 +334,14 @@ def extract_profile(xlsx, out):
     abn_d = digits(abn)
     if len(abn_d) == 11:
         abn = f"{abn_d[:2]} {abn_d[2:5]} {abn_d[5:8]} {abn_d[8:]}"
+    gst_text = next((str(v) for v in cells.values() if isinstance(v, str) and re.match(r"\s*GST", v, re.I)), "")
+    # "GST: N/A" on a past invoice -> not registered. Anything else stays unknown and must be confirmed.
+    gst_registered = False if re.search(r"n/?a", gst_text, re.I) else None
     profile = {
-        "title": str(cells.get("B1", "Tax Invoice")).strip(),
+        "gst_registered": gst_registered,
+        "gst_source": f"past invoice says {gst_text.strip()!r}" if gst_text else "unknown - ask the user",
         "heading": "Agent Commission Invoice",
         "currency": "AUD",
-        "gst_note": "GST: N/A",
         "payment_method": "Bank Transfer",
         "agent": {"name": agent_name or right_of(r"name of the agent$", cols="BC"), "abn": abn,
                   "address": right_of(r"address:", cols="FGH")},
