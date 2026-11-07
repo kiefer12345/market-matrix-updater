@@ -180,8 +180,21 @@ def build(details_path, profile_path, out_dir):
     for col in "BCDEFGHIJ":
         ws[f"{col}8"].border = Border(bottom=Side(style="medium"))
 
+    # ---- bank rows: optional ones (Swift code, A/C address) only when filled in ----
+    bank_rows = [
+        ("Bank:", bank.get("bank", ""), True),
+        ("Bank Swift Code:", bank.get("swift", ""), False),
+        ("A/C Name:", bank.get("account_name", ""), True),
+        ("A/C NO:", bank.get("account_no", ""), True),
+        ("BSB NO:", bank.get("bsb", ""), True),
+        ("A/C Address:", bank.get("account_address", ""), False),
+    ]
+    bank_rows = [(label, val) for label, val, required in bank_rows if required or str(val or "").strip()]
+    pay_row = 14 + len(bank_rows) + 1
+    heading_row = pay_row + 2
+
     # ---- line items (placed first so remittance can reference the total) ----
-    hdr = 25
+    hdr = heading_row + 2
     first = hdr + 1
     last = hdr + len(students)
     incl = bool(d.get("amounts_include_gst"))
@@ -201,23 +214,15 @@ def build(details_path, profile_path, out_dir):
         put("D12", "(included in Total Payment)")
     else:
         put("B12", "GST: N/A")
-    rows = [
-        ("Bank:", bank.get("bank", "")),
-        ("Bank Swift Code:", bank.get("swift", "")),
-        ("A/C Name:", bank.get("account_name", "")),
-        ("A/C NO:", bank.get("account_no", "")),
-        ("BSB NO:", bank.get("bsb", "")),
-        ("A/C Address:", bank.get("account_address", "")),
-    ]
-    for i, (label, val) in enumerate(rows):
+    for i, (label, val) in enumerate(bank_rows):
         r = 14 + i
         put(f"B{r}", label, bold=True)
         c = put(f"C{r}", str(val), align="left")
         c.number_format = "@"  # keep BSB / account numbers as text
-    put("B21", "Payment Method:", bold=True)
-    put("C21", profile.get("payment_method", "Bank Transfer"), bold=True)
+    put(f"B{pay_row}", "Payment Method:", bold=True)
+    put(f"C{pay_row}", profile.get("payment_method", "Bank Transfer"), bold=True)
 
-    put("B23", d.get("services_heading", "For Professional Services For Below Recommended Students"), bold=True)
+    put(f"B{heading_row}", d.get("services_heading", "For Professional Services For Below Recommended Students"), bold=True)
 
     for i, name in enumerate(COLS):
         c = put(f"{TCOLS[i]}{hdr}", name, bold=True, align="center")
