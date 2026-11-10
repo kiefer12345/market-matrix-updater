@@ -12,15 +12,15 @@
       ],
       "format": "小班(6-8人)",
       "notes": "",
-      "score": 0.586,
-      "positive": 0.586,
+      "score": 1.348,
+      "positive": 1.348,
       "negative": 0,
       "approval": 1.0,
-      "evidence_weight": 0.984,
-      "evidence_count": 5,
-      "independent_sources": 3,
-      "latest_year": 2025,
-      "confidence": "中",
+      "evidence_weight": 1.999,
+      "evidence_count": 11,
+      "independent_sources": 8,
+      "latest_year": 2026,
+      "confidence": "高",
       "evidence": [
         {
           "id": "e0028",
@@ -32,6 +32,39 @@
           "platform": "Google 评分(经 earlybloom 聚合)",
           "url": "https://www.earlybloom.com.au/providers/alpha-one-coaching-college-north-parramatta",
           "summary": "North Parramatta 校区 Google 4.8/5（103 条）：老师认真、每课后有书面反馈、负责人好沟通；也有人提到个别老师教得不好。"
+        },
+        {
+          "id": "e0074",
+          "points": 0.2634,
+          "weight": 0.2927,
+          "sentiment": 0.9,
+          "year": 2025,
+          "source_type": "review_site",
+          "platform": "Google 评分(经 FreeSchoolApp 聚合)",
+          "url": "https://freeschoolapp.com/schools/australia/new-south-wales/burwood/alpha-one-coaching-college-1163",
+          "summary": "Burwood 校区 4.8（31 条），称来源于 Google。聚合站数据，未直接核对。"
+        },
+        {
+          "id": "e0040",
+          "points": 0.2161,
+          "weight": 0.3087,
+          "sentiment": 0.7,
+          "year": 2024,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1838932",
+          "summary": "2024年9月回复：Alpha One 的模考排名比 Pre-Uni 更准。"
+        },
+        {
+          "id": "e0073",
+          "points": 0.2013,
+          "weight": 0.2013,
+          "sentiment": 1.0,
+          "year": 2023,
+          "source_type": "review_site",
+          "platform": "Google 评分(经 Oceaniabiz 聚合)",
+          "url": "https://au.oceaniabiz.com/new-south-wales/alpha-one-coaching-college-526804",
+          "summary": "Bella Vista 校区 5.0（43 条），可见评论来自 2023 年，夸老师好沟通、学生有进步。聚合站数据，未直接核对 Google。"
         },
         {
           "id": "e0018",
@@ -56,6 +89,28 @@
           "summary": "山区(Hills)求推荐时被列出：Castle Hill，8 人小团。"
         },
         {
+          "id": "e0066",
+          "points": 0.0525,
+          "weight": 0.175,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "listing_blog",
+          "platform": "MockStar 指南",
+          "url": "https://mockstar.com.au/resources/oc-test-2026-guide",
+          "summary": "同上：被列为传统补习中心代表之一，每周 60-90 澳元。"
+        },
+        {
+          "id": "e0075",
+          "points": 0.0249,
+          "weight": 0.0311,
+          "sentiment": 0.8,
+          "year": 2025,
+          "source_type": "staff_review",
+          "platform": "Glassdoor",
+          "url": "https://www.glassdoor.com.au/Reviews/Alpha-One-Coaching-College-Reviews-E5807914.htm",
+          "summary": "员工评价 4.6/5（24 条）：环境友好、时间灵活；晋升慢、请假难。只反映雇主情况。"
+        },
+        {
           "id": "e0029",
           "points": 0.0154,
           "weight": 0.022,
@@ -65,6 +120,17 @@
           "platform": "机构官网",
           "url": "https://www.alphaonecollege.com.au/blog-zh/2024-year-in-review",
           "summary": "自称 2024 年精英考试 81.4% 学员获录取或候补，OC 超过 100 人获录取或候补。无法核实。"
+        },
+        {
+          "id": "e0053",
+          "points": 0.0043,
+          "weight": 0.0061,
+          "sentiment": 0.7,
+          "year": 2020,
+          "source_type": "self_claim",
+          "platform": "Bored of Studies",
+          "url": "https://boredofstudies.org/threads/do-you-know-anyone-preparing-for-the-selective-test.361141/",
+          "summary": "推荐 Alpha One 的帖子是其负责人自己发的，按机构自述处理。"
         },
         {
           "id": "e0019",
@@ -90,15 +156,15 @@
       ],
       "format": "班课 + trial + 线上",
       "notes": "",
-      "score": 0.564,
-      "positive": 0.564,
-      "negative": 0,
-      "approval": 1.0,
-      "evidence_weight": 0.851,
-      "evidence_count": 4,
-      "independent_sources": 3,
-      "latest_year": 2022,
-      "confidence": "中",
+      "score": 1.066,
+      "positive": 1.221,
+      "negative": 0.154,
+      "approval": 0.89,
+      "evidence_weight": 2.674,
+      "evidence_count": 13,
+      "independent_sources": 9,
+      "latest_year": 2023,
+      "confidence": "高",
       "evidence": [
         {
           "id": "e0016",
@@ -112,6 +178,17 @@
           "summary": "求「难度不太高、质量不错的在线班」，回复推荐 CS（有 online 选项）。"
         },
         {
+          "id": "e0102",
+          "points": 0.245,
+          "weight": 0.35,
+          "sentiment": 0.7,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "华人澳洲中文论坛(china2au)",
+          "url": "https://bbs.china2au.com/thread-1056811-1-1.html",
+          "summary": "有网上系统和周末班；作业量较少，难度低于 STC。"
+        },
+        {
           "id": "e0003",
           "points": 0.2205,
           "weight": 0.2205,
@@ -121,6 +198,61 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/archiver/?tid-1672966.html",
           "summary": "想靠错题提分会选 CS：错题全部可看、可带回家，网上系统更完善；两家题目难度差不多。"
+        },
+        {
+          "id": "e0058",
+          "points": -0.1543,
+          "weight": 0.2205,
+          "sentiment": -0.7,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1664478",
+          "summary": "有家长说 CS 的题和真实考试差别较大，师资也被质疑。"
+        },
+        {
+          "id": "e0111",
+          "points": 0.1225,
+          "weight": 0.175,
+          "sentiment": 0.7,
+          "year": 2020,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1600597",
+          "summary": "CS 的 trial 被认为有参考价值：在 CS 错 8 题左右「考上前 10 的 OC 班应该没问题」。"
+        },
+        {
+          "id": "e0038",
+          "points": 0.108,
+          "weight": 0.1543,
+          "sentiment": 0.7,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://oursteps.co/bbs/forum.php?mod=viewthread&tid=1709311&page=2",
+          "summary": "在线系统明显更完善：课程回放、作业在线做并可看解答；建议网上 trial 用 CS。池子小，排名靠前意义有限。"
+        },
+        {
+          "id": "e0103",
+          "points": 0.0926,
+          "weight": 0.1323,
+          "sentiment": 0.7,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1649709",
+          "summary": "家长称孩子只在 CS 补了一个 term 就拿到 Quakers Hill OC offer，觉得补习有用；真题比模拟题简单。"
+        },
+        {
+          "id": "e0061",
+          "points": 0.0882,
+          "weight": 0.126,
+          "sentiment": 0.7,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/",
+          "summary": "家长称孩子年中开始在 CS 补习、11 月考 OC；妈妈们都强调最好去总部，师资较稳定。"
         },
         {
           "id": "e0013",
@@ -143,6 +275,349 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/archiver/?tid-1672966.html",
           "summary": "trial 人数只有三四百，排名参考价值不如 Pre-Uni。"
+        },
+        {
+          "id": "e0057",
+          "points": 0.0,
+          "weight": 0.35,
+          "sentiment": 0.0,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668",
+          "summary": "各分校水平相近，关键看能不能碰到好老师。"
+        },
+        {
+          "id": "e0068",
+          "points": 0.0,
+          "weight": 0.21,
+          "sentiment": 0.0,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668",
+          "summary": "有人认为 Chatswood 分校不如其他分校。"
+        },
+        {
+          "id": "e0112",
+          "points": 0.0,
+          "weight": 0.105,
+          "sentiment": 0.0,
+          "year": 2020,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1600597",
+          "summary": "也有人提醒真实考试题型可能和 CS 的差别很大，不要以为 CS trial 一定比真题难。"
+        }
+      ]
+    },
+    {
+      "id": "pre_uni",
+      "name": "Pre-Uni New College",
+      "name_zh": "新学院 / PU",
+      "areas": [
+        "Homebush(总部)",
+        "Castle Hill",
+        "Epping",
+        "多校区"
+      ],
+      "format": "大班 + 大型模拟考(WEMT/trial)",
+      "notes": "各校区独立经营，教材和考题通用；口碑随校区和老师差别大。",
+      "score": 0.91,
+      "positive": 1.452,
+      "negative": 0.542,
+      "approval": 0.73,
+      "evidence_weight": 5.054,
+      "evidence_count": 26,
+      "independent_sources": 22,
+      "latest_year": 2026,
+      "confidence": "高",
+      "evidence": [
+        {
+          "id": "e0005",
+          "points": 0.2778,
+          "weight": 0.2778,
+          "sentiment": 1.0,
+          "year": 2022,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1766722",
+          "summary": "需要大量练习、想看大样本排名的孩子，多数回复倾向 Pre-Uni。"
+        },
+        {
+          "id": "e0101",
+          "points": 0.245,
+          "weight": 0.35,
+          "sentiment": 0.7,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "华人澳洲中文论坛(china2au)",
+          "url": "https://bbs.china2au.com/thread-1056811-1-1.html",
+          "summary": "有网上系统和周末班，上课时间灵活；作业量和难度都低于 STC。"
+        },
+        {
+          "id": "e0001",
+          "points": 0.2205,
+          "weight": 0.2205,
+          "sentiment": 1.0,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/archiver/?tid-1672966.html",
+          "summary": "做 trial 首选：参加人数上千（CS 只有三四百），排名更有参考价值。"
+        },
+        {
+          "id": "e0039",
+          "points": -0.2161,
+          "weight": 0.3087,
+          "sentiment": -0.7,
+          "year": 2024,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1838932",
+          "summary": "2024年9月回复：Pre-Uni 这几年排名准确性越来越低。"
+        },
+        {
+          "id": "e0017",
+          "points": -0.1764,
+          "weight": 0.252,
+          "sentiment": -0.7,
+          "year": 2024,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1826241",
+          "summary": "家长对比 2023 真题后认为所上两家补习班（帖中称「P家」「S家」，P家应指 Pre-Uni，属推断）模拟题远难于真题、有过度补习之嫌；P家看不到模考卷只能在线看错题。"
+        },
+        {
+          "id": "e0037",
+          "points": 0.1543,
+          "weight": 0.1543,
+          "sentiment": 1.0,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://oursteps.co/bbs/forum.php?mod=viewthread&tid=1709311&page=2",
+          "summary": "模拟考上千人参加，排名更有说服力；实体课选 Pre-Uni。"
+        },
+        {
+          "id": "e0059",
+          "points": 0.1543,
+          "weight": 0.2205,
+          "sentiment": 0.7,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1664478",
+          "summary": "有家长认为 Pre-Uni 的题更接近真正的 Thinking Skills。"
+        },
+        {
+          "id": "e0002",
+          "points": -0.0926,
+          "weight": 0.1323,
+          "sentiment": -0.7,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/archiver/?tid-1672966.html",
+          "summary": "错题只能看一小部分，网站功能弱，考试一次考好几天负担重。"
+        },
+        {
+          "id": "e0011",
+          "points": 0.0661,
+          "weight": 0.2205,
+          "sentiment": 0.3,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1669824",
+          "summary": "作为 STC 满员时的替代被推荐，建议去总部；各校区独立，教材考题通用。"
+        },
+        {
+          "id": "e0014",
+          "points": 0.0661,
+          "weight": 0.2205,
+          "sentiment": 0.3,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1649709",
+          "summary": "山区求推荐时被列出：Castle Hill 校区。"
+        },
+        {
+          "id": "e0048",
+          "points": 0.0612,
+          "weight": 0.0612,
+          "sentiment": 1.0,
+          "year": 2017,
+          "source_type": "parent_forum",
+          "platform": "OzBargain",
+          "url": "https://www.ozbargain.com.au/node/318296",
+          "summary": "家长称儿子靠 Pre-Uni 加自己练习考上第一志愿精英中学，会优先选 Pre-Uni。"
+        },
+        {
+          "id": "e0027",
+          "points": -0.0569,
+          "weight": 0.2276,
+          "sentiment": -0.25,
+          "year": 2025,
+          "source_type": "review_site",
+          "platform": "ProductReview",
+          "url": "https://www.productreview.com.au/listings/pre-uni-new-college",
+          "summary": "约 2.5/5（46 条）。好评：贴近真实考试；差评：班太大、个别校区只顾赚钱、总部在考前终止某校区合约、查成绩态度差。结论是因校区和老师而异。"
+        },
+        {
+          "id": "e0098",
+          "points": 0.0529,
+          "weight": 0.0756,
+          "sentiment": 0.7,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/",
+          "summary": "2021 年 OC/Selective 改革后，家长觉得 Pre-Uni 的题大体接近教育部样题。"
+        },
+        {
+          "id": "e0064",
+          "points": 0.0525,
+          "weight": 0.175,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "listing_blog",
+          "platform": "MockStar 指南",
+          "url": "https://mockstar.com.au/resources/oc-test-2026-guide",
+          "summary": "称 North Shore、Pre-Uni、Alpha One 等传统补习中心小班每周 60-90 澳元，练习标准化、不分强弱项。作者是卖在线模拟考的同行。"
+        },
+        {
+          "id": "e0106",
+          "points": 0.0367,
+          "weight": 0.1225,
+          "sentiment": 0.3,
+          "year": 2020,
+          "source_type": "parent_forum",
+          "platform": "华人澳洲中文论坛(china2au)",
+          "url": "https://www.china2au.com/html/zinvjiaoyu/xiaoxuejiaoyu/20200509/360370.html",
+          "summary": "Homebush 总部被当作基准选项来比较。"
+        },
+        {
+          "id": "e0052",
+          "points": 0.0343,
+          "weight": 0.0343,
+          "sentiment": 1.0,
+          "year": 2009,
+          "source_type": "student_forum",
+          "platform": "Bored of Studies",
+          "url": "https://boredofstudies.org/threads/best-tutoring-colleges-for-year-5-6-and-selective-school-test.232118/",
+          "summary": "多数回复推荐 James An 和 Pre-Uni；有人更偏 Pre-Uni，尤其数学，重视模拟考。"
+        },
+        {
+          "id": "e0077",
+          "points": 0.0219,
+          "weight": 0.0219,
+          "sentiment": 1.0,
+          "year": 2017,
+          "source_type": "listing_blog",
+          "platform": "悉尼星尚(微信公众号)",
+          "url": "https://rank.aoweibang.com/wx/G1vcnWpFO6dSK5RV_o03c_hEXlEB94DOQeBUvTpQMlLWWlBPA5GxFaKitkPRbVOjvhNXjWswC6aAUeqNx0_C4A/",
+          "summary": "公众号榜单第一家：25 年历史，新州 22 家分校，「在悉尼比较有口碑」。推广性质。"
+        },
+        {
+          "id": "e0117",
+          "points": 0.0084,
+          "weight": 0.028,
+          "sentiment": 0.3,
+          "year": 2010,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=216336",
+          "summary": "早年帖子：Pre-Uni 没有快班，但有奖学金考试，可减免 25%-100% 学费。"
+        },
+        {
+          "id": "e0006",
+          "points": 0.0,
+          "weight": 0.1667,
+          "sentiment": 0.0,
+          "year": 2022,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1766722",
+          "summary": "题海战术，孩子不喜欢，但家长看着每天一小时作业有成就感。"
+        },
+        {
+          "id": "e0023",
+          "points": 0.0,
+          "weight": 0.7,
+          "sentiment": 0.0,
+          "year": 2026,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1886798",
+          "summary": "被当作题目难度的参照物（「CT 比 PreUni 还难」），说明 Pre-Uni 的题仍被普遍认为偏难。"
+        },
+        {
+          "id": "e0036",
+          "points": 0.0,
+          "weight": 0.0343,
+          "sentiment": 0.0,
+          "year": 2008,
+          "source_type": "student_forum",
+          "platform": "Bored of Studies",
+          "url": "https://boredofstudies.org/threads/selective-exams-coaching.183033/",
+          "summary": "Homebush 校区每周都有考试，但通常不讲错题原因；大机构的模拟考对备考 Selective 最有帮助。"
+        },
+        {
+          "id": "e0049",
+          "points": 0.0,
+          "weight": 0.245,
+          "sentiment": 0.0,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "OzBargain",
+          "url": "https://www.ozbargain.com.au/node/795832",
+          "summary": "对比过 Matrix 和 Pre-Uni，觉得差不多，更取决于具体校区和老师。"
+        },
+        {
+          "id": "e0055",
+          "points": 0.0,
+          "weight": 0.35,
+          "sentiment": 0.0,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668",
+          "summary": "OC 模拟考排名参考性强，但近两年去的人变少，也有人觉得题目一般。"
+        },
+        {
+          "id": "e0067",
+          "points": 0.0,
+          "weight": 0.21,
+          "sentiment": 0.0,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668",
+          "summary": "楼主观察：多数人只是去考它的 trial 看排名，有人认为其 OC trial 题目质量一般。"
+        },
+        {
+          "id": "e0076",
+          "points": 0.0,
+          "weight": 0.0444,
+          "sentiment": 0.0,
+          "year": 2025,
+          "source_type": "staff_review",
+          "platform": "Indeed",
+          "url": "https://au.indeed.com/cmp/Pre--uni-New-College/reviews",
+          "summary": "约 50 条员工评价，褒贬不一偏正面。只反映雇主情况。"
+        },
+        {
+          "id": "e0097",
+          "points": 0.0,
+          "weight": 0.2,
+          "sentiment": 0.0,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/",
+          "summary": "家长在 Pre-Uni 试过 WEMT，觉得综合性太强、针对性不够。"
         }
       ]
     },
@@ -155,12 +630,12 @@
       ],
       "format": "练习册",
       "notes": "不是补习班，是纸质练习册，列在这里是因为家长常拿它和补习班的题比。",
-      "score": 0.556,
-      "positive": 0.556,
+      "score": 0.789,
+      "positive": 0.789,
       "negative": 0,
       "approval": 1.0,
-      "evidence_weight": 0.556,
-      "evidence_count": 1,
+      "evidence_weight": 0.889,
+      "evidence_count": 2,
       "independent_sources": 1,
       "latest_year": 2025,
       "confidence": "低",
@@ -175,6 +650,147 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1847659",
           "summary": "难度和真实 OC 最接近，比网上一些题可靠；还有 Pre-OC 系列。最终仍建议回归官方真题。"
+        },
+        {
+          "id": "e0114",
+          "points": 0.2333,
+          "weight": 0.3334,
+          "sentiment": 0.7,
+          "year": 2025,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1847659",
+          "summary": "另一位回复：Essential 系列更接近实际考题，要做到高准确率也得花时间。"
+        }
+      ]
+    },
+    {
+      "id": "stc",
+      "name": "STC Selected Tutorial Centre",
+      "name_zh": "STC",
+      "areas": [
+        "Hurstville"
+      ],
+      "format": "班课 + WEMT",
+      "notes": "",
+      "score": 0.482,
+      "positive": 0.482,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 1.109,
+      "evidence_count": 7,
+      "independent_sources": 3,
+      "latest_year": 2023,
+      "confidence": "中",
+      "evidence": [
+        {
+          "id": "e0099",
+          "points": 0.245,
+          "weight": 0.35,
+          "sentiment": 0.7,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "华人澳洲中文论坛(china2au)",
+          "url": "https://bbs.china2au.com/thread-1056811-1-1.html",
+          "summary": "规模大、历史久、按程度分班，题目难度高于 Pre-Uni 和 CS。"
+        },
+        {
+          "id": "e0010",
+          "points": 0.2205,
+          "weight": 0.2205,
+          "sentiment": 1.0,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1669824",
+          "summary": "Hurstville 一带往年成绩最好、南区最大，价格比 Pre-Uni / North Shore / CS 便宜；当时可能已无空位。"
+        },
+        {
+          "id": "e0095",
+          "points": 0.0097,
+          "weight": 0.0139,
+          "sentiment": 0.7,
+          "year": 2022,
+          "source_type": "self_claim",
+          "platform": "机构软文",
+          "url": "https://www.sohu.com/a/541552843_121124569",
+          "summary": "称近 8 年 Hurstville OC 班一半学生出自 STC。机构宣传口径，未经核实。"
+        },
+        {
+          "id": "e0063",
+          "points": 0.0072,
+          "weight": 0.024,
+          "sentiment": 0.3,
+          "year": 2016,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/",
+          "summary": "南区家长把 STC 当作就近的默认选择。"
+        },
+        {
+          "id": "e0093",
+          "points": 0.0,
+          "weight": 0.1323,
+          "sentiment": 0.0,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1669824",
+          "summary": "数学据说较难；新生第一学期只能进基础班，期末考试后才分班，入学晚可能赶不上当期 OC；不像 Pre-Uni / CS 有网上视频讲解和错题查看。"
+        },
+        {
+          "id": "e0094",
+          "points": 0.0,
+          "weight": 0.1587,
+          "sentiment": 0.0,
+          "year": 2022,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/",
+          "summary": "作业题没有答案，很费爹妈，适合基础较好的孩子；各班作业基本是同一套题。"
+        },
+        {
+          "id": "e0100",
+          "points": 0.0,
+          "weight": 0.21,
+          "sentiment": 0.0,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "华人澳洲中文论坛(china2au)",
+          "url": "https://bbs.china2au.com/thread-1056811-1-1.html",
+          "summary": "楼主说作业没答案、没有网上系统和周末班；另一回复反驳说各班都有答案、也有周末班。说法不一。"
+        }
+      ]
+    },
+    {
+      "id": "five_senses",
+      "name": "Five Senses Education 练习册",
+      "name_zh": "5 Sense",
+      "areas": [
+        "自学"
+      ],
+      "format": "练习册 / 模拟卷",
+      "notes": "出版社的练习册和模拟卷，不是补习班。",
+      "score": 0.389,
+      "positive": 0.389,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.556,
+      "evidence_count": 1,
+      "independent_sources": 1,
+      "latest_year": 2025,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0116",
+          "points": 0.3889,
+          "weight": 0.5556,
+          "sentiment": 0.7,
+          "year": 2025,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1847659",
+          "summary": "有人认为 5 Sense 的题可能更接近真题。"
         }
       ]
     },
@@ -211,215 +827,6 @@
       ]
     },
     {
-      "id": "pre_uni",
-      "name": "Pre-Uni New College",
-      "name_zh": "新学院 / PU",
-      "areas": [
-        "Homebush(总部)",
-        "Castle Hill",
-        "Epping",
-        "多校区"
-      ],
-      "format": "大班 + 大型模拟考(WEMT/trial)",
-      "notes": "各校区独立经营，教材和考题通用；口碑随校区和老师差别大。",
-      "score": 0.305,
-      "positive": 0.631,
-      "negative": 0.326,
-      "approval": 0.66,
-      "evidence_weight": 2.452,
-      "evidence_count": 10,
-      "independent_sources": 8,
-      "latest_year": 2026,
-      "confidence": "高",
-      "evidence": [
-        {
-          "id": "e0005",
-          "points": 0.2778,
-          "weight": 0.2778,
-          "sentiment": 1.0,
-          "year": 2022,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1766722",
-          "summary": "需要大量练习、想看大样本排名的孩子，多数回复倾向 Pre-Uni。"
-        },
-        {
-          "id": "e0001",
-          "points": 0.2205,
-          "weight": 0.2205,
-          "sentiment": 1.0,
-          "year": 2021,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/archiver/?tid-1672966.html",
-          "summary": "做 trial 首选：参加人数上千（CS 只有三四百），排名更有参考价值。"
-        },
-        {
-          "id": "e0017",
-          "points": -0.1764,
-          "weight": 0.252,
-          "sentiment": -0.7,
-          "year": 2024,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1826241",
-          "summary": "家长对比 2023 真题后认为所上两家补习班（帖中称「P家」「S家」，P家应指 Pre-Uni，属推断）模拟题远难于真题、有过度补习之嫌；P家看不到模考卷只能在线看错题。"
-        },
-        {
-          "id": "e0002",
-          "points": -0.0926,
-          "weight": 0.1323,
-          "sentiment": -0.7,
-          "year": 2021,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/archiver/?tid-1672966.html",
-          "summary": "错题只能看一小部分，网站功能弱，考试一次考好几天负担重。"
-        },
-        {
-          "id": "e0011",
-          "points": 0.0661,
-          "weight": 0.2205,
-          "sentiment": 0.3,
-          "year": 2021,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1669824",
-          "summary": "作为 STC 满员时的替代被推荐，建议去总部；各校区独立，教材考题通用。"
-        },
-        {
-          "id": "e0014",
-          "points": 0.0661,
-          "weight": 0.2205,
-          "sentiment": 0.3,
-          "year": 2021,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1649709",
-          "summary": "山区求推荐时被列出：Castle Hill 校区。"
-        },
-        {
-          "id": "e0027",
-          "points": -0.0569,
-          "weight": 0.2276,
-          "sentiment": -0.25,
-          "year": 2025,
-          "source_type": "review_site",
-          "platform": "ProductReview",
-          "url": "https://www.productreview.com.au/listings/pre-uni-new-college",
-          "summary": "约 2.5/5（46 条）。好评：贴近真实考试；差评：班太大、个别校区只顾赚钱、总部在考前终止某校区合约、查成绩态度差。结论是因校区和老师而异。"
-        },
-        {
-          "id": "e0006",
-          "points": 0.0,
-          "weight": 0.1667,
-          "sentiment": 0.0,
-          "year": 2022,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1766722",
-          "summary": "题海战术，孩子不喜欢，但家长看着每天一小时作业有成就感。"
-        },
-        {
-          "id": "e0023",
-          "points": 0.0,
-          "weight": 0.7,
-          "sentiment": 0.0,
-          "year": 2026,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1886798",
-          "summary": "被当作题目难度的参照物（「CT 比 PreUni 还难」），说明 Pre-Uni 的题仍被普遍认为偏难。"
-        },
-        {
-          "id": "e0036",
-          "points": 0.0,
-          "weight": 0.0343,
-          "sentiment": 0.0,
-          "year": 2008,
-          "source_type": "student_forum",
-          "platform": "Bored of Studies",
-          "url": "https://boredofstudies.org/threads/selective-exams-coaching.183033/",
-          "summary": "Homebush 校区每周都有考试，但通常不讲错题原因；大机构的模拟考对备考 Selective 最有帮助。"
-        }
-      ]
-    },
-    {
-      "id": "stc",
-      "name": "STC Selected Tutorial Centre",
-      "name_zh": "STC",
-      "areas": [
-        "Hurstville"
-      ],
-      "format": "班课 + WEMT",
-      "notes": "",
-      "score": 0.22,
-      "positive": 0.22,
-      "negative": 0,
-      "approval": 1.0,
-      "evidence_weight": 0.22,
-      "evidence_count": 1,
-      "independent_sources": 1,
-      "latest_year": 2021,
-      "confidence": "低",
-      "evidence": [
-        {
-          "id": "e0010",
-          "points": 0.2205,
-          "weight": 0.2205,
-          "sentiment": 1.0,
-          "year": 2021,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1669824",
-          "summary": "Hurstville 一带往年成绩最好、南区最大，价格比 Pre-Uni / North Shore / CS 便宜；当时可能已无空位。"
-        }
-      ]
-    },
-    {
-      "id": "north_shore",
-      "name": "North Shore Coaching College",
-      "name_zh": "北岸",
-      "areas": [
-        "多校区(全悉尼)"
-      ],
-      "format": "班课 + trial",
-      "notes": "",
-      "score": 0.024,
-      "positive": 0.024,
-      "negative": 0,
-      "approval": 1.0,
-      "evidence_weight": 0.209,
-      "evidence_count": 2,
-      "independent_sources": 2,
-      "latest_year": 2020,
-      "confidence": "低",
-      "evidence": [
-        {
-          "id": "e0034",
-          "points": 0.024,
-          "weight": 0.0343,
-          "sentiment": 0.7,
-          "year": 2009,
-          "source_type": "student_forum",
-          "platform": "Bored of Studies",
-          "url": "https://boredofstudies.org/threads/prior-or-james-an.210636/",
-          "summary": "在 James An 一年后转到 North Shore 并一直留下。"
-        },
-        {
-          "id": "e0020",
-          "points": 0.0,
-          "weight": 0.175,
-          "sentiment": 0.0,
-          "year": 2020,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1600597",
-          "summary": "trial 题偏简单，参考意义有限；也有家长说孩子在北岸模拟后正式考到 230 分。"
-        }
-      ]
-    },
-    {
       "id": "dymocks",
       "name": "Dymocks Tutoring",
       "name_zh": "",
@@ -428,16 +835,38 @@
       ],
       "format": "小班",
       "notes": "",
-      "score": 0.024,
-      "positive": 0.024,
+      "score": 0.183,
+      "positive": 0.183,
       "negative": 0,
       "approval": 1.0,
-      "evidence_weight": 0.035,
-      "evidence_count": 1,
-      "independent_sources": 0,
-      "latest_year": null,
-      "confidence": "低",
+      "evidence_weight": 0.322,
+      "evidence_count": 3,
+      "independent_sources": 2,
+      "latest_year": 2026,
+      "confidence": "中",
       "evidence": [
+        {
+          "id": "e0088",
+          "points": 0.1064,
+          "weight": 0.112,
+          "sentiment": 0.95,
+          "year": 2026,
+          "source_type": "review_site",
+          "platform": "Google 评分(经导购页转引)",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring-colleges",
+          "summary": "导购页称 Parramatta 校区 Google 4.9（469 条）。未直接核对；连锁加盟店的 Google 评分覆盖所有年级，不专指 OC。"
+        },
+        {
+          "id": "e0087",
+          "points": 0.0525,
+          "weight": 0.175,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "listing_blog",
+          "platform": "Tutero 榜单",
+          "url": "https://www.tutero.com/au/blog/best-primary-school-tutoring-sydney",
+          "summary": "同行 Tutero 榜单给 6.7 分，称适合想要 OC/Selective 班课的家庭。不是独立评价。"
+        },
         {
           "id": "e0031",
           "points": 0.0245,
@@ -452,38 +881,34 @@
       ]
     },
     {
-      "id": "matrix",
-      "name": "Matrix Education",
+      "id": "tj_academy",
+      "name": "TJ Academy",
       "name_zh": "",
       "areas": [
-        "Strathfield",
-        "Chatswood",
-        "Epping",
-        "Hurstville",
-        "线上"
+        "Chatswood"
       ],
-      "format": "班课",
+      "format": "假期营 / 英语写作数学",
       "notes": "",
-      "score": 0.024,
-      "positive": 0.024,
+      "score": 0.14,
+      "positive": 0.14,
       "negative": 0,
       "approval": 1.0,
-      "evidence_weight": 0.035,
+      "evidence_weight": 0.14,
       "evidence_count": 1,
-      "independent_sources": 0,
-      "latest_year": null,
+      "independent_sources": 1,
+      "latest_year": 2023,
       "confidence": "低",
       "evidence": [
         {
-          "id": "e0032",
-          "points": 0.0245,
-          "weight": 0.035,
-          "sentiment": 0.7,
-          "year": 2026,
-          "source_type": "self_claim",
-          "platform": "机构官网",
-          "url": "https://www.matrix.edu.au/oc-test-tutoring/",
-          "summary": "官网展示的家长评语：孩子考上 top OC，课程比别家更有体系。机构自选展示。"
+          "id": "e0072",
+          "points": 0.14,
+          "weight": 0.14,
+          "sentiment": 1.0,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668",
+          "summary": "回复中有人推荐其暑期营（英语、写作、数学、阅读鉴赏）。"
         }
       ]
     },
@@ -496,16 +921,27 @@
       ],
       "format": "需入学测试的小班",
       "notes": "",
-      "score": 0.017,
-      "positive": 0.043,
+      "score": 0.083,
+      "positive": 0.109,
       "negative": 0.026,
-      "approval": 0.62,
-      "evidence_weight": 0.376,
-      "evidence_count": 3,
-      "independent_sources": 2,
+      "approval": 0.81,
+      "evidence_weight": 0.596,
+      "evidence_count": 4,
+      "independent_sources": 3,
       "latest_year": 2022,
       "confidence": "中",
       "evidence": [
+        {
+          "id": "e0104",
+          "points": 0.0661,
+          "weight": 0.2205,
+          "sentiment": 0.3,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1649709",
+          "summary": "山区求推荐时被列出（Norwest 校区），有人问其口碑。"
+        },
         {
           "id": "e0008",
           "points": 0.0429,
@@ -542,6 +978,762 @@
       ]
     },
     {
+      "id": "mr_ye",
+      "name": "叶老师补习班 (Mr Ye)",
+      "name_zh": "叶老师",
+      "areas": [
+        "Campsie"
+      ],
+      "format": "需入学测试的班课",
+      "notes": "",
+      "score": 0.082,
+      "positive": 0.082,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.11,
+      "evidence_count": 2,
+      "independent_sources": 2,
+      "latest_year": 2016,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0042",
+          "points": 0.07,
+          "weight": 0.07,
+          "sentiment": 1.0,
+          "year": 2016,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1270950",
+          "summary": "2016年求 OC 补习推荐，多位回复推荐 Campsie 的叶老师，需先做入学测试。"
+        },
+        {
+          "id": "e0062",
+          "points": 0.012,
+          "weight": 0.04,
+          "sentiment": 0.3,
+          "year": 2016,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/",
+          "summary": "有人问「现在还是叶老师最强吗？住南区的值得去吗？还是 STC 混算了」，说明当年叶老师被视为最强之一。"
+        }
+      ]
+    },
+    {
+      "id": "north_shore",
+      "name": "North Shore Coaching College",
+      "name_zh": "北岸",
+      "areas": [
+        "多校区(全悉尼)"
+      ],
+      "format": "班课 + trial",
+      "notes": "",
+      "score": 0.064,
+      "positive": 0.372,
+      "negative": 0.308,
+      "approval": 0.55,
+      "evidence_weight": 1.649,
+      "evidence_count": 13,
+      "independent_sources": 11,
+      "latest_year": 2026,
+      "confidence": "高",
+      "evidence": [
+        {
+          "id": "e0109",
+          "points": 0.1945,
+          "weight": 0.2778,
+          "sentiment": 0.7,
+          "year": 2022,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1728520",
+          "summary": "两个女儿都上过的家长：老师和氛围不错，孩子很喜欢；每周评 student of the week、集卡换奖品；作业少。"
+        },
+        {
+          "id": "e0110",
+          "points": -0.1167,
+          "weight": 0.1667,
+          "sentiment": -0.7,
+          "year": 2022,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1728520",
+          "summary": "同一位家长：习题册规划不好，作业第二周交、第三周才发回，批改慢、效率低。"
+        },
+        {
+          "id": "e0081",
+          "points": 0.0915,
+          "weight": 0.0915,
+          "sentiment": 1.0,
+          "year": 2025,
+          "source_type": "review_site",
+          "platform": "Google 评分(经 Wanderlog 聚合)",
+          "url": "https://wanderlog.com/place/details/13497937/north-shore-coaching-college-randwick",
+          "summary": "Randwick 校区 5.0（14 条）。聚合站数据，条数少。"
+        },
+        {
+          "id": "e0113",
+          "points": -0.0735,
+          "weight": 0.105,
+          "sentiment": -0.7,
+          "year": 2020,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1600597",
+          "summary": "北岸的 trial 题太简单，没什么参考价值。"
+        },
+        {
+          "id": "e0045",
+          "points": -0.0617,
+          "weight": 0.0882,
+          "sentiment": -0.7,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "OzBargain",
+          "url": "https://www.ozbargain.com.au/node/619613",
+          "summary": "回复多持怀疑态度：教材多年几乎没变，一些好老师已经不教了；2023 年还有一条针对环境的差评。"
+        },
+        {
+          "id": "e0096",
+          "points": -0.056,
+          "weight": 0.08,
+          "sentiment": -0.7,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/",
+          "summary": "家长说之前上过 North Shore，觉得是打包式做题，不太喜欢，想要更深入的指导。"
+        },
+        {
+          "id": "e0065",
+          "points": 0.0525,
+          "weight": 0.175,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "listing_blog",
+          "platform": "MockStar 指南",
+          "url": "https://mockstar.com.au/resources/oc-test-2026-guide",
+          "summary": "同上：被列为传统补习中心代表之一，每周 60-90 澳元。"
+        },
+        {
+          "id": "e0034",
+          "points": 0.024,
+          "weight": 0.0343,
+          "sentiment": 0.7,
+          "year": 2009,
+          "source_type": "student_forum",
+          "platform": "Bored of Studies",
+          "url": "https://boredofstudies.org/threads/prior-or-james-an.210636/",
+          "summary": "在 James An 一年后转到 North Shore 并一直留下。"
+        },
+        {
+          "id": "e0082",
+          "points": 0.0058,
+          "weight": 0.0117,
+          "sentiment": 0.5,
+          "year": 2020,
+          "source_type": "review_site",
+          "platform": "Word of Mouth",
+          "url": "https://www.wordofmouth.com.au/reviews/north-shore-coaching-college-beverly-hills",
+          "summary": "Beverly Hills 校区 4.0（仅 2 条）。"
+        },
+        {
+          "id": "e0083",
+          "points": 0.0033,
+          "weight": 0.0328,
+          "sentiment": 0.1,
+          "year": 2025,
+          "source_type": "staff_review",
+          "platform": "Glassdoor",
+          "url": "https://www.glassdoor.com.au/Reviews/North-Shore-Coaching-College-Sydney-Reviews-EI_IE2041652.0,28_IL.29,35_IM962.htm",
+          "summary": "员工评价 3.2/5（29 条）：有前老师说校区经理很混乱；时薪约 35 澳元起、时间灵活。只反映雇主情况。"
+        },
+        {
+          "id": "e0020",
+          "points": 0.0,
+          "weight": 0.175,
+          "sentiment": 0.0,
+          "year": 2020,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1600597",
+          "summary": "trial 题偏简单，参考意义有限；也有家长说孩子在北岸模拟后正式考到 230 分。"
+        },
+        {
+          "id": "e0046",
+          "points": 0.0,
+          "weight": 0.0612,
+          "sentiment": 0.0,
+          "year": 2017,
+          "source_type": "parent_forum",
+          "platform": "OzBargain",
+          "url": "https://www.ozbargain.com.au/node/318296",
+          "summary": "印象不一：有人小学在 North Shore，考精英时转去 James An，之后又回 North Shore。"
+        },
+        {
+          "id": "e0056",
+          "points": 0.0,
+          "weight": 0.35,
+          "sentiment": 0.0,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668",
+          "summary": "Chatswood 老牌补习社，题型偏简单，更适合普娃，不太适合冲 James Ruse / top 5 精英的牛娃。"
+        }
+      ]
+    },
+    {
+      "id": "scholarly",
+      "name": "Scholarly Training",
+      "name_zh": "",
+      "areas": [
+        "Naremburn",
+        "线上"
+      ],
+      "format": "班课 + 线上",
+      "notes": "",
+      "score": 0.049,
+      "positive": 0.049,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.07,
+      "evidence_count": 2,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0054",
+          "points": 0.0245,
+          "weight": 0.035,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://scholarlytraining.com/",
+          "summary": "官网自述：Year 4 OC 课程（WEMT+STTC）和 Thinking Skills 录播精讲。新足迹上未搜到针对它的独立评价。"
+        },
+        {
+          "id": "e0079",
+          "points": 0.0245,
+          "weight": 0.035,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://scholarlytraining.com/our-results/",
+          "summary": "官网展示的家长感言（小班、在线平台、奖学金和精英 offer）和 2024-2025 自报成绩。未搜到 Google / Trustpilot 独立评分。"
+        }
+      ]
+    },
+    {
+      "id": "sam",
+      "name": "S.A.M (Seriously Addictive Mathematics)",
+      "name_zh": "S.A.M 新加坡数学",
+      "areas": [
+        "Chatswood",
+        "Burwood",
+        "Gordon"
+      ],
+      "format": "数学班",
+      "notes": "",
+      "score": 0.042,
+      "positive": 0.042,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.14,
+      "evidence_count": 1,
+      "independent_sources": 1,
+      "latest_year": 2023,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0069",
+          "points": 0.042,
+          "weight": 0.14,
+          "sentiment": 0.3,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668",
+          "summary": "被列出，楼主了解不多；另提到「新加坡数学口碑一般，但不确定」。"
+        }
+      ]
+    },
+    {
+      "id": "primary_way",
+      "name": "The Primary Way",
+      "name_zh": "",
+      "areas": [
+        "Chatswood"
+      ],
+      "format": "小型补习社",
+      "notes": "",
+      "score": 0.042,
+      "positive": 0.042,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.14,
+      "evidence_count": 1,
+      "independent_sources": 1,
+      "latest_year": 2023,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0070",
+          "points": 0.042,
+          "weight": 0.14,
+          "sentiment": 0.3,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668",
+          "summary": "疫情前开的小型补习社，学生不多。"
+        }
+      ]
+    },
+    {
+      "id": "wt_academy",
+      "name": "W & T Academy",
+      "name_zh": "",
+      "areas": [
+        "Chatswood"
+      ],
+      "format": "阅读 / 写作",
+      "notes": "",
+      "score": 0.042,
+      "positive": 0.042,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.14,
+      "evidence_count": 1,
+      "independent_sources": 1,
+      "latest_year": 2023,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0071",
+          "points": 0.042,
+          "weight": 0.14,
+          "sentiment": 0.3,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668",
+          "summary": "主打阅读写作（文学欣赏、creative writing），质量未知。"
+        }
+      ]
+    },
+    {
+      "id": "mr_he",
+      "name": "何老师补习学校",
+      "name_zh": "何老师",
+      "areas": [
+        "悉尼"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0.037,
+      "positive": 0.037,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.122,
+      "evidence_count": 1,
+      "independent_sources": 1,
+      "latest_year": 2020,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0105",
+          "points": 0.0367,
+          "weight": 0.1225,
+          "sentiment": 0.3,
+          "year": 2020,
+          "source_type": "parent_forum",
+          "platform": "华人澳洲中文论坛(china2au)",
+          "url": "https://www.china2au.com/html/zinvjiaoyu/xiaoxuejiaoyu/20200509/360370.html",
+          "summary": "有家长在何老师补习学校和 Pre-Uni Homebush 总部之间二选一，说明两者被当作同级选项。具体结论未取得。"
+        }
+      ]
+    },
+    {
+      "id": "james_an",
+      "name": "James An College",
+      "name_zh": "JAC",
+      "areas": [
+        "多校区"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0.035,
+      "positive": 0.083,
+      "negative": 0.048,
+      "approval": 0.63,
+      "evidence_weight": 0.185,
+      "evidence_count": 5,
+      "independent_sources": 5,
+      "latest_year": 2023,
+      "confidence": "高",
+      "evidence": [
+        {
+          "id": "e0047",
+          "points": 0.0429,
+          "weight": 0.0612,
+          "sentiment": 0.7,
+          "year": 2017,
+          "source_type": "parent_forum",
+          "platform": "OzBargain",
+          "url": "https://www.ozbargain.com.au/node/318296",
+          "summary": "家长称女儿试过三家后上 James An 的精英备考课并考上，而去 North Shore / Pre-Uni 的朋友没考上（单个案例）。"
+        },
+        {
+          "id": "e0051",
+          "points": 0.0343,
+          "weight": 0.0343,
+          "sentiment": 1.0,
+          "year": 2009,
+          "source_type": "student_forum",
+          "platform": "Bored of Studies",
+          "url": "https://boredofstudies.org/threads/best-tutoring-colleges-for-year-5-6-and-selective-school-test.232118/",
+          "summary": "多数回复推荐 James An 和 Pre-Uni：每周/每月的模拟卷能熟悉考试形式。"
+        },
+        {
+          "id": "e0033",
+          "points": -0.024,
+          "weight": 0.0343,
+          "sentiment": -0.7,
+          "year": 2010,
+          "source_type": "student_forum",
+          "platform": "Bored of Studies",
+          "url": "https://boredofstudies.org/threads/james-an-college-interesting.241979",
+          "summary": "学生反映考试题和事先发的练习题几乎一样，因此离开。"
+        },
+        {
+          "id": "e0035",
+          "points": -0.024,
+          "weight": 0.0343,
+          "sentiment": -0.7,
+          "year": 2009,
+          "source_type": "student_forum",
+          "platform": "Bored of Studies",
+          "url": "https://boredofstudies.org/threads/prior-or-james-an.210636/",
+          "summary": "有人上了一年后转走去 North Shore。"
+        },
+        {
+          "id": "e0084",
+          "points": 0.0063,
+          "weight": 0.0211,
+          "sentiment": 0.3,
+          "year": 2023,
+          "source_type": "staff_review",
+          "platform": "Glassdoor",
+          "url": "https://www.glassdoor.com.au/Reviews/James-An-College-Reviews-E1607994.htm",
+          "summary": "员工评价约 3.6/5（31 条）：时间灵活；薪酬和课时被抱怨。只反映雇主情况。"
+        }
+      ]
+    },
+    {
+      "id": "braintree",
+      "name": "Braintree Coaching",
+      "name_zh": "",
+      "areas": [
+        "线上"
+      ],
+      "format": "线上班课",
+      "notes": "",
+      "score": 0.024,
+      "positive": 0.024,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.035,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0092",
+          "points": 0.0245,
+          "weight": 0.035,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://braintreecoaching.com.au/opportunity-class-preparation",
+          "summary": "官网自述：纯线上 OC / Selective 课程。"
+        }
+      ]
+    },
+    {
+      "id": "eic_academy",
+      "name": "EIC Academy",
+      "name_zh": "启德学府",
+      "areas": [
+        "悉尼"
+      ],
+      "format": "OC 冲刺班",
+      "notes": "",
+      "score": 0.024,
+      "positive": 0.024,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.035,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0107",
+          "points": 0.0245,
+          "weight": 0.035,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "http://www.eicacademy.com.au/course-detail/73",
+          "summary": "官网自述：面向 Y4 的约 3 个月 OC 冲刺班。"
+        }
+      ]
+    },
+    {
+      "id": "excel_academics",
+      "name": "Excel Academics",
+      "name_zh": "",
+      "areas": [
+        "悉尼",
+        "线上"
+      ],
+      "format": "一对一",
+      "notes": "",
+      "score": 0.024,
+      "positive": 0.024,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.035,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0091",
+          "points": 0.0245,
+          "weight": 0.035,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://excelacademics.com.au/oc-tutoring/",
+          "summary": "官网自述：一对一 OC 辅导，自报 4.8/5。"
+        }
+      ]
+    },
+    {
+      "id": "global_education",
+      "name": "Global Education Academy",
+      "name_zh": "",
+      "areas": [
+        "Turramurra",
+        "多校区"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0.024,
+      "positive": 0.024,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.035,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0080",
+          "points": 0.0245,
+          "weight": 0.035,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://globaleducationacademy.com.au/locations/",
+          "summary": "官网自述：Turramurra 等校区开 OC 备考课。Whirlpool 上有北岸家长把它列为候选，但无评价。"
+        }
+      ]
+    },
+    {
+      "id": "mwns",
+      "name": "MWNS (Maths Words Not Squiggles)",
+      "name_zh": "",
+      "areas": [
+        "Waverley",
+        "Rosebery",
+        "多校区",
+        "线上"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0.024,
+      "positive": 0.024,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.035,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0090",
+          "points": 0.0245,
+          "weight": 0.035,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://mwns.edu.au/exam-tutoring-sydney/opportunity-class-tutoring/",
+          "summary": "官网自述：各校区和线上都开 OC 课，有家长端进度追踪。"
+        }
+      ]
+    },
+    {
+      "id": "ocready",
+      "name": "OCReady",
+      "name_zh": "",
+      "areas": [
+        "线上"
+      ],
+      "format": "在线模拟考平台",
+      "notes": "在线题库 / 模拟考平台。",
+      "score": 0.024,
+      "positive": 0.024,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.035,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0089",
+          "points": 0.0245,
+          "weight": 0.035,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://www.ocready.com.au/",
+          "summary": "官网自述：电脑化 OC 模拟考，引用 2025 年成绩。"
+        }
+      ]
+    },
+    {
+      "id": "realus",
+      "name": "Realus Education",
+      "name_zh": "睿乐思",
+      "areas": [
+        "Chatswood",
+        "多校区"
+      ],
+      "format": "班课 + 假期班",
+      "notes": "",
+      "score": 0.024,
+      "positive": 0.024,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.035,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0108",
+          "points": 0.0245,
+          "weight": 0.035,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://realus.com.au/cn/holiday/h6-oc",
+          "summary": "官网自述：OC 备考课程，强调阅读、数学推理、思维能力。"
+        }
+      ]
+    },
+    {
+      "id": "matrix",
+      "name": "Matrix Education",
+      "name_zh": "",
+      "areas": [
+        "Strathfield",
+        "Chatswood",
+        "Epping",
+        "Hurstville",
+        "线上"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0.023,
+      "positive": 0.077,
+      "negative": 0.054,
+      "approval": 0.59,
+      "evidence_weight": 0.533,
+      "evidence_count": 4,
+      "independent_sources": 3,
+      "latest_year": 2026,
+      "confidence": "中",
+      "evidence": [
+        {
+          "id": "e0085",
+          "points": -0.0544,
+          "weight": 0.0778,
+          "sentiment": -0.7,
+          "year": 2022,
+          "source_type": "review_site",
+          "platform": "Word of Mouth",
+          "url": "https://www.wordofmouth.com.au/reviews/matrix-education-strathfield",
+          "summary": "有较尖锐的差评（「别把钱投在 Matrix」）。主要针对中学课程。"
+        },
+        {
+          "id": "e0086",
+          "points": 0.0525,
+          "weight": 0.175,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "listing_blog",
+          "platform": "Tutero 榜单",
+          "url": "https://www.tutero.com/au/blog/best-primary-school-tutoring-sydney",
+          "summary": "同行 Tutero 自己写的榜单给 Matrix 7.0 分、Dymocks 6.7 分，把自己排第一。不是独立评价。"
+        },
+        {
+          "id": "e0032",
+          "points": 0.0245,
+          "weight": 0.035,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://www.matrix.edu.au/oc-test-tutoring/",
+          "summary": "官网展示的家长评语：孩子考上 top OC，课程比别家更有体系。机构自选展示。"
+        },
+        {
+          "id": "e0050",
+          "points": 0.0,
+          "weight": 0.245,
+          "sentiment": 0.0,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "OzBargain",
+          "url": "https://www.ozbargain.com.au/node/795832",
+          "summary": "对比过 Matrix 和 Pre-Uni，觉得差不多，更取决于具体校区和老师。"
+        }
+      ]
+    },
+    {
       "id": "test_academy",
       "name": "Test Academy",
       "name_zh": "",
@@ -571,6 +1763,38 @@
           "platform": "机构官网",
           "url": "https://testacademy.com.au/",
           "summary": "官网展示的评价：夸老师和软件，有家长称买在线题包后孩子拿到 OC offer。机构自选展示。"
+        }
+      ]
+    },
+    {
+      "id": "edu_kingdom",
+      "name": "Edu-Kingdom College",
+      "name_zh": "",
+      "areas": [
+        "多校区"
+      ],
+      "format": "班课 + 网课",
+      "notes": "",
+      "score": 0.007,
+      "positive": 0.007,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.022,
+      "evidence_count": 1,
+      "independent_sources": 1,
+      "latest_year": 2017,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0078",
+          "points": 0.0066,
+          "weight": 0.0219,
+          "sentiment": 0.3,
+          "year": 2017,
+          "source_type": "listing_blog",
+          "platform": "悉尼星尚(微信公众号)",
+          "url": "https://rank.aoweibang.com/wx/G1vcnWpFO6dSK5RV_o03c_hEXlEB94DOQeBUvTpQMlLWWlBPA5GxFaKitkPRbVOjvhNXjWswC6aAUeqNx0_C4A/",
+          "summary": "公众号榜单列出：小学、高中课程，有网课。推广性质。"
         }
       ]
     },
@@ -628,14 +1852,33 @@
       "evidence": []
     },
     {
-      "id": "scholarly",
-      "name": "Scholarly Training",
+      "id": "mockstar",
+      "name": "MockStar",
       "name_zh": "",
       "areas": [
-        "Naremburn",
         "线上"
       ],
-      "format": "班课 + 线上",
+      "format": "在线模拟考平台",
+      "notes": "在线题库 / 模拟考平台，不是补习班。",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0,
+      "evidence_count": 0,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": []
+    },
+    {
+      "id": "sigma",
+      "name": "Sigma Education",
+      "name_zh": "西格玛",
+      "areas": [
+        "多校区"
+      ],
+      "format": "班课",
       "notes": "",
       "score": 0,
       "positive": 0,
@@ -649,45 +1892,56 @@
       "evidence": []
     },
     {
-      "id": "james_an",
-      "name": "James An College",
-      "name_zh": "JAC",
+      "id": "eduvision",
+      "name": "Eduvision",
+      "name_zh": "",
       "areas": [
-        "多校区"
+        "悉尼"
       ],
-      "format": "班课",
+      "format": "Thinking Skills / 阅读分科班",
       "notes": "",
-      "score": -0.048,
-      "positive": 0,
-      "negative": 0.048,
-      "approval": 0.0,
-      "evidence_weight": 0.069,
-      "evidence_count": 2,
+      "score": -0.036,
+      "positive": 0.209,
+      "negative": 0.245,
+      "approval": 0.46,
+      "evidence_weight": 0.648,
+      "evidence_count": 3,
       "independent_sources": 2,
-      "latest_year": 2010,
-      "confidence": "低",
+      "latest_year": 2023,
+      "confidence": "中",
       "evidence": [
         {
-          "id": "e0033",
-          "points": -0.024,
-          "weight": 0.0343,
+          "id": "e0043",
+          "points": -0.245,
+          "weight": 0.35,
           "sentiment": -0.7,
-          "year": 2010,
-          "source_type": "student_forum",
-          "platform": "Bored of Studies",
-          "url": "https://boredofstudies.org/threads/james-an-college-interesting.241979",
-          "summary": "学生反映考试题和事先发的练习题几乎一样，因此离开。"
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1784244",
+          "summary": "上了一学期 Thinking Skills 课后停了，觉得帮助不大；阅读课继续上。"
         },
         {
-          "id": "e0035",
-          "points": -0.024,
-          "weight": 0.0343,
-          "sentiment": -0.7,
-          "year": 2009,
-          "source_type": "student_forum",
-          "platform": "Bored of Studies",
-          "url": "https://boredofstudies.org/threads/prior-or-james-an.210636/",
-          "summary": "有人上了一年后转走去 North Shore。"
+          "id": "e0044",
+          "points": 0.147,
+          "weight": 0.21,
+          "sentiment": 0.7,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1784244",
+          "summary": "同一位家长：A 班阅读课下学期继续上。"
+        },
+        {
+          "id": "e0060",
+          "points": 0.0617,
+          "weight": 0.0882,
+          "sentiment": 0.7,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1680207",
+          "summary": "有家长反映孩子英文进步明显；Year 2 英文每 10 节约 600 澳元。"
         }
       ]
     },
@@ -700,15 +1954,15 @@
       ],
       "format": "在线题库 / 模拟题",
       "notes": "不是补习班，是家长自己刷题用的在线题库。",
-      "score": -0.101,
-      "positive": 0.389,
-      "negative": 0.49,
-      "approval": 0.44,
-      "evidence_weight": 1.606,
-      "evidence_count": 3,
-      "independent_sources": 3,
+      "score": -0.118,
+      "positive": 0.605,
+      "negative": 0.723,
+      "approval": 0.46,
+      "evidence_weight": 2.248,
+      "evidence_count": 5,
+      "independent_sources": 4,
       "latest_year": 2026,
-      "confidence": "中",
+      "confidence": "高",
       "evidence": [
         {
           "id": "e0022",
@@ -731,6 +1985,28 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1847659",
           "summary": "能看到孩子在同龄人中的百分位，题目有挑战性。"
+        },
+        {
+          "id": "e0115",
+          "points": -0.2333,
+          "weight": 0.3334,
+          "sentiment": -0.7,
+          "year": 2025,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1847659",
+          "summary": "同帖也有人把 CTEdu 列为最不推荐，认为补习社和题库的题都比真题难很多。"
+        },
+        {
+          "id": "e0041",
+          "points": 0.2161,
+          "weight": 0.3087,
+          "sentiment": 0.7,
+          "year": 2024,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1838932",
+          "summary": "2024年9月回复：CTEdu 的排名比 Pre-Uni 更准。"
         },
         {
           "id": "e0021",

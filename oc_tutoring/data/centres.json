@@ -10,7 +10,15 @@
       "多校区"
     ],
     "format": "大班 + 大型模拟考(WEMT/trial)",
-    "notes": "各校区独立经营，教材和考题通用；口碑随校区和老师差别大。"
+    "notes": "各校区独立经营，教材和考题通用；口碑随校区和老师差别大。",
+    "aliases": [
+      "Pre-Uni",
+      "PreUni",
+      "Pre Uni",
+      "PU",
+      "新学院",
+      "P家"
+    ]
   },
   {
     "id": "cs_education",
@@ -22,7 +30,11 @@
       "线上"
     ],
     "format": "班课 + trial + 线上",
-    "notes": ""
+    "notes": "",
+    "aliases": [
+      "CS",
+      "CS Education"
+    ]
   },
   {
     "id": "alpha_one",
@@ -34,7 +46,13 @@
       "多校区"
     ],
     "format": "小班(6-8人)",
-    "notes": ""
+    "notes": "",
+    "aliases": [
+      "Alpha One",
+      "Alpha1",
+      "A1",
+      "AlphaOne"
+    ]
   },
   {
     "id": "north_shore",
@@ -44,7 +62,12 @@
       "多校区(全悉尼)"
     ],
     "format": "班课 + trial",
-    "notes": ""
+    "notes": "",
+    "aliases": [
+      "North Shore",
+      "北岸",
+      "NSCC"
+    ]
   },
   {
     "id": "james_an",
@@ -54,7 +77,12 @@
       "多校区"
     ],
     "format": "班课",
-    "notes": ""
+    "notes": "",
+    "aliases": [
+      "James An",
+      "James Ann",
+      "JAC"
+    ]
   },
   {
     "id": "swot_shop",
@@ -64,7 +92,12 @@
       "Beecroft"
     ],
     "format": "需入学测试的小班",
-    "notes": ""
+    "notes": "",
+    "aliases": [
+      "Swot Shop",
+      "SwotShop",
+      "SW"
+    ]
   },
   {
     "id": "stc",
@@ -74,7 +107,10 @@
       "Hurstville"
     ],
     "format": "班课 + WEMT",
-    "notes": ""
+    "notes": "",
+    "aliases": [
+      "STC"
+    ]
   },
   {
     "id": "super_coaching",
@@ -84,7 +120,10 @@
       "North Parramatta"
     ],
     "format": "班课",
-    "notes": ""
+    "notes": "",
+    "aliases": [
+      "Super Coaching"
+    ]
   },
   {
     "id": "dr_du",
@@ -95,7 +134,11 @@
       "多校区"
     ],
     "format": "数学为主",
-    "notes": ""
+    "notes": "",
+    "aliases": [
+      "Dr Du",
+      "杜博士"
+    ]
   },
   {
     "id": "matrix",
@@ -109,7 +152,10 @@
       "线上"
     ],
     "format": "班课",
-    "notes": ""
+    "notes": "",
+    "aliases": [
+      "Matrix"
+    ]
   },
   {
     "id": "scholarly",
@@ -120,7 +166,10 @@
       "线上"
     ],
     "format": "班课 + 线上",
-    "notes": ""
+    "notes": "",
+    "aliases": [
+      "Scholarly"
+    ]
   },
   {
     "id": "test_academy",
@@ -131,7 +180,10 @@
       "线上"
     ],
     "format": "小班 + 在线题库",
-    "notes": ""
+    "notes": "",
+    "aliases": [
+      "Test Academy"
+    ]
   },
   {
     "id": "dymocks",
@@ -141,7 +193,10 @@
       "多校区"
     ],
     "format": "小班",
-    "notes": ""
+    "notes": "",
+    "aliases": [
+      "Dymocks"
+    ]
   },
   {
     "id": "ctedu",
@@ -151,7 +206,12 @@
       "线上"
     ],
     "format": "在线题库 / 模拟题",
-    "notes": "不是补习班，是家长自己刷题用的在线题库。"
+    "notes": "不是补习班，是家长自己刷题用的在线题库。",
+    "aliases": [
+      "CTEdu",
+      "CT Edu",
+      "CT"
+    ]
   },
   {
     "id": "oztests",
@@ -161,7 +221,11 @@
       "线上"
     ],
     "format": "在线题库 / 模拟题",
-    "notes": "在线题库。"
+    "notes": "在线题库。",
+    "aliases": [
+      "OzTests",
+      "Oztest"
+    ]
   },
   {
     "id": "essential",
@@ -171,6 +235,259 @@
       "自学"
     ],
     "format": "练习册",
-    "notes": "不是补习班，是纸质练习册，列在这里是因为家长常拿它和补习班的题比。"
+    "notes": "不是补习班，是纸质练习册，列在这里是因为家长常拿它和补习班的题比。",
+    "aliases": [
+      "Essential"
+    ]
+  },
+  {
+    "id": "mr_ye",
+    "name": "叶老师补习班 (Mr Ye)",
+    "name_zh": "叶老师",
+    "areas": [
+      "Campsie"
+    ],
+    "format": "需入学测试的班课",
+    "notes": "",
+    "aliases": [
+      "叶老师",
+      "Mr Ye"
+    ]
+  },
+  {
+    "id": "eduvision",
+    "name": "Eduvision",
+    "name_zh": "",
+    "areas": [
+      "悉尼"
+    ],
+    "format": "Thinking Skills / 阅读分科班",
+    "notes": "",
+    "aliases": [
+      "Eduvision"
+    ]
+  },
+  {
+    "id": "global_education",
+    "name": "Global Education Academy",
+    "name_zh": "",
+    "areas": [
+      "Turramurra",
+      "多校区"
+    ],
+    "format": "班课",
+    "notes": "",
+    "aliases": [
+      "Global Education",
+      "GEA"
+    ]
+  },
+  {
+    "id": "sigma",
+    "name": "Sigma Education",
+    "name_zh": "西格玛",
+    "areas": [
+      "多校区"
+    ],
+    "format": "班课",
+    "notes": "",
+    "aliases": [
+      "Sigma",
+      "西格玛"
+    ]
+  },
+  {
+    "id": "mockstar",
+    "name": "MockStar",
+    "name_zh": "",
+    "areas": [
+      "线上"
+    ],
+    "format": "在线模拟考平台",
+    "notes": "在线题库 / 模拟考平台，不是补习班。",
+    "aliases": [
+      "MockStar"
+    ]
+  },
+  {
+    "id": "sam",
+    "name": "S.A.M (Seriously Addictive Mathematics)",
+    "name_zh": "S.A.M 新加坡数学",
+    "areas": [
+      "Chatswood",
+      "Burwood",
+      "Gordon"
+    ],
+    "format": "数学班",
+    "notes": "",
+    "aliases": [
+      "S.A.M"
+    ]
+  },
+  {
+    "id": "primary_way",
+    "name": "The Primary Way",
+    "name_zh": "",
+    "areas": [
+      "Chatswood"
+    ],
+    "format": "小型补习社",
+    "notes": "",
+    "aliases": [
+      "Primary Way"
+    ]
+  },
+  {
+    "id": "wt_academy",
+    "name": "W & T Academy",
+    "name_zh": "",
+    "areas": [
+      "Chatswood"
+    ],
+    "format": "阅读 / 写作",
+    "notes": "",
+    "aliases": [
+      "W & T",
+      "W&T"
+    ]
+  },
+  {
+    "id": "tj_academy",
+    "name": "TJ Academy",
+    "name_zh": "",
+    "areas": [
+      "Chatswood"
+    ],
+    "format": "假期营 / 英语写作数学",
+    "notes": "",
+    "aliases": [
+      "TJ Academy"
+    ]
+  },
+  {
+    "id": "edu_kingdom",
+    "name": "Edu-Kingdom College",
+    "name_zh": "",
+    "areas": [
+      "多校区"
+    ],
+    "format": "班课 + 网课",
+    "notes": "",
+    "aliases": [
+      "Edu-Kingdom",
+      "EduKingdom"
+    ]
+  },
+  {
+    "id": "ocready",
+    "name": "OCReady",
+    "name_zh": "",
+    "areas": [
+      "线上"
+    ],
+    "format": "在线模拟考平台",
+    "notes": "在线题库 / 模拟考平台。",
+    "aliases": [
+      "OCReady"
+    ]
+  },
+  {
+    "id": "mwns",
+    "name": "MWNS (Maths Words Not Squiggles)",
+    "name_zh": "",
+    "areas": [
+      "Waverley",
+      "Rosebery",
+      "多校区",
+      "线上"
+    ],
+    "format": "班课",
+    "notes": "",
+    "aliases": [
+      "MWNS"
+    ]
+  },
+  {
+    "id": "excel_academics",
+    "name": "Excel Academics",
+    "name_zh": "",
+    "areas": [
+      "悉尼",
+      "线上"
+    ],
+    "format": "一对一",
+    "notes": "",
+    "aliases": [
+      "Excel Academics"
+    ]
+  },
+  {
+    "id": "braintree",
+    "name": "Braintree Coaching",
+    "name_zh": "",
+    "areas": [
+      "线上"
+    ],
+    "format": "线上班课",
+    "notes": "",
+    "aliases": [
+      "Braintree"
+    ]
+  },
+  {
+    "id": "mr_he",
+    "name": "何老师补习学校",
+    "name_zh": "何老师",
+    "areas": [
+      "悉尼"
+    ],
+    "format": "班课",
+    "notes": "",
+    "aliases": [
+      "何老师"
+    ]
+  },
+  {
+    "id": "eic_academy",
+    "name": "EIC Academy",
+    "name_zh": "启德学府",
+    "areas": [
+      "悉尼"
+    ],
+    "format": "OC 冲刺班",
+    "notes": "",
+    "aliases": [
+      "EIC",
+      "启德学府"
+    ]
+  },
+  {
+    "id": "realus",
+    "name": "Realus Education",
+    "name_zh": "睿乐思",
+    "areas": [
+      "Chatswood",
+      "多校区"
+    ],
+    "format": "班课 + 假期班",
+    "notes": "",
+    "aliases": [
+      "Realus",
+      "睿乐思"
+    ]
+  },
+  {
+    "id": "five_senses",
+    "name": "Five Senses Education 练习册",
+    "name_zh": "5 Sense",
+    "areas": [
+      "自学"
+    ],
+    "format": "练习册 / 模拟卷",
+    "notes": "出版社的练习册和模拟卷，不是补习班。",
+    "aliases": [
+      "5 Sense",
+      "Five Senses"
+    ]
   }
 ]
