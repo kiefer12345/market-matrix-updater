@@ -33,6 +33,7 @@ STANCE_LABEL = {
     "negative": "负面",
     "warn": "劝退",
 }
+NOT_INDEPENDENT = {"self_claim", "listing_blog", "staff_review"}
 VERIFY_LABEL = {
     "original_read": "已读原帖",
     "search_summary": "仅搜索摘要",
@@ -134,7 +135,9 @@ def score(centres, evidence, weights):
         pos = sum(r["points"] for r in rows if r["points"] > 0)
         neg = -sum(r["points"] for r in rows if r["points"] < 0)
         total_w = sum(r["weight"] for r in rows)
-        independent = [r for r in rows if r["evidence"]["source_type"] != "self_claim"]
+        # Only first-hand opinion counts towards confidence: adverts, competitor
+        # listicles and staff reviews say nothing reliable about teaching quality.
+        independent = [r for r in rows if r["evidence"]["source_type"] not in NOT_INDEPENDENT]
         threads = {r["evidence"]["url"] for r in independent}
         years = [r["evidence"]["year"] for r in independent if r["evidence"].get("year")]
         latest = max(years) if years else None

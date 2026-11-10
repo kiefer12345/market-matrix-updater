@@ -2137,5 +2137,57 @@
     "url": "https://braintreecoaching.com.au/blog/nsw-oc-test-preparation-guide-year-4-parents",
     "title": "NSW OC Test Preparation 2026 & 2027",
     "summary": "自报 Google 4.9（50+ 条），数据未经独立核实。"
+  },
+  {
+    "id": "e0154",
+    "centre": "alpha_one",
+    "source_type": "parent_forum",
+    "platform": "新足迹",
+    "year": 2021,
+    "stance": "mixed",
+    "relevance": "oc",
+    "verification": "search_summary",
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1663054",
+    "title": "Alpha One",
+    "summary": "同帖另一位家长比较后认为 Alpha One 的题目总体偏简单，写作要求也较低。"
+  },
+  {
+    "id": "e0155",
+    "centre": "alpha_one",
+    "source_type": "parent_forum",
+    "platform": "新足迹",
+    "year": 2024,
+    "stance": "positive",
+    "relevance": "selective_primary",
+    "verification": "secondhand",
+    "url": "https://www.oursteps.com.au/bbs/",
+    "title": "CS 和 Alpha One 校区比较（原帖链接未取得，仅见于搜索摘要）",
+    "summary": "2024 年有家长比较 CS 和 Alpha One：Alpha One 的小班和作业量较少是优点；Castle Hill 一带印度裔家庭比例高。"
+  },
+  {
+    "id": "e0156",
+    "centre": "pre_uni",
+    "source_type": "parent_forum",
+    "platform": "新足迹",
+    "year": 2024,
+    "stance": "mixed",
+    "relevance": "oc",
+    "verification": "search_summary",
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1826241",
+    "title": "重做去年（2023年）OC考试真题有感而发以及对补习班的看法",
+    "summary": "同帖对比各家 trial 难度：P 家偏中等，但仍明显难于真题。"
+  },
+  {
+    "id": "e0157",
+    "centre": "ctedu",
+    "source_type": "parent_forum",
+    "platform": "新足迹",
+    "year": 2024,
+    "stance": "mixed",
+    "relevance": "oc",
+    "verification": "search_summary",
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1826241",
+    "title": "重做去年（2023年）OC考试真题有感而发以及对补习班的看法",
+    "summary": "同帖：CT 的英语相对简单。"
   }
 ]

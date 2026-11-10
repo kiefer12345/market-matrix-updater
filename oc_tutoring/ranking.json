@@ -12,14 +12,14 @@
       ],
       "format": "小班(6-8人)",
       "notes": "",
-      "score": 1.373,
-      "positive": 1.373,
+      "score": 1.496,
+      "positive": 1.496,
       "negative": 0,
       "approval": 1.0,
-      "evidence_weight": 2.034,
-      "evidence_count": 12,
-      "independent_sources": 8,
-      "latest_year": 2026,
+      "evidence_weight": 2.29,
+      "evidence_count": 14,
+      "independent_sources": 7,
+      "latest_year": 2025,
       "confidence": "高",
       "evidence": [
         {
@@ -76,6 +76,17 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1663054",
           "summary": "在读家长：老师来自名校或在读医学生，小班；咨询感受比附近几家大机构好，位置近。"
+        },
+        {
+          "id": "e0155",
+          "points": 0.1235,
+          "weight": 0.1764,
+          "sentiment": 0.7,
+          "year": 2024,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/",
+          "summary": "2024 年有家长比较 CS 和 Alpha One：Alpha One 的小班和作业量较少是优点；Castle Hill 一带印度裔家庭比例高。"
         },
         {
           "id": "e0012",
@@ -153,6 +164,17 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1663054",
           "summary": "课堂纪律较松；老师多为在读大学生，投入度有争议；在印度裔家庭中认可度高，华人学生少。"
+        },
+        {
+          "id": "e0154",
+          "points": 0.0,
+          "weight": 0.0794,
+          "sentiment": 0.0,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1663054",
+          "summary": "同帖另一位家长比较后认为 Alpha One 的题目总体偏简单，写作要求也较低。"
         }
       ]
     },
@@ -345,13 +367,13 @@
       ],
       "format": "大班 + 大型模拟考(WEMT/trial)",
       "notes": "各校区独立经营，教材和考题通用；口碑随校区和老师差别大。",
-      "score": 0.882,
+      "score": 0.953,
       "positive": 1.635,
-      "negative": 0.753,
-      "approval": 0.68,
-      "evidence_weight": 6.001,
-      "evidence_count": 34,
-      "independent_sources": 29,
+      "negative": 0.682,
+      "approval": 0.71,
+      "evidence_weight": 6.341,
+      "evidence_count": 35,
+      "independent_sources": 25,
       "latest_year": 2026,
       "confidence": "高",
       "evidence": [
@@ -400,17 +422,6 @@
           "summary": "2024年9月回复：Pre-Uni 这几年排名准确性越来越低。"
         },
         {
-          "id": "e0017",
-          "points": -0.1764,
-          "weight": 0.252,
-          "sentiment": -0.7,
-          "year": 2024,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1826241",
-          "summary": "家长对比 2023 真题后认为所上两家补习班（帖中称「P家」「S家」，P家应指 Pre-Uni，属推断）模拟题远难于真题、有过度补习之嫌；P家看不到模考卷只能在线看错题。"
-        },
-        {
           "id": "e0037",
           "points": 0.1543,
           "weight": 0.1543,
@@ -453,6 +464,17 @@
           "platform": "OzBargain",
           "url": "https://www.ozbargain.com.au/node/619613",
           "summary": "很多家长送孩子去 Pre-Uni，是因为觉得它更难、更有利于考精英；有人建议聪明孩子去 Matrix / Pre-Uni / Dr Du 而不是 North Shore。"
+        },
+        {
+          "id": "e0017",
+          "points": -0.1058,
+          "weight": 0.1512,
+          "sentiment": -0.7,
+          "year": 2024,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1826241",
+          "summary": "家长对比 2023 真题后认为所上两家补习班（帖中称「P家」「S家」，P家应指 Pre-Uni，属推断）模拟题远难于真题、有过度补习之嫌；P家看不到模考卷只能在线看错题。"
         },
         {
           "id": "e0002",
@@ -728,6 +750,17 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/",
           "summary": "Epping 校区：班级人数偏多、收费偏高，老师水平要打听。"
+        },
+        {
+          "id": "e0156",
+          "points": 0.0,
+          "weight": 0.441,
+          "sentiment": 0.0,
+          "year": 2024,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1826241",
+          "summary": "同帖对比各家 trial 难度：P 家偏中等，但仍明显难于真题。"
         }
       ]
     },
@@ -984,9 +1017,9 @@
       "approval": 1.0,
       "evidence_weight": 0.322,
       "evidence_count": 3,
-      "independent_sources": 2,
+      "independent_sources": 1,
       "latest_year": 2026,
-      "confidence": "中",
+      "confidence": "低",
       "evidence": [
         {
           "id": "e0088",
@@ -1042,9 +1075,9 @@
       "approval": 0.81,
       "evidence_weight": 0.687,
       "evidence_count": 5,
-      "independent_sources": 4,
-      "latest_year": 2026,
-      "confidence": "高",
+      "independent_sources": 3,
+      "latest_year": 2023,
+      "confidence": "中",
       "evidence": [
         {
           "id": "e0122",
@@ -1151,8 +1184,8 @@
       "approval": 1.0,
       "evidence_weight": 0.218,
       "evidence_count": 3,
-      "independent_sources": 1,
-      "latest_year": 2026,
+      "independent_sources": 0,
+      "latest_year": null,
       "confidence": "低",
       "evidence": [
         {
@@ -1239,8 +1272,8 @@
       "approval": 1.0,
       "evidence_weight": 0.192,
       "evidence_count": 3,
-      "independent_sources": 1,
-      "latest_year": 2026,
+      "independent_sources": 0,
+      "latest_year": null,
       "confidence": "低",
       "evidence": [
         {
@@ -1336,9 +1369,9 @@
       "approval": 0.69,
       "evidence_weight": 0.24,
       "evidence_count": 7,
-      "independent_sources": 7,
-      "latest_year": 2023,
-      "confidence": "高",
+      "independent_sources": 6,
+      "latest_year": 2017,
+      "confidence": "低",
       "evidence": [
         {
           "id": "e0047",
@@ -2064,8 +2097,8 @@
       "approval": 1.0,
       "evidence_weight": 0.022,
       "evidence_count": 1,
-      "independent_sources": 1,
-      "latest_year": 2017,
+      "independent_sources": 0,
+      "latest_year": null,
       "confidence": "低",
       "evidence": [
         {
@@ -2234,8 +2267,8 @@
       "approval": 0.46,
       "evidence_weight": 1.868,
       "evidence_count": 15,
-      "independent_sources": 11,
-      "latest_year": 2026,
+      "independent_sources": 9,
+      "latest_year": 2025,
       "confidence": "高",
       "evidence": [
         {
@@ -2483,9 +2516,9 @@
       "positive": 0.605,
       "negative": 0.723,
       "approval": 0.46,
-      "evidence_weight": 2.248,
-      "evidence_count": 5,
-      "independent_sources": 4,
+      "evidence_weight": 2.689,
+      "evidence_count": 6,
+      "independent_sources": 5,
       "latest_year": 2026,
       "confidence": "高",
       "evidence": [
@@ -2543,6 +2576,17 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1792057",
           "summary": "题目可用、有人只刷它也考上了，但答案解析太简单，需要家长自己讲；不建议当唯一材料。"
+        },
+        {
+          "id": "e0157",
+          "points": 0.0,
+          "weight": 0.441,
+          "sentiment": 0.0,
+          "year": 2024,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1826241",
+          "summary": "同帖：CT 的英语相对简单。"
         }
       ]
     }
