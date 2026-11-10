@@ -1,0 +1,176 @@
+[
+  {
+    "id": "pre_uni",
+    "name": "Pre-Uni New College",
+    "name_zh": "新学院 / PU",
+    "areas": [
+      "Homebush(总部)",
+      "Castle Hill",
+      "Epping",
+      "多校区"
+    ],
+    "format": "大班 + 大型模拟考(WEMT/trial)",
+    "notes": "各校区独立经营，教材和考题通用；口碑随校区和老师差别大。"
+  },
+  {
+    "id": "cs_education",
+    "name": "CS Education",
+    "name_zh": "CS",
+    "areas": [
+      "Bella Vista/Norwest",
+      "多校区",
+      "线上"
+    ],
+    "format": "班课 + trial + 线上",
+    "notes": ""
+  },
+  {
+    "id": "alpha_one",
+    "name": "Alpha One Coaching College",
+    "name_zh": "A1精英补习",
+    "areas": [
+      "Castle Hill",
+      "North Parramatta",
+      "多校区"
+    ],
+    "format": "小班(6-8人)",
+    "notes": ""
+  },
+  {
+    "id": "north_shore",
+    "name": "North Shore Coaching College",
+    "name_zh": "北岸",
+    "areas": [
+      "多校区(全悉尼)"
+    ],
+    "format": "班课 + trial",
+    "notes": ""
+  },
+  {
+    "id": "james_an",
+    "name": "James An College",
+    "name_zh": "JAC",
+    "areas": [
+      "多校区"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "swot_shop",
+    "name": "The Swot Shop",
+    "name_zh": "",
+    "areas": [
+      "Beecroft"
+    ],
+    "format": "需入学测试的小班",
+    "notes": ""
+  },
+  {
+    "id": "stc",
+    "name": "STC Selected Tutorial Centre",
+    "name_zh": "STC",
+    "areas": [
+      "Hurstville"
+    ],
+    "format": "班课 + WEMT",
+    "notes": ""
+  },
+  {
+    "id": "super_coaching",
+    "name": "Super Coaching",
+    "name_zh": "",
+    "areas": [
+      "North Parramatta"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "dr_du",
+    "name": "Dr Du Education",
+    "name_zh": "杜博士",
+    "areas": [
+      "Burwood",
+      "多校区"
+    ],
+    "format": "数学为主",
+    "notes": ""
+  },
+  {
+    "id": "matrix",
+    "name": "Matrix Education",
+    "name_zh": "",
+    "areas": [
+      "Strathfield",
+      "Chatswood",
+      "Epping",
+      "Hurstville",
+      "线上"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "scholarly",
+    "name": "Scholarly Training",
+    "name_zh": "",
+    "areas": [
+      "Naremburn",
+      "线上"
+    ],
+    "format": "班课 + 线上",
+    "notes": ""
+  },
+  {
+    "id": "test_academy",
+    "name": "Test Academy",
+    "name_zh": "",
+    "areas": [
+      "Parramatta",
+      "线上"
+    ],
+    "format": "小班 + 在线题库",
+    "notes": ""
+  },
+  {
+    "id": "dymocks",
+    "name": "Dymocks Tutoring",
+    "name_zh": "",
+    "areas": [
+      "多校区"
+    ],
+    "format": "小班",
+    "notes": ""
+  },
+  {
+    "id": "ctedu",
+    "name": "CTEdu (ctedu.com.au)",
+    "name_zh": "CT",
+    "areas": [
+      "线上"
+    ],
+    "format": "在线题库 / 模拟题",
+    "notes": "不是补习班，是家长自己刷题用的在线题库。"
+  },
+  {
+    "id": "oztests",
+    "name": "OzTests",
+    "name_zh": "",
+    "areas": [
+      "线上"
+    ],
+    "format": "在线题库 / 模拟题",
+    "notes": "在线题库。"
+  },
+  {
+    "id": "essential",
+    "name": "Essential 系列练习册",
+    "name_zh": "",
+    "areas": [
+      "自学"
+    ],
+    "format": "练习册",
+    "notes": "不是补习班，是纸质练习册，列在这里是因为家长常拿它和补习班的题比。"
+  }
+]
