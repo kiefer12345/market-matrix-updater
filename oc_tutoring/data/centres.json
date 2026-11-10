@@ -489,5 +489,25 @@
       "5 Sense",
       "Five Senses"
     ]
+  },
+  {
+    "id": "sydney_tutoring_academy",
+    "name": "Sydney Tutoring Academy",
+    "name_zh": "",
+    "areas": [
+      "Hills District"
+    ],
+    "format": "班课",
+    "notes": "主要是中学理科，OC 相关性弱。"
+  },
+  {
+    "id": "funfox",
+    "name": "FunFox Program",
+    "name_zh": "",
+    "areas": [
+      "线上"
+    ],
+    "format": "线上小班",
+    "notes": ""
   }
 ]

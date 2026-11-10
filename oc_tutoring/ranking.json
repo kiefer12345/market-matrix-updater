@@ -323,13 +323,13 @@
       ],
       "format": "大班 + 大型模拟考(WEMT/trial)",
       "notes": "各校区独立经营，教材和考题通用；口碑随校区和老师差别大。",
-      "score": 0.91,
-      "positive": 1.452,
-      "negative": 0.542,
-      "approval": 0.73,
-      "evidence_weight": 5.054,
-      "evidence_count": 26,
-      "independent_sources": 22,
+      "score": 0.932,
+      "positive": 1.56,
+      "negative": 0.628,
+      "approval": 0.71,
+      "evidence_weight": 5.655,
+      "evidence_count": 30,
+      "independent_sources": 25,
       "latest_year": 2026,
       "confidence": "高",
       "evidence": [
@@ -411,6 +411,17 @@
           "summary": "有家长认为 Pre-Uni 的题更接近真正的 Thinking Skills。"
         },
         {
+          "id": "e0120",
+          "points": 0.108,
+          "weight": 0.1543,
+          "sentiment": 0.7,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "OzBargain",
+          "url": "https://www.ozbargain.com.au/node/619613",
+          "summary": "很多家长送孩子去 Pre-Uni，是因为觉得它更难、更有利于考精英；有人建议聪明孩子去 Matrix / Pre-Uni / Dr Du 而不是 North Shore。"
+        },
+        {
           "id": "e0002",
           "points": -0.0926,
           "weight": 0.1323,
@@ -420,6 +431,17 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/archiver/?tid-1672966.html",
           "summary": "错题只能看一小部分，网站功能弱，考试一次考好几天负担重。"
+        },
+        {
+          "id": "e0124",
+          "points": -0.0864,
+          "weight": 0.1235,
+          "sentiment": -0.7,
+          "year": 2024,
+          "source_type": "review_site",
+          "platform": "ProductReview 问答",
+          "url": "https://www.productreview.com.au/listings/pre-uni-new-college/q-and-a",
+          "summary": "问「哪个校区好」时回复多为负面（「都不好」），也有人推荐 Blacktown 校区。"
         },
         {
           "id": "e0011",
@@ -618,6 +640,28 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/",
           "summary": "家长在 Pre-Uni 试过 WEMT，觉得综合性太强、针对性不够。"
+        },
+        {
+          "id": "e0119",
+          "points": 0.0,
+          "weight": 0.2778,
+          "sentiment": 0.0,
+          "year": 2022,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1728520",
+          "summary": "作业量很大，部分算术题偏难，教室较拥挤；题目比 North Shore 难，更适合冲选拔考试。"
+        },
+        {
+          "id": "e0125",
+          "points": 0.0,
+          "weight": 0.0454,
+          "sentiment": 0.0,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/",
+          "summary": "Epping 校区：班级人数偏多、收费偏高，老师水平要打听。"
         }
       ]
     },
@@ -881,6 +925,86 @@
       ]
     },
     {
+      "id": "matrix",
+      "name": "Matrix Education",
+      "name_zh": "",
+      "areas": [
+        "Strathfield",
+        "Chatswood",
+        "Epping",
+        "Hurstville",
+        "线上"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0.177,
+      "positive": 0.231,
+      "negative": 0.054,
+      "approval": 0.81,
+      "evidence_weight": 0.687,
+      "evidence_count": 5,
+      "independent_sources": 4,
+      "latest_year": 2026,
+      "confidence": "高",
+      "evidence": [
+        {
+          "id": "e0122",
+          "points": 0.1543,
+          "weight": 0.1543,
+          "sentiment": 1.0,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "OzBargain",
+          "url": "https://www.ozbargain.com.au/node/619613",
+          "summary": "被作为比 North Shore 更好的选择推荐（给聪明孩子）。"
+        },
+        {
+          "id": "e0085",
+          "points": -0.0544,
+          "weight": 0.0778,
+          "sentiment": -0.7,
+          "year": 2022,
+          "source_type": "review_site",
+          "platform": "Word of Mouth",
+          "url": "https://www.wordofmouth.com.au/reviews/matrix-education-strathfield",
+          "summary": "有较尖锐的差评（「别把钱投在 Matrix」）。主要针对中学课程。"
+        },
+        {
+          "id": "e0086",
+          "points": 0.0525,
+          "weight": 0.175,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "listing_blog",
+          "platform": "Tutero 榜单",
+          "url": "https://www.tutero.com/au/blog/best-primary-school-tutoring-sydney",
+          "summary": "同行 Tutero 自己写的榜单给 Matrix 7.0 分、Dymocks 6.7 分，把自己排第一。不是独立评价。"
+        },
+        {
+          "id": "e0032",
+          "points": 0.0245,
+          "weight": 0.035,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://www.matrix.edu.au/oc-test-tutoring/",
+          "summary": "官网展示的家长评语：孩子考上 top OC，课程比别家更有体系。机构自选展示。"
+        },
+        {
+          "id": "e0050",
+          "points": 0.0,
+          "weight": 0.245,
+          "sentiment": 0.0,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "OzBargain",
+          "url": "https://www.ozbargain.com.au/node/795832",
+          "summary": "对比过 Matrix 和 Pre-Uni，觉得差不多，更取决于具体校区和老师。"
+        }
+      ]
+    },
+    {
       "id": "tj_academy",
       "name": "TJ Academy",
       "name_zh": "",
@@ -909,6 +1033,39 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668",
           "summary": "回复中有人推荐其暑期营（英语、写作、数学、阅读鉴赏）。"
+        }
+      ]
+    },
+    {
+      "id": "dr_du",
+      "name": "Dr Du Education",
+      "name_zh": "杜博士",
+      "areas": [
+        "Burwood",
+        "多校区"
+      ],
+      "format": "数学为主",
+      "notes": "",
+      "score": 0.088,
+      "positive": 0.088,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.088,
+      "evidence_count": 1,
+      "independent_sources": 1,
+      "latest_year": 2021,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0123",
+          "points": 0.0882,
+          "weight": 0.0882,
+          "sentiment": 1.0,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "OzBargain",
+          "url": "https://www.ozbargain.com.au/node/619613",
+          "summary": "被作为比 North Shore 更好的选择推荐（给聪明孩子，数学）。"
         }
       ]
     },
@@ -1017,170 +1174,6 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/",
           "summary": "有人问「现在还是叶老师最强吗？住南区的值得去吗？还是 STC 混算了」，说明当年叶老师被视为最强之一。"
-        }
-      ]
-    },
-    {
-      "id": "north_shore",
-      "name": "North Shore Coaching College",
-      "name_zh": "北岸",
-      "areas": [
-        "多校区(全悉尼)"
-      ],
-      "format": "班课 + trial",
-      "notes": "",
-      "score": 0.064,
-      "positive": 0.372,
-      "negative": 0.308,
-      "approval": 0.55,
-      "evidence_weight": 1.649,
-      "evidence_count": 13,
-      "independent_sources": 11,
-      "latest_year": 2026,
-      "confidence": "高",
-      "evidence": [
-        {
-          "id": "e0109",
-          "points": 0.1945,
-          "weight": 0.2778,
-          "sentiment": 0.7,
-          "year": 2022,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1728520",
-          "summary": "两个女儿都上过的家长：老师和氛围不错，孩子很喜欢；每周评 student of the week、集卡换奖品；作业少。"
-        },
-        {
-          "id": "e0110",
-          "points": -0.1167,
-          "weight": 0.1667,
-          "sentiment": -0.7,
-          "year": 2022,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1728520",
-          "summary": "同一位家长：习题册规划不好，作业第二周交、第三周才发回，批改慢、效率低。"
-        },
-        {
-          "id": "e0081",
-          "points": 0.0915,
-          "weight": 0.0915,
-          "sentiment": 1.0,
-          "year": 2025,
-          "source_type": "review_site",
-          "platform": "Google 评分(经 Wanderlog 聚合)",
-          "url": "https://wanderlog.com/place/details/13497937/north-shore-coaching-college-randwick",
-          "summary": "Randwick 校区 5.0（14 条）。聚合站数据，条数少。"
-        },
-        {
-          "id": "e0113",
-          "points": -0.0735,
-          "weight": 0.105,
-          "sentiment": -0.7,
-          "year": 2020,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1600597",
-          "summary": "北岸的 trial 题太简单，没什么参考价值。"
-        },
-        {
-          "id": "e0045",
-          "points": -0.0617,
-          "weight": 0.0882,
-          "sentiment": -0.7,
-          "year": 2021,
-          "source_type": "parent_forum",
-          "platform": "OzBargain",
-          "url": "https://www.ozbargain.com.au/node/619613",
-          "summary": "回复多持怀疑态度：教材多年几乎没变，一些好老师已经不教了；2023 年还有一条针对环境的差评。"
-        },
-        {
-          "id": "e0096",
-          "points": -0.056,
-          "weight": 0.08,
-          "sentiment": -0.7,
-          "year": 2023,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/",
-          "summary": "家长说之前上过 North Shore，觉得是打包式做题，不太喜欢，想要更深入的指导。"
-        },
-        {
-          "id": "e0065",
-          "points": 0.0525,
-          "weight": 0.175,
-          "sentiment": 0.3,
-          "year": 2026,
-          "source_type": "listing_blog",
-          "platform": "MockStar 指南",
-          "url": "https://mockstar.com.au/resources/oc-test-2026-guide",
-          "summary": "同上：被列为传统补习中心代表之一，每周 60-90 澳元。"
-        },
-        {
-          "id": "e0034",
-          "points": 0.024,
-          "weight": 0.0343,
-          "sentiment": 0.7,
-          "year": 2009,
-          "source_type": "student_forum",
-          "platform": "Bored of Studies",
-          "url": "https://boredofstudies.org/threads/prior-or-james-an.210636/",
-          "summary": "在 James An 一年后转到 North Shore 并一直留下。"
-        },
-        {
-          "id": "e0082",
-          "points": 0.0058,
-          "weight": 0.0117,
-          "sentiment": 0.5,
-          "year": 2020,
-          "source_type": "review_site",
-          "platform": "Word of Mouth",
-          "url": "https://www.wordofmouth.com.au/reviews/north-shore-coaching-college-beverly-hills",
-          "summary": "Beverly Hills 校区 4.0（仅 2 条）。"
-        },
-        {
-          "id": "e0083",
-          "points": 0.0033,
-          "weight": 0.0328,
-          "sentiment": 0.1,
-          "year": 2025,
-          "source_type": "staff_review",
-          "platform": "Glassdoor",
-          "url": "https://www.glassdoor.com.au/Reviews/North-Shore-Coaching-College-Sydney-Reviews-EI_IE2041652.0,28_IL.29,35_IM962.htm",
-          "summary": "员工评价 3.2/5（29 条）：有前老师说校区经理很混乱；时薪约 35 澳元起、时间灵活。只反映雇主情况。"
-        },
-        {
-          "id": "e0020",
-          "points": 0.0,
-          "weight": 0.175,
-          "sentiment": 0.0,
-          "year": 2020,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1600597",
-          "summary": "trial 题偏简单，参考意义有限；也有家长说孩子在北岸模拟后正式考到 230 分。"
-        },
-        {
-          "id": "e0046",
-          "points": 0.0,
-          "weight": 0.0612,
-          "sentiment": 0.0,
-          "year": 2017,
-          "source_type": "parent_forum",
-          "platform": "OzBargain",
-          "url": "https://www.ozbargain.com.au/node/318296",
-          "summary": "印象不一：有人小学在 North Shore，考精英时转去 James An，之后又回 North Shore。"
-        },
-        {
-          "id": "e0056",
-          "points": 0.0,
-          "weight": 0.35,
-          "sentiment": 0.0,
-          "year": 2023,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668",
-          "summary": "Chatswood 老牌补习社，题型偏简单，更适合普娃，不太适合冲 James Ruse / top 5 精英的牛娃。"
         }
       ]
     },
@@ -1532,6 +1525,38 @@
       ]
     },
     {
+      "id": "funfox",
+      "name": "FunFox Program",
+      "name_zh": "",
+      "areas": [
+        "线上"
+      ],
+      "format": "线上小班",
+      "notes": "",
+      "score": 0.024,
+      "positive": 0.024,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.035,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0129",
+          "points": 0.0245,
+          "weight": 0.035,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://feeds.funfoxprogram.com.au/service/oc-tutoring-sydney",
+          "summary": "官网自述：纯线上，81 位「已验证」家长评价，OC 只是顺带提到。"
+        }
+      ]
+    },
+    {
       "id": "global_education",
       "name": "Global Education Academy",
       "name_zh": "",
@@ -1665,71 +1690,77 @@
       ]
     },
     {
-      "id": "matrix",
-      "name": "Matrix Education",
+      "id": "super_coaching",
+      "name": "Super Coaching",
       "name_zh": "",
       "areas": [
-        "Strathfield",
-        "Chatswood",
-        "Epping",
-        "Hurstville",
-        "线上"
+        "North Parramatta"
       ],
       "format": "班课",
       "notes": "",
-      "score": 0.023,
-      "positive": 0.077,
-      "negative": 0.054,
-      "approval": 0.59,
-      "evidence_weight": 0.533,
-      "evidence_count": 4,
-      "independent_sources": 3,
-      "latest_year": 2026,
+      "score": 0.015,
+      "positive": 0.015,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.27,
+      "evidence_count": 2,
+      "independent_sources": 2,
+      "latest_year": 2021,
       "confidence": "中",
       "evidence": [
         {
-          "id": "e0085",
-          "points": -0.0544,
-          "weight": 0.0778,
-          "sentiment": -0.7,
-          "year": 2022,
-          "source_type": "review_site",
-          "platform": "Word of Mouth",
-          "url": "https://www.wordofmouth.com.au/reviews/matrix-education-strathfield",
-          "summary": "有较尖锐的差评（「别把钱投在 Matrix」）。主要针对中学课程。"
-        },
-        {
-          "id": "e0086",
-          "points": 0.0525,
-          "weight": 0.175,
+          "id": "e0127",
+          "points": 0.015,
+          "weight": 0.05,
           "sentiment": 0.3,
-          "year": 2026,
-          "source_type": "listing_blog",
-          "platform": "Tutero 榜单",
-          "url": "https://www.tutero.com/au/blog/best-primary-school-tutoring-sydney",
-          "summary": "同行 Tutero 自己写的榜单给 Matrix 7.0 分、Dymocks 6.7 分，把自己排第一。不是独立评价。"
+          "year": 2017,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/",
+          "summary": "2017 年有家长在 Super Coaching（何老师）和 Pre-Uni Epping 之间犹豫，无明确结论。Super Coaching 与「何老师补习学校」应为同一家。"
         },
         {
-          "id": "e0032",
-          "points": 0.0245,
-          "weight": 0.035,
-          "sentiment": 0.7,
+          "id": "e0015",
+          "points": 0.0,
+          "weight": 0.2205,
+          "sentiment": 0.0,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1649709",
+          "summary": "被列出，但有人指出其 Facebook 最后更新在 2017 年，怀疑是否还在正常运营。"
+        }
+      ]
+    },
+    {
+      "id": "sydney_tutoring_academy",
+      "name": "Sydney Tutoring Academy",
+      "name_zh": "",
+      "areas": [
+        "Hills District"
+      ],
+      "format": "班课",
+      "notes": "主要是中学理科，OC 相关性弱。",
+      "score": 0.011,
+      "positive": 0.011,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.011,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0128",
+          "points": 0.0109,
+          "weight": 0.0114,
+          "sentiment": 0.95,
           "year": 2026,
           "source_type": "self_claim",
           "platform": "机构官网",
-          "url": "https://www.matrix.edu.au/oc-test-tutoring/",
-          "summary": "官网展示的家长评语：孩子考上 top OC，课程比别家更有体系。机构自选展示。"
-        },
-        {
-          "id": "e0050",
-          "points": 0.0,
-          "weight": 0.245,
-          "sentiment": 0.0,
-          "year": 2023,
-          "source_type": "parent_forum",
-          "platform": "OzBargain",
-          "url": "https://www.ozbargain.com.au/node/795832",
-          "summary": "对比过 Matrix 和 Pre-Uni，觉得差不多，更取决于具体校区和老师。"
+          "url": "https://www.sydneytutoringacademy.com.au/",
+          "summary": "官网自报 4.9（42 条），感言多为中学化学、数学，和 OC 关系不大。"
         }
       ]
     },
@@ -1799,59 +1830,6 @@
       ]
     },
     {
-      "id": "super_coaching",
-      "name": "Super Coaching",
-      "name_zh": "",
-      "areas": [
-        "North Parramatta"
-      ],
-      "format": "班课",
-      "notes": "",
-      "score": 0,
-      "positive": 0,
-      "negative": 0,
-      "approval": null,
-      "evidence_weight": 0.22,
-      "evidence_count": 1,
-      "independent_sources": 1,
-      "latest_year": 2021,
-      "confidence": "低",
-      "evidence": [
-        {
-          "id": "e0015",
-          "points": 0.0,
-          "weight": 0.2205,
-          "sentiment": 0.0,
-          "year": 2021,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1649709",
-          "summary": "被列出，但有人指出其 Facebook 最后更新在 2017 年，怀疑是否还在正常运营。"
-        }
-      ]
-    },
-    {
-      "id": "dr_du",
-      "name": "Dr Du Education",
-      "name_zh": "杜博士",
-      "areas": [
-        "Burwood",
-        "多校区"
-      ],
-      "format": "数学为主",
-      "notes": "",
-      "score": 0,
-      "positive": 0,
-      "negative": 0,
-      "approval": null,
-      "evidence_weight": 0,
-      "evidence_count": 0,
-      "independent_sources": 0,
-      "latest_year": null,
-      "confidence": "低",
-      "evidence": []
-    },
-    {
       "id": "mockstar",
       "name": "MockStar",
       "name_zh": "",
@@ -1892,6 +1870,192 @@
       "evidence": []
     },
     {
+      "id": "north_shore",
+      "name": "North Shore Coaching College",
+      "name_zh": "北岸",
+      "areas": [
+        "多校区(全悉尼)"
+      ],
+      "format": "班课 + trial",
+      "notes": "",
+      "score": -0.066,
+      "positive": 0.372,
+      "negative": 0.438,
+      "approval": 0.46,
+      "evidence_weight": 1.868,
+      "evidence_count": 15,
+      "independent_sources": 11,
+      "latest_year": 2026,
+      "confidence": "高",
+      "evidence": [
+        {
+          "id": "e0109",
+          "points": 0.1945,
+          "weight": 0.2778,
+          "sentiment": 0.7,
+          "year": 2022,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1728520",
+          "summary": "两个女儿都上过的家长：老师和氛围不错，孩子很喜欢；每周评 student of the week、集卡换奖品；作业少。"
+        },
+        {
+          "id": "e0121",
+          "points": -0.1543,
+          "weight": 0.1543,
+          "sentiment": -1.0,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "OzBargain",
+          "url": "https://www.ozbargain.com.au/node/619613",
+          "summary": "有回复直说 North Shore 不行，建议改去 Matrix / Pre-Uni / Dr Du；也有人说质量取决于加盟校区和当地能招到的老师。"
+        },
+        {
+          "id": "e0110",
+          "points": -0.1167,
+          "weight": 0.1667,
+          "sentiment": -0.7,
+          "year": 2022,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1728520",
+          "summary": "同一位家长：习题册规划不好，作业第二周交、第三周才发回，批改慢、效率低。"
+        },
+        {
+          "id": "e0081",
+          "points": 0.0915,
+          "weight": 0.0915,
+          "sentiment": 1.0,
+          "year": 2025,
+          "source_type": "review_site",
+          "platform": "Google 评分(经 Wanderlog 聚合)",
+          "url": "https://wanderlog.com/place/details/13497937/north-shore-coaching-college-randwick",
+          "summary": "Randwick 校区 5.0（14 条）。聚合站数据，条数少。"
+        },
+        {
+          "id": "e0113",
+          "points": -0.0735,
+          "weight": 0.105,
+          "sentiment": -0.7,
+          "year": 2020,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1600597",
+          "summary": "北岸的 trial 题太简单，没什么参考价值。"
+        },
+        {
+          "id": "e0096",
+          "points": -0.056,
+          "weight": 0.08,
+          "sentiment": -0.7,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/",
+          "summary": "家长说之前上过 North Shore，觉得是打包式做题，不太喜欢，想要更深入的指导。"
+        },
+        {
+          "id": "e0065",
+          "points": 0.0525,
+          "weight": 0.175,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "listing_blog",
+          "platform": "MockStar 指南",
+          "url": "https://mockstar.com.au/resources/oc-test-2026-guide",
+          "summary": "同上：被列为传统补习中心代表之一，每周 60-90 澳元。"
+        },
+        {
+          "id": "e0045",
+          "points": -0.037,
+          "weight": 0.0529,
+          "sentiment": -0.7,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "OzBargain",
+          "url": "https://www.ozbargain.com.au/node/619613",
+          "summary": "回复多持怀疑态度：教材多年几乎没变，一些好老师已经不教了；2023 年还有一条针对环境的差评。"
+        },
+        {
+          "id": "e0034",
+          "points": 0.024,
+          "weight": 0.0343,
+          "sentiment": 0.7,
+          "year": 2009,
+          "source_type": "student_forum",
+          "platform": "Bored of Studies",
+          "url": "https://boredofstudies.org/threads/prior-or-james-an.210636/",
+          "summary": "在 James An 一年后转到 North Shore 并一直留下。"
+        },
+        {
+          "id": "e0082",
+          "points": 0.0058,
+          "weight": 0.0117,
+          "sentiment": 0.5,
+          "year": 2020,
+          "source_type": "review_site",
+          "platform": "Word of Mouth",
+          "url": "https://www.wordofmouth.com.au/reviews/north-shore-coaching-college-beverly-hills",
+          "summary": "Beverly Hills 校区 4.0（仅 2 条）。"
+        },
+        {
+          "id": "e0083",
+          "points": 0.0033,
+          "weight": 0.0328,
+          "sentiment": 0.1,
+          "year": 2025,
+          "source_type": "staff_review",
+          "platform": "Glassdoor",
+          "url": "https://www.glassdoor.com.au/Reviews/North-Shore-Coaching-College-Sydney-Reviews-EI_IE2041652.0,28_IL.29,35_IM962.htm",
+          "summary": "员工评价 3.2/5（29 条）：有前老师说校区经理很混乱；时薪约 35 澳元起、时间灵活。只反映雇主情况。"
+        },
+        {
+          "id": "e0020",
+          "points": 0.0,
+          "weight": 0.175,
+          "sentiment": 0.0,
+          "year": 2020,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1600597",
+          "summary": "trial 题偏简单，参考意义有限；也有家长说孩子在北岸模拟后正式考到 230 分。"
+        },
+        {
+          "id": "e0046",
+          "points": 0.0,
+          "weight": 0.0612,
+          "sentiment": 0.0,
+          "year": 2017,
+          "source_type": "parent_forum",
+          "platform": "OzBargain",
+          "url": "https://www.ozbargain.com.au/node/318296",
+          "summary": "印象不一：有人小学在 North Shore，考精英时转去 James An，之后又回 North Shore。"
+        },
+        {
+          "id": "e0056",
+          "points": 0.0,
+          "weight": 0.35,
+          "sentiment": 0.0,
+          "year": 2023,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668",
+          "summary": "Chatswood 老牌补习社，题型偏简单，更适合普娃，不太适合冲 James Ruse / top 5 精英的牛娃。"
+        },
+        {
+          "id": "e0118",
+          "points": 0.0,
+          "weight": 0.1,
+          "sentiment": 0.0,
+          "year": 2022,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1728520",
+          "summary": "同一位家长补充：基础算术训练不足，交通不便；优点是作业少、孩子容易接受。"
+        }
+      ]
+    },
+    {
       "id": "eduvision",
       "name": "Eduvision",
       "name_zh": "",
@@ -1900,12 +2064,12 @@
       ],
       "format": "Thinking Skills / 阅读分科班",
       "notes": "",
-      "score": -0.036,
+      "score": -0.073,
       "positive": 0.209,
-      "negative": 0.245,
-      "approval": 0.46,
-      "evidence_weight": 0.648,
-      "evidence_count": 3,
+      "negative": 0.282,
+      "approval": 0.43,
+      "evidence_weight": 0.701,
+      "evidence_count": 4,
       "independent_sources": 2,
       "latest_year": 2023,
       "confidence": "中",
@@ -1942,6 +2106,17 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1680207",
           "summary": "有家长反映孩子英文进步明显；Year 2 英文每 10 节约 600 澳元。"
+        },
+        {
+          "id": "e0126",
+          "points": -0.037,
+          "weight": 0.0529,
+          "sentiment": -0.7,
+          "year": 2021,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1680207",
+          "summary": "也有家长认为英文提升有限、课程一般、班大、收费和效果不匹配。"
         }
       ]
     },
