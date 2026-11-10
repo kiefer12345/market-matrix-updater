@@ -1,6 +1,6 @@
 # 澳洲（NSW）OC 补习班口碑排行
 
-参考年份 2026，共 36 家机构、129 条证据。本文件由 `oc_ranker.py` 自动生成，请改 `data/` 和 `weights.json`，不要手改这里。
+参考年份 2026，共 40 家机构、153 条证据。本文件由 `oc_ranker.py` 自动生成，请改 `data/` 和 `weights.json`，不要手改这里。
 
 ## 怎么读这份排行
 
@@ -14,42 +14,46 @@
 
 | 排名 | 机构 | 口碑分 | 正面 | 负面 | 好评占比 | 独立来源 | 最近年份 | 可信度 | 地区 |
 |---:|---|---:|---:|---:|---:|---:|---:|:---:|---|
-| 1 | Alpha One Coaching College（A1精英补习） | 1.35 | 1.35 | 0.00 | 100% | 8 | 2026 | 高 | Castle Hill、North Parramatta、多校区 |
-| 2 | CS Education（CS） | 1.07 | 1.22 | 0.15 | 89% | 9 | 2023 | 高 | Bella Vista/Norwest、多校区、线上 |
-| 3 | Pre-Uni New College（新学院 / PU） | 0.93 | 1.56 | 0.63 | 71% | 25 | 2026 | 高 | Homebush(总部)、Castle Hill、Epping、多校区 |
+| 1 | Alpha One Coaching College（A1精英补习） | 1.37 | 1.37 | 0.00 | 100% | 8 | 2026 | 高 | Castle Hill、North Parramatta、多校区 |
+| 2 | CS Education（CS） | 1.15 | 1.31 | 0.15 | 89% | 10 | 2023 | 高 | Bella Vista/Norwest、多校区、线上 |
+| 3 | Pre-Uni New College（新学院 / PU） | 0.88 | 1.64 | 0.75 | 68% | 29 | 2026 | 高 | Homebush(总部)、Castle Hill、Epping、多校区 |
 | 4 | Essential 系列练习册 | 0.79 | 0.79 | 0.00 | 100% | 1 | 2025 | 低 | 自学 |
-| 5 | STC Selected Tutorial Centre（STC） | 0.48 | 0.48 | 0.00 | 100% | 3 | 2023 | 中 | Hurstville |
+| 5 | STC Selected Tutorial Centre（STC） | 0.47 | 0.53 | 0.06 | 90% | 6 | 2026 | 高 | Hurstville |
 | 6 | Five Senses Education 练习册（5 Sense） | 0.39 | 0.39 | 0.00 | 100% | 1 | 2025 | 低 | 自学 |
 | 7 | OzTests | 0.39 | 0.39 | 0.00 | 100% | 1 | 2025 | 低 | 线上 |
 | 8 | Dymocks Tutoring | 0.18 | 0.18 | 0.00 | 100% | 2 | 2026 | 中 | 多校区 |
 | 9 | Matrix Education | 0.18 | 0.23 | 0.05 | 81% | 4 | 2026 | 高 | Strathfield、Chatswood、Epping、Hurstville、线上 |
 | 10 | TJ Academy | 0.14 | 0.14 | 0.00 | 100% | 1 | 2023 | 低 | Chatswood |
-| 11 | Dr Du Education（杜博士） | 0.09 | 0.09 | 0.00 | 100% | 1 | 2021 | 低 | Burwood、多校区 |
-| 12 | The Swot Shop | 0.08 | 0.11 | 0.03 | 81% | 3 | 2022 | 中 | Beecroft |
-| 13 | 叶老师补习班 (Mr Ye)（叶老师） | 0.08 | 0.08 | 0.00 | 100% | 2 | 2016 | 低 | Campsie |
-| 14 | Scholarly Training | 0.05 | 0.05 | 0.00 | 100% | 0 | — | 低 | Naremburn、线上 |
-| 15 | S.A.M (Seriously Addictive Mathematics)（S.A.M 新加坡数学） | 0.04 | 0.04 | 0.00 | 100% | 1 | 2023 | 低 | Chatswood、Burwood、Gordon |
-| 16 | The Primary Way | 0.04 | 0.04 | 0.00 | 100% | 1 | 2023 | 低 | Chatswood |
-| 17 | W & T Academy | 0.04 | 0.04 | 0.00 | 100% | 1 | 2023 | 低 | Chatswood |
-| 18 | 何老师补习学校（何老师） | 0.04 | 0.04 | 0.00 | 100% | 1 | 2020 | 低 | 悉尼 |
-| 19 | James An College（JAC） | 0.04 | 0.08 | 0.05 | 63% | 5 | 2023 | 高 | 多校区 |
-| 20 | Braintree Coaching | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | 线上 |
-| 21 | EIC Academy（启德学府） | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | 悉尼 |
-| 22 | Excel Academics | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | 悉尼、线上 |
-| 23 | FunFox Program | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | 线上 |
-| 24 | Global Education Academy | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | Turramurra、多校区 |
-| 25 | MWNS (Maths Words Not Squiggles) | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | Waverley、Rosebery、多校区、线上 |
-| 26 | OCReady | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | 线上 |
-| 27 | Realus Education（睿乐思） | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | Chatswood、多校区 |
-| 28 | Super Coaching | 0.01 | 0.01 | 0.00 | 100% | 2 | 2021 | 中 | North Parramatta |
-| 29 | Sydney Tutoring Academy | 0.01 | 0.01 | 0.00 | 100% | 0 | — | 低 | Hills District |
-| 30 | Test Academy | 0.01 | 0.01 | 0.00 | 100% | 0 | — | 低 | Parramatta、线上 |
-| 31 | Edu-Kingdom College | 0.01 | 0.01 | 0.00 | 100% | 1 | 2017 | 低 | 多校区 |
-| 32 | MockStar | 0.00 | 0.00 | 0.00 | — | 0 | — | 低 | 线上 |
-| 33 | Sigma Education（西格玛） | 0.00 | 0.00 | 0.00 | — | 0 | — | 低 | 多校区 |
-| 34 | North Shore Coaching College（北岸） | -0.07 | 0.37 | 0.44 | 46% | 11 | 2026 | 高 | 多校区(全悉尼) |
-| 35 | Eduvision | -0.07 | 0.21 | 0.28 | 43% | 2 | 2023 | 中 | 悉尼 |
-| 36 | CTEdu (ctedu.com.au)（CT） | -0.12 | 0.60 | 0.72 | 46% | 4 | 2026 | 高 | 线上 |
+| 11 | Test Academy | 0.09 | 0.09 | 0.00 | 100% | 1 | 2026 | 低 | Parramatta、线上 |
+| 12 | Dr Du Education（杜博士） | 0.09 | 0.09 | 0.00 | 100% | 1 | 2021 | 低 | Burwood、多校区 |
+| 13 | Scholarly Training | 0.09 | 0.09 | 0.00 | 100% | 1 | 2026 | 低 | Naremburn、线上 |
+| 14 | 叶老师补习班 (Mr Ye)（叶老师） | 0.08 | 0.08 | 0.00 | 100% | 2 | 2016 | 低 | Campsie |
+| 15 | James An College（JAC） | 0.06 | 0.11 | 0.05 | 69% | 7 | 2023 | 高 | 多校区 |
+| 16 | Braintree Coaching | 0.05 | 0.05 | 0.00 | 100% | 0 | — | 低 | 线上 |
+| 17 | OCReady | 0.05 | 0.05 | 0.00 | 100% | 0 | — | 低 | 线上 |
+| 18 | S.A.M (Seriously Addictive Mathematics)（S.A.M 新加坡数学） | 0.04 | 0.04 | 0.00 | 100% | 1 | 2023 | 低 | Chatswood、Burwood、Gordon |
+| 19 | The Primary Way | 0.04 | 0.04 | 0.00 | 100% | 1 | 2023 | 低 | Chatswood |
+| 20 | W & T Academy | 0.04 | 0.04 | 0.00 | 100% | 1 | 2023 | 低 | Chatswood |
+| 21 | 何老师补习学校（何老师） | 0.04 | 0.04 | 0.00 | 100% | 1 | 2020 | 低 | 悉尼 |
+| 22 | Au Academy | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | Hornsby |
+| 23 | EIC Academy（启德学府） | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | 悉尼 |
+| 24 | Excel Academics | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | 悉尼、线上 |
+| 25 | FunFox Program | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | 线上 |
+| 26 | Global Education Academy | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | Turramurra、多校区 |
+| 27 | KeirEd | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | 悉尼、线上 |
+| 28 | MWNS (Maths Words Not Squiggles) | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | Waverley、Rosebery、多校区、线上 |
+| 29 | Mr Paul's Tutoring | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | Liverpool、线上 |
+| 30 | Realus Education（睿乐思） | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | Chatswood、多校区 |
+| 31 | Sharp Minds Club (octestprep.com) | 0.02 | 0.02 | 0.00 | 100% | 0 | — | 低 | 线上 |
+| 32 | Super Coaching | 0.01 | 0.01 | 0.00 | 100% | 3 | 2022 | 中 | North Parramatta |
+| 33 | Sydney Tutoring Academy | 0.01 | 0.01 | 0.00 | 100% | 0 | — | 低 | Hills District |
+| 34 | Edu-Kingdom College | 0.01 | 0.01 | 0.00 | 100% | 1 | 2017 | 低 | 多校区 |
+| 35 | MockStar | 0.00 | 0.00 | 0.00 | — | 0 | — | 低 | 线上 |
+| 36 | Sigma Education（西格玛） | 0.00 | 0.00 | 0.00 | — | 0 | — | 低 | 多校区 |
+| 37 | The Swot Shop | -0.05 | 0.12 | 0.18 | 41% | 5 | 2024 | 高 | Beecroft |
+| 38 | North Shore Coaching College（北岸） | -0.07 | 0.37 | 0.44 | 46% | 11 | 2026 | 高 | 多校区(全悉尼) |
+| 39 | Eduvision | -0.07 | 0.21 | 0.28 | 43% | 2 | 2023 | 中 | 悉尼 |
+| 40 | CTEdu (ctedu.com.au)（CT） | -0.12 | 0.60 | 0.72 | 46% | 4 | 2026 | 高 | 线上 |
 
 ## 权重表
 
@@ -74,7 +78,7 @@
 
 ### 1. Alpha One Coaching College（A1精英补习）
 
-口碑分 **1.35** · 可信度 **高** · 独立来源 8 个 · 地区：Castle Hill、North Parramatta、多校区 · 形式：小班(6-8人)
+口碑分 **1.37** · 可信度 **高** · 独立来源 8 个 · 地区：Castle Hill、North Parramatta、多校区 · 形式：小班(6-8人)
 
 | 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
 |---:|:---:|:---:|---|---|---|
@@ -86,13 +90,14 @@
 | +0.066 | 被提及 | 2021 | [新足迹：山区求oc补习班推荐](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1649709)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×1.00 = 0.220 | 山区(Hills)求推荐时被列出：Castle Hill，8 人小团。<br>原话：「Alpha One, Castle Hill - 8人小团」 |
 | +0.052 | 被提及 | 2026 | [MockStar 指南：2026年OC考试完全指南](https://mockstar.com.au/resources/oc-test-2026-guide)<br>榜单 / 导购博客，仅搜索摘要 | 0.25×1.00×0.70×1.00 = 0.175 | 同上：被列为传统补习中心代表之一，每周 60-90 澳元。 |
 | +0.025 | 评分 4.6/5（24 条） | 2025 | [Glassdoor：Alpha One Coaching College Reviews](https://www.glassdoor.com.au/Reviews/Alpha-One-Coaching-College-Reviews-E5807914.htm)<br>员工评价，仅搜索摘要 | 0.20×0.79×0.70×0.40 = 0.031 | 员工评价 4.6/5（24 条）：环境友好、时间灵活；晋升慢、请假难。只反映雇主情况。 |
+| +0.024 | 正面 | 2026 | [机构官网：2026 OC Test Results: 140+ Offers & Reserve Placements](https://www.alphaonecollege.com.au/blog/2026-oc-test-results)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 自称 2026 年 OC 考试 140+ 人获 offer 或候补。无法核实，也没有给出总人数。 |
 | +0.015 | 正面 | 2024 | [机构官网：Alpha One 2024 成就回顾](https://www.alphaonecollege.com.au/blog-zh/2024-year-in-review)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×0.63×0.70×1.00 = 0.022 | 自称 2024 年精英考试 81.4% 学员获录取或候补，OC 超过 100 人获录取或候补。无法核实。 |
 | +0.004 | 正面 | 2020 | [Bored of Studies：Do you know anyone preparing for the SELECTIVE TEST?](https://boredofstudies.org/threads/do-you-know-anyone-preparing-for-the-selective-test.361141/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×0.25×0.70×0.70 = 0.006 | 推荐 Alpha One 的帖子是其负责人自己发的，按机构自述处理。 |
 | +0.000 | 褒贬参半 | 2021 | [新足迹：Alpha One](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1663054)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×1.00 = 0.132 | 课堂纪律较松；老师多为在读大学生，投入度有争议；在印度裔家庭中认可度高，华人学生少。 |
 
 ### 2. CS Education（CS）
 
-口碑分 **1.07** · 可信度 **高** · 独立来源 9 个 · 地区：Bella Vista/Norwest、多校区、线上 · 形式：班课 + trial + 线上
+口碑分 **1.15** · 可信度 **高** · 独立来源 10 个 · 地区：Bella Vista/Norwest、多校区、线上 · 形式：班课 + trial + 线上
 
 | 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
 |---:|:---:|:---:|---|---|---|
@@ -104,6 +109,7 @@
 | +0.108 | 正面 | 2021 | [新足迹：考精英中学补习班 是选择CS还是PRE UNI?](https://oursteps.co/bbs/forum.php?mod=viewthread&tid=1709311&page=2)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×0.70 = 0.154 | 在线系统明显更完善：课程回放、作业在线做并可看解答；建议网上 trial 用 CS。池子小，排名靠前意义有限。 |
 | +0.093 | 正面 | 2021 | [新足迹：山区求oc补习班推荐](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1649709)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×1.00 = 0.132 | 家长称孩子只在 CS 补了一个 term 就拿到 Quakers Hill OC offer，觉得补习有用；真题比模拟题简单。<br>原话：「毕竟孩子只补习了一个term」 |
 | +0.088 | 正面 | 2021 | [新足迹：新足迹 OC 相关帖（原帖链接未取得，仅见于搜索摘要）](https://www.oursteps.com.au/bbs/)<br>家长论坛，转述 | 1.00×0.31×0.40×1.00 = 0.126 | 家长称孩子年中开始在 CS 补习、11 月考 OC；妈妈们都强调最好去总部，师资较稳定。<br>原话：「妈妈们都强调最好去补习班的总部，说师资比较稳定」 |
+| +0.086 | 正面 | 2020 | [OzBargain：Young Children's Tutoring/Coaching...](https://www.ozbargain.com.au/node/318296)<br>家长论坛，仅搜索摘要 | 1.00×0.25×0.70×0.70 = 0.122 | 有家长因接送方便选了 CS，至今觉得合适；另一位说对它的资料满意。<br>原话：「so far finding that good」 |
 | +0.066 | 被提及 | 2021 | [新足迹：山区求oc补习班推荐](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1649709)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×1.00 = 0.220 | 山区求推荐时被列出：Bella Vista 校区。 |
 | +0.000 | 褒贬参半 | 2021 | [新足迹：纠结最后一个假期去cs 还是pre uni做oc trial](https://www.oursteps.com.au/bbs/archiver/?tid-1672966.html)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×1.00 = 0.132 | trial 人数只有三四百，排名参考价值不如 Pre-Uni。 |
 | +0.000 | 褒贬参半 | 2023 | [新足迹：Chatswood 补习班哪家强 - 分类比较](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668)<br>家长论坛，仅搜索摘要 | 1.00×0.50×0.70×1.00 = 0.350 | 各分校水平相近，关键看能不能碰到好老师。 |
@@ -112,7 +118,7 @@
 
 ### 3. Pre-Uni New College（新学院 / PU）
 
-口碑分 **0.93** · 可信度 **高** · 独立来源 25 个 · 地区：Homebush(总部)、Castle Hill、Epping、多校区 · 形式：大班 + 大型模拟考(WEMT/trial)
+口碑分 **0.88** · 可信度 **高** · 独立来源 29 个 · 地区：Homebush(总部)、Castle Hill、Epping、多校区 · 形式：大班 + 大型模拟考(WEMT/trial)
 
 各校区独立经营，教材和考题通用；口碑随校区和老师差别大。
 
@@ -125,9 +131,11 @@
 | -0.176 | 负面 | 2024 | [新足迹：重做去年（2023年）OC考试真题有感而发以及对补习班的看法](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1826241)<br>家长论坛，转述 | 1.00×0.63×0.40×1.00 = 0.252 | 家长对比 2023 真题后认为所上两家补习班（帖中称「P家」「S家」，P家应指 Pre-Uni，属推断）模拟题远难于真题、有过度补习之嫌；P家看不到模考卷只能在线看错题。<br>原话：「P家看不到模考题，只能在线看到错题，从难度上来讲远超真题」 |
 | +0.154 | 推荐 | 2021 | [新足迹：考精英中学补习班 是选择CS还是PRE UNI?](https://oursteps.co/bbs/forum.php?mod=viewthread&tid=1709311&page=2)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×0.70 = 0.154 | 模拟考上千人参加，排名更有说服力；实体课选 Pre-Uni。 |
 | +0.154 | 正面 | 2021 | [新足迹：CS补习班 Eastwood 怎样啊？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1664478)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×1.00 = 0.220 | 有家长认为 Pre-Uni 的题更接近真正的 Thinking Skills。<br>原话：「pu倒是比较接近真正的TS」 |
+| -0.109 | 负面 | 2025 | [ProductReview：Pre-uni New College reviews (page 2)](https://www.productreview.com.au/listings/pre-uni-new-college?page=2)<br>第三方点评站，仅搜索摘要 | 0.70×0.79×0.70×0.40 = 0.156 | 多条差评针对沟通：问兄弟姐妹折扣没人回，Baulkham Hills 前台让家长自己找总部。 |
 | +0.108 | 正面 | 2021 | [OzBargain：Anyone Signed up their Kids for North-Shore?](https://www.ozbargain.com.au/node/619613)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×0.70 = 0.154 | 很多家长送孩子去 Pre-Uni，是因为觉得它更难、更有利于考精英；有人建议聪明孩子去 Matrix / Pre-Uni / Dr Du 而不是 North Shore。 |
 | -0.093 | 负面 | 2021 | [新足迹：纠结最后一个假期去cs 还是pre uni做oc trial](https://www.oursteps.com.au/bbs/archiver/?tid-1672966.html)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×1.00 = 0.132 | 错题只能看一小部分，网站功能弱，考试一次考好几天负担重。<br>原话：「CS trial可以看所有错题，Preuni只能看10道Maths和GA的错题」 |
 | -0.086 | 负面 | 2024 | [ProductReview 问答：Pre-uni New College Questions](https://www.productreview.com.au/listings/pre-uni-new-college/q-and-a)<br>第三方点评站，仅搜索摘要 | 0.70×0.63×0.70×0.40 = 0.123 | 问「哪个校区好」时回复多为负面（「都不好」），也有人推荐 Blacktown 校区。<br>原话：「they are all bad」 |
+| +0.068 | 推荐 | 2019 | [Bored of Studies：Best Tutoring Colleges for Year 5/6 and Selective School test](https://boredofstudies.org/threads/best-tutoring-colleges-for-year-5-6-and-selective-school-test.232118/#later)<br>学生论坛，仅搜索摘要 | 0.70×0.20×0.70×0.70 = 0.068 | 有人说在试过的所有补习学校里 Pre-Uni 最好；另有人提醒有的补习学校用 trial test 糊弄家长。 |
 | +0.066 | 被提及 | 2021 | [新足迹：想考OC的话，要去哪个学校报补习班呢？Hurstville附近有推荐的吗](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1669824)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×1.00 = 0.220 | 作为 STC 满员时的替代被推荐，建议去总部；各校区独立，教材考题通用。<br>原话：「PREUNI去总部比较好」 |
 | +0.066 | 被提及 | 2021 | [新足迹：山区求oc补习班推荐](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1649709)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×1.00 = 0.220 | 山区求推荐时被列出：Castle Hill 校区。 |
 | +0.061 | 推荐 | 2017 | [OzBargain：Young Children's Tutoring/Coaching...](https://www.ozbargain.com.au/node/318296)<br>家长论坛，仅搜索摘要 | 1.00×0.12×0.70×0.70 = 0.061 | 家长称儿子靠 Pre-Uni 加自己练习考上第一志愿精英中学，会优先选 Pre-Uni。 |
@@ -137,7 +145,9 @@
 | +0.037 | 被提及 | 2020 | [华人澳洲中文论坛(china2au)：何老师补习学校和preuni homebush总部的补习班哪个](https://www.china2au.com/html/zinvjiaoyu/xiaoxuejiaoyu/20200509/360370.html)<br>家长论坛，仅搜索摘要 | 1.00×0.25×0.70×0.70 = 0.122 | Homebush 总部被当作基准选项来比较。 |
 | +0.034 | 推荐 | 2009 | [Bored of Studies：Best Tutoring Colleges for Year 5/6 and Selective School test](https://boredofstudies.org/threads/best-tutoring-colleges-for-year-5-6-and-selective-school-test.232118/)<br>学生论坛，仅搜索摘要 | 0.70×0.10×0.70×0.70 = 0.034 | 多数回复推荐 James An 和 Pre-Uni；有人更偏 Pre-Uni，尤其数学，重视模拟考。 |
 | +0.022 | 推荐 | 2017 | [悉尼星尚(微信公众号)：吐血总结悉尼口碑最好的10大补习社](https://rank.aoweibang.com/wx/G1vcnWpFO6dSK5RV_o03c_hEXlEB94DOQeBUvTpQMlLWWlBPA5GxFaKitkPRbVOjvhNXjWswC6aAUeqNx0_C4A/)<br>榜单 / 导购博客，仅搜索摘要 | 0.25×0.12×0.70×1.00 = 0.022 | 公众号榜单第一家：25 年历史，新州 22 家分校，「在悉尼比较有口碑」。推广性质。 |
+| -0.016 | 评分 2.6/5（13 条） | 2022 | [Word of Mouth：Pre-Uni New College, Strathfield](https://www.wordofmouth.com.au/reviews/pre-uni-new-college-strathfield)<br>第三方点评站，仅搜索摘要 | 0.70×0.40×0.70×0.70 = 0.078 | Strathfield 2.6/5（13 条）：有家长说精英课帮孩子考上；也有人嫌作业重、老师严、性价比不如对手。 |
 | +0.008 | 被提及 | 2010 | [新足迹：Chatswood North Shore 和 Pre-uni Chatswood分校哪个口碑更好一点？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=216336)<br>家长论坛，仅搜索摘要 | 1.00×0.10×0.70×0.40 = 0.028 | 早年帖子：Pre-Uni 没有快班，但有奖学金考试，可减免 25%-100% 学费。<br>原话：「PRE UNI没有快班,但有奖学金考试,减免25%-100%的学费」 |
+| +0.007 | 评分 3.3/5（110 条） | 2025 | [Glassdoor：Pre-Uni New College Reviews in Sydney](https://www.glassdoor.com.au/Reviews/Pre-Uni-New-College-Sydney-Reviews-EI_IE1191178.0,19_IL.20,26_IM962.htm)<br>员工评价，仅搜索摘要 | 0.20×0.79×0.70×0.40 = 0.044 | 员工评价 3.3/5（110 条），薪酬 2.6。只反映雇主情况。 |
 | +0.000 | 褒贬参半 | 2022 | [新足迹：准备考oc，pre-uni 还是swot shop?](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1766722)<br>家长论坛，仅搜索摘要 | 1.00×0.40×0.70×1.00 = 0.167 | 题海战术，孩子不喜欢，但家长看着每天一小时作业有成就感。<br>原话：「PU就是上题海没有孩子喜欢但家长看孩子每天一小时作业有成就感」 |
 | +0.000 | 褒贬参半 | 2026 | [新足迹：ctedu的题到底好吗？有必要买来做吗？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1886798)<br>家长论坛，仅搜索摘要 | 1.00×1.00×0.70×1.00 = 0.700 | 被当作题目难度的参照物（「CT 比 PreUni 还难」），说明 Pre-Uni 的题仍被普遍认为偏难。 |
 | +0.000 | 褒贬参半 | 2008 | [Bored of Studies：selective exams coaching?](https://boredofstudies.org/threads/selective-exams-coaching.183033/)<br>学生论坛，仅搜索摘要 | 0.70×0.10×0.70×0.70 = 0.034 | Homebush 校区每周都有考试，但通常不讲错题原因；大机构的模拟考对备考 Selective 最有帮助。 |
@@ -162,12 +172,15 @@
 
 ### 5. STC Selected Tutorial Centre（STC）
 
-口碑分 **0.48** · 可信度 **中** · 独立来源 3 个 · 地区：Hurstville · 形式：班课 + WEMT
+口碑分 **0.47** · 可信度 **高** · 独立来源 6 个 · 地区：Hurstville · 形式：班课 + WEMT
 
 | 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
 |---:|:---:|:---:|---|---|---|
 | +0.245 | 正面 | 2023 | [华人澳洲中文论坛(china2au)：粗略比较下南边补习的stc, pre uni,cs 吧](https://bbs.china2au.com/thread-1056811-1-1.html)<br>家长论坛，仅搜索摘要 | 1.00×0.50×0.70×1.00 = 0.350 | 规模大、历史久、按程度分班，题目难度高于 Pre-Uni 和 CS。 |
 | +0.220 | 推荐 | 2021 | [新足迹：想考OC的话，要去哪个学校报补习班呢？Hurstville附近有推荐的吗](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1669824)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×1.00 = 0.220 | Hurstville 一带往年成绩最好、南区最大，价格比 Pre-Uni / North Shore / CS 便宜；当时可能已无空位。<br>原话：「补WEMT的话，Hurstville肯定STC，南区最大，价格比Pre Uni/North Shore/CS便宜。」 |
+| +0.046 | 评分 3.5/5（75 条） | 2026 | [Google 评分(经 Calso 聚合)：STC Selected Tutorial Centre, Hurstville NSW: 3.5 from 75 reviews](https://calso.com.au/directory/nsw/sydney/training-providers/stc-selected-tutorial-centre-hurstville-0395c44)<br>第三方点评站，仅搜索摘要 | 0.70×1.00×0.70×0.40 = 0.184 | Google 3.5（75 条，聚合页标注 2026 年 10 月）。好评：老师用心、孩子喜欢；差评：作业量大、围绕排名的竞争气氛重。 |
+| -0.030 | 评分 2.2/5（16 条） | 2024 | [OceaniaBiz 点评：STC Selected Tutorial Centre (Main Centre & Bookshop)](https://au.oceaniabiz.com/new-south-wales/stc-selected-tutorial-centre-781434)<br>第三方点评站，仅搜索摘要 | 0.70×0.63×0.70×0.40 = 0.076 | Hudson St 主校区 2.2（16 条）。条数少。 |
+| -0.029 | 评分 1.7/5（7 条） | 2023 | [OceaniaBiz 点评：STC Selected Tutorial Centre (Station Centre)](https://au.oceaniabiz.com/new-south-wales/stc-selected-tutorial-centre-910952)<br>第三方点评站，仅搜索摘要 | 0.70×0.50×0.70×0.40 = 0.044 | Station Centre 分部 1.7（7 条）；2023 年有家长说网上作业答案错误很多。条数少。 |
 | +0.010 | 正面 | 2022 | [机构软文：STC 相关宣传文章](https://www.sohu.com/a/541552843_121124569)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×0.40×0.70×1.00 = 0.014 | 称近 8 年 Hurstville OC 班一半学生出自 STC。机构宣传口径，未经核实。 |
 | +0.007 | 被提及 | 2016 | [新足迹：新足迹 2016 年讨论（原帖链接未取得，仅见于搜索摘要）](https://www.oursteps.com.au/bbs/)<br>家长论坛，转述 | 1.00×0.10×0.40×1.00 = 0.024 | 南区家长把 STC 当作就近的默认选择。<br>原话：「还是stc混算了」 |
 | +0.000 | 褒贬参半 | 2021 | [新足迹：想考OC的话，要去哪个学校报补习班呢？Hurstville附近有推荐的吗](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1669824)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×1.00 = 0.132 | 数学据说较难；新生第一学期只能进基础班，期末考试后才分班，入学晚可能赶不上当期 OC；不像 Pre-Uni / CS 有网上视频讲解和错题查看。<br>原话：「在term结束时有test，然后凭成绩在下个term分班」 |
@@ -224,7 +237,17 @@
 |---:|:---:|:---:|---|---|---|
 | +0.140 | 推荐 | 2023 | [新足迹：Chatswood 补习班哪家强 - 分类比较](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668)<br>家长论坛，仅搜索摘要 | 1.00×0.50×0.70×0.40 = 0.140 | 回复中有人推荐其暑期营（英语、写作、数学、阅读鉴赏）。 |
 
-### 11. Dr Du Education（杜博士）
+### 11. Test Academy
+
+口碑分 **0.09** · 可信度 **低** · 独立来源 1 个 · 地区：Parramatta、线上 · 形式：小班 + 在线题库
+
+| 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
+|---:|:---:|:---:|---|---|---|
+| +0.052 | 被提及 | 2026 | [Tutero 榜单：Best OC, Selective and Scholarship Test Preparation](https://www.tutero.com/au/blog/best-selective-school-tutoring)<br>榜单 / 导购博客，仅搜索摘要 | 0.25×1.00×0.70×1.00 = 0.175 | 同行榜单排第四（7.6/10），称适合想要每周小班的家庭。不是独立评价。 |
+| +0.029 | 评分 5.0/5（47 条） | 2026 | [机构官网：OC Test Preparation, Parramatta & Online](https://testacademy.com.au/oc-test-preparation/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.029 | 官网自报 Google 5.0（47 条），展示的评价夸老师和在线练习平台、12 周 OC Mastery 课。未独立核对。 |
+| +0.010 | 正面 | 2022 | [机构官网：Test Academy 官网引用的 Google 评价](https://testacademy.com.au/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×0.40×0.70×1.00 = 0.014 | 官网展示的评价：夸老师和软件，有家长称买在线题包后孩子拿到 OC offer。机构自选展示。 |
+
+### 12. Dr Du Education（杜博士）
 
 口碑分 **0.09** · 可信度 **低** · 独立来源 1 个 · 地区：Burwood、多校区 · 形式：数学为主
 
@@ -232,18 +255,17 @@
 |---:|:---:|:---:|---|---|---|
 | +0.088 | 推荐 | 2021 | [OzBargain：Anyone Signed up their Kids for North-Shore?](https://www.ozbargain.com.au/node/619613)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×0.40 = 0.088 | 被作为比 North Shore 更好的选择推荐（给聪明孩子，数学）。 |
 
-### 12. The Swot Shop
+### 13. Scholarly Training
 
-口碑分 **0.08** · 可信度 **中** · 独立来源 3 个 · 地区：Beecroft · 形式：需入学测试的小班
+口碑分 **0.09** · 可信度 **低** · 独立来源 1 个 · 地区：Naremburn、线上 · 形式：班课 + 线上
 
 | 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
 |---:|:---:|:---:|---|---|---|
-| +0.066 | 被提及 | 2021 | [新足迹：山区求oc补习班推荐](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1649709)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×1.00 = 0.220 | 山区求推荐时被列出（Norwest 校区），有人问其口碑。 |
-| +0.043 | 正面 | 2017 | [新足迹：论坛里有小朋友参加过Swot shop selective trial test 补习班么](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1300772)<br>家长论坛，仅搜索摘要 | 1.00×0.12×0.70×0.70 = 0.061 | 题比较灵活，不是题海，排名和 OC/模拟考分数预测比较准。<br>原话：「题比较灵活，确实不是题海战术，OC分数预测也比较准」 |
-| -0.026 | 负面 | 2017 | [新足迹：论坛里有小朋友参加过Swot shop selective trial test 补习班么](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1300772)<br>家长论坛，仅搜索摘要 | 1.00×0.12×0.70×0.70 = 0.037 | 作业不多，成绩没有大的提升；需要靠题海的普通孩子不推荐。<br>原话：「平凡小孩子要靠点题海战术的不推荐这家」 |
-| +0.000 | 褒贬参半 | 2022 | [新足迹：准备考oc，pre-uni 还是swot shop?](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1766722)<br>家长论坛，仅搜索摘要 | 1.00×0.40×0.70×1.00 = 0.278 | 作业轻（每门每周约15分钟），但不够应试，人少，对自己的位置没把握。<br>原话：「SW的缺点是人少对自己的成绩没把握」 |
+| +0.037 | 被提及 | 2026 | [selectivepapersnsw 导购：Selective Coaching Colleges NSW](https://www.selectivepapersnsw.com/guides/selective-tutoring-colleges)<br>榜单 / 导购博客，仅搜索摘要 | 0.25×1.00×0.70×0.70 = 0.122 | 导购页：纯线上直播 + 录播，Year 5 精英课 1088 澳元 / 10 周。 |
+| +0.024 | 正面 | 2026 | [机构官网：Scholarly: Selective Test & OC Test Experts](https://scholarlytraining.com/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网自述：Year 4 OC 课程（WEMT+STTC）和 Thinking Skills 录播精讲。新足迹上未搜到针对它的独立评价。 |
+| +0.024 | 正面 | 2026 | [机构官网：Results - Scholarly Prep](https://scholarlytraining.com/our-results/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网展示的家长感言（小班、在线平台、奖学金和精英 offer）和 2024-2025 自报成绩。未搜到 Google / Trustpilot 独立评分。 |
 
-### 13. 叶老师补习班 (Mr Ye)（叶老师）
+### 14. 叶老师补习班 (Mr Ye)（叶老师）
 
 口碑分 **0.08** · 可信度 **低** · 独立来源 2 个 · 地区：Campsie · 形式：需入学测试的班课
 
@@ -252,16 +274,41 @@
 | +0.070 | 推荐 | 2016 | [新足迹：OC补习班](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1270950)<br>家长论坛，仅搜索摘要 | 1.00×0.10×0.70×1.00 = 0.070 | 2016年求 OC 补习推荐，多位回复推荐 Campsie 的叶老师，需先做入学测试。<br>原话：「去叶老师试试吧，不过要做个测试的」 |
 | +0.012 | 被提及 | 2016 | [新足迹：新足迹 2016 年讨论（原帖链接未取得，仅见于搜索摘要）](https://www.oursteps.com.au/bbs/)<br>家长论坛，转述 | 1.00×0.10×0.40×1.00 = 0.040 | 有人问「现在还是叶老师最强吗？住南区的值得去吗？还是 STC 混算了」，说明当年叶老师被视为最强之一。<br>原话：「现在还是叶老师最强吗？」 |
 
-### 14. Scholarly Training
+### 15. James An College（JAC）
 
-口碑分 **0.05** · 可信度 **低** · 独立来源 0 个 · 地区：Naremburn、线上 · 形式：班课 + 线上
+口碑分 **0.06** · 可信度 **高** · 独立来源 7 个 · 地区：多校区 · 形式：班课
 
 | 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
 |---:|:---:|:---:|---|---|---|
-| +0.024 | 正面 | 2026 | [机构官网：Scholarly: Selective Test & OC Test Experts](https://scholarlytraining.com/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网自述：Year 4 OC 课程（WEMT+STTC）和 Thinking Skills 录播精讲。新足迹上未搜到针对它的独立评价。 |
-| +0.024 | 正面 | 2026 | [机构官网：Results - Scholarly Prep](https://scholarlytraining.com/our-results/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网展示的家长感言（小班、在线平台、奖学金和精英 offer）和 2024-2025 自报成绩。未搜到 Google / Trustpilot 独立评分。 |
+| +0.043 | 正面 | 2017 | [OzBargain：Young Children's Tutoring/Coaching...](https://www.ozbargain.com.au/node/318296)<br>家长论坛，仅搜索摘要 | 1.00×0.12×0.70×0.70 = 0.061 | 家长称女儿试过三家后上 James An 的精英备考课并考上，而去 North Shore / Pre-Uni 的朋友没考上（单个案例）。 |
+| +0.034 | 推荐 | 2009 | [Bored of Studies：Best Tutoring Colleges for Year 5/6 and Selective School test](https://boredofstudies.org/threads/best-tutoring-colleges-for-year-5-6-and-selective-school-test.232118/)<br>学生论坛，仅搜索摘要 | 0.70×0.10×0.70×0.70 = 0.034 | 多数回复推荐 James An 和 Pre-Uni：每周/每月的模拟卷能熟悉考试形式。 |
+| +0.024 | 正面 | 2017 | [Whirlpool：Tutoring - Primary school](https://forums.whirlpool.net.au/archive/2680725)<br>家长论坛，仅搜索摘要 | 1.00×0.12×0.70×0.40 = 0.035 | 家长问 Year 3 / Year 1 补习，本地选项是 James An，有回复说听到的评价不错；同帖多人反对小学阶段补习。<br>原话：「heard good things about them」 |
+| -0.024 | 负面 | 2010 | [Bored of Studies：James An College -- interesting?!](https://boredofstudies.org/threads/james-an-college-interesting.241979)<br>学生论坛，仅搜索摘要 | 0.70×0.10×0.70×0.70 = 0.034 | 学生反映考试题和事先发的练习题几乎一样，因此离开。 |
+| -0.024 | 负面 | 2009 | [Bored of Studies：prior or James An?](https://boredofstudies.org/threads/prior-or-james-an.210636/)<br>学生论坛，仅搜索摘要 | 0.70×0.10×0.70×0.70 = 0.034 | 有人上了一年后转走去 North Shore。 |
+| +0.006 | 评分 3.6/5（31 条） | 2023 | [Glassdoor：James An College Reviews](https://www.glassdoor.com.au/Reviews/James-An-College-Reviews-E1607994.htm)<br>员工评价，仅搜索摘要 | 0.20×0.50×0.70×0.40 = 0.021 | 员工评价约 3.6/5（31 条）：时间灵活；薪酬和课时被抱怨。只反映雇主情况。 |
+| +0.000 | 褒贬参半 | 2012 | [Bored of Studies：James An college....anyone..?](https://community.boredofstudies.org/482/tutoring-classifieds/139501/james-college-anyone.html)<br>学生论坛，仅搜索摘要 | 0.70×0.10×0.70×0.40 = 0.020 | 学生论坛偏负面到褒贬参半：多人说弱，只有分到好班才行；也有人说资料和真实考试很贴近。 |
 
-### 15. S.A.M (Seriously Addictive Mathematics)（S.A.M 新加坡数学）
+### 16. Braintree Coaching
+
+口碑分 **0.05** · 可信度 **低** · 独立来源 0 个 · 地区：线上 · 形式：线上班课
+
+| 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
+|---:|:---:|:---:|---|---|---|
+| +0.028 | 评分 4.9/5（50 条） | 2026 | [机构官网：NSW OC Test Preparation 2026 & 2027](https://braintreecoaching.com.au/blog/nsw-oc-test-preparation-guide-year-4-parents)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.030 | 自报 Google 4.9（50+ 条），数据未经独立核实。 |
+| +0.024 | 正面 | 2026 | [机构官网：NSW OC Test Prep 2027](https://braintreecoaching.com.au/opportunity-class-preparation)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网自述：纯线上 OC / Selective 课程。 |
+
+### 17. OCReady
+
+口碑分 **0.05** · 可信度 **低** · 独立来源 0 个 · 地区：线上 · 形式：在线模拟考平台
+
+在线题库 / 模拟考平台。
+
+| 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
+|---:|:---:|:---:|---|---|---|
+| +0.024 | 正面 | 2026 | [机构官网：OCReady](https://www.ocready.com.au/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网自述：电脑化 OC 模拟考，引用 2025 年成绩。 |
+| +0.024 | 正面 | 2026 | [机构官网：OCReady](https://www.ocready.com.au/#claims)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 自称「2025 年 OC 考试全州最高成功率」，家长感言无名无日期。 |
+
+### 18. S.A.M (Seriously Addictive Mathematics)（S.A.M 新加坡数学）
 
 口碑分 **0.04** · 可信度 **低** · 独立来源 1 个 · 地区：Chatswood、Burwood、Gordon · 形式：数学班
 
@@ -269,7 +316,7 @@
 |---:|:---:|:---:|---|---|---|
 | +0.042 | 被提及 | 2023 | [新足迹：Chatswood 补习班哪家强 - 分类比较](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668)<br>家长论坛，仅搜索摘要 | 1.00×0.50×0.70×0.40 = 0.140 | 被列出，楼主了解不多；另提到「新加坡数学口碑一般，但不确定」。 |
 
-### 16. The Primary Way
+### 19. The Primary Way
 
 口碑分 **0.04** · 可信度 **低** · 独立来源 1 个 · 地区：Chatswood · 形式：小型补习社
 
@@ -277,7 +324,7 @@
 |---:|:---:|:---:|---|---|---|
 | +0.042 | 被提及 | 2023 | [新足迹：Chatswood 补习班哪家强 - 分类比较](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668)<br>家长论坛，仅搜索摘要 | 1.00×0.50×0.70×0.40 = 0.140 | 疫情前开的小型补习社，学生不多。 |
 
-### 17. W & T Academy
+### 20. W & T Academy
 
 口碑分 **0.04** · 可信度 **低** · 独立来源 1 个 · 地区：Chatswood · 形式：阅读 / 写作
 
@@ -285,7 +332,7 @@
 |---:|:---:|:---:|---|---|---|
 | +0.042 | 被提及 | 2023 | [新足迹：Chatswood 补习班哪家强 - 分类比较](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668)<br>家长论坛，仅搜索摘要 | 1.00×0.50×0.70×0.40 = 0.140 | 主打阅读写作（文学欣赏、creative writing），质量未知。 |
 
-### 18. 何老师补习学校（何老师）
+### 21. 何老师补习学校（何老师）
 
 口碑分 **0.04** · 可信度 **低** · 独立来源 1 个 · 地区：悉尼 · 形式：班课
 
@@ -293,27 +340,15 @@
 |---:|:---:|:---:|---|---|---|
 | +0.037 | 被提及 | 2020 | [华人澳洲中文论坛(china2au)：何老师补习学校和preuni homebush总部的补习班哪个](https://www.china2au.com/html/zinvjiaoyu/xiaoxuejiaoyu/20200509/360370.html)<br>家长论坛，仅搜索摘要 | 1.00×0.25×0.70×0.70 = 0.122 | 有家长在何老师补习学校和 Pre-Uni Homebush 总部之间二选一，说明两者被当作同级选项。具体结论未取得。 |
 
-### 19. James An College（JAC）
+### 22. Au Academy
 
-口碑分 **0.04** · 可信度 **高** · 独立来源 5 个 · 地区：多校区 · 形式：班课
-
-| 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
-|---:|:---:|:---:|---|---|---|
-| +0.043 | 正面 | 2017 | [OzBargain：Young Children's Tutoring/Coaching...](https://www.ozbargain.com.au/node/318296)<br>家长论坛，仅搜索摘要 | 1.00×0.12×0.70×0.70 = 0.061 | 家长称女儿试过三家后上 James An 的精英备考课并考上，而去 North Shore / Pre-Uni 的朋友没考上（单个案例）。 |
-| +0.034 | 推荐 | 2009 | [Bored of Studies：Best Tutoring Colleges for Year 5/6 and Selective School test](https://boredofstudies.org/threads/best-tutoring-colleges-for-year-5-6-and-selective-school-test.232118/)<br>学生论坛，仅搜索摘要 | 0.70×0.10×0.70×0.70 = 0.034 | 多数回复推荐 James An 和 Pre-Uni：每周/每月的模拟卷能熟悉考试形式。 |
-| -0.024 | 负面 | 2010 | [Bored of Studies：James An College -- interesting?!](https://boredofstudies.org/threads/james-an-college-interesting.241979)<br>学生论坛，仅搜索摘要 | 0.70×0.10×0.70×0.70 = 0.034 | 学生反映考试题和事先发的练习题几乎一样，因此离开。 |
-| -0.024 | 负面 | 2009 | [Bored of Studies：prior or James An?](https://boredofstudies.org/threads/prior-or-james-an.210636/)<br>学生论坛，仅搜索摘要 | 0.70×0.10×0.70×0.70 = 0.034 | 有人上了一年后转走去 North Shore。 |
-| +0.006 | 评分 3.6/5（31 条） | 2023 | [Glassdoor：James An College Reviews](https://www.glassdoor.com.au/Reviews/James-An-College-Reviews-E1607994.htm)<br>员工评价，仅搜索摘要 | 0.20×0.50×0.70×0.40 = 0.021 | 员工评价约 3.6/5（31 条）：时间灵活；薪酬和课时被抱怨。只反映雇主情况。 |
-
-### 20. Braintree Coaching
-
-口碑分 **0.02** · 可信度 **低** · 独立来源 0 个 · 地区：线上 · 形式：线上班课
+口碑分 **0.02** · 可信度 **低** · 独立来源 0 个 · 地区：Hornsby · 形式：班课
 
 | 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
 |---:|:---:|:---:|---|---|---|
-| +0.024 | 正面 | 2026 | [机构官网：NSW OC Test Prep 2027](https://braintreecoaching.com.au/opportunity-class-preparation)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网自述：纯线上 OC / Selective 课程。 |
+| +0.024 | 正面 | 2026 | [机构官网：OC Test Preparation - Au Academy Hornsby](https://au-academy.com/test-preparation/opportunity-classes-oc-test-tutoring-coaching/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网自述：Hornsby 的 OC 备考课。 |
 
-### 21. EIC Academy（启德学府）
+### 23. EIC Academy（启德学府）
 
 口碑分 **0.02** · 可信度 **低** · 独立来源 0 个 · 地区：悉尼 · 形式：OC 冲刺班
 
@@ -321,7 +356,7 @@
 |---:|:---:|:---:|---|---|---|
 | +0.024 | 正面 | 2026 | [机构官网：启德学府 OC 冲刺班](http://www.eicacademy.com.au/course-detail/73)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网自述：面向 Y4 的约 3 个月 OC 冲刺班。 |
 
-### 22. Excel Academics
+### 24. Excel Academics
 
 口碑分 **0.02** · 可信度 **低** · 独立来源 0 个 · 地区：悉尼、线上 · 形式：一对一
 
@@ -329,7 +364,7 @@
 |---:|:---:|:---:|---|---|---|
 | +0.024 | 正面 | 2026 | [机构官网：Best 1-to-1 OC Tutoring in Sydney](https://excelacademics.com.au/oc-tutoring/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网自述：一对一 OC 辅导，自报 4.8/5。 |
 
-### 23. FunFox Program
+### 25. FunFox Program
 
 口碑分 **0.02** · 可信度 **低** · 独立来源 0 个 · 地区：线上 · 形式：线上小班
 
@@ -337,7 +372,7 @@
 |---:|:---:|:---:|---|---|---|
 | +0.024 | 正面 | 2026 | [机构官网：Opportunity Class Tutoring and Test Prep Sydney](https://feeds.funfoxprogram.com.au/service/oc-tutoring-sydney)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网自述：纯线上，81 位「已验证」家长评价，OC 只是顺带提到。 |
 
-### 24. Global Education Academy
+### 26. Global Education Academy
 
 口碑分 **0.02** · 可信度 **低** · 独立来源 0 个 · 地区：Turramurra、多校区 · 形式：班课
 
@@ -345,7 +380,15 @@
 |---:|:---:|:---:|---|---|---|
 | +0.024 | 正面 | 2026 | [机构官网：Global Education Academy](https://globaleducationacademy.com.au/locations/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网自述：Turramurra 等校区开 OC 备考课。Whirlpool 上有北岸家长把它列为候选，但无评价。 |
 
-### 25. MWNS (Maths Words Not Squiggles)
+### 27. KeirEd
+
+口碑分 **0.02** · 可信度 **低** · 独立来源 0 个 · 地区：悉尼、线上 · 形式：一对一
+
+| 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
+|---:|:---:|:---:|---|---|---|
+| +0.024 | 正面 | 2026 | [机构官网：OC Tutor - KeirEd](https://keired.com.au/oc-test-tutoring/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网自述：一对一，老师经面试和背调。 |
+
+### 28. MWNS (Maths Words Not Squiggles)
 
 口碑分 **0.02** · 可信度 **低** · 独立来源 0 个 · 地区：Waverley、Rosebery、多校区、线上 · 形式：班课
 
@@ -353,17 +396,15 @@
 |---:|:---:|:---:|---|---|---|
 | +0.024 | 正面 | 2026 | [机构官网：Opportunity Class Tutoring Sydney](https://mwns.edu.au/exam-tutoring-sydney/opportunity-class-tutoring/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网自述：各校区和线上都开 OC 课，有家长端进度追踪。 |
 
-### 26. OCReady
+### 29. Mr Paul's Tutoring
 
-口碑分 **0.02** · 可信度 **低** · 独立来源 0 个 · 地区：线上 · 形式：在线模拟考平台
-
-在线题库 / 模拟考平台。
+口碑分 **0.02** · 可信度 **低** · 独立来源 0 个 · 地区：Liverpool、线上 · 形式：班课
 
 | 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
 |---:|:---:|:---:|---|---|---|
-| +0.024 | 正面 | 2026 | [机构官网：OCReady](https://www.ocready.com.au/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网自述：电脑化 OC 模拟考，引用 2025 年成绩。 |
+| +0.024 | 正面 | 2026 | [机构官网：YEAR 3 - YEAR 4 OC TESTING COURSE](https://www.mrpaulstutoring.com.au/oc-course)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网自述：Liverpool / 线上，Year 3 基础班和 Year 3-4 OC 测试班。 |
 
-### 27. Realus Education（睿乐思）
+### 30. Realus Education（睿乐思）
 
 口碑分 **0.02** · 可信度 **低** · 独立来源 0 个 · 地区：Chatswood、多校区 · 形式：班课 + 假期班
 
@@ -371,16 +412,25 @@
 |---:|:---:|:---:|---|---|---|
 | +0.024 | 正面 | 2026 | [机构官网：睿乐思 OC班考试补习](https://realus.com.au/cn/holiday/h6-oc)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网自述：OC 备考课程，强调阅读、数学推理、思维能力。 |
 
-### 28. Super Coaching
+### 31. Sharp Minds Club (octestprep.com)
 
-口碑分 **0.01** · 可信度 **中** · 独立来源 2 个 · 地区：North Parramatta · 形式：班课
+口碑分 **0.02** · 可信度 **低** · 独立来源 0 个 · 地区：线上 · 形式：在线模拟题平台
+
+| 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
+|---:|:---:|:---:|---|---|---|
+| +0.024 | 正面 | 2026 | [机构官网：Sharp Minds Club](https://www.octestprep.com/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.035 | 官网自述：在线 OC 模拟题，感言只有缩写署名。 |
+
+### 32. Super Coaching
+
+口碑分 **0.01** · 可信度 **中** · 独立来源 3 个 · 地区：North Parramatta · 形式：班课
 
 | 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
 |---:|:---:|:---:|---|---|---|
 | +0.015 | 被提及 | 2017 | [新足迹：Super coaching 何老師 vs Pre uni epping（原帖链接未取得）](https://www.oursteps.com.au/bbs/)<br>家长论坛，转述 | 1.00×0.12×0.40×1.00 = 0.050 | 2017 年有家长在 Super Coaching（何老师）和 Pre-Uni Epping 之间犹豫，无明确结论。Super Coaching 与「何老师补习学校」应为同一家。 |
 | +0.000 | 褒贬参半 | 2021 | [新足迹：山区求oc补习班推荐](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1649709)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×1.00 = 0.220 | 被列出，但有人指出其 Facebook 最后更新在 2017 年，怀疑是否还在正常运营。 |
+| +0.000 | 褒贬参半 | 2022 | [商家目录点评：Super Coaching Centre North Parramatta](https://find-open.biz/north-parramatta/super-coaching-centre-904921)<br>第三方点评站，仅搜索摘要 | 0.70×0.40×0.70×0.40 = 0.078 | 仅一条前学员评价：老师有时很凶，但认真听的话教得非常好。 |
 
-### 29. Sydney Tutoring Academy
+### 33. Sydney Tutoring Academy
 
 口碑分 **0.01** · 可信度 **低** · 独立来源 0 个 · 地区：Hills District · 形式：班课
 
@@ -390,15 +440,7 @@
 |---:|:---:|:---:|---|---|---|
 | +0.011 | 评分 4.9/5（42 条） | 2026 | [机构官网：Sydney Tutoring Academy](https://www.sydneytutoringacademy.com.au/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×0.40 = 0.011 | 官网自报 4.9（42 条），感言多为中学化学、数学，和 OC 关系不大。 |
 
-### 30. Test Academy
-
-口碑分 **0.01** · 可信度 **低** · 独立来源 0 个 · 地区：Parramatta、线上 · 形式：小班 + 在线题库
-
-| 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
-|---:|:---:|:---:|---|---|---|
-| +0.010 | 正面 | 2022 | [机构官网：Test Academy 官网引用的 Google 评价](https://testacademy.com.au/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×0.40×0.70×1.00 = 0.014 | 官网展示的评价：夸老师和软件，有家长称买在线题包后孩子拿到 OC offer。机构自选展示。 |
-
-### 31. Edu-Kingdom College
+### 34. Edu-Kingdom College
 
 口碑分 **0.01** · 可信度 **低** · 独立来源 1 个 · 地区：多校区 · 形式：班课 + 网课
 
@@ -406,7 +448,7 @@
 |---:|:---:|:---:|---|---|---|
 | +0.007 | 被提及 | 2017 | [悉尼星尚(微信公众号)：吐血总结悉尼口碑最好的10大补习社](https://rank.aoweibang.com/wx/G1vcnWpFO6dSK5RV_o03c_hEXlEB94DOQeBUvTpQMlLWWlBPA5GxFaKitkPRbVOjvhNXjWswC6aAUeqNx0_C4A/)<br>榜单 / 导购博客，仅搜索摘要 | 0.25×0.12×0.70×1.00 = 0.022 | 公众号榜单列出：小学、高中课程，有网课。推广性质。 |
 
-### 32. MockStar
+### 35. MockStar
 
 口碑分 **0.00** · 可信度 **低** · 独立来源 0 个 · 地区：线上 · 形式：在线模拟考平台
 
@@ -414,13 +456,27 @@
 
 暂无证据。
 
-### 33. Sigma Education（西格玛）
+### 36. Sigma Education（西格玛）
 
 口碑分 **0.00** · 可信度 **低** · 独立来源 0 个 · 地区：多校区 · 形式：班课
 
 暂无证据。
 
-### 34. North Shore Coaching College（北岸）
+### 37. The Swot Shop
+
+口碑分 **-0.05** · 可信度 **高** · 独立来源 5 个 · 地区：Beecroft · 形式：需入学测试的小班
+
+| 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
+|---:|:---:|:---:|---|---|---|
+| -0.151 | 负面 | 2024 | [OceaniaBiz 点评：The Swot Shop (Baulkham Hills/Norwest)](https://au.oceaniabiz.com/new-south-wales/the-swot-shop-159713)<br>第三方点评站，仅搜索摘要 | 0.70×0.63×0.70×0.70 = 0.216 | 多条差评针对态度：对家长傲慢、邮件电话里不尊重家长；有人说上精英课期间压力大到很痛苦。<br>原话：「Very arrogant coaching center, treat parents very badly via email or over the phone」 |
+| +0.066 | 被提及 | 2021 | [新足迹：山区求oc补习班推荐](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1649709)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×1.00 = 0.220 | 山区求推荐时被列出（Norwest 校区），有人问其口碑。 |
+| +0.043 | 正面 | 2017 | [新足迹：论坛里有小朋友参加过Swot shop selective trial test 补习班么](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1300772)<br>家长论坛，仅搜索摘要 | 1.00×0.12×0.70×0.70 = 0.061 | 题比较灵活，不是题海，排名和 OC/模拟考分数预测比较准。<br>原话：「题比较灵活，确实不是题海战术，OC分数预测也比较准」 |
+| -0.026 | 负面 | 2017 | [新足迹：论坛里有小朋友参加过Swot shop selective trial test 补习班么](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1300772)<br>家长论坛，仅搜索摘要 | 1.00×0.12×0.70×0.70 = 0.037 | 作业不多，成绩没有大的提升；需要靠题海的普通孩子不推荐。<br>原话：「平凡小孩子要靠点题海战术的不推荐这家」 |
+| +0.014 | 正面 | 2025 | [机构官网：Selective Test Program - The Swot Shop](https://swotshop.com.au/leading-nsw-selective-test-program/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×0.79×0.70×0.70 = 0.019 | 自称 2025 年「向我们报告成绩的学生」中 90% 拿到 offer 或候补。只统计主动报告者。 |
+| +0.000 | 褒贬参半 | 2022 | [新足迹：准备考oc，pre-uni 还是swot shop?](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1766722)<br>家长论坛，仅搜索摘要 | 1.00×0.40×0.70×1.00 = 0.278 | 作业轻（每门每周约15分钟），但不够应试，人少，对自己的位置没把握。<br>原话：「SW的缺点是人少对自己的成绩没把握」 |
+| +0.000 | 褒贬参半 | 2009 | [Bored of Studies：selective exams coaching?](https://boredofstudies.org/threads/selective-exams-coaching.183033/)<br>学生论坛，仅搜索摘要 | 0.70×0.10×0.70×0.70 = 0.034 | 上过其精英课程的学生：算是有帮助，但数学帮助不大、内容不够；英语老师不错。 |
+
+### 38. North Shore Coaching College（北岸）
 
 口碑分 **-0.07** · 可信度 **高** · 独立来源 11 个 · 地区：多校区(全悉尼) · 形式：班课 + trial
 
@@ -442,7 +498,7 @@
 | +0.000 | 褒贬参半 | 2023 | [新足迹：Chatswood 补习班哪家强 - 分类比较](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1752668)<br>家长论坛，仅搜索摘要 | 1.00×0.50×0.70×1.00 = 0.350 | Chatswood 老牌补习社，题型偏简单，更适合普娃，不太适合冲 James Ruse / top 5 精英的牛娃。<br>原话：「可能就不太适合准备考JR或者top 5精英中学的牛娃」 |
 | +0.000 | 褒贬参半 | 2022 | [新足迹：North shore vs. Pre uni vs. CS 一点点切身经验](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1728520)<br>家长论坛，仅搜索摘要 | 1.00×0.40×0.70×1.00 = 0.100 | 同一位家长补充：基础算术训练不足，交通不便；优点是作业少、孩子容易接受。 |
 
-### 35. Eduvision
+### 39. Eduvision
 
 口碑分 **-0.07** · 可信度 **中** · 独立来源 2 个 · 地区：悉尼 · 形式：Thinking Skills / 阅读分科班
 
@@ -453,7 +509,7 @@
 | +0.062 | 正面 | 2021 | [新足迹：epping 的eduvision 补习好吗？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1680207)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×0.40 = 0.088 | 有家长反映孩子英文进步明显；Year 2 英文每 10 节约 600 澳元。 |
 | -0.037 | 负面 | 2021 | [新足迹：epping 的eduvision 补习好吗？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1680207)<br>家长论坛，仅搜索摘要 | 1.00×0.31×0.70×0.40 = 0.053 | 也有家长认为英文提升有限、课程一般、班大、收费和效果不匹配。 |
 
-### 36. CTEdu (ctedu.com.au)（CT）
+### 40. CTEdu (ctedu.com.au)（CT）
 
 口碑分 **-0.12** · 可信度 **高** · 独立来源 4 个 · 地区：线上 · 形式：在线题库 / 模拟题
 

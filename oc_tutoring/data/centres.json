@@ -509,5 +509,47 @@
     ],
     "format": "线上小班",
     "notes": ""
+  },
+  {
+    "id": "mr_pauls",
+    "name": "Mr Paul's Tutoring",
+    "name_zh": "",
+    "areas": [
+      "Liverpool",
+      "线上"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "au_academy",
+    "name": "Au Academy",
+    "name_zh": "",
+    "areas": [
+      "Hornsby"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "sharp_minds",
+    "name": "Sharp Minds Club (octestprep.com)",
+    "name_zh": "",
+    "areas": [
+      "线上"
+    ],
+    "format": "在线模拟题平台",
+    "notes": ""
+  },
+  {
+    "id": "keired",
+    "name": "KeirEd",
+    "name_zh": "",
+    "areas": [
+      "悉尼",
+      "线上"
+    ],
+    "format": "一对一",
+    "notes": ""
   }
 ]
