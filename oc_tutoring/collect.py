@@ -61,6 +61,41 @@ def to_blocks(page: str) -> list[str]:
     return blocks
 
 
+DISCUZ_POST_RE = re.compile(
+    r'id="authorposton(\d+)">\s*发表于\s*(?:<span title=")?(\d{4})-(\d{1,2})-(\d{1,2}).*?'
+    r'id="postmessage_\1"[^>]*>(.*?)</td>', re.S)
+XENFORO_POST_RE = re.compile(
+    r'<article class="message .*?datetime="(\d{4})-.*?<div class="bbWrapper">(.*?)</div>\s*(?:<div class="js-selectToQuoteEnd"|</div>\s*</article>)',
+    re.S)
+QUOTE_RE = re.compile(r'<div class="quote">.*?</div>|<blockquote.*?</blockquote>', re.S)
+
+
+def clean(fragment: str) -> str:
+    fragment = QUOTE_RE.sub(" ", SCRIPT_RE.sub(" ", fragment))
+    return re.sub(r"\s+", " ", html.unescape(TAG_RE.sub(" ", fragment))).strip()
+
+
+def extract_posts(page: str):
+    """Return [(year, text)] for forum software we recognise, else None."""
+    posts = [(int(m.group(2)), clean(m.group(5))) for m in DISCUZ_POST_RE.finditer(page)]
+    if not posts:
+        posts = [(int(m.group(1)), clean(m.group(2))) for m in XENFORO_POST_RE.finditer(page)]
+    return [(y, t) for y, t in posts if t] or None
+
+
+def page_urls(url: str, first_page: str) -> list[str]:
+    """Other pages of the same thread (Discuz and XenForo)."""
+    m = re.search(r'title="共 (\d+) 页"', first_page)
+    if m and "viewthread" in url:
+        base = re.sub(r"[&?]page=\d+", "", url)
+        return [f"{base}&page={n}" for n in range(2, int(m.group(1)) + 1)]
+    pages = [int(n) for n in re.findall(r'/page-(\d+)"', first_page)]
+    if pages and "/threads/" in url:
+        base = url.split("/page-")[0].rstrip("/")
+        return [f"{base}/page-{n}" for n in range(2, max(pages) + 1)]
+    return []
+
+
 def alias_patterns(centres):
     patterns = {}
     for c in centres:
@@ -93,12 +128,17 @@ def guess_stance(text: str) -> str:
 def scan(page: str, url: str, source: dict, patterns) -> list[dict]:
     out = []
     year = source.get("year")
-    for block in to_blocks(page):
-        m = YEAR_RE.search(block)
-        if m:
-            year = int(m.group(1))  # Forum pages print the post date just before the post body.
-        if len(block) > 1500:
-            continue  # Navigation or whole-page blobs, not a single post.
+    posts = extract_posts(page)
+    if posts is None:
+        # Unknown site: fall back to text blocks, taking the nearest date above each one.
+        posts = []
+        for block in to_blocks(page):
+            m = YEAR_RE.search(block)
+            if m:
+                year = int(m.group(1))
+            if len(block) <= 1500:  # Longer blocks are navigation or whole-page blobs.
+                posts.append((year, block))
+    for year, block in posts:
         for cid, pat in patterns.items():
             if pat.search(block):
                 out.append(
@@ -112,7 +152,7 @@ def scan(page: str, url: str, source: dict, patterns) -> list[dict]:
                         "verification": "original_read",
                         "url": url,
                         "title": source.get("title", ""),
-                        "text": block[:600],
+                        "text": block[:1200],
                     }
                 )
     return out
@@ -150,6 +190,12 @@ def main(argv=None):
             print(f"  失败 {url}: {exc}", file=sys.stderr)
             continue
         found = scan(page, url, source, patterns)
+        for extra in ([] if args.file else page_urls(url, page)):
+            time.sleep(args.delay)
+            try:
+                found += scan(fetch(extra), url, source, patterns)
+            except (urllib.error.URLError, OSError, ValueError) as exc:
+                print(f"  失败 {extra}: {exc}", file=sys.stderr)
         candidates.extend(found)
         print(f"  {len(found):>3} 条候选  {source.get('title') or url}")
         if not args.file and i + 1 < len(todo):

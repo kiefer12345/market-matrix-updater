@@ -551,5 +551,55 @@
     ],
     "format": "一对一",
     "notes": ""
+  },
+  {
+    "id": "advanced_instruction",
+    "name": "Advanced Instruction (Mr Steggles)",
+    "name_zh": "",
+    "areas": [
+      "Campsie"
+    ],
+    "format": "写作小班",
+    "notes": ""
+  },
+  {
+    "id": "kedu",
+    "name": "Kedu",
+    "name_zh": "",
+    "areas": [
+      "线上"
+    ],
+    "format": "在线题库",
+    "notes": "2026 年初才在新足迹出现，推荐帖被质疑是广告。"
+  },
+  {
+    "id": "ocselective",
+    "name": "ocselective.com.au",
+    "name_zh": "",
+    "areas": [
+      "线上"
+    ],
+    "format": "在线模拟题",
+    "notes": ""
+  },
+  {
+    "id": "nam_quang",
+    "name": "Nam Quang Tutoring",
+    "name_zh": "",
+    "areas": [
+      "悉尼西南"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "proficiency",
+    "name": "Proficiency Education",
+    "name_zh": "",
+    "areas": [
+      "Burwood"
+    ],
+    "format": "班课（中学为主）",
+    "notes": ""
   }
 ]

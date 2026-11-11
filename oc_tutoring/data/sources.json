@@ -1,6 +1,6 @@
 [
   {
-    "url": "https://www.oursteps.com.au/bbs/archiver/?tid-1672966.html",
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1672966",
     "title": "纠结最后一个假期去cs 还是pre uni做oc trial",
     "platform": "新足迹",
     "source_type": "parent_forum",
@@ -120,7 +120,7 @@
     "year": 2008
   },
   {
-    "url": "https://oursteps.co/bbs/forum.php?mod=viewthread&tid=1709311&page=2",
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1709311",
     "title": "考精英中学补习班 是选择CS还是PRE UNI?",
     "platform": "新足迹",
     "source_type": "parent_forum",
@@ -208,22 +208,6 @@
     "year": 2021
   },
   {
-    "url": "https://bbs.china2au.com/thread-1056811-1-1.html",
-    "title": "粗略比较下南边补习的stc, pre uni,cs 吧",
-    "platform": "华人澳洲中文论坛(china2au)",
-    "source_type": "parent_forum",
-    "relevance": "oc",
-    "year": 2023
-  },
-  {
-    "url": "https://www.china2au.com/html/zinvjiaoyu/xiaoxuejiaoyu/20200509/360370.html",
-    "title": "何老师补习学校和preuni homebush总部的补习班哪个",
-    "platform": "华人澳洲中文论坛(china2au)",
-    "source_type": "parent_forum",
-    "relevance": "selective_primary",
-    "year": 2020
-  },
-  {
     "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1728520",
     "title": "North shore vs. Pre uni vs. CS 一点点切身经验",
     "platform": "新足迹",
@@ -238,5 +222,149 @@
     "source_type": "parent_forum",
     "relevance": "general",
     "year": 2010
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1718892",
+    "title": "此次OC，真的有很多人是补考拿的高分吗？",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1718808",
+    "title": "OC放榜，来说说几个热门OC班的现状",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1762115",
+    "title": "2022/2023 OC 出来了 各位怎么样",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1709291",
+    "title": "2021 OC 考试分享",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1826432",
+    "title": "2025年精英和oc考试变化又更进一层",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1808032",
+    "title": "Selective trial test 越来越好又变差",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1838399",
+    "title": "给悉尼家长选择精英中学的一点建议",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1403185",
+    "title": "关于补习班的疑问",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1718936",
+    "title": "OC 放榜，牛蛙家长们有没有好的书或者网上资源",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1886291",
+    "title": "考上OC要不要去",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1665369",
+    "title": "NSW OC 2021 样题技术分析",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1718756",
+    "title": "OC成绩出来了，谁家欢喜谁家犹",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1676415",
+    "title": "求推荐 - 适合小学4年级数学补习班",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1819253",
+    "title": "Thinking skills reasoning questions",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1782598",
+    "title": "Burwood 杜博士 VS Proficiency Education",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1709204",
+    "title": "2023 Selective 考试 - 结局",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1665798",
+    "title": "悉尼南区的OC班，大家来讨论一下吧",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
+  },
+  {
+    "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1523524",
+    "title": "求助：Hurstville哪里补习英语好？",
+    "platform": "新足迹",
+    "source_type": "parent_forum",
+    "relevance": "oc",
+    "year": null
   }
 ]
