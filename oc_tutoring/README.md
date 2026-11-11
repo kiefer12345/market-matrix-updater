@@ -20,6 +20,9 @@ python oc_tutoring/oc_ranker.py --check
 python oc_tutoring/oc_ranker.py --year 2027
 ```
 
+加 `--focus selective` 改按 Selective（精英中学）考试排，生成 `report_selective.md` / `ranking_selective.json`：
+讲 Selective 的证据按 1.0 计，讲 OC 的按 0.7 计。
+
 第一条重新生成 `report.md` / `ranking.json`；`--check` 只校验数据；
 `--year` 换参考年份（明年再跑，旧证据会自动继续衰减）。只用 Python 标准库，不需要装依赖。
 

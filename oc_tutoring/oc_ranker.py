@@ -34,6 +34,12 @@ STANCE_LABEL = {
     "warn": "劝退",
 }
 NOT_INDEPENDENT = {"self_claim", "listing_blog", "staff_review"}
+# Which exam the ranking is for. Evidence about the other exam still counts, at 0.7.
+FOCUS = {
+    "oc": {"label": "OC", "relevance": {"oc": 1.0, "selective_primary": 0.7, "general": 0.4}, "suffix": ""},
+    "selective": {"label": "Selective（精英中学）", "relevance": {"oc": 0.7, "selective_primary": 1.0, "general": 0.4},
+                  "suffix": "_selective"},
+}
 VERIFY_LABEL = {
     "original_read": "已读原帖",
     "search_summary": "仅搜索摘要",
@@ -179,17 +185,18 @@ def fmt_year(y):
     return str(y) if y else "年份不明"
 
 
-def render_markdown(results, weights, evidence):
+def render_markdown(results, weights, evidence, focus="oc"):
     ref = weights["reference_year"]
+    exam = FOCUS[focus]["label"]
     out = []
-    out.append("# 澳洲（NSW）OC 补习班口碑排行\n")
+    out.append(f"# 澳洲（NSW）{exam} 补习班口碑排行\n")
     out.append(
         f"参考年份 {ref}，共 {len(results)} 家机构、{len(evidence)} 条证据。"
         "本文件由 `oc_ranker.py` 自动生成，请改 `data/` 和 `weights.json`，不要手改这里。\n"
     )
     out.append("## 怎么读这份排行\n")
     out.append(
-        "- **口碑分** = 每条证据的「立场分 × 来源权重 × 年份衰减 × 核实程度 × OC 相关度」之和，正负相抵。\n"
+        f"- **口碑分** = 每条证据的「立场分 × 来源权重 × 年份衰减 × 核实程度 × {exam} 相关度」之和，正负相抵。\n"
         "- **好评占比** = 加权后正面意见占全部表态的比例，用来区分「口碑一边倒」和「争议大」。\n"
         "- **可信度** 看独立来源数和最近年份：来源少或只有旧帖的，分数再高也只是参考。\n"
         "- 机构官网、软文一律归为「机构自述」，权重 0.05，基本不影响排名，只列出备查。\n"
@@ -285,11 +292,14 @@ def main(argv=None):
     p = argparse.ArgumentParser(description="OC 补习班口碑排行")
     p.add_argument("--year", type=int, help="参考年份（默认取 weights.json）")
     p.add_argument("--check", action="store_true", help="只校验数据")
+    p.add_argument("--focus", choices=sorted(FOCUS), default="oc", help="按哪个考试排：oc 或 selective")
     args = p.parse_args(argv)
 
     weights = load(HERE / "weights.json")
     if args.year:
         weights["reference_year"] = args.year
+    weights["relevance"].update(FOCUS[args.focus]["relevance"])
+    suffix = FOCUS[args.focus]["suffix"]
     centres = load(DATA / "centres.json")
     evidence = load(DATA / "evidence.json")
 
@@ -304,11 +314,11 @@ def main(argv=None):
         return 0
 
     results = score(centres, evidence, weights)
-    (HERE / "report.md").write_text(render_markdown(results, weights, evidence), encoding="utf-8")
-    (HERE / "ranking.json").write_text(
+    (HERE / f"report{suffix}.md").write_text(render_markdown(results, weights, evidence, args.focus), encoding="utf-8")
+    (HERE / f"ranking{suffix}.json").write_text(
         json.dumps(to_json(results, weights), ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    print(f"已生成 report.md / ranking.json（{len(centres)} 家机构，{len(evidence)} 条证据）")
+    print(f"已生成 report{suffix}.md / ranking{suffix}.json（{len(centres)} 家机构，{len(evidence)} 条证据）")
     for i, r in enumerate(results[:15], 1):
         print(f"{i:>2}. {r['name']:<34} {r['score']:>6.2f}  来源 {r['independent_sources']}  可信度 {r['confidence']}")
     return 0
