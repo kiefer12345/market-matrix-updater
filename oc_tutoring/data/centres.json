@@ -761,5 +761,329 @@
     ],
     "format": "班课",
     "notes": ""
+  },
+  {
+    "id": "selective_success",
+    "name": "Selective Success Academy",
+    "name_zh": "",
+    "areas": [
+      "线上"
+    ],
+    "format": "线上小班（Teams 直播）",
+    "notes": "主打 Year 8-11 插班入学考试（Sydney Boys、North Sydney Boys 等各校自办的考试），不是六年级的 Selective 统考。"
+  },
+  {
+    "id": "elite_coaching",
+    "name": "Elite Coaching College",
+    "name_zh": "",
+    "areas": [
+      "Bankstown"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "amt_select",
+    "name": "AMT Select Coaching College",
+    "name_zh": "",
+    "areas": [
+      "Bankstown"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "practice_perfect",
+    "name": "Practice Perfect Coaching College",
+    "name_zh": "",
+    "areas": [
+      "Bankstown"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "phoenix_education",
+    "name": "Phoenix Education",
+    "name_zh": "",
+    "areas": [
+      "Bankstown",
+      "Burwood"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "edu_hub",
+    "name": "Edu Hub Tutoring",
+    "name_zh": "",
+    "areas": [
+      "Minto"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "alchemy",
+    "name": "Alchemy Tuition",
+    "name_zh": "",
+    "areas": [
+      "悉尼",
+      "上门"
+    ],
+    "format": "一对一",
+    "notes": ""
+  },
+  {
+    "id": "ninety_plus",
+    "name": "Ninety Plus Education Centre",
+    "name_zh": "90Plus 补习学校",
+    "areas": [
+      "Bondi Junction",
+      "Burwood",
+      "City",
+      "Chatswood"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "sse",
+    "name": "Sydney School of English (SSE)",
+    "name_zh": "",
+    "areas": [
+      "Burwood"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "first_education",
+    "name": "First Education",
+    "name_zh": "",
+    "areas": [
+      "Bondi",
+      "Randwick",
+      "Maroubra",
+      "Mascot"
+    ],
+    "format": "班课 / 一对一",
+    "notes": ""
+  },
+  {
+    "id": "eden_tuition",
+    "name": "Eden Tuition Centre",
+    "name_zh": "一等补习中心",
+    "areas": [
+      "Kogarah",
+      "Randwick"
+    ],
+    "format": "小班 / 一对一",
+    "notes": ""
+  },
+  {
+    "id": "study_space",
+    "name": "Study Space",
+    "name_zh": "",
+    "areas": [
+      "Double Bay",
+      "Rose Bay"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "pioneer_education",
+    "name": "Pioneer Education",
+    "name_zh": "",
+    "areas": [
+      "Padstow"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "mbh_coaching",
+    "name": "MBH Coaching College",
+    "name_zh": "",
+    "areas": [
+      "Panania"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "ezzi_learning",
+    "name": "Ezzi Learning",
+    "name_zh": "",
+    "areas": [
+      "Chester Hill"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "markitup",
+    "name": "Markitup Tuition",
+    "name_zh": "",
+    "areas": [
+      "Liverpool"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "talent_100",
+    "name": "Talent 100",
+    "name_zh": "",
+    "areas": [
+      "Burwood",
+      "Chatswood"
+    ],
+    "format": "班课",
+    "notes": "中学为主"
+  },
+  {
+    "id": "openwisdom",
+    "name": "OpenWisdom Education",
+    "name_zh": "",
+    "areas": [
+      "Burwood"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "c3_education",
+    "name": "C3 Education Group",
+    "name_zh": "",
+    "areas": [
+      "North Strathfield",
+      "Summer Hill"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "educo",
+    "name": "EDUCO Tutoring",
+    "name_zh": "",
+    "areas": [
+      "Homebush West",
+      "Edmondson Park",
+      "线上"
+    ],
+    "format": "小班(最多 7 人) / 一对一",
+    "notes": ""
+  },
+  {
+    "id": "mathnasium",
+    "name": "Mathnasium",
+    "name_zh": "",
+    "areas": [
+      "多校区"
+    ],
+    "format": "数学",
+    "notes": ""
+  },
+  {
+    "id": "acer_education",
+    "name": "ACER Education (Hurstville)",
+    "name_zh": "",
+    "areas": [
+      "Hurstville"
+    ],
+    "format": "小班(<10 人)",
+    "notes": ""
+  },
+  {
+    "id": "kingmedia",
+    "name": "Kingmedia-Tec",
+    "name_zh": "",
+    "areas": [
+      "Hurstville"
+    ],
+    "format": "班课 + 模拟考",
+    "notes": ""
+  },
+  {
+    "id": "reach_academy",
+    "name": "Reach Academy",
+    "name_zh": "",
+    "areas": [
+      "Castle Hill"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "erudite",
+    "name": "Erudite Tuition",
+    "name_zh": "",
+    "areas": [
+      "悉尼"
+    ],
+    "format": "班课 / 一对一",
+    "notes": ""
+  },
+  {
+    "id": "vertex",
+    "name": "Vertex Learning Centre",
+    "name_zh": "精英补习社",
+    "areas": [
+      "Eastwood"
+    ],
+    "format": "小班",
+    "notes": ""
+  },
+  {
+    "id": "harrys",
+    "name": "Harry's Education Centre",
+    "name_zh": "",
+    "areas": [
+      "Burwood"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "schoolola",
+    "name": "Schoolola",
+    "name_zh": "",
+    "areas": [
+      "Hornsby"
+    ],
+    "format": "班课",
+    "notes": ""
+  },
+  {
+    "id": "kis_academics",
+    "name": "KIS Academics",
+    "name_zh": "",
+    "areas": [
+      "线上"
+    ],
+    "format": "一对一",
+    "notes": ""
+  },
+  {
+    "id": "tutero",
+    "name": "Tutero",
+    "name_zh": "",
+    "areas": [
+      "线上"
+    ],
+    "format": "一对一",
+    "notes": ""
+  },
+  {
+    "id": "sydney_tech_tutoring",
+    "name": "Selective School Tutoring (selectiveschooltutoring.com.au)",
+    "name_zh": "",
+    "areas": [
+      "悉尼"
+    ],
+    "format": "班课",
+    "notes": ""
   }
 ]

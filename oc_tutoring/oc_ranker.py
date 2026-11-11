@@ -33,7 +33,7 @@ STANCE_LABEL = {
     "negative": "负面",
     "warn": "劝退",
 }
-NOT_INDEPENDENT = {"self_claim", "listing_blog", "staff_review"}
+NOT_INDEPENDENT = {"self_claim", "listing_blog", "staff_review", "directory"}
 # Which exam the ranking is for. Evidence about the other exam still counts, at 0.7.
 FOCUS = {
     "oc": {"label": "OC", "relevance": {"oc": 1.0, "selective_primary": 0.7, "general": 0.4}, "suffix": ""},
@@ -206,13 +206,30 @@ def render_markdown(results, weights, evidence, focus="oc"):
     out.append("## 总排行\n")
     out.append("| 排名 | 机构 | 口碑分 | 正面 | 负面 | 好评占比 | 独立来源 | 最近年份 | 可信度 | 地区 |")
     out.append("|---:|---|---:|---:|---:|---:|---:|---:|:---:|---|")
-    for i, r in enumerate(results, 1):
+    rated = [r for r in results if r["independent_sources"] > 0]
+    listed = [r for r in results if r["independent_sources"] == 0]
+    for i, r in enumerate(rated, 1):
         name = r["name"] + (f"（{r['name_zh']}）" if r["name_zh"] else "")
         approval = f"{int(r['approval'] * 100)}%" if r["approval"] is not None else "—"
         out.append(
             f"| {i} | {name} | {r['score']:.2f} | {r['positive']:.2f} | {r['negative']:.2f} | {approval} "
             f"| {r['independent_sources']} | {r['latest_year'] or '—'} | {r['confidence']} | {'、'.join(r['areas'])} |"
         )
+    out.append("")
+
+    out.append("## 只在名录或官网出现、暂无独立口碑的机构\n")
+    out.append(
+        f"下面 {len(listed)} 家确实在开相关课程，但没有找到家长的第一手评价，所以不参与排名。"
+        "没有口碑不等于不好，只是公开渠道没人谈。\n"
+    )
+    out.append("| 机构 | 地区 | 形式 | 已知信息 |")
+    out.append("|---|---|---|---|")
+    for r in sorted(listed, key=lambda r: r["name"].lower()):
+        name = r["name"] + (f"（{r['name_zh']}）" if r["name_zh"] else "")
+        info = "；".join(row["evidence"]["summary"] for row in r["rows"][:2]).replace("|", "/")
+        if r["notes"]:
+            info = r["notes"].replace("|", "/") + " " + info
+        out.append(f"| {name} | {'、'.join(r['areas'])} | {r['format']} | {info} |")
     out.append("")
 
     out.append("## 权重表\n")
@@ -232,7 +249,7 @@ def render_markdown(results, weights, evidence, focus="oc"):
     out.append("")
 
     out.append("## 各机构证据明细\n")
-    for i, r in enumerate(results, 1):
+    for i, r in enumerate(rated, 1):
         name = r["name"] + (f"（{r['name_zh']}）" if r["name_zh"] else "")
         out.append(f"### {i}. {name}\n")
         meta = [f"口碑分 **{r['score']:.2f}**", f"可信度 **{r['confidence']}**", f"独立来源 {r['independent_sources']} 个"]

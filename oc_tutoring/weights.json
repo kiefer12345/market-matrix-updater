@@ -4,31 +4,59 @@
   "recency": {
     "_说明": "年份衰减：weight = 0.5 ** (距今年数 / half_life_years)，不低于 floor。年份不明的条目按 unknown_year_weight。",
     "half_life_years": 3.0,
-    "floor": 0.10,
+    "floor": 0.1,
     "unknown_year_weight": 0.25
   },
   "source_types": {
     "_说明": "来源类型权重：越独立、越是家长亲身经历，权重越高。机构自述几乎不计分，只列出来备查。",
-    "parent_forum": {"weight": 1.00, "label": "家长论坛（新足迹 / Whirlpool / Reddit 等）"},
-    "parent_group": {"weight": 0.90, "label": "家长群 / 微信群 / 小红书（亲身经历，但难以公开核实）"},
-    "student_forum": {"weight": 0.70, "label": "学生论坛（Bored of Studies 等，多为过来人回忆）"},
-    "review_site": {"weight": 0.70, "label": "第三方点评站（ProductReview / Google 评分聚合）"},
-    "staff_review": {"weight": 0.20, "label": "员工评价（Indeed 等，只反映雇主情况）"},
-    "media": {"weight": 0.50, "label": "媒体报道"},
-    "listing_blog": {"weight": 0.25, "label": "榜单 / 导购博客（常为软文或同行所写）"},
-    "self_claim": {"weight": 0.05, "label": "机构自述 / 官网 / 软文（基本不计分）"}
+    "parent_forum": {
+      "weight": 1.0,
+      "label": "家长论坛（新足迹 / Whirlpool / Reddit 等）"
+    },
+    "parent_group": {
+      "weight": 0.9,
+      "label": "家长群 / 微信群 / 小红书（亲身经历，但难以公开核实）"
+    },
+    "student_forum": {
+      "weight": 0.7,
+      "label": "学生论坛（Bored of Studies 等，多为过来人回忆）"
+    },
+    "review_site": {
+      "weight": 0.7,
+      "label": "第三方点评站（ProductReview / Google 评分聚合）"
+    },
+    "staff_review": {
+      "weight": 0.2,
+      "label": "员工评价（Indeed 等，只反映雇主情况）"
+    },
+    "media": {
+      "weight": 0.5,
+      "label": "媒体报道"
+    },
+    "listing_blog": {
+      "weight": 0.25,
+      "label": "榜单 / 导购博客（常为软文或同行所写）"
+    },
+    "self_claim": {
+      "weight": 0.05,
+      "label": "机构自述 / 官网 / 软文（基本不计分）"
+    },
+    "directory": {
+      "weight": 0.0,
+      "label": "名录 / 黄页（只证明这家机构存在，不计分）"
+    }
   },
   "verification": {
     "_说明": "核实程度：本程序采集时能否读到原帖。只看到搜索引擎摘要的打折。",
-    "original_read": 1.00,
-    "search_summary": 0.70,
-    "secondhand": 0.40
+    "original_read": 1.0,
+    "search_summary": 0.7,
+    "secondhand": 0.4
   },
   "relevance": {
     "_说明": "和 OC 备考的相关度。",
-    "oc": 1.00,
-    "selective_primary": 0.70,
-    "general": 0.40
+    "oc": 1.0,
+    "selective_primary": 0.7,
+    "general": 0.4
   },
   "stance_sentiment": {
     "_说明": "立场 → 情感分。recommend=明确推荐，positive=正面经历，mention=仅被列为可选项，mixed=褒贬参半，negative=负面经历，warn=明确劝退。",
@@ -50,7 +78,13 @@
   },
   "confidence_tiers": {
     "_说明": "可信度分档，按独立来源数（不同帖子/站点）和最近年份判断。",
-    "high": {"min_independent_sources": 4, "min_latest_year": 2023},
-    "medium": {"min_independent_sources": 2, "min_latest_year": 2021}
+    "high": {
+      "min_independent_sources": 4,
+      "min_latest_year": 2023
+    },
+    "medium": {
+      "min_independent_sources": 2,
+      "min_latest_year": 2021
+    }
   }
 }

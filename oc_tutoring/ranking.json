@@ -324,7 +324,7 @@
       "negative": 0.159,
       "approval": 0.98,
       "evidence_weight": 11.575,
-      "evidence_count": 30,
+      "evidence_count": 31,
       "independent_sources": 21,
       "latest_year": 2026,
       "confidence": "高",
@@ -658,6 +658,17 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1651445",
           "summary": "在 Alpha One 排名还行，但去考 ASAT 就差很多；阅读在 Alpha One 错很少、做真题却差不少。"
+        },
+        {
+          "id": "e0466",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-coaching/parramatta",
+          "summary": "收费（导购名录）：Foundations 84、Intensive English 73、WEMT 84、STTC 95 澳元一节，10 周一学期，有免费试听。"
         }
       ]
     },
@@ -2031,7 +2042,7 @@
       "negative": 0,
       "approval": 1.0,
       "evidence_weight": 1.218,
-      "evidence_count": 4,
+      "evidence_count": 5,
       "independent_sources": 1,
       "latest_year": 2026,
       "confidence": "低",
@@ -2079,6 +2090,17 @@
           "platform": "机构官网",
           "url": "https://testacademy.com.au/",
           "summary": "官网展示的评价：夸老师和软件，有家长称买在线题包后孩子拿到 OC offer。机构自选展示。"
+        },
+        {
+          "id": "e0468",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-coaching/parramatta",
+          "summary": "收费（导购名录）：Selective Mastery 直播课 35 澳元一小时，约 122.5 澳元一周，首节免费。"
         }
       ]
     },
@@ -3787,6 +3809,297 @@
       ]
     },
     {
+      "id": "acer_education",
+      "name": "ACER Education (Hurstville)",
+      "name_zh": "",
+      "areas": [
+        "Hurstville"
+      ],
+      "format": "小班(<10 人)",
+      "notes": "",
+      "score": 0.017,
+      "positive": 0.017,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.024,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0456",
+          "points": 0.0171,
+          "weight": 0.0245,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://www.acereducation.com.au/",
+          "summary": "官网自述：Year 4 OC、Year 5-6 Selective 备考，小班；导购名录称 Years 3-5 约 600 澳元一学期。"
+        }
+      ]
+    },
+    {
+      "id": "educo",
+      "name": "EDUCO Tutoring",
+      "name_zh": "",
+      "areas": [
+        "Homebush West",
+        "Edmondson Park",
+        "线上"
+      ],
+      "format": "小班(最多 7 人) / 一对一",
+      "notes": "",
+      "score": 0.017,
+      "positive": 0.017,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.024,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0454",
+          "points": 0.0171,
+          "weight": 0.0245,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://www.edu-co.com.au/oc-opportunity-class",
+          "summary": "官网自述：OC / Selective 小班或一对一，每周布置并批改作业。"
+        }
+      ]
+    },
+    {
+      "id": "eden_tuition",
+      "name": "Eden Tuition Centre",
+      "name_zh": "一等补习中心",
+      "areas": [
+        "Kogarah",
+        "Randwick"
+      ],
+      "format": "小班 / 一对一",
+      "notes": "",
+      "score": 0.017,
+      "positive": 0.017,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.024,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0445",
+          "points": 0.0171,
+          "weight": 0.0245,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://edentuition.com.au/about/about-2/",
+          "summary": "官网自述：1997 年成立，开 OC、Selective 课，小班或一对一。"
+        }
+      ]
+    },
+    {
+      "id": "erudite",
+      "name": "Erudite Tuition",
+      "name_zh": "",
+      "areas": [
+        "悉尼"
+      ],
+      "format": "班课 / 一对一",
+      "notes": "",
+      "score": 0.017,
+      "positive": 0.017,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.024,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0459",
+          "points": 0.0171,
+          "weight": 0.0245,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://eruditetuition.com.au/tutoring/exam-preparation/opportunity-class/",
+          "summary": "官网自述：OC 备考辅导。"
+        }
+      ]
+    },
+    {
+      "id": "kis_academics",
+      "name": "KIS Academics",
+      "name_zh": "",
+      "areas": [
+        "线上"
+      ],
+      "format": "一对一",
+      "notes": "",
+      "score": 0.017,
+      "positive": 0.017,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.024,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0463",
+          "points": 0.0171,
+          "weight": 0.0245,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://kisacademics.com/blog/everything-you-need-to-know-about-the-selective-school-entry-exam-in-nsw/amp/",
+          "summary": "官网博客自述：线上一对一。"
+        }
+      ]
+    },
+    {
+      "id": "schoolola",
+      "name": "Schoolola",
+      "name_zh": "",
+      "areas": [
+        "Hornsby"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0.017,
+      "positive": 0.017,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.024,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0462",
+          "points": 0.0171,
+          "weight": 0.0245,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://schoolola.com.au/tutoring-hornsby",
+          "summary": "官网自述：Hornsby 一带的 OC / Selective 辅导。"
+        }
+      ]
+    },
+    {
+      "id": "sydney_tech_tutoring",
+      "name": "Selective School Tutoring (selectiveschooltutoring.com.au)",
+      "name_zh": "",
+      "areas": [
+        "悉尼"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0.017,
+      "positive": 0.017,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.024,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0465",
+          "points": 0.0171,
+          "weight": 0.0245,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://selectiveschooltutoring.com.au/selective-school-tutoring-sydney/",
+          "summary": "官网自述。"
+        }
+      ]
+    },
+    {
+      "id": "selective_success",
+      "name": "Selective Success Academy",
+      "name_zh": "",
+      "areas": [
+        "线上"
+      ],
+      "format": "线上小班（Teams 直播）",
+      "notes": "主打 Year 8-11 插班入学考试（Sydney Boys、North Sydney Boys 等各校自办的考试），不是六年级的 Selective 统考。",
+      "score": 0.017,
+      "positive": 0.017,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.024,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0435",
+          "points": 0.0171,
+          "weight": 0.0245,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://selectivesuccessacademy.com.au/",
+          "summary": "官网自述：线上小班，每学期 10 次、每次 2 小时，约 800-900 澳元一学期，有免费试听；自报 5/5（页面上写 30+、50+、90+ 条不一致）。未找到独立评价，新足迹上没人提过。"
+        }
+      ]
+    },
+    {
+      "id": "tutero",
+      "name": "Tutero",
+      "name_zh": "",
+      "areas": [
+        "线上"
+      ],
+      "format": "一对一",
+      "notes": "",
+      "score": 0.017,
+      "positive": 0.017,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 0.024,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0464",
+          "points": 0.0171,
+          "weight": 0.0245,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://www.tutero.com/au/blog/best-selective-school-tutoring",
+          "summary": "自己写的榜单把自己排第一。"
+        }
+      ]
+    },
+    {
       "id": "sydney_tutoring_academy",
       "name": "Sydney Tutoring Academy",
       "name_zh": "",
@@ -3958,6 +4271,71 @@
       ]
     },
     {
+      "id": "amt_select",
+      "name": "AMT Select Coaching College",
+      "name_zh": "",
+      "areas": [
+        "Bankstown"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0437",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/south-west-sydney",
+          "summary": "导购名录列出。"
+        }
+      ]
+    },
+    {
+      "id": "alchemy",
+      "name": "Alchemy Tuition",
+      "name_zh": "",
+      "areas": [
+        "悉尼",
+        "上门"
+      ],
+      "format": "一对一",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0441",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/sydney-city-east",
+          "summary": "导购名录列出，一对一 Selective 辅导。"
+        }
+      ]
+    },
+    {
       "id": "braindoc",
       "name": "BrainDoc",
       "name_zh": "",
@@ -3978,6 +4356,170 @@
       "evidence": []
     },
     {
+      "id": "c3_education",
+      "name": "C3 Education Group",
+      "name_zh": "",
+      "areas": [
+        "North Strathfield",
+        "Summer Hill"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0453",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/inner-west",
+          "summary": "导购名录列出；新足迹有人问过，没有评价。"
+        }
+      ]
+    },
+    {
+      "id": "edu_hub",
+      "name": "Edu Hub Tutoring",
+      "name_zh": "",
+      "areas": [
+        "Minto"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0440",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/south-west-sydney",
+          "summary": "导购名录列出，有 Selective Test 课程。"
+        }
+      ]
+    },
+    {
+      "id": "elite_coaching",
+      "name": "Elite Coaching College",
+      "name_zh": "",
+      "areas": [
+        "Bankstown"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0436",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/south-west-sydney",
+          "summary": "导购名录列出，开 Selective 课。"
+        }
+      ]
+    },
+    {
+      "id": "ezzi_learning",
+      "name": "Ezzi Learning",
+      "name_zh": "",
+      "areas": [
+        "Chester Hill"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0449",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/south-west-sydney",
+          "summary": "导购名录列出。"
+        }
+      ]
+    },
+    {
+      "id": "first_education",
+      "name": "First Education",
+      "name_zh": "",
+      "areas": [
+        "Bondi",
+        "Randwick",
+        "Maroubra",
+        "Mascot"
+      ],
+      "format": "班课 / 一对一",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0444",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/sydney-city-east",
+          "summary": "导购名录列出。"
+        }
+      ]
+    },
+    {
       "id": "formative_learning",
       "name": "Formative Learning",
       "name_zh": "",
@@ -3996,6 +4538,166 @@
       "latest_year": null,
       "confidence": "低",
       "evidence": []
+    },
+    {
+      "id": "harrys",
+      "name": "Harry's Education Centre",
+      "name_zh": "",
+      "areas": [
+        "Burwood"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0461",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.bestong.com.au/index.php?City=Sydney&Category=20&page=1&ipp=All",
+          "summary": "华人黄页列出：新设 OC 备考班（3/4 年级）。信息可能过时。"
+        }
+      ]
+    },
+    {
+      "id": "kingmedia",
+      "name": "Kingmedia-Tec",
+      "name_zh": "",
+      "areas": [
+        "Hurstville"
+      ],
+      "format": "班课 + 模拟考",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0457",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/st-george-sutherland",
+          "summary": "导购名录：Year 5 Selective trial 课约 660 澳元。"
+        }
+      ]
+    },
+    {
+      "id": "mbh_coaching",
+      "name": "MBH Coaching College",
+      "name_zh": "",
+      "areas": [
+        "Panania"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0448",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/south-west-sydney",
+          "summary": "导购名录列出。"
+        }
+      ]
+    },
+    {
+      "id": "markitup",
+      "name": "Markitup Tuition",
+      "name_zh": "",
+      "areas": [
+        "Liverpool"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0450",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/south-west-sydney",
+          "summary": "导购名录列出。"
+        }
+      ]
+    },
+    {
+      "id": "mathnasium",
+      "name": "Mathnasium",
+      "name_zh": "",
+      "areas": [
+        "多校区"
+      ],
+      "format": "数学",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0455",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/inner-west",
+          "summary": "导购名录列出，有 Selective 数学项目。"
+        }
+      ]
     },
     {
       "id": "mockstar",
@@ -4038,6 +4740,41 @@
       "evidence": []
     },
     {
+      "id": "ninety_plus",
+      "name": "Ninety Plus Education Centre",
+      "name_zh": "90Plus 补习学校",
+      "areas": [
+        "Bondi Junction",
+        "Burwood",
+        "City",
+        "Chatswood"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0442",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/sydney-city-east",
+          "summary": "导购名录和华人黄页都列出，有 Year 5-6 Selective 备考课和 OC 课。"
+        }
+      ]
+    },
+    {
       "id": "notesedu",
       "name": "NotesEdu",
       "name_zh": "",
@@ -4056,6 +4793,167 @@
       "latest_year": null,
       "confidence": "低",
       "evidence": []
+    },
+    {
+      "id": "openwisdom",
+      "name": "OpenWisdom Education",
+      "name_zh": "",
+      "areas": [
+        "Burwood"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0452",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/inner-west",
+          "summary": "导购名录列出。"
+        }
+      ]
+    },
+    {
+      "id": "phoenix_education",
+      "name": "Phoenix Education",
+      "name_zh": "",
+      "areas": [
+        "Bankstown",
+        "Burwood"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0439",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/south-west-sydney",
+          "summary": "导购名录列出。"
+        }
+      ]
+    },
+    {
+      "id": "pioneer_education",
+      "name": "Pioneer Education",
+      "name_zh": "",
+      "areas": [
+        "Padstow"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0447",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/south-west-sydney",
+          "summary": "导购名录列出。"
+        }
+      ]
+    },
+    {
+      "id": "practice_perfect",
+      "name": "Practice Perfect Coaching College",
+      "name_zh": "",
+      "areas": [
+        "Bankstown"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0438",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/south-west-sydney",
+          "summary": "导购名录列出。"
+        }
+      ]
+    },
+    {
+      "id": "reach_academy",
+      "name": "Reach Academy",
+      "name_zh": "",
+      "areas": [
+        "Castle Hill"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0458",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://kidsbook.com.au/p/reachacademyptyltd",
+          "summary": "商家目录列出，开 OC 和 Selective 课。"
+        }
+      ]
     },
     {
       "id": "sam",
@@ -4100,6 +4998,104 @@
       "evidence": []
     },
     {
+      "id": "study_space",
+      "name": "Study Space",
+      "name_zh": "",
+      "areas": [
+        "Double Bay",
+        "Rose Bay"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0446",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/sydney-city-east",
+          "summary": "导购名录列出。"
+        }
+      ]
+    },
+    {
+      "id": "sse",
+      "name": "Sydney School of English (SSE)",
+      "name_zh": "",
+      "areas": [
+        "Burwood"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0443",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/inner-west",
+          "summary": "导购名录列出，有 Selective 备考课。"
+        }
+      ]
+    },
+    {
+      "id": "talent_100",
+      "name": "Talent 100",
+      "name_zh": "",
+      "areas": [
+        "Burwood",
+        "Chatswood"
+      ],
+      "format": "班课",
+      "notes": "中学为主",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0451",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/north-shore",
+          "summary": "导购名录：Year 5/6 每科约 495 澳元一学期。"
+        }
+      ]
+    },
+    {
       "id": "trinity_tuition",
       "name": "Trinity Tuition",
       "name_zh": "",
@@ -4118,6 +5114,38 @@
       "latest_year": null,
       "confidence": "低",
       "evidence": []
+    },
+    {
+      "id": "vertex",
+      "name": "Vertex Learning Centre",
+      "name_zh": "精英补习社",
+      "areas": [
+        "Eastwood"
+      ],
+      "format": "小班",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.0,
+      "evidence_count": 1,
+      "independent_sources": 0,
+      "latest_year": null,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0460",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.008.com.au/applications/chinesepages/city/xn/category.php?catid=40",
+          "summary": "华人黄页列出：第一堂课免费试听，小班制。"
+        }
+      ]
     },
     {
       "id": "wt_academy",
@@ -4641,7 +5669,7 @@
       "negative": 0.873,
       "approval": 0.35,
       "evidence_weight": 3.375,
-      "evidence_count": 19,
+      "evidence_count": 20,
       "independent_sources": 13,
       "latest_year": 2025,
       "confidence": "高",
@@ -4854,6 +5882,17 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1604213",
           "summary": "Bella Vista 校区环境好、接送方便，刚开始补习推荐，强度不大、孩子不反感；只适合打基础，考 OC 不够。"
+        },
+        {
+          "id": "e0467",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-tutoring/north-shore",
+          "summary": "收费（导购名录，2026 年 Term 3）：Fastrain / High Achiever 920 澳元一学期，模拟考课程 880 澳元。"
         }
       ]
     },
