@@ -751,5 +751,15 @@
     "aliases": [
       "selectivetests"
     ]
+  },
+  {
+    "id": "formative_learning",
+    "name": "Formative Learning",
+    "name_zh": "",
+    "areas": [
+      "南区"
+    ],
+    "format": "班课",
+    "notes": ""
   }
 ]
