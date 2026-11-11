@@ -17,7 +17,8 @@
       "Pre Uni",
       "PU",
       "新学院",
-      "P家"
+      "P家",
+      "Pri uni"
     ]
   },
   {
@@ -51,7 +52,8 @@
       "Alpha One",
       "Alpha1",
       "A1",
-      "AlphaOne"
+      "AlphaOne",
+      "Alphaone"
     ]
   },
   {
@@ -96,7 +98,7 @@
     "aliases": [
       "Swot Shop",
       "SwotShop",
-      "SW"
+      "Swot"
     ]
   },
   {
@@ -168,7 +170,9 @@
     "format": "班课 + 线上",
     "notes": "",
     "aliases": [
-      "Scholarly"
+      "Scholarly",
+      "Scho",
+      "S家"
     ]
   },
   {
@@ -264,7 +268,10 @@
     "format": "Thinking Skills / 阅读分科班",
     "notes": "",
     "aliases": [
-      "Eduvision"
+      "Eduvision",
+      "EduV",
+      "E家",
+      "Edu Vision"
     ]
   },
   {
@@ -444,7 +451,9 @@
     "format": "班课",
     "notes": "",
     "aliases": [
-      "何老师"
+      "何老师",
+      "何老師",
+      "Super Coaching"
     ]
   },
   {
@@ -498,7 +507,8 @@
       "Hills District"
     ],
     "format": "班课",
-    "notes": "主要是中学理科，OC 相关性弱。"
+    "notes": "主要是中学理科，OC 相关性弱。",
+    "aliases": []
   },
   {
     "id": "funfox",
@@ -508,7 +518,8 @@
       "线上"
     ],
     "format": "线上小班",
-    "notes": ""
+    "notes": "",
+    "aliases": []
   },
   {
     "id": "mr_pauls",
@@ -519,7 +530,8 @@
       "线上"
     ],
     "format": "班课",
-    "notes": ""
+    "notes": "",
+    "aliases": []
   },
   {
     "id": "au_academy",
@@ -529,7 +541,8 @@
       "Hornsby"
     ],
     "format": "班课",
-    "notes": ""
+    "notes": "",
+    "aliases": []
   },
   {
     "id": "sharp_minds",
@@ -539,7 +552,8 @@
       "线上"
     ],
     "format": "在线模拟题平台",
-    "notes": ""
+    "notes": "",
+    "aliases": []
   },
   {
     "id": "keired",
@@ -550,7 +564,8 @@
       "线上"
     ],
     "format": "一对一",
-    "notes": ""
+    "notes": "",
+    "aliases": []
   },
   {
     "id": "advanced_instruction",
@@ -560,7 +575,11 @@
       "Campsie"
     ],
     "format": "写作小班",
-    "notes": ""
+    "notes": "",
+    "aliases": [
+      "Advanced Instruction",
+      "Steggles"
+    ]
   },
   {
     "id": "kedu",
@@ -570,7 +589,10 @@
       "线上"
     ],
     "format": "在线题库",
-    "notes": "2026 年初才在新足迹出现，推荐帖被质疑是广告。"
+    "notes": "2026 年初才在新足迹出现，推荐帖被质疑是广告。",
+    "aliases": [
+      "Kedu"
+    ]
   },
   {
     "id": "ocselective",
@@ -580,7 +602,10 @@
       "线上"
     ],
     "format": "在线模拟题",
-    "notes": ""
+    "notes": "",
+    "aliases": [
+      "ocselective"
+    ]
   },
   {
     "id": "nam_quang",
@@ -590,7 +615,10 @@
       "悉尼西南"
     ],
     "format": "班课",
-    "notes": ""
+    "notes": "",
+    "aliases": [
+      "Nam Quang"
+    ]
   },
   {
     "id": "proficiency",
@@ -600,6 +628,128 @@
       "Burwood"
     ],
     "format": "班课（中学为主）",
-    "notes": ""
+    "notes": "",
+    "aliases": [
+      "Proficiency"
+    ]
+  },
+  {
+    "id": "mastery_school",
+    "name": "Mastery School",
+    "name_zh": "",
+    "areas": [
+      "Gordon"
+    ],
+    "format": "班课",
+    "notes": "",
+    "aliases": [
+      "Mastery"
+    ]
+  },
+  {
+    "id": "trinity_tuition",
+    "name": "Trinity Tuition",
+    "name_zh": "",
+    "areas": [
+      "线上"
+    ],
+    "format": "模拟卷",
+    "notes": "",
+    "aliases": [
+      "Trinity"
+    ]
+  },
+  {
+    "id": "notesedu",
+    "name": "NotesEdu",
+    "name_zh": "",
+    "areas": [
+      "线上"
+    ],
+    "format": "在线题库",
+    "notes": "",
+    "aliases": [
+      "NotesEdu",
+      "Notes Edu"
+    ]
+  },
+  {
+    "id": "braindoc",
+    "name": "BrainDoc",
+    "name_zh": "",
+    "areas": [
+      "线上"
+    ],
+    "format": "在线题库",
+    "notes": "",
+    "aliases": [
+      "BrainDoc"
+    ]
+  },
+  {
+    "id": "smart_dragon",
+    "name": "Smart Dragon",
+    "name_zh": "",
+    "areas": [
+      "悉尼"
+    ],
+    "format": "OC trial",
+    "notes": "",
+    "aliases": [
+      "Smart dragon"
+    ]
+  },
+  {
+    "id": "cogito",
+    "name": "Cogito",
+    "name_zh": "",
+    "areas": [
+      "悉尼"
+    ],
+    "format": "班课",
+    "notes": "",
+    "aliases": [
+      "Cogito"
+    ]
+  },
+  {
+    "id": "dr_jin",
+    "name": "Dr Jin",
+    "name_zh": "",
+    "areas": [
+      "悉尼"
+    ],
+    "format": "班课",
+    "notes": "",
+    "aliases": [
+      "Dr Jin",
+      "Dr. Jin"
+    ]
+  },
+  {
+    "id": "selectivetrial",
+    "name": "selectivetrial.com.au",
+    "name_zh": "",
+    "areas": [
+      "线上"
+    ],
+    "format": "在线题库",
+    "notes": "",
+    "aliases": [
+      "selectivetrial"
+    ]
+  },
+  {
+    "id": "selectivetests",
+    "name": "selectivetests.com.au",
+    "name_zh": "",
+    "areas": [
+      "线上"
+    ],
+    "format": "在线题库",
+    "notes": "",
+    "aliases": [
+      "selectivetests"
+    ]
   }
 ]
