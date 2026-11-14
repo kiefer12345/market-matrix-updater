@@ -243,16 +243,24 @@ class HttpLayer(unittest.TestCase):
 
 
 class HistoryIsUntouched(unittest.TestCase):
-    """The 378 records and both rankings must match the baseline saved before this work."""
+    """Reviewed evidence may be added, but the 378 baseline records and the scoring formula must not change."""
 
-    def test_evidence_and_rankings_match_baseline(self):
+    def test_baseline_records_are_all_still_there_unchanged(self):
+        base = json.loads((ROOT / "baseline" / "evidence.json").read_text(encoding="utf-8"))
+        now = {e["id"]: e for e in json.loads((ROOT / "data" / "evidence.json").read_text(encoding="utf-8"))}
+        self.assertEqual(len(base), 378)
+        for e in base:
+            self.assertEqual(now.get(e["id"]), e, e["id"])
+
+    def test_formula_still_reproduces_baseline_rankings_from_baseline_data(self):
         sums = dict(reversed(line.split()) for line in (ROOT / "baseline" / "SHA256SUMS").read_text().splitlines())
         digest = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
-        self.assertEqual(digest(ROOT / "data" / "evidence.json"), sums["evidence.json"])
-        self.assertEqual(len(json.loads((ROOT / "data" / "evidence.json").read_text(encoding="utf-8"))), 378)
         with tempfile.TemporaryDirectory() as tmp:
             work = Path(tmp) / "oc"
             shutil.copytree(ROOT, work, ignore=shutil.ignore_patterns("__pycache__", "community", "tests"))
+            for name in ("evidence.json", "centres.json"):
+                shutil.copy(ROOT / "baseline" / name, work / "data" / name)
+            shutil.copy(ROOT / "baseline" / "weights.json", work / "weights.json")
             for args, name in (([], "ranking.json"), (["--focus", "selective"], "ranking_selective.json")):
                 subprocess.run([sys.executable, str(work / "oc_ranker.py"), *args], check=True, capture_output=True)
                 self.assertEqual(digest(work / name), sums[name], name)

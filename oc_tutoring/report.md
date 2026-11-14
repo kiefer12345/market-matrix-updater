@@ -1,6 +1,6 @@
 # 澳洲（NSW）OC 补习班口碑排行
 
-参考年份 2026，共 86 家机构、378 条证据。本文件由 `oc_ranker.py` 自动生成，请改 `data/` 和 `weights.json`，不要手改这里。
+参考年份 2026，共 86 家机构、397 条证据。本文件由 `oc_ranker.py` 自动生成，请改 `data/` 和 `weights.json`，不要手改这里。
 
 ## 怎么读这份排行
 
@@ -14,16 +14,16 @@
 
 | 排名 | 机构 | 口碑分 | 正面 | 负面 | 好评占比 | 独立来源 | 最近年份 | 可信度 | 地区 |
 |---:|---|---:|---:|---:|---:|---:|---:|:---:|---|
-| 1 | CTEdu (ctedu.com.au)（CT） | 8.86 | 9.61 | 0.75 | 93% | 21 | 2026 | 高 | 线上 |
+| 1 | CTEdu (ctedu.com.au)（CT） | 8.76 | 10.00 | 1.24 | 89% | 25 | 2026 | 高 | 线上 |
 | 2 | Alpha One Coaching College（A1精英补习） | 6.43 | 6.59 | 0.16 | 98% | 21 | 2026 | 高 | Castle Hill、North Parramatta、多校区 |
-| 3 | CS Education（CS） | 5.03 | 6.93 | 1.91 | 78% | 37 | 2026 | 高 | Bella Vista/Norwest、多校区、线上 |
-| 4 | Pre-Uni New College（新学院 / PU） | 2.08 | 6.62 | 4.54 | 59% | 61 | 2026 | 高 | Homebush(总部)、Castle Hill、Epping、多校区 |
-| 5 | Essential 系列练习册 | 0.79 | 0.79 | 0.00 | 100% | 1 | 2025 | 低 | 自学 |
-| 6 | Test Academy | 0.79 | 0.79 | 0.00 | 100% | 1 | 2026 | 低 | Parramatta、线上 |
-| 7 | The Swot Shop | 0.77 | 1.36 | 0.59 | 70% | 16 | 2024 | 高 | Beecroft |
-| 8 | Five Senses Education 练习册（5 Sense） | 0.56 | 0.56 | 0.00 | 100% | 1 | 2025 | 低 | 自学 |
-| 9 | Scholarly Training | 0.52 | 2.63 | 2.11 | 56% | 20 | 2026 | 高 | Naremburn、线上 |
-| 10 | STC Selected Tutorial Centre（STC） | 0.48 | 0.85 | 0.37 | 70% | 11 | 2026 | 高 | Hurstville |
+| 3 | CS Education（CS） | 5.36 | 7.27 | 1.91 | 79% | 38 | 2026 | 高 | Bella Vista/Norwest、多校区、线上 |
+| 4 | Pre-Uni New College（新学院 / PU） | 3.02 | 7.79 | 4.77 | 62% | 67 | 2026 | 高 | Homebush(总部)、Castle Hill、Epping、多校区 |
+| 5 | The Swot Shop | 1.16 | 1.75 | 0.59 | 75% | 17 | 2025 | 高 | Beecroft |
+| 6 | Essential 系列练习册 | 0.79 | 0.79 | 0.00 | 100% | 1 | 2025 | 低 | 自学 |
+| 7 | Test Academy | 0.79 | 0.79 | 0.00 | 100% | 1 | 2026 | 低 | Parramatta、线上 |
+| 8 | Scholarly Training | 0.52 | 2.63 | 2.11 | 56% | 21 | 2026 | 高 | Naremburn、线上 |
+| 9 | STC Selected Tutorial Centre（STC） | 0.48 | 0.85 | 0.37 | 70% | 11 | 2026 | 高 | Hurstville |
+| 10 | Five Senses Education 练习册（5 Sense） | 0.44 | 0.56 | 0.11 | 83% | 2 | 2025 | 中 | 自学 |
 | 11 | Au Academy | 0.28 | 0.28 | 0.00 | 100% | 1 | 2024 | 低 | Hornsby |
 | 12 | TJ Academy | 0.20 | 0.20 | 0.00 | 100% | 1 | 2023 | 低 | Chatswood |
 | 13 | Edu-Kingdom College | 0.20 | 0.36 | 0.16 | 69% | 2 | 2023 | 中 | 多校区 |
@@ -35,8 +35,8 @@
 | 19 | OzTests | 0.12 | 0.12 | 0.00 | 100% | 2 | 2025 | 中 | 线上 |
 | 20 | Dr Jin | 0.11 | 0.11 | 0.00 | 100% | 1 | 2022 | 低 | 悉尼 |
 | 21 | Advanced Instruction (Mr Steggles) | 0.06 | 0.06 | 0.00 | 100% | 1 | 2019 | 低 | Campsie |
-| 22 | Super Coaching | 0.00 | 0.00 | 0.00 | — | 2 | 2022 | 中 | North Parramatta |
-| 23 | Cogito | 0.00 | 0.00 | 0.00 | — | 1 | 2022 | 低 | 悉尼 |
+| 22 | Cogito | 0.00 | 0.00 | 0.00 | — | 2 | 2026 | 中 | 悉尼 |
+| 23 | Super Coaching | 0.00 | 0.00 | 0.00 | — | 2 | 2022 | 中 | North Parramatta |
 | 24 | Mastery School | 0.00 | 0.00 | 0.00 | — | 1 | 2024 | 低 | Gordon |
 | 25 | The Primary Way | 0.00 | 0.00 | 0.00 | — | 1 | 2023 | 低 | Chatswood |
 | 26 | 叶老师补习班 (Mr Ye)（叶老师） | -0.01 | 0.19 | 0.20 | 48% | 5 | 2023 | 高 | Campsie |
@@ -132,7 +132,7 @@
 
 ### 1. CTEdu (ctedu.com.au)（CT）
 
-口碑分 **8.86** · 可信度 **高** · 独立来源 21 个 · 地区：线上 · 形式：在线题库 / 模拟题
+口碑分 **8.76** · 可信度 **高** · 独立来源 25 个 · 地区：线上 · 形式：在线题库 / 模拟题
 
 不是补习班，是家长自己刷题用的在线题库。
 
@@ -148,7 +148,9 @@
 | +0.556 | 推荐 | 2025 | [新足迹：请教 Selective trial 如何选择？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1865145)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.70 = 0.556 | 两位家长推荐：数学和 TS 比考试难，能练时间；实际考试结果和网站预测基本相符；英文偏简单。<br>原话：「排名出来的结果跟最后正式考试基本吻合」 |
 | +0.490 | 正面 | 2026 | [新足迹：ctedu的题到底好吗？有必要买来做吗？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1886798)<br>家长论坛，已读原帖 | 1.00×1.00×1.00×0.70 = 0.700 | 排名和预估学校很准（多位家长实测）：每周约 1000 人在考，基数大；小红书上很多人推荐；界面复刻官方考试。适合成绩好的孩子和考前看排名。<br>原话：「他家预估学校是真的很准，我家和朋友家几个孩子实测结果」 |
 | +0.490 | 正面 | 2026 | [新足迹：补习学校的练习一般要做到多少分才能进james ruse](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1891156)<br>家长论坛，已读原帖 | 1.00×1.00×1.00×0.70 = 0.700 | 估算的学校还算准，因为孩子一刷就是 10 套起。<br>原话：「它估算的学校还算准」 |
+| -0.490 | 负面 | 2026 | [新足迹：selective reading新增题型8题填空大家都做得好吗](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1888998)<br>家长论坛，已读原帖 | 1.00×1.00×1.00×0.70 = 0.700 | 新题型完形填空：Pre-Uni 的错得很少，CTEdu 的要错四五个，感觉 CT 这类题出得太难。<br>原话：「感觉ct的这个题出的太难了」 |
 | +0.441 | 正面 | 2024 | [新足迹：重做去年（2023年）OC考试真题有感而发以及对补习班的看法](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1826241)<br>家长论坛，已读原帖 | 1.00×0.63×1.00×1.00 = 0.630 | 多位家长：英语比真题简单，数学和 Thinking Skills 和真题差不多；孩子三科都有过全对；但解析有时看不明白。也有孩子嫌难不愿做。<br>原话：「最后老老实实做了两套CT，得出结论，英语比真题简单，但数学和TS也差不多了」 |
+| +0.389 | 正面 | 2025 | [新足迹：CS的trial模考成绩和排名怎么看，跟真实精英中学考试差不多吗](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1882701)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.70 = 0.556 | 题目风格更接近真题（细节坑多，考读题仔细），不必被分数吓到：有孩子只做对一半也考上前几名的精英，同事女儿 70 多分考上 Hornsby。<br>原话：「我家后来是觉得ctedu这种更接近真题考试的风格」 |
 | +0.350 | 正面 | 2023 | [新足迹：请教CTedu的题目做为唯一备考OC材料是否足够？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1792057)<br>家长论坛，已读原帖 | 1.00×0.50×1.00×1.00 = 0.500 | 题目还行、计算量比补习社少，估分基本靠谱，孩子在 CTEdu 成绩好 OC 应该也行；但答案解析过于简单，要家长自己讲；多位回复认为单靠它不够，还要配合大型模考。<br>原话：「CTEDU的题目我觉得还是可以的，估算成绩也基本上靠谱」 |
 | +0.350 | 推荐 | 2023 | [新足迹：Selective trial test 越来越好又变差](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1808032)<br>家长论坛，已读原帖 | 1.00×0.50×1.00×0.70 = 0.350 | 回复称 CTEdu 模考的成绩预测比 Pre-Uni 和 CS 都更准；题目灵活、覆盖面广，偏难，刚开始分数会低。<br>原话：「他家模考的成绩预测比pu和cs都更准的」 |
 | +0.350 | 推荐 | 2023 | [新足迹：Preuni 模考多少名才能进top 10精英？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1783209)<br>家长论坛，已读原帖 | 1.00×0.50×1.00×0.70 = 0.350 | 要参考模考报志愿的话 CTEdu 更准，身边问下来大多准；Pre-Uni 图的是人数多和现场氛围，参考度一半一半。同期另一帖有人质疑点名 CTEdu 像推销。<br>原话：「要参考模考报志愿的话，还是Ctedu准确一些」 |
@@ -164,6 +166,8 @@
 | +0.000 | 褒贬参半 | 2026 | [新足迹：OC trail test - kedu题库](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1893671)<br>家长论坛，已读原帖 | 1.00×1.00×1.00×1.00 = 1.000 | 被当作 Kedu 之后的进阶；但有家长买了做几套就发现好几道重复题，连图片都没改。<br>原话：「只做了几套，就发现好几道重复的题。太夸张了，连图片都懒得改」 |
 | +0.000 | 褒贬参半 | 2024 | [新足迹：有人做过Ct Edu的Pre-OC Pack吗？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1822610)<br>家长论坛，已读原帖 | 1.00×0.63×1.00×1.00 = 0.630 | 有人觉得不怎么靠谱；另一位说这两年认识的做 CTEdu 考上 James Ruse、North Sydney Boys 和几家头部 OC 的都觉得靠谱。Pre-OC 包比正式包简单约 10 分。<br>原话：「这两年我认识的做ctedu考上JR，NSBH的，还有考上几家头部oc的，都觉得他家比较靠谱」 |
 | +0.000 | 褒贬参半 | 2024 | [新足迹：CTEDU 模拟考试题](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1700669)<br>家长论坛，已读原帖 | 1.00×0.63×1.00×1.00 = 0.630 | 数学偏难甚至超纲，TS 阅读量不够，精华在训练控时；有家长说做错太多账号被封了两次（疑被当成搜集题目）。<br>原话：「这家的oc因为错太多，账号被封了两次，然后就放弃了」 |
+| +0.000 | 褒贬参半 | 2025 | [新足迹：selective学校报名建议？？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1883555)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.70 = 0.556 | 有人建议考前刷一套 CTEdu 并把错题弄懂；楼主说太难，还要大人讲题。<br>原话：「ct太难了，还要大人讲题」 |
+| +0.000 | 褒贬参半 | 2026 | [新足迹：preuni selective学校预测准吗？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1885323)<br>家长论坛，已读原帖 | 1.00×1.00×1.00×0.70 = 0.700 | 两个孩子同年考：CTEdu 上一直是 A 高于 B，ASAT 和最后成绩都是 B 高于 A，CTEdu 这次排反了；另一位做过一套觉得比 Pre-Uni 还难就放弃。<br>原话：「ctedu共3个set30套题：A > B… asat：B > A 最后考试成绩：B > A」 |
 
 ### 2. Alpha One Coaching College（A1精英补习）
 
@@ -205,7 +209,7 @@
 
 ### 3. CS Education（CS）
 
-口碑分 **5.03** · 可信度 **高** · 独立来源 37 个 · 地区：Bella Vista/Norwest、多校区、线上 · 形式：班课 + trial + 线上
+口碑分 **5.36** · 可信度 **高** · 独立来源 38 个 · 地区：Bella Vista/Norwest、多校区、线上 · 形式：班课 + trial + 线上
 
 | 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
 |---:|:---:|:---:|---|---|---|
@@ -217,6 +221,7 @@
 | +0.397 | 推荐 | 2022 | [新足迹：此次OC，真的有很多人是补考拿的高分吗？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1718892)<br>家长论坛，已读原帖 | 1.00×0.40×1.00×1.00 = 0.397 | 家长推荐 Ryde CS 的 trial：每周安排老师在线讲解所有题目，家长没法辅导错题时帮助很大。<br>原话：「这里推一下RydeCS 的trial，他们每周有安排老师online讲解所有的题目」 |
 | +0.389 | 正面 | 2025 | [新足迹：CS的trial模考成绩和排名怎么看，跟真实精英中学考试差不多吗](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1882701)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.70 = 0.556 | 多位回复：CS 的 trial 最接近真实考试难度，偏简单一些；建议把 10 次 trial 的错题反复复盘。也有人说牛娃会去更难的 Pre-Uni。<br>原话：「我一直觉得CS的trial是最接近真实考试」 |
 | +0.389 | 正面 | 2025 | [新足迹：请教 Selective trial 如何选择？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1865145)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.70 = 0.556 | 参加了 CS 的 trial，孩子感觉难度跟实际考试差不多。<br>原话：「我们也参加了CS的TRIAL, 孩子感觉难度跟实际考试差不多」 |
+| +0.333 | 推荐 | 2025 | [新足迹：CS的trial模考成绩和排名怎么看，跟真实精英中学考试差不多吗](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1882701)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.70 = 0.333 | 2025 年 11 月三位家长回帖：CS 的 trial 排名靠谱，OC 和 Selective 最后分数都接近 trial；今年考完的一位说校长给的报考建议非常准。也有反例：朋友孩子常年 CS 个位数排名，只拿到非头部候补。<br>原话：「按照我家今年考的结果来说，CS的很靠谱，校长给我们的报考建议非常准」 |
 | +0.315 | 推荐 | 2021 | [新足迹：纠结最后一个假期去cs 还是pre uni做oc trial](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1672966)<br>家长论坛，已读原帖 | 1.00×0.31×1.00×1.00 = 0.315 | 想靠错题提分的选 CS：所有错题包括阅读都能看、能带回家；也有人建议网上 trial 用 CS、实体去 Pre-Uni。<br>原话：「cs所有的错题都可以看，包括reading，能带回家。」 |
 | +0.309 | 正面 | 2024 | [新足迹：Pre uni end of term test result](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1838932)<br>家长论坛，已读原帖 | 1.00×0.63×1.00×0.70 = 0.441 | 考完精英的家长回头看：CS 校长说得挺准，平时每一门保持 80% 以上就很有希望上 top OC / Selective。<br>原话：「CS校长说的挺准的」 |
 | +0.309 | 正面 | 2024 | [新足迹：Pre uni 推荐的精英学校靠谱吗](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1815974)<br>家长论坛，已读原帖 | 1.00×0.63×1.00×0.70 = 0.441 | 两位家长：CS 老师 / 校长推荐的学校挺准，Chatswood 校区校长帮忙参谋志愿，OC 上了第二志愿、Selective 上了第一志愿。<br>原话：「CS上过2个学期，老师推荐的挺准的」 |
@@ -251,10 +256,12 @@
 | +0.000 | 褒贬参半 | 2023 | [新足迹：也说pre uni STTC排名，明年精英考试。](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1804470)<br>家长论坛，已读原帖 | 1.00×0.50×1.00×0.70 = 0.350 | 2023 年 CS trial 不到 500 人；校长不太强调排名，建议反复复盘错题、每门保证 80 分以上。<br>原话：「CS 一共就不到500人」 |
 | +0.000 | 褒贬参半 | 2022 | [新足迹：请问CS补习班，Castle Hill和Bella Vista的比较](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1724376)<br>家长论坛，已读原帖 | 1.00×0.40×1.00×1.00 = 0.397 | Bella Vista 分部管得比 Castle Hill 好；校区之间看负责人。<br>原话：「Bella Vista分部比Castle hill管的好点」 |
 | +0.000 | 褒贬参半 | 2021 | [新足迹：Eastwood 补习OC学校那个比较好？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1654782)<br>家长论坛，已读原帖 | 1.00×0.31×1.00×1.00 = 0.315 | Eastwood：Pre-Uni 题难、适合拔高；CS 全部错题可看、难度略低。<br>原话：「cs全部错题都可以看，难度略低」 |
+| +0.000 | 褒贬参半 | 2025 | [新足迹：读Selective失败报道有感](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1868983)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.70 = 0.556 | 同上：去了一周就不喜欢，作业多。<br>原话：「当然中间也去过PU和CS，但各一周就不喜欢不去了」 |
+| +0.000 | 褒贬参半 | 2026 | [新足迹：CS STTC考的最好的一次了](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1890889)<br>家长论坛，已读原帖 | 1.00×1.00×1.00×0.70 = 0.420 | 同一位家长：CS 不难，成绩比在 Pre-Uni 高，阅读平均分 60-70（Pre-Uni 只有 50 多）。<br>原话：「cs这边成绩很高，但是preuni那边没cs这么高」 |
 
 ### 4. Pre-Uni New College（新学院 / PU）
 
-口碑分 **2.08** · 可信度 **高** · 独立来源 61 个 · 地区：Homebush(总部)、Castle Hill、Epping、多校区 · 形式：大班 + 大型模拟考(WEMT/trial)
+口碑分 **3.02** · 可信度 **高** · 独立来源 67 个 · 地区：Homebush(总部)、Castle Hill、Epping、多校区 · 形式：大班 + 大型模拟考(WEMT/trial)
 
 各校区独立经营，教材和考题通用；口碑随校区和老师差别大。
 
@@ -263,10 +270,12 @@
 | +0.794 | 推荐 | 2025 | [新足迹：OC补习哪家强？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1886312)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×1.00 = 0.794 | 2025 年底问 OC 补习哪家强：做 trial 去 Pre-Uni 或 CS 都可以，现在更多人集中在 Pre-Uni；水平很高就去 Pre-Uni。<br>原话：「水平一般就alphaone或cs，水平很高就pu」 |
 | -0.490 | 负面 | 2026 | [新足迹：补习学校的练习一般要做到多少分才能进james ruse](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1891156)<br>家长论坛，已读原帖 | 1.00×1.00×1.00×0.70 = 0.700 | ASAT 是线下人数最多的模拟考，但排名可信度一般：同一年排 600 多名的进了 James Ruse，排几十名的连候补都没有，且不止一例。现场班老师水平参差不齐。<br>原话：「同一年pu排600多名的进jr了，排几十名的连reserve也没有，还不止一个人的」 |
 | +0.490 | 正面 | 2026 | [新足迹：preuni selective学校预测准吗？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1885323)<br>家长论坛，已读原帖 | 1.00×1.00×1.00×0.70 = 0.700 | 2026 年出分后楼主回帖：Pre-Uni 的学校预测对自家挺准，尤其考前假期那次；真题难度在 CS 和 Pre-Uni 之间。<br>原话：「我觉得还行，对我们来说挺准的」 |
+| +0.490 | 正面 | 2026 | [新足迹：CS STTC考的最好的一次了](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1890889)<br>家长论坛，已读原帖 | 1.00×1.00×1.00×0.70 = 0.700 | 同时在两家做 trial 的家长：CS 成绩偏高，还是以 Pre-Uni 的排名为准，觉得更准。<br>原话：「我还是以preuni那边排名为准」 |
 | -0.441 | 负面 | 2024 | [新足迹：重做去年（2023年）OC考试真题有感而发以及对补习班的看法](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1826241)<br>家长论坛，已读原帖 | 1.00×0.63×1.00×1.00 = 0.630 | 楼主（孩子考上不错的 OC）：P 家每周模考难度远超真题，数学运算量很大，属于过度补习，付出和回报不成正比；看不到模考卷只能在线看错题。多位回复附议：trial 了半年没见明显进步、WEMT 的题「一言难尽」、和真题脱轨。帖中称「P家」，后文有人直呼 pre uni。<br>原话：「从难度上来讲远超真题，尤其是数学难题的运算量很大」 |
 | +0.397 | 推荐 | 2022 | [新足迹：准备考oc，pre-uni 还是swot shop?](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1766722)<br>家长论坛，已读原帖 | 1.00×0.40×1.00×1.00 = 0.397 | 建议去 Pre-Uni：trial 样本大（临考前 1000 多人），能看出孩子的大概位置；也有人说最后一个 term 去 trial 一下就够。<br>原话：「SWOT SHOP不够应试，PREUNI的TRAIL TEST样本量比较大，能看出来娃大概的位置」 |
 | -0.397 | 劝退 | 2022 | [新足迹：避雷！Preuni OC trial 简直又刷新三观，家长们甘心这么放羊？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1728307)<br>家长论坛，已读原帖 | 1.00×0.40×1.00×1.00 = 0.397 | 楼主避雷某分部 OC trial：7 周换了 3 个老师，网课质量差。多位附议：服务差，讲题跳着讲；课堂吵没人管；考后预测不准；有家长说按 PU 排名孩子没戏，退出后在家做题反而考得很好，认为其 TS 题会误导学生。也有人说普通班还可以、哪家都不会把题讲全。<br>原话：「现在他们服务真是差到没边了！但凡做trial的，考完讲题都说跳着蹦着的讲」 |
 | -0.389 | 负面 | 2025 | [新足迹：趁热分享： 精英成绩 vs preuni ASAT预判](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1876502)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.70 = 0.556 | 2025 年出分后多位家长反馈 ASAT 不准，尤其对没在 Pre-Uni 补习的孩子：预测三个志愿都考不上的考上了第一志愿；评估能上 North Sydney Boys 的连候补都没有；改革后旧题库价值大跌；孩子说 PU 就是题海。<br>原话：「ASAT 这两年不太准啊」 |
+| +0.389 | 正面 | 2025 | [新足迹：大家能帮忙看下selective考试选学校吗？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1868518)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.70 = 0.556 | Pre-Uni 的学校预测对自家孩子比较准。<br>原话：「PRE-UNI的预测 对我们家小孩 还是比较准」 |
 | +0.315 | 推荐 | 2021 | [新足迹：纠结最后一个假期去cs 还是pre uni做oc trial](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1672966)<br>家长论坛，已读原帖 | 1.00×0.31×1.00×1.00 = 0.315 | 多位回复建议去 Pre-Uni 做 trial：参加人数多，排名更有说服力，题也改得更快。<br>原话：「Pre-uni 参加考试的Trial 人数多，Ranking 更有说服力。」 |
 | +0.315 | 推荐 | 2021 | [新足迹：想考OC的话，要去哪个学校报补习班呢？Hurstville附近有推荐的吗](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1669824)<br>家长论坛，已读原帖 | 1.00×0.31×1.00×1.00 = 0.315 | 被推荐为 STC 之外的选择：更系统更全面，题已按新题型更新；建议去总部，各校区独立、教材考题通用；trial 人数最多（各分校加起来 1000+）。<br>原话：「可以考虑preuni, 更系统更全面。」 |
 | +0.315 | 推荐 | 2021 | [新足迹：Smart dragon Oc trial 怎样？所有错题可以拿回家吗？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1659506)<br>家长论坛，已读原帖 | 1.00×0.31×1.00×1.00 = 0.315 | 基础一般、想刷题的还是建议 Pre-Uni：正规、题库大、参加人多、排名有参考价值，教材系统。<br>原话：「还是建议preuni之类的，比较正规」 |
@@ -275,6 +284,7 @@
 | +0.309 | 正面 | 2024 | [新足迹：各种补习班的排名对于考selective有没有参考价值](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1820907)<br>家长论坛，已读原帖 | 1.00×0.63×1.00×0.70 = 0.441 | 多位回复认为 ASAT 有相当参考性（2024 年 2500 多人，两年前不到 2100）；常驻学生因熟悉题型分数会偏高。<br>原话：「我认为PreUni ASAT的成绩还是有相当参考性的」 |
 | -0.309 | 负面 | 2024 | [新足迹：大家勿喷，我进来吐槽一下补习班](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1813935)<br>家长论坛，已读原帖 | 1.00×0.63×1.00×0.70 = 0.441 | YouTube 上 Pre-Uni 讲解精英真题只是把答案重复一遍；模考套餐贵。<br>原话：「小姐姐真就是把答案重复一遍，无他」 |
 | -0.294 | 负面 | 2026 | [新足迹：ctedu的题到底好吗？有必要买来做吗？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1886798)<br>家长论坛，已读原帖 | 1.00×1.00×1.00×0.70 = 0.420 | 考上 James Ruse 的家长：Pre-Uni 的题忽难忽易没章法，每次都不一样，不喜欢它的 trial；数学计算复杂度和超纲题比 CT 多得多。<br>原话：「私以为pre-uni的题有点忽难忽易没章法」 |
+| +0.294 | 正面 | 2026 | [新足迹：preuni selective学校预测准吗？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1885323)<br>家长论坛，已读原帖 | 1.00×1.00×1.00×0.70 = 0.420 | 2026 年考完：ASAT 的兄弟姐妹先后顺序和最后成绩一致；另一位说女儿 Pre-Uni 数学和 TS 在 10%-15%，实际考试也是 15%。今年真题数学和 TS 不比 Pre-Uni 简单。<br>原话：「我女儿preuni 数学和ts差不多都在10%和15%左右，实际考试这两科也考了15%」 |
 | +0.278 | 正面 | 2022 | [新足迹：OC 放榜，牛蛙家长们有没有好的书或者网上资源](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1718936)<br>家长论坛，已读原帖 | 1.00×0.40×1.00×1.00 = 0.397 | 考上 OC 的家长：term 2 起去 Pre-Uni 的 trial 做了二三十套题并复盘错题；高年级家长也建议最后半年报几个 trial 班（Pre-Uni、CS）并一起复盘。<br>原话：「term 2 开始去pre uni 的 trial tests，考了大概20-30 套题」 |
 | +0.278 | 正面 | 2022 | [新足迹：请问CS补习班，Castle Hill和Bella Vista的比较](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1724376)<br>家长论坛，已读原帖 | 1.00×0.40×1.00×1.00 = 0.397 | Pre-Uni 的优势是教材：每周内容全面细致，性价比高。<br>原话：「PREUNI的优势是教材」 |
 | -0.265 | 负面 | 2024 | [新足迹：CS总部和Alpha One 总部哪个好？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1821278)<br>家长论坛，已读原帖 | 1.00×0.63×1.00×1.00 = 0.378 | 不止一位去过的家长说就是让孩子抄答案（孩子去了一学期 Thinking Skills 居然全对，八成是抄的）；去 trial 看大数据还是好的；真题比 Pre-Uni 简单很多，尤其数学。<br>原话：「说到pre uni不止听到一个去过的说，就是让孩子抄答案」 |
@@ -284,6 +294,7 @@
 | +0.245 | 正面 | 2023 | [新足迹：也说pre uni STTC排名，明年精英考试。](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1804470)<br>家长论坛，已读原帖 | 1.00×0.50×1.00×0.70 = 0.350 | 2023 年 STTC 约 1500 人；常年前一百被认为稳进 James Ruse。<br>原话：「常年前一百是稳稳的JR」 |
 | -0.245 | 负面 | 2023 | [新足迹：目标一流OC, PREUNI TRIAL需要排名多少？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1668552)<br>家长论坛，已读原帖 | 1.00×0.50×1.00×0.70 = 0.350 | 题型比较老、太难，与官网真题差别太大；考前假期班排名大幅波动。<br>原话：「PreU 题型比较老，太难，与官网真题差别太大」 |
 | +0.233 | 正面 | 2025 | [新足迹：趁热分享： 精英成绩 vs preuni ASAT预判](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1876502)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.70 = 0.333 | 也有家长说 STTC 和 ASAT 对自家预计比较准；参加两次 ASAT 都十几名的孩子拿到 James Ruse offer。<br>原话：「对我们家娃预计还是比较准 包含STTC &ASAT」 |
+| -0.233 | 负面 | 2025 | [新足迹：CS的trial模考成绩和排名怎么看，跟真实精英中学考试差不多吗](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1882701)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.70 = 0.333 | 今年考完的家长：Pre-Uni 偏差巨大，两次大模考对自家都不准。同帖另一位说 ASAT 也算比较准。<br>原话：「Pre Uni的偏差巨大，两次大模考对我家来说也是不准」 |
 | +0.220 | 推荐 | 2021 | [新足迹：考精英中学补习班 是选择CS还是PRE UNI?](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1709311)<br>家长论坛，已读原帖 | 1.00×0.31×1.00×0.70 = 0.220 | 多位回复直接答 Pre-Uni：trial 上千人，排名更有参考价值；出题更严谨；老师懂行但讲得快；数学和 TS 答案有解题思路。<br>原话：「Pre uni比CS好」 |
 | +0.220 | 正面 | 2021 | [新足迹：CS补习班 Eastwood 怎样啊？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1664478)<br>家长论坛，已读原帖 | 1.00×0.31×1.00×1.00 = 0.315 | 总部老师水平高、有经验（有退休 OC 老师），有出题组，TS 和英文题最接近真题，英文有 Reading 1+1；分部老师没那么好。也有人不同意「必须总部」和「更接近样题」。<br>原话：「PRE UNI总部的老师水平都很高很有经验。」 |
 | +0.220 | 正面 | 2021 | [新足迹：哪家补习学校对新题型的反应最好?](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1670985)<br>家长论坛，已读原帖 | 1.00×0.31×1.00×1.00 = 0.315 | 2021 年考试大改后，家长觉得 Pre-Uni 大体比较接近教育部样题。<br>原话：「目前只上过PREUNI，感觉大体比较接近教育部的样题」 |
@@ -334,36 +345,19 @@
 | +0.000 | 褒贬参半 | 2022 | [新足迹：有今年preuni和CS两家的OC trial都做过的吗？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1742381)<br>家长论坛，已读原帖 | 1.00×0.40×1.00×1.00 = 0.397 | 烦在看不到全部错题，排名忽上忽下也不知为什么。<br>原话：「p家烦在看不到全部错题,排名忽上忽下也不知为什么」 |
 | +0.000 | 褒贬参半 | 2025 | [新足迹：请教补习学校selective trial的排名和真实考试的排名](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1858753)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.70 = 0.556 | ASAT 约 1800 人：一位说据说不是很准，另一位说人数多的 trial 成绩还是比较准，偏差主要因为真题数学比 trial 简单。<br>原话：「像pre-uni这种参与人数比较多的的trial test成绩还是比较准的」 |
 | +0.000 | 褒贬参半 | 2024 | [新足迹：Pre uni 推荐的精英学校靠谱吗](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1815974)<br>家长论坛，已读原帖 | 1.00×0.63×1.00×0.70 = 0.441 | 学校推荐别太当真：有家长被说考不到 Baulkham Hills 结果考到了，推荐前 20 都悬的最后进了前十；要看排名就报 ASAT。<br>原话：「他们推荐别太当真」 |
+| +0.000 | 褒贬参半 | 2025 | [新足迹：送娃上公立精英中学什么时候开始补课比较合适](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1865999)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.70 = 0.556 | 五年级上过半年 Pre-Uni，觉得一般；没做过 trial，靠家长辅导数学一年，考上前几名的精英。<br>原话：「5年级上过半年的pre-uni，觉得一般」 |
+| +0.000 | 褒贬参半 | 2025 | [新足迹：读Selective失败报道有感](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1868983)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.70 = 0.556 | 老大去过 Pre-Uni 和 CS 各一周就不肯再去，孩子说这些地方只有家长喜欢，因为作业多。<br>原话：「孩子的话是这些地方就家长喜欢因为作业多」 |
+| +0.000 | 褒贬参半 | 2025 | [新足迹：selective学校报名建议？？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1883555)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.70 = 0.556 | 多位家长：STTC 排名偏保守，排 300-500 名甚至 500 名的孩子也考上了第一志愿（Baulkham Hills、North Sydney Girls）；实际考试数学和 TS 没有 Pre-Uni 那么难；有孩子 OC 大模考 25%/25%/50%，真考 10%/10%/15%。<br>原话：「我家孩子preuni 500名 报名bhh，第一志愿直接录取」 |
+| +0.000 | 褒贬参半 | 2011 | [新足迹：纯技术贴 - 补习班大全（悉尼小学篇）](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=357350)<br>家长论坛，已读原帖 | 1.00×0.10×1.00×0.40 = 0.040 | 2011 年：女儿在 Baulkham Hills 分校感觉不太好，转去总校好很多；总校按成绩分约 8 个等级的班。<br>原话：「今年转去总校，感觉比分校那边好很多」 |
 
-### 5. Essential 系列练习册
+### 5. The Swot Shop
 
-口碑分 **0.79** · 可信度 **低** · 独立来源 1 个 · 地区：自学 · 形式：练习册
-
-不是补习班，是纸质练习册，列在这里是因为家长常拿它和补习班的题比。
-
-| 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
-|---:|:---:|:---:|---|---|---|
-| +0.794 | 推荐 | 2025 | [新足迹：求推荐靠谱的OC模拟题网站](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1847659)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×1.00 = 0.794 | 两位家长都说 Essential 系列更接近实际考题：不钻难题但有挑战，OC 后拿来查漏补缺觉得做晚了；还有 Pre-OC 系列。最终建议回归真题。<br>原话：「我也觉得essential系列其实更接近实际考题」 |
-
-### 6. Test Academy
-
-口碑分 **0.79** · 可信度 **低** · 独立来源 1 个 · 地区：Parramatta、线上 · 形式：小班 + 在线题库
-
-| 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
-|---:|:---:|:---:|---|---|---|
-| +0.700 | 正面 | 2026 | [新足迹：帮助孩子准备OC和selective都使用什么online 资源啊？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1901732)<br>家长论坛，已读原帖 | 1.00×1.00×1.00×1.00 = 1.000 | 有家长说用过觉得不错：几个 Baulkham Hills 毕业生做的，平台全面，有免费试用。只有这一条，口吻像推荐帖。<br>原话：「我家有用过，觉得不错」 |
-| +0.052 | 被提及 | 2026 | [Tutero 榜单：Best OC, Selective and Scholarship Test Preparation](https://www.tutero.com/au/blog/best-selective-school-tutoring)<br>榜单 / 导购博客，仅搜索摘要 | 0.25×1.00×0.70×1.00 = 0.175 | 同行榜单排第四（7.6/10），称适合想要每周小班的家庭。不是独立评价。 |
-| +0.029 | 评分 5.0/5（47 条） | 2026 | [机构官网：OC Test Preparation, Parramatta & Online](https://testacademy.com.au/oc-test-preparation/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.029 | 官网自报 Google 5.0（47 条），展示的评价夸老师和在线练习平台、12 周 OC Mastery 课。未独立核对。 |
-| +0.010 | 正面 | 2022 | [机构官网：Test Academy 官网引用的 Google 评价](https://testacademy.com.au/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×0.40×0.70×1.00 = 0.014 | 官网展示的评价：夸老师和软件，有家长称买在线题包后孩子拿到 OC offer。机构自选展示。 |
-| +0.000 | 被提及 | 2026 | [名录：Selective & OC Coaching Parramatta](https://www.selectivepapersnsw.com/guides/selective-coaching/parramatta)<br>名录 / 黄页，仅搜索摘要 | 0.00×1.00×0.70×0.70 = 0.000 | 收费（导购名录）：Selective Mastery 直播课 35 澳元一小时，约 122.5 澳元一周，首节免费。 |
-
-### 7. The Swot Shop
-
-口碑分 **0.77** · 可信度 **高** · 独立来源 16 个 · 地区：Beecroft · 形式：需入学测试的小班
+口碑分 **1.16** · 可信度 **高** · 独立来源 17 个 · 地区：Beecroft · 形式：需入学测试的小班
 
 | 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
 |---:|:---:|:---:|---|---|---|
 | +0.630 | 推荐 | 2024 | [新足迹：哪里有简单点的OC trial](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1819277)<br>家长论坛，已读原帖 | 1.00×0.63×1.00×1.00 = 0.630 | 真不难的 OC 班只有 Swot Shop，有随堂小考；要过入学测试。<br>原话：「如果是真真真不难的OC class, 只有Swotshop」 |
+| +0.389 | 正面 | 2025 | [新足迹：读Selective失败报道有感](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1868983)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.70 = 0.556 | 老大只上 Swot Shop（每周数学、英文各 1.5 小时，作业每门 10-15 分钟），一样考上该上的 OC 和 Selective；近几年里面基本没有华人了，因为几乎没作业。<br>原话：「老大只去了Swotshop（近几年基本没了华人，因为基本没作业）」 |
 | +0.220 | 正面 | 2021 | [新足迹：山区求oc补习班推荐](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1649709)<br>家长论坛，已读原帖 | 1.00×0.31×1.00×1.00 = 0.315 | 还是不错的，课程品质有保证，上课风格适合移二代；只是有些家长嫌贵、嫌远、嫌不够应试。<br>原话：「swotshop还是不错的，课程品质保证」 |
 | +0.220 | 正面 | 2021 | [新足迹：求推荐 - 适合小学4年级数学补习班](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1676415)<br>家长论坛，已读原帖 | 1.00×0.31×1.00×1.00 = 0.315 | 在读家长：非常循序渐进，孩子一层层进步，一直在适合自己水平的课里，英语很有帮助；但数学不行，且「大家貌似都不太粉」。<br>原话：「我觉得swotshop这点做的很好，非常循序渐进」 |
 | +0.157 | 推荐 | 2018 | [新足迹：关于补习班的疑问](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1403185)<br>家长论坛，已读原帖 | 1.00×0.16×1.00×1.00 = 0.157 | 悉尼的我推荐 Swot Shop：补完效果很好，关键是孩子喜欢去，想停都不让停；同时在做 Pre-Uni OC 准备班的题。<br>原话：「悉尼的我推荐swotshop 娃去补习完效果很好 关键是孩子喜欢去那里」 |
@@ -383,19 +377,31 @@
 | +0.000 | 褒贬参半 | 2021 | [新足迹：真心请教SWOT Shop](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1713178)<br>家长论坛，已读原帖 | 1.00×0.31×1.00×0.40 = 0.126 | 伽利略班（智力问答、辩论、演讲）很受喜欢；但三科都上过的家长说效果太差太慢，混了大半年就停了。<br>原话：「三个科目我们都上过，不能说没学到什么知识，但效果太差太慢」 |
 | +0.000 | 褒贬参半 | 2021 | [新足迹：Swot shop 成绩](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1642664)<br>家长论坛，已读原帖 | 1.00×0.31×1.00×0.40 = 0.126 | 适合家长没空管的孩子；除了写作都很一般，比 CS 的内容简单很多。<br>原话：「我觉得除了写作都很一般，比cs的内容简单很多」 |
 
-### 8. Five Senses Education 练习册（5 Sense）
+### 6. Essential 系列练习册
 
-口碑分 **0.56** · 可信度 **低** · 独立来源 1 个 · 地区：自学 · 形式：练习册 / 模拟卷
+口碑分 **0.79** · 可信度 **低** · 独立来源 1 个 · 地区：自学 · 形式：练习册
 
-出版社的练习册和模拟卷，不是补习班。
+不是补习班，是纸质练习册，列在这里是因为家长常拿它和补习班的题比。
 
 | 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
 |---:|:---:|:---:|---|---|---|
-| +0.556 | 正面 | 2025 | [新足迹：求推荐靠谱的OC模拟题网站](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1847659)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×1.00 = 0.794 | 补习社的题都比真题难很多，5 Sense 的题或许反而更接近真题难度。<br>原话：「5 sense的题目或许反而更加接近真题的难度」 |
+| +0.794 | 推荐 | 2025 | [新足迹：求推荐靠谱的OC模拟题网站](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1847659)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×1.00 = 0.794 | 两位家长都说 Essential 系列更接近实际考题：不钻难题但有挑战，OC 后拿来查漏补缺觉得做晚了；还有 Pre-OC 系列。最终建议回归真题。<br>原话：「我也觉得essential系列其实更接近实际考题」 |
 
-### 9. Scholarly Training
+### 7. Test Academy
 
-口碑分 **0.52** · 可信度 **高** · 独立来源 20 个 · 地区：Naremburn、线上 · 形式：班课 + 线上
+口碑分 **0.79** · 可信度 **低** · 独立来源 1 个 · 地区：Parramatta、线上 · 形式：小班 + 在线题库
+
+| 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
+|---:|:---:|:---:|---|---|---|
+| +0.700 | 正面 | 2026 | [新足迹：帮助孩子准备OC和selective都使用什么online 资源啊？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1901732)<br>家长论坛，已读原帖 | 1.00×1.00×1.00×1.00 = 1.000 | 有家长说用过觉得不错：几个 Baulkham Hills 毕业生做的，平台全面，有免费试用。只有这一条，口吻像推荐帖。<br>原话：「我家有用过，觉得不错」 |
+| +0.052 | 被提及 | 2026 | [Tutero 榜单：Best OC, Selective and Scholarship Test Preparation](https://www.tutero.com/au/blog/best-selective-school-tutoring)<br>榜单 / 导购博客，仅搜索摘要 | 0.25×1.00×0.70×1.00 = 0.175 | 同行榜单排第四（7.6/10），称适合想要每周小班的家庭。不是独立评价。 |
+| +0.029 | 评分 5.0/5（47 条） | 2026 | [机构官网：OC Test Preparation, Parramatta & Online](https://testacademy.com.au/oc-test-preparation/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×1.00×0.70×1.00 = 0.029 | 官网自报 Google 5.0（47 条），展示的评价夸老师和在线练习平台、12 周 OC Mastery 课。未独立核对。 |
+| +0.010 | 正面 | 2022 | [机构官网：Test Academy 官网引用的 Google 评价](https://testacademy.com.au/)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×0.40×0.70×1.00 = 0.014 | 官网展示的评价：夸老师和软件，有家长称买在线题包后孩子拿到 OC offer。机构自选展示。 |
+| +0.000 | 被提及 | 2026 | [名录：Selective & OC Coaching Parramatta](https://www.selectivepapersnsw.com/guides/selective-coaching/parramatta)<br>名录 / 黄页，仅搜索摘要 | 0.00×1.00×0.70×0.70 = 0.000 | 收费（导购名录）：Selective Mastery 直播课 35 澳元一小时，约 122.5 澳元一周，首节免费。 |
+
+### 8. Scholarly Training
+
+口碑分 **0.52** · 可信度 **高** · 独立来源 21 个 · 地区：Naremburn、线上 · 形式：班课 + 线上
 
 | 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
 |---:|:---:|:---:|---|---|---|
@@ -426,8 +432,9 @@
 | +0.000 | 褒贬参半 | 2023 | [新足迹：Scholarly补习班，三年级背着高中的单词](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1785214)<br>家长论坛，已读原帖 | 1.00×0.50×1.00×1.00 = 0.300 | 争议很大、褒贬不一：三年级每周约 70 个单词、很多是高中水平（通过 vocabulary.com 练习，有孩子喜欢）；有人说题目怪、难易混乱、营销疯狂；一个 term 比 Pre-Uni 贵很多且只有网课，有家长试一个 term 就放弃。<br>原话：「他们家真的争议好大，褒贬不一。喜欢的能跟两三年，不喜欢的就真的完全不喜欢。」 |
 | +0.000 | 褒贬参半 | 2025 | [新足迹：Scholarly补习班，三年级背着高中的单词](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1785214)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×1.00 = 0.794 | 2025 年：上了一段阅读写作课，阅读难度有点大，两个孩子都不太喜欢。<br>原话：「感觉阅读难度有点大，俩人都不太喜欢」 |
 | +0.000 | 褒贬参半 | 2025 | [新足迹：求小学英文补习](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1858542)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×0.40 = 0.317 | 被列为英文好的几家之一：老板有激情，孩子喜欢阅读课，能提高做题准确率，但前提是水平已经到了，上几次学技巧就够。<br>原话：「s家老板比较有激情，小朋友喜欢阅读课」 |
+| +0.000 | 褒贬参半 | 2026 | [新足迹：Cogito VS Scholarly for year 8 student](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1904230)<br>家长论坛，已读原帖 | 1.00×1.00×1.00×0.40 = 0.400 | 多年前上过：Scholarly 不认真批改作业，每次只给一句评语，听说后来有改进。<br>原话：「scholarly不给认真批改作业每次就给个comment，听说后面改进了」 |
 
-### 10. STC Selected Tutorial Centre（STC）
+### 9. STC Selected Tutorial Centre（STC）
 
 口碑分 **0.48** · 可信度 **高** · 独立来源 11 个 · 地区：Hurstville · 形式：班课 + WEMT
 
@@ -447,6 +454,17 @@
 | +0.010 | 正面 | 2022 | [机构软文：STC 相关宣传文章](https://www.sohu.com/a/541552843_121124569)<br>机构自述 / 官网 / 软文，仅搜索摘要 | 0.05×0.40×0.70×1.00 = 0.014 | 称近 8 年 Hurstville OC 班一半学生出自 STC。机构宣传口径，未经核实。 |
 | +0.000 | 褒贬参半 | 2023 | [华人澳洲中文论坛(china2au)：粗略比较下南边补习的stc, pre uni,cs 吧](https://bbs.china2au.com/thread-1056811-1-1.html)<br>家长论坛，仅搜索摘要 | 1.00×0.50×0.70×1.00 = 0.210 | 楼主说作业没答案、没有网上系统和周末班；另一回复反驳说各班都有答案、也有周末班。说法不一。 |
 | +0.000 | 褒贬参半 | 2021 | [新足迹：被现实狠狠的抽了一耳光！求山区好的精英考试补习](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1650117)<br>家长论坛，已读原帖 | 1.00×0.31×1.00×0.70 = 0.220 | 南区最老的补习社，按成绩分 A / 中 / 普通班，A 班考精英基本没问题；但家长不辅导基本没用。<br>原话：「我家上的stc不辅导基本没用」 |
+
+### 10. Five Senses Education 练习册（5 Sense）
+
+口碑分 **0.44** · 可信度 **中** · 独立来源 2 个 · 地区：自学 · 形式：练习册 / 模拟卷
+
+出版社的练习册和模拟卷，不是补习班。
+
+| 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
+|---:|:---:|:---:|---|---|---|
+| +0.556 | 正面 | 2025 | [新足迹：求推荐靠谱的OC模拟题网站](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1847659)<br>家长论坛，已读原帖 | 1.00×0.79×1.00×1.00 = 0.794 | 补习社的题都比真题难很多，5 Sense 的题或许反而更接近真题难度。<br>原话：「5 sense的题目或许反而更加接近真题的难度」 |
+| -0.111 | 负面 | 2022 | [新足迹：假如拿到顶级私校奖学金，上中学时，孩子可以不补习吗？](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1744872)<br>家长论坛，已读原帖 | 1.00×0.40×1.00×0.40 = 0.159 | 孩子考完说在 Five Senses 买的那几本书方向不对，还是学校作业帮助大。<br>原话：「我在FIVE SENSES买的那几本书方向压根不对」 |
 
 ### 11. Au Academy
 
@@ -557,7 +575,16 @@
 |---:|:---:|:---:|---|---|---|
 | +0.056 | 推荐 | 2019 | [Bored of Studies：Best Tutoring Colleges for Year 5/6 and Selective School test](https://boredofstudies.org/threads/best-tutoring-colleges-for-year-5-6-and-selective-school-test.232118/)<br>学生论坛，已读原帖 | 0.70×0.20×1.00×0.40 = 0.056 | 想找好的写作老师就去 Campsie 的 Mr Steggles（Advanced Instruction），前 Summer Hill OC 老师，特别擅长教写作。<br>原话：「HE is a former summerhill OC teacher, very good at teaching writing in particular」 |
 
-### 22. Super Coaching
+### 22. Cogito
+
+口碑分 **0.00** · 可信度 **中** · 独立来源 2 个 · 地区：悉尼 · 形式：班课
+
+| 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
+|---:|:---:|:---:|---|---|---|
+| +0.000 | 褒贬参半 | 2022 | [新足迹：Eduvision, Cogito VS Dr. Jin](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1646605)<br>家长论坛，已读原帖 | 1.00×0.40×1.00×0.40 = 0.159 | 试听过：头牌老师讲得很好；但写作班限人数、饥饿营销，师资严重不足。2023 年有人说它最出名的是辩论课，英语也不错。<br>原话：「头牌讲的很好…师资力量严重不足是短板」 |
+| +0.000 | 褒贬参半 | 2026 | [新足迹：Cogito VS Scholarly for year 8 student](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1904230)<br>家长论坛，已读原帖 | 1.00×1.00×1.00×0.40 = 0.400 | 多年前从 Scholarly 换到 Cogito：有位老师很投入、孩子喜欢，她离开换老师后孩子就不上了。<br>原话：「有个老师很喜欢教学吧」 |
+
+### 23. Super Coaching
 
 口碑分 **0.00** · 可信度 **中** · 独立来源 2 个 · 地区：North Parramatta · 形式：班课
 
@@ -565,14 +592,6 @@
 |---:|:---:|:---:|---|---|---|
 | +0.000 | 褒贬参半 | 2022 | [商家目录点评：Super Coaching Centre North Parramatta](https://find-open.biz/north-parramatta/super-coaching-centre-904921)<br>第三方点评站，仅搜索摘要 | 0.70×0.40×0.70×0.40 = 0.078 | 仅一条前学员评价：老师有时很凶，但认真听的话教得非常好。 |
 | +0.000 | 褒贬参半 | 2021 | [新足迹：山区求oc补习班推荐](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1649709)<br>家长论坛，已读原帖 | 1.00×0.31×1.00×1.00 = 0.315 | 被列为山区选项（North Parramatta），但有人指出其 Facebook 最后更新在 2017 年，怀疑不太行。<br>原话：「最后日期是2017年，是不是不太行啊」 |
-
-### 23. Cogito
-
-口碑分 **0.00** · 可信度 **低** · 独立来源 1 个 · 地区：悉尼 · 形式：班课
-
-| 得分 | 立场 | 年份 | 来源 | 权重拆解（来源×年份×核实×相关） | 内容 |
-|---:|:---:|:---:|---|---|---|
-| +0.000 | 褒贬参半 | 2022 | [新足迹：Eduvision, Cogito VS Dr. Jin](https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1646605)<br>家长论坛，已读原帖 | 1.00×0.40×1.00×0.40 = 0.159 | 试听过：头牌老师讲得很好；但写作班限人数、饥饿营销，师资严重不足。2023 年有人说它最出名的是辩论课，英语也不错。<br>原话：「头牌讲的很好…师资力量严重不足是短板」 |
 
 ### 24. Mastery School
 

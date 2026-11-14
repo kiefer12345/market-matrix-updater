@@ -10,13 +10,13 @@
       ],
       "format": "在线题库 / 模拟题",
       "notes": "不是补习班，是家长自己刷题用的在线题库。",
-      "score": 8.859,
-      "positive": 9.612,
-      "negative": 0.753,
-      "approval": 0.93,
-      "evidence_weight": 14.448,
-      "evidence_count": 26,
-      "independent_sources": 21,
+      "score": 8.758,
+      "positive": 10.001,
+      "negative": 1.243,
+      "approval": 0.89,
+      "evidence_weight": 16.959,
+      "evidence_count": 30,
+      "independent_sources": 25,
       "latest_year": 2026,
       "confidence": "高",
       "evidence": [
@@ -131,6 +131,17 @@
           "summary": "估算的学校还算准，因为孩子一刷就是 10 套起。"
         },
         {
+          "id": "e0481",
+          "points": -0.49,
+          "weight": 0.7,
+          "sentiment": -0.7,
+          "year": 2026,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1888998",
+          "summary": "新题型完形填空：Pre-Uni 的错得很少，CTEdu 的要错四五个，感觉 CT 这类题出得太难。"
+        },
+        {
           "id": "e0183",
           "points": 0.441,
           "weight": 0.63,
@@ -140,6 +151,17 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1826241",
           "summary": "多位家长：英语比真题简单，数学和 Thinking Skills 和真题差不多；孩子三科都有过全对；但解析有时看不明白。也有孩子嫌难不愿做。"
+        },
+        {
+          "id": "e0478",
+          "points": 0.3889,
+          "weight": 0.5556,
+          "sentiment": 0.7,
+          "year": 2025,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1882701",
+          "summary": "题目风格更接近真题（细节坑多，考读题仔细），不必被分数吓到：有孩子只做对一半也考上前几名的精英，同事女儿 70 多分考上 Hornsby。"
         },
         {
           "id": "e0195",
@@ -305,6 +327,28 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1700669",
           "summary": "数学偏难甚至超纲，TS 阅读量不够，精华在训练控时；有家长说做错太多账号被封了两次（疑被当成搜集题目）。"
+        },
+        {
+          "id": "e0475",
+          "points": 0.0,
+          "weight": 0.5556,
+          "sentiment": 0.0,
+          "year": 2025,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1883555",
+          "summary": "有人建议考前刷一套 CTEdu 并把错题弄懂；楼主说太难，还要大人讲题。"
+        },
+        {
+          "id": "e0479",
+          "points": 0.0,
+          "weight": 0.7,
+          "sentiment": 0.0,
+          "year": 2026,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1885323",
+          "summary": "两个孩子同年考：CTEdu 上一直是 A 高于 B，ASAT 和最后成绩都是 B 高于 A，CTEdu 这次排反了；另一位做过一套觉得比 Pre-Uni 还难就放弃。"
         }
       ]
     },
@@ -683,13 +727,13 @@
       ],
       "format": "班课 + trial + 线上",
       "notes": "",
-      "score": 5.026,
-      "positive": 6.933,
+      "score": 5.359,
+      "positive": 7.266,
       "negative": 1.907,
-      "approval": 0.78,
-      "evidence_weight": 16.663,
-      "evidence_count": 42,
-      "independent_sources": 37,
+      "approval": 0.79,
+      "evidence_weight": 17.972,
+      "evidence_count": 45,
+      "independent_sources": 38,
       "latest_year": 2026,
       "confidence": "高",
       "evidence": [
@@ -780,6 +824,17 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1865145",
           "summary": "参加了 CS 的 trial，孩子感觉难度跟实际考试差不多。"
+        },
+        {
+          "id": "e0476",
+          "points": 0.3334,
+          "weight": 0.3334,
+          "sentiment": 1.0,
+          "year": 2025,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1882701",
+          "summary": "2025 年 11 月三位家长回帖：CS 的 trial 排名靠谱，OC 和 Selective 最后分数都接近 trial；今年考完的一位说校长给的报考建议非常准。也有反例：朋友孩子常年 CS 个位数排名，只拿到非头部候补。"
         },
         {
           "id": "e0156",
@@ -1154,6 +1209,28 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1654782",
           "summary": "Eastwood：Pre-Uni 题难、适合拔高；CS 全部错题可看、难度略低。"
+        },
+        {
+          "id": "e0473",
+          "points": 0.0,
+          "weight": 0.5556,
+          "sentiment": 0.0,
+          "year": 2025,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1868983",
+          "summary": "同上：去了一周就不喜欢，作业多。"
+        },
+        {
+          "id": "e0483",
+          "points": 0.0,
+          "weight": 0.42,
+          "sentiment": 0.0,
+          "year": 2026,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1890889",
+          "summary": "同一位家长：CS 不难，成绩比在 Pre-Uni 高，阅读平均分 60-70（Pre-Uni 只有 50 多）。"
         }
       ]
     },
@@ -1169,13 +1246,13 @@
       ],
       "format": "大班 + 大型模拟考(WEMT/trial)",
       "notes": "各校区独立经营，教材和考题通用；口碑随校区和老师差别大。",
-      "score": 2.082,
-      "positive": 6.621,
-      "negative": 4.538,
-      "approval": 0.59,
-      "evidence_weight": 25.284,
-      "evidence_count": 74,
-      "independent_sources": 61,
+      "score": 3.022,
+      "positive": 7.794,
+      "negative": 4.772,
+      "approval": 0.62,
+      "evidence_weight": 28.999,
+      "evidence_count": 82,
+      "independent_sources": 67,
       "latest_year": 2026,
       "confidence": "高",
       "evidence": [
@@ -1211,6 +1288,17 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1885323",
           "summary": "2026 年出分后楼主回帖：Pre-Uni 的学校预测对自家挺准，尤其考前假期那次；真题难度在 CS 和 Pre-Uni 之间。"
+        },
+        {
+          "id": "e0482",
+          "points": 0.49,
+          "weight": 0.7,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1890889",
+          "summary": "同时在两家做 trial 的家长：CS 成绩偏高，还是以 Pre-Uni 的排名为准，觉得更准。"
         },
         {
           "id": "e0180",
@@ -1255,6 +1343,17 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1876502",
           "summary": "2025 年出分后多位家长反馈 ASAT 不准，尤其对没在 Pre-Uni 补习的孩子：预测三个志愿都考不上的考上了第一志愿；评估能上 North Sydney Boys 的连候补都没有；改革后旧题库价值大跌；孩子说 PU 就是题海。"
+        },
+        {
+          "id": "e0470",
+          "points": 0.3889,
+          "weight": 0.5556,
+          "sentiment": 0.7,
+          "year": 2025,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1868518",
+          "summary": "Pre-Uni 的学校预测对自家孩子比较准。"
         },
         {
           "id": "e0154",
@@ -1343,6 +1442,17 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1886798",
           "summary": "考上 James Ruse 的家长：Pre-Uni 的题忽难忽易没章法，每次都不一样，不喜欢它的 trial；数学计算复杂度和超纲题比 CT 多得多。"
+        },
+        {
+          "id": "e0480",
+          "points": 0.294,
+          "weight": 0.42,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1885323",
+          "summary": "2026 年考完：ASAT 的兄弟姐妹先后顺序和最后成绩一致；另一位说女儿 Pre-Uni 数学和 TS 在 10%-15%，实际考试也是 15%。今年真题数学和 TS 不比 Pre-Uni 简单。"
         },
         {
           "id": "e0284",
@@ -1442,6 +1552,17 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1876502",
           "summary": "也有家长说 STTC 和 ASAT 对自家预计比较准；参加两次 ASAT 都十几名的孩子拿到 James Ruse offer。"
+        },
+        {
+          "id": "e0477",
+          "points": -0.2333,
+          "weight": 0.3334,
+          "sentiment": -0.7,
+          "year": 2025,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1882701",
+          "summary": "今年考完的家长：Pre-Uni 偏差巨大，两次大模考对自家都不准。同帖另一位说 ASAT 也算比较准。"
         },
         {
           "id": "e0227",
@@ -1992,115 +2113,50 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1815974",
           "summary": "学校推荐别太当真：有家长被说考不到 Baulkham Hills 结果考到了，推荐前 20 都悬的最后进了前十；要看排名就报 ASAT。"
-        }
-      ]
-    },
-    {
-      "id": "essential",
-      "name": "Essential 系列练习册",
-      "name_zh": "",
-      "areas": [
-        "自学"
-      ],
-      "format": "练习册",
-      "notes": "不是补习班，是纸质练习册，列在这里是因为家长常拿它和补习班的题比。",
-      "score": 0.794,
-      "positive": 0.794,
-      "negative": 0,
-      "approval": 1.0,
-      "evidence_weight": 0.794,
-      "evidence_count": 1,
-      "independent_sources": 1,
-      "latest_year": 2025,
-      "confidence": "低",
-      "evidence": [
+        },
         {
-          "id": "e0215",
-          "points": 0.7937,
-          "weight": 0.7937,
-          "sentiment": 1.0,
+          "id": "e0469",
+          "points": 0.0,
+          "weight": 0.5556,
+          "sentiment": 0.0,
           "year": 2025,
           "source_type": "parent_forum",
           "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1847659",
-          "summary": "两位家长都说 Essential 系列更接近实际考题：不钻难题但有挑战，OC 后拿来查漏补缺觉得做晚了；还有 Pre-OC 系列。最终建议回归真题。"
-        }
-      ]
-    },
-    {
-      "id": "test_academy",
-      "name": "Test Academy",
-      "name_zh": "",
-      "areas": [
-        "Parramatta",
-        "线上"
-      ],
-      "format": "小班 + 在线题库",
-      "notes": "",
-      "score": 0.792,
-      "positive": 0.792,
-      "negative": 0,
-      "approval": 1.0,
-      "evidence_weight": 1.218,
-      "evidence_count": 5,
-      "independent_sources": 1,
-      "latest_year": 2026,
-      "confidence": "低",
-      "evidence": [
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1865999",
+          "summary": "五年级上过半年 Pre-Uni，觉得一般；没做过 trial，靠家长辅导数学一年，考上前几名的精英。"
+        },
         {
-          "id": "e0301",
-          "points": 0.7,
-          "weight": 1.0,
-          "sentiment": 0.7,
-          "year": 2026,
+          "id": "e0472",
+          "points": 0.0,
+          "weight": 0.5556,
+          "sentiment": 0.0,
+          "year": 2025,
           "source_type": "parent_forum",
           "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1901732",
-          "summary": "有家长说用过觉得不错：几个 Baulkham Hills 毕业生做的，平台全面，有免费试用。只有这一条，口吻像推荐帖。"
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1868983",
+          "summary": "老大去过 Pre-Uni 和 CS 各一周就不肯再去，孩子说这些地方只有家长喜欢，因为作业多。"
         },
         {
-          "id": "e0138",
-          "points": 0.0525,
-          "weight": 0.175,
-          "sentiment": 0.3,
-          "year": 2026,
-          "source_type": "listing_blog",
-          "platform": "Tutero 榜单",
-          "url": "https://www.tutero.com/au/blog/best-selective-school-tutoring",
-          "summary": "同行榜单排第四（7.6/10），称适合想要每周小班的家庭。不是独立评价。"
-        },
-        {
-          "id": "e0137",
-          "points": 0.0294,
-          "weight": 0.0294,
-          "sentiment": 1.0,
-          "year": 2026,
-          "source_type": "self_claim",
-          "platform": "机构官网",
-          "url": "https://testacademy.com.au/oc-test-preparation/",
-          "summary": "官网自报 Google 5.0（47 条），展示的评价夸老师和在线练习平台、12 周 OC Mastery 课。未独立核对。"
-        },
-        {
-          "id": "e0030",
-          "points": 0.0097,
-          "weight": 0.0139,
-          "sentiment": 0.7,
-          "year": 2022,
-          "source_type": "self_claim",
-          "platform": "机构官网",
-          "url": "https://testacademy.com.au/",
-          "summary": "官网展示的评价：夸老师和软件，有家长称买在线题包后孩子拿到 OC offer。机构自选展示。"
-        },
-        {
-          "id": "e0468",
+          "id": "e0474",
           "points": 0.0,
-          "weight": 0.0,
-          "sentiment": 0.3,
-          "year": 2026,
-          "source_type": "directory",
-          "platform": "名录",
-          "url": "https://www.selectivepapersnsw.com/guides/selective-coaching/parramatta",
-          "summary": "收费（导购名录）：Selective Mastery 直播课 35 澳元一小时，约 122.5 澳元一周，首节免费。"
+          "weight": 0.5556,
+          "sentiment": 0.0,
+          "year": 2025,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1883555",
+          "summary": "多位家长：STTC 排名偏保守，排 300-500 名甚至 500 名的孩子也考上了第一志愿（Baulkham Hills、North Sydney Girls）；实际考试数学和 TS 没有 Pre-Uni 那么难；有孩子 OC 大模考 25%/25%/50%，真考 10%/10%/15%。"
+        },
+        {
+          "id": "e0487",
+          "points": 0.0,
+          "weight": 0.04,
+          "sentiment": 0.0,
+          "year": 2011,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=357350",
+          "summary": "2011 年：女儿在 Baulkham Hills 分校感觉不太好，转去总校好很多；总校按成绩分约 8 个等级的班。"
         }
       ]
     },
@@ -2113,14 +2169,14 @@
       ],
       "format": "需入学测试的小班",
       "notes": "",
-      "score": 0.773,
-      "positive": 1.364,
+      "score": 1.161,
+      "positive": 1.753,
       "negative": 0.591,
-      "approval": 0.7,
-      "evidence_weight": 3.673,
-      "evidence_count": 19,
-      "independent_sources": 16,
-      "latest_year": 2024,
+      "approval": 0.75,
+      "evidence_weight": 4.228,
+      "evidence_count": 20,
+      "independent_sources": 17,
+      "latest_year": 2025,
       "confidence": "高",
       "evidence": [
         {
@@ -2133,6 +2189,17 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1819277",
           "summary": "真不难的 OC 班只有 Swot Shop，有随堂小考；要过入学测试。"
+        },
+        {
+          "id": "e0471",
+          "points": 0.3889,
+          "weight": 0.5556,
+          "sentiment": 0.7,
+          "year": 2025,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1868983",
+          "summary": "老大只上 Swot Shop（每周数学、英文各 1.5 小时，作业每门 10-15 分钟），一样考上该上的 OC 和 Selective；近几年里面基本没有华人了，因为几乎没作业。"
         },
         {
           "id": "e0177",
@@ -2335,16 +2402,16 @@
       ]
     },
     {
-      "id": "five_senses",
-      "name": "Five Senses Education 练习册",
-      "name_zh": "5 Sense",
+      "id": "essential",
+      "name": "Essential 系列练习册",
+      "name_zh": "",
       "areas": [
         "自学"
       ],
-      "format": "练习册 / 模拟卷",
-      "notes": "出版社的练习册和模拟卷，不是补习班。",
-      "score": 0.556,
-      "positive": 0.556,
+      "format": "练习册",
+      "notes": "不是补习班，是纸质练习册，列在这里是因为家长常拿它和补习班的题比。",
+      "score": 0.794,
+      "positive": 0.794,
       "negative": 0,
       "approval": 1.0,
       "evidence_weight": 0.794,
@@ -2354,15 +2421,92 @@
       "confidence": "低",
       "evidence": [
         {
-          "id": "e0217",
-          "points": 0.5556,
+          "id": "e0215",
+          "points": 0.7937,
           "weight": 0.7937,
-          "sentiment": 0.7,
+          "sentiment": 1.0,
           "year": 2025,
           "source_type": "parent_forum",
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1847659",
-          "summary": "补习社的题都比真题难很多，5 Sense 的题或许反而更接近真题难度。"
+          "summary": "两位家长都说 Essential 系列更接近实际考题：不钻难题但有挑战，OC 后拿来查漏补缺觉得做晚了；还有 Pre-OC 系列。最终建议回归真题。"
+        }
+      ]
+    },
+    {
+      "id": "test_academy",
+      "name": "Test Academy",
+      "name_zh": "",
+      "areas": [
+        "Parramatta",
+        "线上"
+      ],
+      "format": "小班 + 在线题库",
+      "notes": "",
+      "score": 0.792,
+      "positive": 0.792,
+      "negative": 0,
+      "approval": 1.0,
+      "evidence_weight": 1.218,
+      "evidence_count": 5,
+      "independent_sources": 1,
+      "latest_year": 2026,
+      "confidence": "低",
+      "evidence": [
+        {
+          "id": "e0301",
+          "points": 0.7,
+          "weight": 1.0,
+          "sentiment": 0.7,
+          "year": 2026,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1901732",
+          "summary": "有家长说用过觉得不错：几个 Baulkham Hills 毕业生做的，平台全面，有免费试用。只有这一条，口吻像推荐帖。"
+        },
+        {
+          "id": "e0138",
+          "points": 0.0525,
+          "weight": 0.175,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "listing_blog",
+          "platform": "Tutero 榜单",
+          "url": "https://www.tutero.com/au/blog/best-selective-school-tutoring",
+          "summary": "同行榜单排第四（7.6/10），称适合想要每周小班的家庭。不是独立评价。"
+        },
+        {
+          "id": "e0137",
+          "points": 0.0294,
+          "weight": 0.0294,
+          "sentiment": 1.0,
+          "year": 2026,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://testacademy.com.au/oc-test-preparation/",
+          "summary": "官网自报 Google 5.0（47 条），展示的评价夸老师和在线练习平台、12 周 OC Mastery 课。未独立核对。"
+        },
+        {
+          "id": "e0030",
+          "points": 0.0097,
+          "weight": 0.0139,
+          "sentiment": 0.7,
+          "year": 2022,
+          "source_type": "self_claim",
+          "platform": "机构官网",
+          "url": "https://testacademy.com.au/",
+          "summary": "官网展示的评价：夸老师和软件，有家长称买在线题包后孩子拿到 OC offer。机构自选展示。"
+        },
+        {
+          "id": "e0468",
+          "points": 0.0,
+          "weight": 0.0,
+          "sentiment": 0.3,
+          "year": 2026,
+          "source_type": "directory",
+          "platform": "名录",
+          "url": "https://www.selectivepapersnsw.com/guides/selective-coaching/parramatta",
+          "summary": "收费（导购名录）：Selective Mastery 直播课 35 澳元一小时，约 122.5 澳元一周，首节免费。"
         }
       ]
     },
@@ -2380,9 +2524,9 @@
       "positive": 2.629,
       "negative": 2.106,
       "approval": 0.56,
-      "evidence_weight": 10.437,
-      "evidence_count": 27,
-      "independent_sources": 20,
+      "evidence_weight": 10.837,
+      "evidence_count": 28,
+      "independent_sources": 21,
       "latest_year": 2026,
       "confidence": "高",
       "evidence": [
@@ -2682,6 +2826,17 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1858542",
           "summary": "被列为英文好的几家之一：老板有激情，孩子喜欢阅读课，能提高做题准确率，但前提是水平已经到了，上几次学技巧就够。"
+        },
+        {
+          "id": "e0484",
+          "points": 0.0,
+          "weight": 0.4,
+          "sentiment": 0.0,
+          "year": 2026,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1904230",
+          "summary": "多年前上过：Scholarly 不认真批改作业，每次只给一句评语，听说后来有改进。"
         }
       ]
     },
@@ -2857,6 +3012,49 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1650117",
           "summary": "南区最老的补习社，按成绩分 A / 中 / 普通班，A 班考精英基本没问题；但家长不辅导基本没用。"
+        }
+      ]
+    },
+    {
+      "id": "five_senses",
+      "name": "Five Senses Education 练习册",
+      "name_zh": "5 Sense",
+      "areas": [
+        "自学"
+      ],
+      "format": "练习册 / 模拟卷",
+      "notes": "出版社的练习册和模拟卷，不是补习班。",
+      "score": 0.444,
+      "positive": 0.556,
+      "negative": 0.111,
+      "approval": 0.83,
+      "evidence_weight": 0.952,
+      "evidence_count": 2,
+      "independent_sources": 2,
+      "latest_year": 2025,
+      "confidence": "中",
+      "evidence": [
+        {
+          "id": "e0217",
+          "points": 0.5556,
+          "weight": 0.7937,
+          "sentiment": 0.7,
+          "year": 2025,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1847659",
+          "summary": "补习社的题都比真题难很多，5 Sense 的题或许反而更接近真题难度。"
+        },
+        {
+          "id": "e0486",
+          "points": -0.1111,
+          "weight": 0.1587,
+          "sentiment": -0.7,
+          "year": 2022,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1744872",
+          "summary": "孩子考完说在 Five Senses 买的那几本书方向不对，还是学校作业帮助大。"
         }
       ]
     },
@@ -4132,6 +4330,49 @@
       ]
     },
     {
+      "id": "cogito",
+      "name": "Cogito",
+      "name_zh": "",
+      "areas": [
+        "悉尼"
+      ],
+      "format": "班课",
+      "notes": "",
+      "score": 0,
+      "positive": 0,
+      "negative": 0,
+      "approval": null,
+      "evidence_weight": 0.559,
+      "evidence_count": 2,
+      "independent_sources": 2,
+      "latest_year": 2026,
+      "confidence": "中",
+      "evidence": [
+        {
+          "id": "e0382",
+          "points": 0.0,
+          "weight": 0.1587,
+          "sentiment": 0.0,
+          "year": 2022,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1646605",
+          "summary": "试听过：头牌老师讲得很好；但写作班限人数、饥饿营销，师资严重不足。2023 年有人说它最出名的是辩论课，英语也不错。"
+        },
+        {
+          "id": "e0485",
+          "points": 0.0,
+          "weight": 0.4,
+          "sentiment": 0.0,
+          "year": 2026,
+          "source_type": "parent_forum",
+          "platform": "新足迹",
+          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1904230",
+          "summary": "多年前从 Scholarly 换到 Cogito：有位老师很投入、孩子喜欢，她离开换老师后孩子就不上了。"
+        }
+      ]
+    },
+    {
       "id": "super_coaching",
       "name": "Super Coaching",
       "name_zh": "",
@@ -4171,38 +4412,6 @@
           "platform": "新足迹",
           "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1649709",
           "summary": "被列为山区选项（North Parramatta），但有人指出其 Facebook 最后更新在 2017 年，怀疑不太行。"
-        }
-      ]
-    },
-    {
-      "id": "cogito",
-      "name": "Cogito",
-      "name_zh": "",
-      "areas": [
-        "悉尼"
-      ],
-      "format": "班课",
-      "notes": "",
-      "score": 0,
-      "positive": 0,
-      "negative": 0,
-      "approval": null,
-      "evidence_weight": 0.159,
-      "evidence_count": 1,
-      "independent_sources": 1,
-      "latest_year": 2022,
-      "confidence": "低",
-      "evidence": [
-        {
-          "id": "e0382",
-          "points": 0.0,
-          "weight": 0.1587,
-          "sentiment": 0.0,
-          "year": 2022,
-          "source_type": "parent_forum",
-          "platform": "新足迹",
-          "url": "https://www.oursteps.com.au/bbs/forum.php?mod=viewthread&tid=1646605",
-          "summary": "试听过：头牌老师讲得很好；但写作班限人数、饥饿营销，师资严重不足。2023 年有人说它最出名的是辩论课，英语也不错。"
         }
       ]
     },
