@@ -1,0 +1,51 @@
+name: Community evidence (free sources)
+
+# 每周跑一次社区口碑采集，只用免费来源。
+# 这里故意不传任何 API Key，也不设 COMMUNITY_ALLOW_PAID，所以不会产生费用。
+# 结果只写入 oc_tutoring/data/community/（候选库），不改正式证据库和评分。
+on:
+  schedule:
+    - cron: '17 3 * * 0'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "只试跑，不提交"
+        type: boolean
+        default: false
+
+concurrency:
+  group: community-collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Tests
+        run: python -m unittest discover -s oc_tutoring/tests
+
+      - name: Collect
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python oc_tutoring/community_run.py run --dry-run
+          else
+            python oc_tutoring/community_run.py run
+          fi
+
+      - name: Commit candidate store
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add oc_tutoring/data/community
+          git diff --staged --quiet || git commit -m "Community candidates $(date -u +'%Y-%m-%d')"
+          git pull --rebase -q origin "${GITHUB_REF_NAME}"
+          git push

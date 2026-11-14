@@ -1,0 +1,33 @@
+{
+  "_说明": "每个来源一段，enabled=false 即关闭。付费来源还需要环境变量 COMMUNITY_ALLOW_PAID=1 才会真的发请求。",
+  "queries": [
+    "Pre-Uni New College selective trial test parents review",
+    "Alpha One Coaching College OC selective review",
+    "CS Education selective trial test review Sydney",
+    "Scholarly selective test prep honest review",
+    "CTEdu selective OC practice test accurate",
+    "North Shore Coaching College OC selective worth it",
+    "James An College selective coaching review",
+    "The Swot Shop OC preparation review",
+    "STC Hurstville selective tutoring review",
+    "Eduvision selective tutoring review Sydney",
+    "best selective school tutoring Sydney reddit",
+    "OC test tutoring worth it Sydney parents",
+    "scholarship test Edutest tutoring Sydney review"
+  ],
+  "sources": {
+    "oursteps": {
+      "enabled": true, "adapter": "discuz", "base": "https://www.oursteps.com.au/bbs",
+      "boards": [101, 102], "listing_pages": 2, "max_threads_per_run": 20, "max_pages": 8,
+      "delay": 1.0, "timeout": 30, "retries": 2,
+      "title_keywords": "补习|補習|trial|tutor|coaching|pre.?uni|\\bPU\\b|\\bCS\\b|alpha ?one|scholarly|ct ?edu|kedu|eduvision|swot|north ?shore|STC|模考|题库|刷题|写作班|james an|matrix|selective|精英|\\bOC\\b|奖学金|edutest|HAST",
+      "title_skip": "墨尔本|VIC|维州|布里斯班|reserve|拼车|校服|offer.*接受"
+    },
+    "user_import": {"enabled": true, "adapter": "user_import", "inbox": "data/community/inbox"},
+    "brave": {"enabled": true, "adapter": "brave", "mode": "web", "max_queries": 5, "timeout": 20, "retries": 1},
+    "openai_web_search": {"enabled": true, "adapter": "openai_search", "model": "gpt-6-astra", "max_queries": 3,
+                          "search_context_size": "low", "allowed_domains": ["reddit.com"], "timeout": 90, "retries": 1},
+    "reddit_api": {"enabled": false, "adapter": "reddit_api", "user_agent": "community-evidence-collector/0.1 (personal, non-commercial)"}
+  },
+  "excerpt_chars": 280
+}

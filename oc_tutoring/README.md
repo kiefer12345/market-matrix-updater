@@ -96,6 +96,11 @@ python oc_tutoring/collect.py --url "https://www.oursteps.com.au/bbs/forum.php?m
 带上发帖年份和粗略的褒贬判断，写到 `data/candidates.json`。
 **候选不会自动进入排行**：褒贬判断只是关键词匹配，需要人看过再用 `add_evidence.py` 录入。
 
+## 社区口碑采集（自动）
+
+新的采集流程在 `community/`，说明见 [`community/README.md`](community/README.md)。
+它产生的线索和候选存在 `data/community/`，和正式证据库分开，不影响评分。
+
 ## 这份数据的局限
 
 - **有口碑的机构只有三十多家**：新足迹「小学教育」版和「中学教育」版里所有和补习相关的帖子（约 330 个、一万多条回帖）
